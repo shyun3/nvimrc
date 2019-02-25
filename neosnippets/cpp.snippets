@@ -1,0 +1,29 @@
+snippet includeGuard
+  #ifndef ${1:MACRO}
+  #define $1
+
+  #endif  // $1
+
+snippet anonNamespace
+  namespace
+  {
+
+  $1
+
+  }   // Anonymous namespace
+
+snippet nonCopyable
+  // Non-copyable
+  ${1:class}(const $1&) = delete;
+  $1& operator=(const $1&) = delete;
+
+snippet avCopyright
+  // Copyright (C) 2019, AeroVironment, Inc. All rights reserved.
+
+snippet namespace
+  namespace $1
+  {
+
+  $2
+
+  }   // namespace $1
