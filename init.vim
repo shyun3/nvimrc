@@ -114,15 +114,15 @@ xnoremap & :&&<CR>
 nnoremap Y y$
 
 " Open tags in splits
-nnoremap <C-]> :tjump /\<<C-R><C-W>\>\C<CR>
-nnoremap <A-]>s :wincmd g<C-V><C-]><CR>
-nnoremap <A-]>v :vertical wincmd g<C-V><C-]><CR>
+nnoremap <silent> <C-]> :tjump /\<<C-R><C-W>\>\C<CR>
+nnoremap <silent> <A-]>s :wincmd g<C-V><C-]><CR>
+nnoremap <silent> <A-]>v :vertical wincmd g<C-V><C-]><CR>
 
 " Open current file in explorer
-nnoremap <F10> :!start explorer /select,%:p<CR>
+nnoremap <silent> <F10> :!start explorer /select,%:p<CR>
 
 " Open file in Chrome
-nnoremap <F5>
+nnoremap <silent> <F5>
   \ :!start "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
   \ "%:p"<CR>
 
@@ -361,4 +361,4 @@ let g:vim_search_pulse_mode = 'pattern'
 " Tagbar
 let g:tagbar_autofocus = 1    " Move to Tagbar window when opened
 let g:tagbar_sort = 0
-nmap <A-t> :TagbarToggle<CR>
+nmap <silent> <A-t> :TagbarToggle<CR>
