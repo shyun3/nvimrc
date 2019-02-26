@@ -241,7 +241,7 @@ let g:fzf_tags_command = 'ctags -R'
 " grepper
 runtime plugin/grepper.vim
 let g:grepper.tools = ['rg', 'git']
-let g:grepper.rg.grepprg .= ' --smart-case --follow'
+let g:grepper.rg.grepprg = 'rg -H --no-heading --vimgrep --smart-case --follow $* .'
 let g:grepper.dir = 'filecwd'
 
 let g:grepper.open = 0
