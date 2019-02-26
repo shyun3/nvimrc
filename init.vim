@@ -196,9 +196,10 @@ call deoplete#custom#source('LanguageClient', 'min_pattern_length', 2)
 " fzf
 function! FZFOpen(command_str)
   if (expand('%') =~# 'NERD_tree' && winnr('$') > 1)
-    exe "silent normal! \<c-w>\<c-w>"
+    execute "silent normal! \<c-w>\<c-w>"
+    execute "cd " . g:NERDTreeFileNode.GetRootForTab().path.str()
   endif
-  exe 'silent normal! ' . a:command_str . "\<cr>"
+  execute 'silent normal! ' . a:command_str . "\<cr>"
 endfunction
 
 nnoremap <silent> <C-p> :call FZFOpen(":call fzf#vim#files\('',
