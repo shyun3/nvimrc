@@ -239,8 +239,8 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'project',
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LanguageClient
 let g:LanguageClient_serverCommands = {
-  \ 'c': ['clangd'],
-  \ 'cpp': ['clangd'],
+  \ 'c': [s:vim_dir . '/ccls/Release/ccls.exe'],
+  \ 'cpp': [s:vim_dir . '/ccls/Release/ccls.exe'],
 \ }
 
 let g:LanguageClient_diagnosticsList = "Location"
