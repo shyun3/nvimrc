@@ -4,7 +4,7 @@
     ```
     scoop install git
     scoop bucket add extras
-    scoop install neovim python ripgrep universal-ctags fzf
+    scoop install neovim python ripgrep universal-ctags fzf perl
     pip install --user pynvim
     ```
 
