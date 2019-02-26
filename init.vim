@@ -262,6 +262,7 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']   " Work with fugitive
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Gutentags
+let g:gutentags_ctags_exclude = ['.ccls-cache']
 let g:gutentags_project_root = ['.ccls', '.ccls-cache', '.ignore', '.rgignore',
   \ '.editorconfig', '.gutctags', '.notags', '.projections.json']
 
