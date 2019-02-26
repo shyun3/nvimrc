@@ -56,20 +56,33 @@ call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Options
-set number            " Line numbers
-set nowrap            " Do not wrap text
-set autowriteall      " Save when switching buffers
+
+" C indent options
+set cinoptions=g0   " Don't indent class scope declarations
+set cinoptions+=N-s " Don't indent contents of namespace
+
+" Casing
 set ignorecase        " Ignore case when searching
 set smartcase         " Consider case when an uppercase character is being used
-set splitright        " All vertical splits open to the right
-set splitbelow        " All horizontal splits open below
+
+" Completion menu
+set completeopt="menu"
+set pumheight=10
+
+" Display
+set number            " Line numbers
 set colorcolumn=80    " Show right margin
 set listchars=tab:»\ ,trail:·,precedes:◄,extends:► " Set invisibles
 set list                                           " Show invisibles
 set cursorline
+
+" File settings
+set autowriteall      " Save when switching buffers
 set noswapfile
-set completeopt="menu"
 set undofile
+
+" Formatting
+set nowrap            " Do not wrap text
 
 " Tabs
 set expandtab     " Change tabs to spaces
@@ -77,9 +90,9 @@ set tabstop=2     " Number of spaces in a tab
 set softtabstop=2 " Tab stop positions for spaces
 set shiftwidth=2  " Indentation width
 
-" C indent options
-set cinoptions=g0   " Don't indent class scope declarations
-set cinoptions+=N-s " Don't indent contents of namespace
+" Windows
+set splitright        " All vertical splits open to the right
+set splitbelow        " All horizontal splits open below
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Variables
