@@ -16,7 +16,7 @@
 1. Install [vim-plug](https://github.com/junegunn/vim-plug)
 
 1. Build [ccls](https://github.com/MaskRay/ccls)
-  - Remember to use the x86 Visual Studio command prompt, RTTI, and forward
+    - Remember to use the x86 Visual Studio command prompt, RTTI, and forward
     slashes in paths
 
 1. Start Neovim. Ignore any errors and run `:PlugInstall`. Exit when finished.
