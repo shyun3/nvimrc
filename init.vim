@@ -272,47 +272,39 @@ let g:LanguageClient_serverCommands = {
 
 let g:LanguageClient_diagnosticsList = "Location"
 
-nnoremap <leader>d :call LanguageClient_textDocument_definition()<CR>
-nnoremap <leader>sd :call LanguageClient_textDocument_definition(
+nnoremap <silent> <leader>d :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <leader>sd :call LanguageClient_textDocument_definition(
   \ {'gotoCmd': 'split'})<CR>
-nnoremap <leader>vd :call LanguageClient_textDocument_definition(
+nnoremap <silent> <leader>vd :call LanguageClient_textDocument_definition(
   \ {'gotoCmd': 'vsplit'})<CR>
 
-nnoremap <leader>i :call LanguageClient_textDocument_implementation()<CR>
-nnoremap <leader>si :call LanguageClient_textDocument_implementation(
+nnoremap <silent> <leader>i :call LanguageClient_textDocument_implementation()<CR>
+nnoremap <silent> <leader>si :call LanguageClient_textDocument_implementation(
   \ {'gotoCmd': 'split'})<CR>
 nnoremap <leader>vi :call LanguageClient_textDocument_implementation(
   \ {'gotoCmd': 'vsplit'})<CR>
 
-nnoremap <leader>t :call LanguageClient_textDocument_typeDefinition()<CR>
-nnoremap <leader>st :call LanguageClient_textDocument_typeDefinition(
+nnoremap <silent> <leader>t :call LanguageClient_textDocument_typeDefinition()<CR>
+nnoremap <silent> <leader>st :call LanguageClient_textDocument_typeDefinition(
   \ {'gotoCmd': 'split'})<CR>
-nnoremap <leader>vt :call LanguageClient_textDocument_typeDefinition(
+nnoremap <silent> <leader>vt :call LanguageClient_textDocument_typeDefinition(
   \ {'gotoCmd': 'vsplit'})<CR>
 
-nnoremap <leader>h :call LanguageClient_textDocument_hover()<CR>
-nnoremap <leader>sh :call LanguageClient_textDocument_hover(
-  \ {'gotoCmd': 'split'})<CR>
-nnoremap <leader>vh :call LanguageClient_textDocument_hover(
-  \ {'gotoCmd': 'vsplit'})<CR>
+nnoremap <silent> <leader>h :call LanguageClient_textDocument_hover()<CR>
 
-nnoremap <leader>r :call LanguageClient_textDocument_references()<CR>
-nnoremap <leader>sr :call LanguageClient_textDocument_references(
-  \ {'gotoCmd': 'split'})<CR>
-nnoremap <leader>vr :call LanguageClient_textDocument_references(
-  \ {'gotoCmd': 'vsplit'})<CR>
+nnoremap <silent> <leader>r :call LanguageClient_textDocument_references()<CR>
+nnoremap <silent> <leader>sr :sp<CR>
+  \:call LanguageClient_textDocument_references()<CR>
+nnoremap <silent> <leader>vr :vsp<CR>
+  \:call LanguageClient_textDocument_references()<CR>
 
-nnoremap <leader>k :call LanguageClient_textDocument_documentSymbol()<CR>
-nnoremap <leader>sk :call LanguageClient_textDocument_documentSymbol(
-  \ {'gotoCmd': 'split'})<CR>
-nnoremap <leader>vk :call LanguageClient_textDocument_documentSymbol(
-  \ {'gotoCmd': 'vsplit'})<CR>
+nnoremap <silent> <leader>k :call LanguageClient_textDocument_documentSymbol()<CR>
+nnoremap <silent> <leader>sk :sp<CR>
+  \:call LanguageClient_textDocument_documentSymbol()<CR>
+nnoremap <silent> <leader>vk :vsp<CR>
+  \:call LanguageClient_textDocument_documentSymbol()<CR>
 
-nnoremap <leader>w :call LanguageClient_textDocument_workspace_symbol()<CR>
-nnoremap <leader>sw :call LanguageClient_textDocument_workspace_symbol(
-  \ {'gotoCmd': 'split'})<CR>
-nnoremap <leader>vw :call LanguageClient_textDocument_workspace_symbol(
-  \ {'gotoCmd': 'vsplit'})<CR>
+nnoremap <silent> <leader>w :call LanguageClient_workspace_symbol()<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " neosnippet
