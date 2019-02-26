@@ -281,6 +281,7 @@ let g:LanguageClient_serverCommands = {
 \ }
 
 let g:LanguageClient_diagnosticsList = "Location"
+let g:LanguageClient_settingsPath = s:vim_dir . "/settings.json"
 
 function! LcRestart()
   LanguageClientStop
