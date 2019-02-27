@@ -119,11 +119,11 @@ nnoremap <silent> <A-]>s :wincmd g<C-V><C-]><CR>
 nnoremap <silent> <A-]>v :vertical wincmd g<C-V><C-]><CR>
 
 " Open current file in explorer
-nnoremap <silent> <F10> :!start explorer /select,%:p<CR>
+nnoremap <silent> <F10> :silent !start explorer /select,%:p<CR>
 
 " Open file in Chrome
 nnoremap <silent> <F5>
-  \ :!start "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
+  \ :silent !start "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
   \ "%:p"<CR>
 
 " <TAB> completion
