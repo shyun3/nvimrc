@@ -276,12 +276,14 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'project',
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LanguageClient
 let g:LanguageClient_serverCommands = {
-  \ 'c': [s:vim_dir . '/ccls/Release/ccls.exe'],
-  \ 'cpp': [s:vim_dir . '/ccls/Release/ccls.exe'],
+  \ 'c': [s:vim_dir . '/ccls/Release/ccls.exe', '-v=1', '--log-file=' . expand('~/ccls.log')],
+  \ 'cpp': [s:vim_dir . '/ccls/Release/ccls.exe', '-v=1', '--log-file=' . expand('~/ccls.log')],
 \ }
 
 let g:LanguageClient_diagnosticsList = "Location"
 let g:LanguageClient_settingsPath = s:vim_dir . "/settings.json"
+let g:LanguageClient_loggingFile = expand('~/LanguageClient.log')
+let g:LanguageClient_serverStderr = expand('~/LanguageClient_stderr.log')
 
 function! LcRestart()
   LanguageClientStop
