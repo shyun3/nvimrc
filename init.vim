@@ -224,6 +224,7 @@ nnoremap <silent> <C-H> :Tags<CR>
 nnoremap <silent> <C-K> :BTags<CR>
 nnoremap <silent> <A-p> :History<CR>
 
+let $FZF_DEFAULT_OPTS = '-m --bind ctrl-a:select-all,ctrl-d:deselect-all'
 let g:fzf_layout = { 'down': '~20%' }
 
 let g:fzf_action = {
