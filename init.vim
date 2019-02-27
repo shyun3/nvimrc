@@ -194,6 +194,19 @@ let g:deoplete#enable_at_startup = 1
 call deoplete#custom#source('LanguageClient', 'min_pattern_length', 2)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" EasyMotion
+let g:EasyMotion_do_mapping = 0            " Disable default mappings
+let g:EasyMotion_re_anywhere = '\v(<.|^$)' " Beginning of word
+let g:EasyMotion_startofline = 0           " Keep cursor column JK motion
+map _ <Plug>(easymotion-s)
+map <C-J> <Plug>(easymotion-bd-jk)
+nmap <Space> <Plug>(easymotion-jumptoanywhere)
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" EditorConfig
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']   " Work with fugitive
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " fzf
 function! FZFOpen(command_str)
   if (expand('%') =~# 'NERD_tree' && winnr('$') > 1)
@@ -246,19 +259,6 @@ let g:grepper.dir = 'filecwd'
 
 let g:grepper.open = 0
 autocmd User Grepper botright copen
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" EasyMotion
-let g:EasyMotion_do_mapping = 0            " Disable default mappings
-let g:EasyMotion_re_anywhere = '\v(<.|^$)' " Beginning of word
-let g:EasyMotion_startofline = 0           " Keep cursor column JK motion
-map _ <Plug>(easymotion-s)
-map <C-J> <Plug>(easymotion-bd-jk)
-nmap <Space> <Plug>(easymotion-jumptoanywhere)
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" EditorConfig
-let g:EditorConfig_exclude_patterns = ['fugitive://.*']   " Work with fugitive
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Gutentags
