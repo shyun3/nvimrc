@@ -188,6 +188,20 @@ call camelcasemotion#CreateMotionMappings(',')
 " coc
 imap <c-space> coc#refresh()
 
+function! CocOpen(command_str)
+  if (expand('%') =~# 'NERD_tree' && winnr('$') > 1)
+    execute "silent normal! \<c-w>\<c-w>"
+    execute "cd " . g:NERDTreeFileNode.GetRootForTab().path.str()
+  endif
+  execute 'silent normal! ' . a:command_str . "\<cr>"
+endfunction
+
+nnoremap <silent> <C-p> :call CocOpen(":CocList files")<CR>
+nnoremap <A-p> :CocList mru<CR>
+nnoremap <C-\> :CocList buffers<CR>
+nnoremap <C-k> :CocList outline<CR>
+nnoremap <C-h> :CocList --interactive symbols <CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EasyMotion
 let g:EasyMotion_do_mapping = 0            " Disable default mappings
