@@ -2,3 +2,4 @@ bundle/
 ccls/
 autoload/plug.vim*
 projects.vim
+path.vim

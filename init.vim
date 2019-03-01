@@ -1,5 +1,7 @@
 let s:vim_dir = stdpath('config')
 
+execute 'silent! source ' . s:vim_dir . '/path.vim'
+
 call plug#begin(s:vim_dir . '/bundle')
 
 " Plugin manager
