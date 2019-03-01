@@ -13,8 +13,6 @@ Plug 'equalsraf/neovim-gui-shim'
 Plug 'bkad/CamelCaseMotion'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
 Plug 'Shougo/neosnippet.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'yssl/QFEnter'
@@ -38,13 +36,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'vimwiki/vimwiki'
-
-" Autocomplete
-Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-Plug 'autozimu/LanguageClient-neovim', {
-  \ 'branch': 'next',
-  \ 'do': 'powershell -Command ./install.ps1',
-\}
 
 " Text objects
 Plug 'fvictorio/vim-textobj-backticks'
@@ -188,12 +179,6 @@ let g:airline#extensions#tabline#show_tab_type = 0
 call camelcasemotion#CreateMotionMappings(',')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" deoplete
-let g:deoplete#enable_at_startup = 1
-
-call deoplete#custom#source('LanguageClient', 'min_pattern_length', 2)
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EasyMotion
 let g:EasyMotion_do_mapping = 0            " Disable default mappings
 let g:EasyMotion_re_anywhere = '\v(<.|^$)' " Beginning of word
@@ -205,51 +190,6 @@ nmap <Space> <Plug>(easymotion-jumptoanywhere)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EditorConfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']   " Work with fugitive
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" fzf
-function! FZFOpen(command_str)
-  if (expand('%') =~# 'NERD_tree' && winnr('$') > 1)
-    execute "silent normal! \<c-w>\<c-w>"
-    execute "cd " . g:NERDTreeFileNode.GetRootForTab().path.str()
-  endif
-  execute 'silent normal! ' . a:command_str . "\<cr>"
-endfunction
-
-nnoremap <silent> <C-p> :call FZFOpen(":call fzf#vim#files\('',
-  \ {'source': 'rg --files -F --color never --hidden --follow -g \"!.*/\"'}\)"
-  \ )<CR>
-nnoremap <silent> <C-\> :Buffers<CR>
-nnoremap <silent> <C-H> :Tags<CR>
-nnoremap <silent> <C-K> :BTags<CR>
-nnoremap <silent> <A-p> :History<CR>
-
-let $FZF_DEFAULT_OPTS = '-m --bind ctrl-a:select-all,ctrl-d:deselect-all'
-let g:fzf_layout = { 'down': '~20%' }
-
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-s': 'split',
-  \ 'ctrl-v': 'vsplit' }
-
-" Customize fzf colors to match your color scheme
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
-
-" [Tags] Command to generate tags file
-let g:fzf_tags_command = 'ctags -R'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " grepper
@@ -273,60 +213,6 @@ let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'project',
   \ 'markdown']
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" LanguageClient
-let g:LanguageClient_serverCommands = {
-  \ 'c': [s:vim_dir . '/ccls/Release/ccls.exe', '-v=1', '--log-file=' . expand('~/ccls.log')],
-  \ 'cpp': [s:vim_dir . '/ccls/Release/ccls.exe', '-v=1', '--log-file=' . expand('~/ccls.log')],
-\ }
-
-let g:LanguageClient_diagnosticsList = "Location"
-let g:LanguageClient_useVirtualText = 0
-let g:LanguageClient_settingsPath = s:vim_dir . "/settings.json"
-let g:LanguageClient_loggingFile = expand('~/LanguageClient.log')
-let g:LanguageClient_serverStderr = expand('~/LanguageClient_stderr.log')
-
-function! LcRestart()
-  LanguageClientStop
-  sleep 2
-  LanguageClientStart
-endfunction
-command! LanguageClientRestart call LcRestart()
-
-nnoremap <silent> <leader>d :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <leader>sd :call LanguageClient_textDocument_definition(
-  \ {'gotoCmd': 'split'})<CR>
-nnoremap <silent> <leader>vd :call LanguageClient_textDocument_definition(
-  \ {'gotoCmd': 'vsplit'})<CR>
-
-nnoremap <silent> <leader>i :call LanguageClient_textDocument_implementation()<CR>
-nnoremap <silent> <leader>si :call LanguageClient_textDocument_implementation(
-  \ {'gotoCmd': 'split'})<CR>
-nnoremap <leader>vi :call LanguageClient_textDocument_implementation(
-  \ {'gotoCmd': 'vsplit'})<CR>
-
-nnoremap <silent> <leader>t :call LanguageClient_textDocument_typeDefinition()<CR>
-nnoremap <silent> <leader>st :call LanguageClient_textDocument_typeDefinition(
-  \ {'gotoCmd': 'split'})<CR>
-nnoremap <silent> <leader>vt :call LanguageClient_textDocument_typeDefinition(
-  \ {'gotoCmd': 'vsplit'})<CR>
-
-nnoremap <silent> <leader>h :call LanguageClient_textDocument_hover()<CR>
-
-nnoremap <silent> <leader>r :call LanguageClient_textDocument_references()<CR>
-nnoremap <silent> <leader>sr :sp<CR>
-  \:call LanguageClient_textDocument_references()<CR>
-nnoremap <silent> <leader>vr :vsp<CR>
-  \:call LanguageClient_textDocument_references()<CR>
-
-nnoremap <silent> <leader>k :call LanguageClient_textDocument_documentSymbol()<CR>
-nnoremap <silent> <leader>sk :sp<CR>
-  \:call LanguageClient_textDocument_documentSymbol()<CR>
-nnoremap <silent> <leader>vk :vsp<CR>
-  \:call LanguageClient_textDocument_documentSymbol()<CR>
-
-nnoremap <silent> <leader>w :call LanguageClient_workspace_symbol()<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " neosnippet
