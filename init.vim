@@ -16,10 +16,10 @@ Plug 'bkad/CamelCaseMotion'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'Shougo/neosnippet.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'yssl/QFEnter'
 Plug 'majutsushi/tagbar'
+Plug 'SirVer/ultisnips'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'shyun3/vim-cmake-lists'
@@ -225,27 +225,6 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'project',
   \ 'markdown']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" neosnippet
-
-" Plugin key-mappings
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-" For conceal markers
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
-
-let g:neosnippet#disable_runtime_snippets = {'_' : 1}
-let g:neosnippet#enable_complete_done = 1
-let g:neosnippet#snippets_directory = s:vim_dir . '/neosnippets'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERD Tree
 nnoremap <silent> <C-n> :NERDTree<CR>
 
@@ -271,3 +250,7 @@ let g:vim_search_pulse_mode = 'pattern'
 let g:tagbar_autofocus = 1    " Move to Tagbar window when opened
 let g:tagbar_sort = 0
 nmap <silent> <A-t> :TagbarToggle<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" UltiSnips
+let g:UltiSnipsEditSplit = 'horizontal'
