@@ -123,6 +123,7 @@ nnoremap <silent> <F5>
 " <TAB> completion
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Window navigation
 nnoremap <silent> ]w :wincmd w<CR>
@@ -156,6 +157,8 @@ autocmd BufNewFile,BufRead *.xaml setf xml
 
 autocmd FocusGained * silent! checktime
 
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin specific settings
@@ -180,6 +183,10 @@ let g:airline#extensions#tabline#show_tab_type = 0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CamelCaseMotion
 call camelcasemotion#CreateMotionMappings(',')
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" coc
+imap <c-space> coc#refresh()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EasyMotion
