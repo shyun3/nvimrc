@@ -58,6 +58,9 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Options
 
+" Buffers
+set hidden
+
 " C indent options
 set cinoptions=g0   " Don't indent class scope declarations
 set cinoptions+=N-s " Don't indent contents of namespace
@@ -76,6 +79,7 @@ set colorcolumn=80    " Show right margin
 set listchars=tab:»\ ,trail:·,precedes:◄,extends:► " Set invisibles
 set list                                           " Show invisibles
 set cursorline
+set cmdheight=2
 
 " File settings
 set autowriteall      " Save when switching buffers
@@ -90,6 +94,9 @@ set expandtab     " Change tabs to spaces
 set tabstop=2     " Number of spaces in a tab
 set softtabstop=2 " Tab stop positions for spaces
 set shiftwidth=2  " Indentation width
+
+" Timing
+set updatetime=300
 
 " Windows
 set splitright        " All vertical splits open to the right
