@@ -213,6 +213,59 @@ endfunction
 let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
 let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
 
+nmap <silent> <leader>d <Plug>(coc-definition)
+nmap <silent> <leader>vd :call CocAction('jumpDefinition', 'vsplit')
+nmap <silent> <leader>sd :call CocAction('jumpDefinition', 'split')
+
+nmap <silent> <leader>r <Plug>(coc-references)
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" First child declaration
+nn <silent> <leader><Down> :call CocLocations('ccls','$ccls/navigate',{'direction':'D'})<cr>
+
+" Previous declaration
+nn <silent> <leader><Left> :call CocLocations('ccls','$ccls/navigate',{'direction':'L'})<cr>
+
+" Next declaration
+nn <silent> <leader><Right> :call CocLocations('ccls','$ccls/navigate',{'direction':'R'})<cr>
+
+" Parent declaration
+nn <silent> <leader><Up> :call CocLocations('ccls','$ccls/navigate',{'direction':'U'})<cr>
+
+" bases
+nn <silent> <leader>b :call CocLocations('ccls','$ccls/inheritance')<cr>
+
+" derived
+nn <silent> <leader>d :call CocLocations('ccls','$ccls/inheritance',{'derived':v:true})<cr>
+
+" caller
+nn <silent> <leader>c :call CocLocations('ccls','$ccls/call')<cr>
+
+" callee
+nn <silent> <leader>C :call CocLocations('ccls','$ccls/call',{'callee':v:true})<cr>
+
+" member variables / variables in a namespace
+nn <silent> <leader>mv :call CocLocations('ccls','$ccls/member')<cr>
+
+" member functions / functions in a namespace
+nn <silent> <leader>mf :call CocLocations('ccls','$ccls/member',{'kind':3})<cr>
+
+" nested classes / types in a namespace
+nn <silent> <leader>mt :call CocLocations('ccls','$ccls/member',{'kind':2})<cr>
+
+" Instances of a type
+nn <silent> <leader>v :call CocLocations('ccls','$ccls/vars')<cr>
+nn <silent> <leader>V :call CocLocations('ccls','$ccls/vars',{'kind':1})<cr>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CtrlP
 let g:ctrlp_switch_buffer = 0     " Always open a new instance
@@ -221,10 +274,10 @@ let g:ctrlp_user_command = 'rg --files -F --color never --hidden --follow -g !.*
 let g:ctrlp_by_filename = 1       " Search filenames by default
 let g:ctrlp_working_path_mode = ''
 
-nnoremap <C-\> :CtrlPBuffer<CR>
-nnoremap <C-H> :CtrlPTag<CR>
-nnoremap <C-K> :CtrlPBufTag<CR>
-nnoremap <A-p> :CtrlPMRU<CR>
+nnoremap <silent> <C-\> :CtrlPBuffer<CR>
+nnoremap <silent> <C-H> :CtrlPTag<CR>
+nnoremap <silent> <C-K> :CtrlPBufTag<CR>
+nnoremap <silent> <A-p> :CtrlPMRU<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EasyMotion
