@@ -5,6 +5,7 @@
     scoop install git
     scoop bucket add extras
     scoop install neovim python ripgrep universal-ctags nodejs yarn
+    pip install --user pynvim
     ```
 
 1. Clone this repo to the proper directory (using Powershell):
@@ -18,12 +19,14 @@
     - Remember to use the x86 Visual Studio command prompt, RTTI, and forward
     slashes in paths
 
-1. Start Neovim. Ignore any errors and run `:PlugInstall`. Exit when finished.
-
 1. Download [Powerline fonts](https://github.com/powerline/fonts). Install them
    by running `install.ps1`.
 
-1. Happy Vimming!
+1. Start Neovim: `nvim-qt`. Ignore any errors and run `:PlugInstall`.
+
+1. Install coc extensions:
     ```
-    nvim-qt
+    :CocInstall coc-json coc-tag coc-ultisnips coc-source-neco coc-source-neoinclude
     ```
+
+1. Restart Neovim and begin using
