@@ -4,8 +4,8 @@
     ```
     scoop install git
     scoop bucket add extras
-    scoop install neovim python ripgrep universal-ctags nodejs yarn
-    pip install --user pynvim
+    scoop install neovim anaconda3 ripgrep universal-ctags nodejs yarn openssl
+    pip install pynvim python-language-server
     ```
 
 1. Clone this repo to the proper directory (using Powershell):
@@ -26,7 +26,8 @@
 
 1. Install coc extensions:
     ```
-    :CocInstall coc-json coc-tag coc-ultisnips coc-source-neco coc-source-neoinclude
+    :CocInstall coc-json coc-tag coc-ultisnips coc-source-neco
+    coc-source-neoinclude coc-syntax coc-pyls
     ```
 
 1. Restart Neovim and begin using
