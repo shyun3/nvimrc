@@ -4,7 +4,8 @@
     ```
     scoop install git
     scoop bucket add extras
-    scoop install neovim anaconda3 ripgrep universal-ctags nodejs yarn openssl
+    scoop install neovim ripgrep universal-ctags nodejs yarn openssl
+    scoop install anaconda3 llvm    # these take a long time
     pip install pynvim python-language-server
     ```
 
