@@ -88,6 +88,7 @@ set cmdheight=2
 set autowriteall      " Save when switching buffers
 set noswapfile
 set undofile
+set nowritebackup
 
 " Formatting
 set nowrap            " Do not wrap text
