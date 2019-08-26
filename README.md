@@ -17,8 +17,8 @@
 1. Install [vim-plug](https://github.com/junegunn/vim-plug)
 
 1. Build the [ccls](https://github.com/MaskRay/ccls) submodule
-    - Remember to use the x86 Visual Studio command prompt, RTTI, and forward
-    slashes in paths
+    - Remember to use the x86 Visual Studio command prompt and forward slashes
+      in paths
 
 1. Download [Powerline fonts](https://github.com/powerline/fonts). Install them
    by running `install.ps1`.
