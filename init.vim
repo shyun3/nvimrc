@@ -37,6 +37,7 @@ Plug 'tpope/vim-repeat'
 Plug 'inside/vim-search-pulse'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-vinegar'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'vimwiki/vimwiki'
 
@@ -107,6 +108,7 @@ set splitbelow        " All horizontal splits open below
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Variables
 let c_gnu=1              " Highlight GNU keywords
+let NERDTreeHijackNetrw = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mappings
