@@ -14,6 +14,7 @@ Plug 'bkad/CamelCaseMotion'
 Plug 'shyun3/ctrlp.vim', {'branch': 'personal'}
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'sjl/gundo.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'yssl/QFEnter'
 Plug 'majutsushi/tagbar'
@@ -274,6 +275,10 @@ let g:grepper.dir = 'filecwd'
 
 let g:grepper.open = 0
 autocmd User Grepper botright copen
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Gundo
+let g:gundo_prefer_python3 = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Gutentags
