@@ -108,9 +108,9 @@ set nowrap            " Do not wrap text
 
 " Tabs
 set expandtab     " Change tabs to spaces
-set tabstop=2     " Number of spaces in a tab
-set softtabstop=2 " Tab stop positions for spaces
-set shiftwidth=2  " Indentation width
+set tabstop=4     " Number of spaces in a tab
+set softtabstop=4 " Tab stop positions for spaces
+set shiftwidth=4  " Indentation width
 
 " Timing
 set updatetime=300
