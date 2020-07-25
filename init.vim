@@ -49,6 +49,19 @@ Plug 'Shougo/neoinclude.vim'
 Plug 'jsfaint/coc-neoinclude'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" coc extensions
+Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-sources',
+  \ {'as': 'coc-syntax', 'rtp': 'packages/syntax',
+  \  'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-sources',
+  \ {'as': 'coc-tag', 'rtp': 'packages/tag',
+  \  'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-sources',
+  \ {'as': 'coc-ultisnips', 'rtp': 'packages/ultisnips',
+  \  'do': 'yarn install --frozen-lockfile'}
+
 " Text objects
 Plug 'fvictorio/vim-textobj-backticks'
 Plug 'glts/vim-textobj-comment'
