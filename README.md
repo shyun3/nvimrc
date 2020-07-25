@@ -33,13 +33,13 @@
 1. Install [Neovim][nvim-linux] and [neovim-qt][]
    
 1. Install dependencies:
-* `pip3 install neovim`
-* [ripgrep][] and [Universal Ctags][]
-* [Node.js](https://nodejs.org/en/), recent version
-    * Make sure to set the [`PATH`][node-install] and handle any
-      certificate issues
-* [Yarn](https://yarnpkg.com/getting-started/install)
-* openssl and LLVM (recent): Use package manager
+    * `pip3 install neovim`
+    * [ripgrep][] and [Universal Ctags][]
+    * [Node.js](https://nodejs.org/en/), recent version
+        * Make sure to set the [`PATH`][node-install] and handle any
+          certificate issues
+    * [Yarn](https://yarnpkg.com/getting-started/install)
+    * openssl and LLVM (recent): Use package manager
 
 1. Clone this repo to the proper directory:
     ```bash
