@@ -105,6 +105,9 @@ set nowritebackup
 " Formatting
 set nowrap            " Do not wrap text
 
+" Search
+set maxmempattern=5000
+
 " Tabs
 set expandtab     " Change tabs to spaces
 set tabstop=4     " Number of spaces in a tab
