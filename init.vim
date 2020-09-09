@@ -231,6 +231,7 @@ endfunction
 
 let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
 let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
+let g:coc_quickfix_open_command = 'botright copen'
 
 nmap <silent> <leader>] <Plug>(coc-definition)
 nmap <silent> <leader>v] :call CocAction('jumpDefinition', 'vsplit')<CR>
