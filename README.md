@@ -31,9 +31,17 @@
 ## Xubuntu
 
 1. Install [Neovim][nvim-linux] and [neovim-qt][]
+
+1. Prepare a Python virtual environment:
+    ```bash
+    cd ~/.config/nvim
+    virtualenv -p python3.7 venv
+    venv/bin/pip install pynvim
+    ```
+    * Note that Neovim may not work with Python newer than 3.7
+    * Pip may need to be [configured][pip-conf]
    
 1. Install dependencies:
-    * `pip3 install neovim`
     * [ripgrep][] and [Universal Ctags][]
     * [Node.js](https://nodejs.org/en/), recent version
         * Make sure to set the [`PATH`][node-install] and handle any
