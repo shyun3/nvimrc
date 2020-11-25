@@ -277,6 +277,7 @@ let g:ctrlp_working_path_mode = ''
 nnoremap <silent> <C-\> :CtrlPBuffer<CR>
 nnoremap <silent> <C-H> :CtrlPTag<CR>
 nnoremap <silent> <C-K> :CtrlPBufTag<CR>
+nnoremap <silent> <C-Q> :CtrlP %:h<CR>
 execute 'nnoremap <silent> ' . Meta('p', 'π') . ' :CtrlPMRU<CR>'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
