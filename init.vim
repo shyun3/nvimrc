@@ -52,7 +52,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " coc extensions
 Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-python', {'do': 'npm install --no-package-lock'}
+Plug 'fannheyward/coc-pyright', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-sources',
   \ {'as': 'coc-syntax', 'rtp': 'packages/syntax',
   \  'do': 'yarn install --frozen-lockfile'}
