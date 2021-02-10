@@ -41,7 +41,7 @@
     ```bash
     cd ~/.config/nvim
     virtualenv -p python3.7 nvim-venv
-    nvim-venv/bin/pip install pynvim
+    nvim-venv/bin/pip install pynvim vim-bridge
     ```
     * Note that Neovim may not work with Python newer than 3.7
     * Pip may need to be [configured][pip-conf]
@@ -93,7 +93,7 @@
     ```bash
     cd ~/.config/nvim
     virtualenv -p python3.7 nvim-venv
-    nvim-venv/bin/pip install pynvim
+    nvim-venv/bin/pip install pynvim vim-bridge
     ```
     * Note that Neovim may not work with Python newer than 3.7
     * Python 3.7 may be installed by: `brew install python@3.7`
