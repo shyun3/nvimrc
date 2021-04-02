@@ -1,3 +1,5 @@
+# Installation
+
 ## Windows
 
 1. Install Neovim and other dependencies using [Scoop](http://scoop.sh):
@@ -109,6 +111,11 @@
 1. Restart Neovim. Run `:checkhealth` and resolve any issues.
 
 1. Done!
+
+# Troubleshooting
+
+* If running Neovim from the terminal and some symbols don't display
+  properly, make sure to update the terminal font accordingly.
 
 [nvim-linux]: https://github.com/neovim/neovim/wiki/Installing-Neovim#linux
 [ripgrep]: https://github.com/BurntSushi/ripgrep#installation
