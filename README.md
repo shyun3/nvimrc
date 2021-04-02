@@ -30,18 +30,18 @@
 
 ## Linux
 
-1. Clone this repo to the proper directory:
+1. Clone this repo to the [proper directory][nvim-config-dir]:
     ```bash
     git clone https://github.com/shyun3/nvimrc ~/.config/nvim
     ```
 
-1. Install [Neovim][nvim-linux] and [neovim-qt][]
+1. Install [Neovim][nvim-linux]
 
 1. Prepare a Python virtual environment:
     ```bash
     cd ~/.config/nvim
     virtualenv -p python3.7 nvim-venv
-    nvim-venv/bin/pip install pynvim vim-bridge
+    nvim-venv/bin/pip install pynvim
     ```
     * Note that Neovim may not work with Python newer than 3.7
     * Pip may need to be [configured][pip-conf]
@@ -52,10 +52,10 @@
         * Make sure to set the [`PATH`][node-install] and handle any
           certificate issues
     * [Yarn](https://yarnpkg.com/getting-started/install)
-    * openssl and LLVM (recent): Use package manager
+    * LLVM (recent): Use package manager
         * Make sure that `clangd` and `clang-format` are on the `PATH`
     
-1. Create undo directory:
+1. Create [undo directory][nvim-undo-dir]:
     ```bash
     mkdir -p ~/.local/share/nvim/undo
     ```
@@ -111,7 +111,6 @@
 1. Done!
 
 [nvim-linux]: https://github.com/neovim/neovim/wiki/Installing-Neovim#linux
-[neovim-qt]: https://github.com/equalsraf/neovim-qt
 [ripgrep]: https://github.com/BurntSushi/ripgrep#installation
 [Universal Ctags]: https://github.com/universal-ctags/ctags#how-to-build-and-install
 [node-install]: https://github.com/nodejs/help/wiki/Installation
