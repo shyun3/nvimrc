@@ -314,8 +314,6 @@ let g:gundo_prefer_python3 = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Gutentags
-let g:gutentags_project_root = ['.ignore', '.rgignore', '.editorconfig',
-  \ '.gutctags', '.notags', '.projections.json']
 let g:gutentags_define_advanced_commands = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
