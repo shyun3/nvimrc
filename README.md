@@ -1,35 +1,5 @@
 # Installation
 
-## Windows
-
-1. Install Neovim and other dependencies using [Scoop](http://scoop.sh):
-    ```powershell
-    scoop install git
-    scoop bucket add extras
-    scoop install neovim ripgrep universal-ctags nodejs yarn openssl miniconda3 llvm
-    pip3 install neovim
-    ```
-
-1. Clone this repo to the proper directory (using Powershell):
-    ```powershell
-    git clone https://github.com/shyun3/nvimrc "$(Resolve-Path ~)/AppData/Local/nvim"
-    ```
-
-1. Create undo directory
-    ```powershell
-    mkdir ~/AppData/Local/nvim-data/undo
-    ```
-
-1. Install [vim-plug][]
-
-1. Download [Powerline fonts][]. Install them by running `install.ps1`.
-
-1. Start Neovim: `nvim-qt`. Ignore any errors and run `:PlugInstall`.
-
-1. Restart Neovim. Run `:checkhealth` and resolve any issues.
-
-1. Done!
-
 ## Linux
 
 1. Clone this repo to the [proper directory][nvim-config-dir]:
@@ -40,7 +10,7 @@
 1. Install [Neovim][nvim-linux]
    
 1. Install dependencies:
-    * [ripgrep][] and [Universal Ctags][]
+    * [ripgrep][], [Universal Ctags][], [fd][]
     * [Node.js](https://nodejs.org/en/), recent version
         * Make sure to set the [`PATH`][node-install] and handle any
           certificate issues
@@ -57,9 +27,9 @@
 
 1. Start Neovim. Ignore any errors and run `:PlugInstall`.
 
-1. Install [cpsm][]
+1. Run `:checkhealth` and resolve any issues.
 
-1. Restart Neovim. Run `:checkhealth` and resolve any issues.
+1. Install [cpsm][]
 
 1. Done!
 
@@ -69,7 +39,7 @@
 
 1. Install Neovim and some dependencies:
     ```bash
-    brew install neovim ripgrep node yarn
+    brew install neovim ripgrep node yarn fd
     ```
 
 1. Clone this repo to the [proper directory][nvim-config-dir]:
@@ -93,9 +63,9 @@
 
 1. Start Neovim. Ignore any errors and run `:PlugInstall`.
 
-1. Install [cpsm][]
+1. Run `:checkhealth` and resolve any issues.
 
-1. Restart Neovim. Run `:checkhealth` and resolve any issues.
+1. Install [cpsm][]
 
 1. Done!
 
@@ -108,9 +78,10 @@
 [ripgrep]: https://github.com/BurntSushi/ripgrep#installation
 [Universal Ctags]: https://github.com/universal-ctags/ctags#how-to-build-and-install
 [node-install]: https://github.com/nodejs/help/wiki/Installation
-[vim-plug]: https://github.com/junegunn/vim-plug
-[Powerline fonts]: https://github.com/powerline/fonts
+[vim-plug]: https://github.com/junegunn/vim-plug#neovim
+[Powerline fonts]: https://github.com/powerline/fonts#installation
 [nvim-config-dir]: https://neovim.io/doc/user/starting.html#config
 [mac-univ-ctags]: https://github.com/universal-ctags/homebrew-universal-ctags
 [nvim-undo-dir]: https://neovim.io/doc/user/options.html#'undodir'
 [cpsm]: https://github.com/nixprime/cpsm
+[fd]: https://github.com/nixprime/cpsm#requirements
