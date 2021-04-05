@@ -135,7 +135,12 @@ let NERDTreeHijackNetrw = 0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mappings
 
-nnoremap <silent> <C-L> :nohlsearch<CR>
+function! EnableCoc(timerId)
+  silent! CocEnable
+endfunction
+
+nnoremap <silent> <C-L>
+  \ :nohlsearch<CR>:silent! CocDisable<CR>:call timer_start(1000, 'EnableCoc')<CR>
 
 tnoremap <Esc> <C-\><C-n>
 tnoremap <C-v><Esc> <Esc>
