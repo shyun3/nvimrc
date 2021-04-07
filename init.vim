@@ -179,7 +179,6 @@ nnoremap <silent> <Down> :wincmd j<CR>
 nnoremap <silent> <Up> :wincmd k<CR>
 nnoremap <silent> <Right> :wincmd l<CR>
 nnoremap <silent> <A-c> :wincmd c<CR>
-nnoremap <silent> <A-q> :botright copen<CR>
 nnoremap <silent> <A-o> :wincmd o<CR>
 nnoremap <silent> <A-1> :1wincmd w<CR>
 nnoremap <silent> <A-2> :2wincmd w<CR>
@@ -190,6 +189,10 @@ nnoremap <silent> <A-6> :6wincmd w<CR>
 nnoremap <silent> <A-7> :7wincmd w<CR>
 nnoremap <silent> <A-8> :8wincmd w<CR>
 nnoremap <silent> <A-9> :9wincmd w<CR>
+
+" Quickfix
+nnoremap <silent> <A-q> :botright copen<CR>
+nnoremap <silent> <leader>q :cclose<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Autocommands
