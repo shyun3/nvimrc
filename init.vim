@@ -292,7 +292,7 @@ endfunction
 " CtrlP
 let g:ctrlp_switch_buffer = 0     " Always open a new instance
 let g:ctrlp_extensions = ['tag', 'buffertag']
-let g:ctrlp_user_command = 'fd --type file --follow --color never . %s'
+let g:ctrlp_user_command = 'fd -t f -L -c never -H -E .git . %s'
 let g:ctrlp_by_filename = 1       " Search filenames by default
 let g:ctrlp_match_current_file = 1
 let g:ctrlp_working_path_mode = ''
