@@ -76,7 +76,7 @@
 
 [nvim-linux]: https://github.com/neovim/neovim/wiki/Installing-Neovim#linux
 [ripgrep]: https://github.com/BurntSushi/ripgrep#installation
-[Universal Ctags]: https://github.com/universal-ctags/ctags#how-to-build-and-install
+[Universal Ctags]: https://github.com/universal-ctags/ctags
 [node-install]: https://github.com/nodejs/help/wiki/Installation
 [vim-plug]: https://github.com/junegunn/vim-plug#neovim
 [Powerline fonts]: https://github.com/powerline/fonts#installation
@@ -84,4 +84,4 @@
 [mac-univ-ctags]: https://github.com/universal-ctags/homebrew-universal-ctags
 [nvim-undo-dir]: https://neovim.io/doc/user/options.html#'undodir'
 [cpsm]: https://github.com/nixprime/cpsm
-[fd]: https://github.com/nixprime/cpsm#requirements
+[fd]: https://github.com/sharkdp/fd#installation
