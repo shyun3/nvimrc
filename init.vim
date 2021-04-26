@@ -38,6 +38,7 @@ Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-repeat'
 Plug 'nvie/vim-rst-tables'
 Plug 'inside/vim-search-pulse'
+Plug 'justinmk/vim-sneak'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
@@ -364,6 +365,18 @@ let g:qfenter_keymap.topen = ['<C-t>']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Search pulse
 let g:vim_search_pulse_mode = 'pattern'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Sneak
+let g:sneak#label = 1
+
+map <Space> <Plug>Sneak_s
+map g<Space> <Plug>Sneak_S
+
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
+map t <Plug>Sneak_t
+map T <Plug>Sneak_T
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tagbar
