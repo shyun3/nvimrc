@@ -258,27 +258,6 @@ function! s:ShowDocumentation()
   endif
 endfunction
 
-let s:cocTimer = []
-
-function! DisableCocDelayed()
-  if !empty(s:cocTimer)
-    call timer_stop(s:cocTimer[0])
-    call remove(s:cocTimer, 0)
-  endif
-
-  silent CocDisable
-endfunction
-
-function! EnableCocDelayed(ms)
-  let timerId = timer_start(a:ms, 'EnableCocDelayedImpl')
-  call add(s:cocTimer, timerId)
-endfunction
-
-function! EnableCocDelayedImpl(timerId)
-  if !empty(s:cocTimer) | call remove(s:cocTimer, 0) | endif
-  silent CocEnable
-endfunction
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CtrlP
 let g:ctrlp_switch_buffer = 0     " Always open a new instance
