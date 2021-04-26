@@ -152,14 +152,6 @@ nnoremap <silent> <C-]> :tjump /\<<C-R><C-W>\>\C<CR>
 nnoremap <silent> <A-]>s :wincmd g<C-V><C-]><CR>
 nnoremap <silent> <A-]>v :vertical wincmd g<C-V><C-]><CR>
 
-" Open current file in explorer
-nnoremap <silent> <F10> :silent !start explorer /select,%:p<CR>
-
-" Open file in Chrome
-nnoremap <silent> <F5>
-  \ :silent !start "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
-  \ "%:p"<CR>
-
 " <TAB> completion
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
