@@ -343,10 +343,12 @@ let g:sneak#label = 1
 map <Space> <Plug>Sneak_s
 map g<Space> <Plug>Sneak_S
 
-map f <Plug>Sneak_f
-map F <Plug>Sneak_F
-map t <Plug>Sneak_t
-map T <Plug>Sneak_T
+nnoremap <silent> f :call sneak#wrap('',           1, 0, 1, 1)<CR>
+nnoremap <silent> F :call sneak#wrap('',           1, 1, 1, 1)<CR>
+xnoremap <silent> f :call sneak#wrap(visualmode(), 1, 0, 1, 1)<CR>
+xnoremap <silent> F :call sneak#wrap(visualmode(), 1, 1, 1, 1)<CR>
+onoremap <silent> f :call sneak#wrap(v:operator,   1, 0, 1, 1)<CR>
+onoremap <silent> F :call sneak#wrap(v:operator,   1, 1, 1, 1)<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tagbar
