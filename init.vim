@@ -28,7 +28,6 @@ Plug 'shyun3/vim-cmake-lists'
 Plug 'tpope/vim-commentary'
 Plug 'blueyed/vim-diminactive'
 Plug 'junegunn/vim-easy-align'
-Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-grepper'
 Plug 'ludovicchabant/vim-gutentags'
@@ -310,19 +309,6 @@ nnoremap <silent> <A-p> :let g:cpsm_match_empty_query = 0<CR>:CtrlPMRU<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " diminactive
 let g:diminactive_enable_focus = 1
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" EasyMotion
-let g:EasyMotion_do_mapping = 0            " Disable default mappings
-let g:EasyMotion_re_anywhere = '\v(<.|^$)' " Beginning of word
-let g:EasyMotion_startofline = 0           " Keep cursor column JK motion
-
-map _ <Plug>(easymotion-s)
-map <C-J> <Plug>(easymotion-bd-jk)
-nmap <Space> <Plug>(easymotion-jumptoanywhere)
-
-autocmd User EasyMotionPromptBegin call DisableCocDelayed()
-autocmd User EasyMotionPromptEnd call EnableCocDelayed(250)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EditorConfig
