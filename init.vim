@@ -225,7 +225,7 @@ let g:airline#extensions#tabline#show_tab_type = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CamelCaseMotion
-call camelcasemotion#CreateMotionMappings(',')
+let g:camelcasemotion_key = '<leader>'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " coc
