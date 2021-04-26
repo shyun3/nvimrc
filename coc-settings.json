@@ -14,7 +14,6 @@
   "languageserver": {
     "clangd": {
        "command": "clangd",
-       "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".editorconfig", ".git/"],
        "filetypes": ["c", "cpp"]
     }
   }
