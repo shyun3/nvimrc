@@ -339,6 +339,7 @@ let g:vim_search_pulse_mode = 'pattern'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sneak
 let g:sneak#label = 1
+let g:sneak#use_ic_scs = 1
 
 map <Space> <Plug>Sneak_s
 map g<Space> <Plug>Sneak_S
