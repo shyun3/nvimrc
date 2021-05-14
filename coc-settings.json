@@ -9,12 +9,5 @@
     "<C-s>": "action:split",
     "<C-t>": "action:tabe",
     "<C-v>": "action:vsplit"
-  },
-
-  "languageserver": {
-    "clangd": {
-       "command": "clangd",
-       "filetypes": ["c", "cpp"]
-    }
   }
 }
