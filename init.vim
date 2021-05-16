@@ -7,7 +7,6 @@ Plug 'junegunn/vim-plug'
 
 " GUI
 Plug 'tomasr/molokai'
-Plug 'equalsraf/neovim-gui-shim'
 
 " Plugins
 Plug 'bkad/CamelCaseMotion'
