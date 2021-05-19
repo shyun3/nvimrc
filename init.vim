@@ -309,7 +309,8 @@ let g:Lf_PreviewResult = {
   \ 'Line': 1,
   \ 'Colorscheme': 1,
   \ 'Rg': 1,
-  \ 'Gtags': 0
+  \ 'Gtags': 0,
+  \ 'QuickFix': 1,
   \}
 
 let g:Lf_ShortcutF = ''
