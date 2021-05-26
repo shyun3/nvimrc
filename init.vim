@@ -10,6 +10,7 @@ Plug 'tomasr/molokai'
 
 " Plugins
 Plug 'bkad/CamelCaseMotion'
+Plug 'vim-scripts/CursorLineCurrentWindow'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'sjl/gundo.vim'
@@ -21,6 +22,7 @@ Plug 'majutsushi/tagbar'
 Plug 'SirVer/ultisnips'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'haya14busa/vim-asterisk'
 Plug 'shyun3/vim-cmake-lists'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/vim-easy-align'
@@ -212,6 +214,10 @@ let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_tab_type = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Asterisk
+let g:asterisk#keeppos = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CamelCaseMotion
 let g:camelcasemotion_key = '<leader>'
 
@@ -381,6 +387,22 @@ let g:qfenter_keymap.topen = ['<C-t>']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Search pulse
 let g:vim_search_pulse_mode = 'pattern'
+let g:vim_search_pulse_disable_auto_mappings = 1
+
+map * <Plug>(asterisk-*)<Plug>Pulse
+map # <Plug>(asterisk-#)<Plug>Pulse
+map g* <Plug>(asterisk-g*)<Plug>Pulse
+map g# <Plug>(asterisk-g#)<Plug>Pulse
+map z*  <Plug>(asterisk-z*)<Plug>Pulse
+map gz* <Plug>(asterisk-gz*)<Plug>Pulse
+map z#  <Plug>(asterisk-z#)<Plug>Pulse
+map gz# <Plug>(asterisk-gz#)<Plug>Pulse
+
+nmap n n<Plug>Pulse
+nmap N N<Plug>Pulse
+
+" Pulse when doing search with / or ?
+cmap <silent> <expr> <enter> search_pulse#PulseFirst()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sneak
