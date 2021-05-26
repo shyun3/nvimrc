@@ -23,7 +23,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'shyun3/vim-cmake-lists'
 Plug 'tpope/vim-commentary'
-Plug 'blueyed/vim-diminactive'
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-grepper'
@@ -39,7 +38,6 @@ Plug 'justinmk/vim-sneak'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
-Plug 'nelstrom/vim-visual-star-search'
 
 " Auto-complete
 Plug 'Shougo/neco-vim'
@@ -255,10 +253,6 @@ function! s:ShowDocumentation()
     call CocAction('doHover')
   endif
 endfunction
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" diminactive
-let g:diminactive_enable_focus = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EditorConfig
