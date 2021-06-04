@@ -272,7 +272,14 @@ let g:grepper.rg.grepprg = 'rg -H --no-heading --vimgrep --smart-case --follow $
 let g:grepper.dir = 'filecwd'
 
 let g:grepper.open = 0
-autocmd User Grepper LeaderfQuickFix
+
+function! OpenLeaderfQuickFix(timerId)
+  LeaderfQuickFix
+endfunction
+
+" Hack to call LeaderfQuickFix 'outside' of autocommand. Otherwise files opened
+" from LeaderfQuickFix may not have a filetype.
+autocmd User Grepper call timer_start(100, "OpenLeaderfQuickFix")
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Gundo
