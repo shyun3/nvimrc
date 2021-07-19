@@ -14,6 +14,7 @@ Plug 'vim-scripts/CursorLineCurrentWindow'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'sjl/gundo.vim'
+Plug 'phaazon/hop.nvim'
 Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdtree'
@@ -36,7 +37,6 @@ Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-repeat'
 Plug 'nvie/vim-rst-tables'
 Plug 'inside/vim-search-pulse'
-Plug 'justinmk/vim-sneak'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
@@ -292,6 +292,15 @@ let g:gutentags_define_advanced_commands = 1
 let g:gutentags_cache_dir = g:vimDir . '/.gutentags-cache'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Hop
+lua << EOF
+require'hop'.setup()
+vim.api.nvim_set_keymap('', '<Space>', "<cmd>lua require'hop'.hint_words()<cr>", {})
+vim.api.nvim_set_keymap('', '-', "<cmd>lua require'hop'.hint_lines()<cr>", {})
+vim.api.nvim_set_keymap('', 'f', "<cmd>lua require'hop'.hint_char1()<cr>", {})
+EOF
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Indent guides
 let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 2
@@ -415,21 +424,6 @@ nmap N N<Plug>Pulse
 
 " Pulse when doing search with / or ?
 cmap <silent> <expr> <enter> search_pulse#PulseFirst()
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Sneak
-let g:sneak#label = 1
-let g:sneak#use_ic_scs = 1
-
-map <Space> <Plug>Sneak_s
-map g<Space> <Plug>Sneak_S
-
-nnoremap <silent> f :call sneak#wrap('',           1, 0, 1, 1)<CR>
-nnoremap <silent> F :call sneak#wrap('',           1, 1, 1, 1)<CR>
-xnoremap <silent> f :call sneak#wrap(visualmode(), 1, 0, 1, 1)<CR>
-xnoremap <silent> F :call sneak#wrap(visualmode(), 1, 1, 1, 1)<CR>
-onoremap <silent> f :call sneak#wrap(v:operator,   1, 0, 1, 1)<CR>
-onoremap <silent> F :call sneak#wrap(v:operator,   1, 1, 1, 1)<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tagbar
