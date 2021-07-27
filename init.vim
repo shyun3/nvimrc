@@ -279,6 +279,7 @@ let g:grepper.open = 0
 
 autocmd User Grepper call <SID>GoToEditWindow() | Telescope quickfix
 
+nnoremap <leader><leader> :GrepperRg 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Gundo
