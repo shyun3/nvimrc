@@ -313,6 +313,7 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'project',
 " LeaderF
 let g:Lf_DefaultMode = 'NameOnly'
 let g:Lf_JumpToExistingWindow = 0
+let g:Lf_HideHelp = 1
 
 let g:Lf_StlSeparator = {'left': '', 'right': ''}
 let g:Lf_ExternalCommand = 'fd -t f -L -c never -H -E .git -E .svn . %s'
