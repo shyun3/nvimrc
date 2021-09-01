@@ -189,7 +189,6 @@ augroup myAutosaveGroup
 augroup END
 
 autocmd BufNewFile,BufRead *.xaml setfiletype xml
-autocmd BufReadPost,BufNewFile *.control setfiletype control
 
 autocmd FocusGained * silent! checktime
 
