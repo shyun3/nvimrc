@@ -29,8 +29,7 @@
 
 1. Install Coc plugins:
     ```
-    CocInstall coc-clangd coc-json coc-pyright coc-syntax coc-tag coc-ultisnips
-    coc-vimlsp
+    CocInstall coc-clangd coc-json coc-pyright coc-syntax coc-tag coc-ultisnips coc-vimlsp
     ```
 
 1. Run `:checkhealth` and resolve any issues.
@@ -70,8 +69,7 @@
 
 1. Install Coc plugins:
     ```
-    CocInstall coc-clangd coc-json coc-pyright coc-syntax coc-tag coc-ultisnips
-    coc-vimlsp
+    CocInstall coc-clangd coc-json coc-pyright coc-syntax coc-tag coc-ultisnips coc-vimlsp
     ```
 
 1. Run `:checkhealth` and resolve any issues.
