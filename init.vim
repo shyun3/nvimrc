@@ -207,6 +207,9 @@ let g:camelcasemotion_key = '<leader>'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " coc
+let g:coc_global_extensions = ['coc-clangd', 'coc-json', 'coc-pyright',
+  \ 'coc-syntax', 'coc-tag', 'coc-ultisnips', 'coc-vimlsp@0.12.2']
+
 inoremap <silent><expr> <c-space> coc#refresh()
 
 function! CocOpen(command_str)
@@ -302,15 +305,15 @@ function! s:GoToEditWindow()
   execute 'lcd ' . cwd
 endfunction
 
+" This is to ensure that FzfLua files is called with the correct current
+" directory.
 function! s:FzfLuaFiles()
   silent call <SID>GoToEditWindow()
   silent execute 'FzfLua files cwd=' . getcwd()
 endfunction
 
-" Generate tags for current file and run FzfLua btags
-"
-" FzfLua btags by default uses an existing tags file. This function ensures
-" that the latest tags for the current file are being used.
+" FzfLua btags by default uses an existing tags file. This function generates
+" the latest tags for the current file.
 function! s:FzfLuaBTags()
   let tmp = tempname()
   silent execute '!ctags -f ' . tmp . ' ' . expand('%')
