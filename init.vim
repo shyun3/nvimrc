@@ -41,6 +41,10 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 
+" fzf
+Plug 'ibhagwan/fzf-lua'
+Plug 'vijaymarupudi/nvim-fzf'
+Plug 'kyazdani42/nvim-web-devicons'
 
 " Text objects
 Plug 'fvictorio/vim-textobj-backticks'
@@ -245,77 +249,28 @@ endfunction
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']   " Work with fugitive
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" grepper
-runtime plugin/grepper.vim
-let g:grepper.tools = ['rg', 'git']
-let g:grepper.rg.grepprg = 'rg -H --no-heading --vimgrep --smart-case --follow $*'
-let g:grepper.dir = 'filecwd'
+" fzf-lua
 
-let g:grepper.open = 0
-
-function! OpenLeaderfQuickFix(timerId)
-  call <SID>GoToEditWindow()
-  LeaderfQuickFix
-endfunction
-
-" Hack to call LeaderfQuickFix 'outside' of autocommand. Otherwise files opened
-" from LeaderfQuickFix may not have a filetype.
-autocmd User Grepper call timer_start(100, "OpenLeaderfQuickFix")
-
-nnoremap <leader><leader> :GrepperRg 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Gundo
-let g:gundo_prefer_python3 = 1
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Hop
 lua << EOF
-require'hop'.setup()
-vim.api.nvim_set_keymap('', '<Space>', "<cmd>lua require'hop'.hint_words()<cr>", {})
-vim.api.nvim_set_keymap('', '_', "<cmd>lua require'hop'.hint_lines()<cr>", {})
-vim.api.nvim_set_keymap('', 'g<Space>', "<cmd>lua require'hop'.hint_char1()<cr>", {})
+require('fzf-lua').setup {
+  preview_layout = 'vertical',
+  default_previewer = 'bat',
+
+  -- Git icons are disabled for performance reasons
+  files = {
+    git_icons = false,
+  },
+  oldfiles = {
+    include_current_session = true,
+  },
+  tags = {
+    git_icons = false,
+  },
+  btags = {
+    git_icons = false,
+  },
+}
 EOF
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Indent guides
-let g:indent_guides_guide_size = 1
-let g:indent_guides_start_level = 2
-let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'project',
-  \ 'markdown']
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" LeaderF
-let g:Lf_DefaultMode = 'NameOnly'
-let g:Lf_JumpToExistingWindow = 0
-let g:Lf_HideHelp = 1
-
-let g:Lf_StlSeparator = {'left': '', 'right': ''}
-let g:Lf_ExternalCommand = 'fd -t f -L -c never -H -E .git -E .svn . %s'
-
-let g:Lf_WindowPosition = 'popup'
-let g:Lf_PreviewInPopup = 1
-let g:Lf_PreviewCode = 1
-let g:Lf_PreviewResult = {
-  \ 'File': 1,
-  \ 'Buffer': 1,
-  \ 'Mru': 1,
-  \ 'Tag': 1,
-  \ 'BufTag': 1,
-  \ 'Function': 1,
-  \ 'Line': 1,
-  \ 'Colorscheme': 1,
-  \ 'Rg': 1,
-  \ 'Gtags': 0,
-  \ 'QuickFix': 1,
-  \}
-
-let g:Lf_ShortcutF = ''
-let g:Lf_ShortcutB = ''
-
-let g:Lf_MruMaxFiles = 8000
-let g:Lf_HistoryNumber = 8000
 
 " Go to an editable window
 " Derived from ctrlp#normcmd()
@@ -347,23 +302,73 @@ function! s:GoToEditWindow()
   execute 'lcd ' . cwd
 endfunction
 
-nnoremap <silent> <C-p> :call <SID>GoToEditWindow()<CR>:LeaderfFile<CR>
-nnoremap <silent> <C-q> :call <SID>GoToEditWindow()<CR>:LeaderfFile %:h<CR>
-nnoremap <silent> <C-\> :call <SID>GoToEditWindow()<CR>:LeaderfBuffer<CR>
-nnoremap <silent> <A-p> :call <SID>GoToEditWindow()<CR>:LeaderfMru<CR>
-nnoremap <silent> <C-h> :call <SID>GoToEditWindow()<CR>:LeaderfTag<CR>
-nnoremap <silent> <C-k> :LeaderfBufTag<CR>
-nnoremap <silent> <C-j> :LeaderfLine<CR>
-nnoremap <silent> <A-f> :LeaderfSelf<CR>
-nnoremap <silent> <leader>; :LeaderfHistoryCmd<CR>
-nnoremap <silent> <leader>/ :Leaderf searchHistory<CR>
-nnoremap <silent> <leader>h :LeaderfHelp<CR>
-nnoremap <silent> <leader>x :LeaderfCommand<CR>
-nnoremap <silent> <leader>c :LeaderfQuickFix<CR>
+function! s:FzfLuaFiles()
+  silent call <SID>GoToEditWindow()
+  silent execute 'FzfLua files cwd=' . getcwd()
+endfunction
+
+" Generate tags for current file and run FzfLua btags
+"
+" FzfLua btags by default uses an existing tags file. This function ensures
+" that the latest tags for the current file are being used.
+function! s:FzfLuaBTags()
+  let tmp = tempname()
+  silent execute '!ctags -f ' . tmp . ' ' . expand('%')
+  silent execute 'FzfLua btags ctags_file=' . tmp
+  silent execute '!rm ' . tmp
+endfunction
+
+nnoremap <C-p> <Cmd>call <SID>FzfLuaFiles()<CR>
+nnoremap <C-q> <Cmd>call <SID>GoToEditWindow()<CR>:FzfLua files cwd=%:h<CR>
+nnoremap <C-\> <Cmd>call <SID>GoToEditWindow()<CR>:FzfLua buffers<CR>
+nnoremap <A-p> <Cmd>call <SID>GoToEditWindow()<CR>:FzfLua oldfiles<CR>
+nnoremap <C-h> <Cmd>call <SID>GoToEditWindow()<CR>:FzfLua tags<CR>
+nnoremap <C-k> <Cmd>call <SID>FzfLuaBTags()<CR>
+nnoremap <C-j> <Cmd>FzfLua blines<CR>
+nnoremap <leader>f <Cmd>FzfLua builtin<CR>
+nnoremap <leader>; <Cmd>FzfLua command_history<CR>
+nnoremap <leader>/ <Cmd>FzfLua search_history<CR>
+nnoremap <leader>h <Cmd>FzfLua help_tags<CR>
+nnoremap <leader>x <Cmd>FzfLua commands<CR>
+nnoremap <leader>c <Cmd>FzfLua quickfix<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" grepper
+runtime plugin/grepper.vim
+let g:grepper.tools = ['rg', 'git']
+let g:grepper.rg.grepprg = 'rg -H --no-heading --vimgrep --smart-case --follow $*'
+let g:grepper.dir = 'filecwd'
+
+let g:grepper.open = 0
+
+autocmd User Grepper FzfLua quickfix
+
+nnoremap <leader><leader> :GrepperRg 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Gundo
+let g:gundo_prefer_python3 = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Gutentags
 let g:gutentags_define_advanced_commands = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Hop
+lua << EOF
+require'hop'.setup()
+EOF
+
+nnoremap <Space> <Cmd>HopWord<CR>
+nnoremap _ <Cmd>HopLine<CR>
+nnoremap g<Space> <Cmd>HopChar1<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Indent guides
+let g:indent_guides_guide_size = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'project',
+  \ 'markdown']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Neoformat
