@@ -118,9 +118,6 @@ let NERDTreeHijackNetrw = 0
 
 nnoremap <silent> <C-L> :nohlsearch<CR>:highlight clear Sneak<CR>
 
-tnoremap <Esc> <C-\><C-n>
-tnoremap <C-v><Esc> <Esc>
-
 " Make & keep sub flags
 nnoremap & :&&<CR>
 xnoremap & :&&<CR>
