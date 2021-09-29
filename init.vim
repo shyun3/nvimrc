@@ -30,7 +30,6 @@ Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-grepper'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'nathanaelkane/vim-indent-guides'
 Plug 'amiorin/vim-project'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-repeat'
@@ -365,11 +364,6 @@ nnoremap _ <Cmd>HopLine<CR>
 nnoremap g<Space> <Cmd>HopChar1<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Indent guides
-let g:indent_guides_guide_size = 1
-let g:indent_guides_start_level = 2
-let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'project',
-  \ 'markdown']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Neoformat
