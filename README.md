@@ -19,10 +19,7 @@
           see [issue #938][bat-issue-938]
     * [Node.js](https://nodejs.org/en/) (must be at least v12)
         * Make sure to set the [`PATH`][node-install]
-        * Dependencies:
-            ```bash
-            npm install -g yarn live-server
-            ```
+        * Dependencies: `npm install -g yarn live-server`
     
 1. Create [undo directory][nvim-undo-dir]:
     ```bash
