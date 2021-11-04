@@ -17,7 +17,7 @@
         * `fzf` must be > v0.23.1, see [issue #63][fzf-issue-63]
         * `bat` should be installed through a `.deb` package,
           see [issue #938][bat-issue-938]
-    * [Node.js](https://nodejs.org/en/) (must be at least v12)
+    * [Node.js](https://nodejs.org/en/download) (must be at least v12)
         * Make sure to set the [`PATH`][node-install]
         * Dependencies: `npm install -g yarn live-server`
     
@@ -31,6 +31,7 @@
 1. Start Neovim. Ignore any errors and run `:PlugInstall`.
 
 1. Run `:checkhealth` and resolve any issues.
+    * For `clipboard` on WSL, see [Neovim FAQ][nvim-clipboard-wsl]
 
 1. Restart Neovim. Installation should now be complete.
 
@@ -50,3 +51,4 @@
 [fzf-issue-63]: https://github.com/ibhagwan/fzf-lua/issues/63
 [bat]: https://github.com/sharkdp/bat#on-ubuntu-using-most-recent-deb-packages
 [bat-issue-938]: https://github.com/sharkdp/bat/issues/938
+[nvim-clipboard-wsl]: https://github.com/neovim/neovim/wiki/FAQ#how-to-use-the-windows-clipboard-from-wsl
