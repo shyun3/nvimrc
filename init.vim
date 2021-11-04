@@ -170,7 +170,13 @@ augroup END
 
 autocmd BufNewFile,BufRead *.xaml setfiletype xml
 
-autocmd FocusGained * silent! checktime
+" Triger `autoread` when files changes on disk
+autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
+    \ if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
+
+" Notification after file change
+autocmd FileChangedShellPost *
+  \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
