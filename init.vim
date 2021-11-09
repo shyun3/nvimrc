@@ -366,9 +366,9 @@ lua << EOF
 require'hop'.setup()
 EOF
 
-nnoremap <Space> <Cmd>HopWord<CR>
-nnoremap _ <Cmd>HopLine<CR>
-nnoremap g<Space> <Cmd>HopChar1<CR>
+map <Space> <Cmd>HopWord<CR>
+map _ <Cmd>HopLine<CR>
+map g<Space> <Cmd>HopChar1<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
