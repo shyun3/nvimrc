@@ -163,12 +163,15 @@ nnoremap <silent> <leader>q :cclose<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Autocommands
+
 augroup myAutosaveGroup
   autocmd!
   autocmd BufLeave,FocusLost * silent! update   " Save when leaving buffer
 augroup END
 
+" Apply filetypes
 autocmd BufNewFile,BufRead *.xaml setfiletype xml
+autocmd BufNewFile,BufRead .clangd setfiletype yaml
 
 " Triger `autoread` when files changes on disk
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
