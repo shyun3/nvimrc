@@ -191,6 +191,10 @@ autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 " Airline
 let g:airline_theme='molokai'
 let g:airline_powerline_fonts = 1
+
+let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
+let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
+
 let g:airline#extensions#whitespace#enabled = 0 " Whitespace error detection
 let g:airline#extensions#tagbar#enabled = 0
 
@@ -227,8 +231,6 @@ function! CocOpen(command_str)
   execute 'silent normal! ' . a:command_str . "\<cr>"
 endfunction
 
-let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
-let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
 let g:coc_quickfix_open_command = 'botright copen'
 
 nmap <silent> <leader>] <Plug>(coc-definition)
