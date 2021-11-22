@@ -177,11 +177,12 @@ autocmd BufNewFile,BufRead .clangd setfiletype yaml
 
 " Triger `autoread` when files changes on disk
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
-    \ if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
+  \ if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
 
 " Notification after file change
 autocmd FileChangedShellPost *
-  \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+  \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." |
+  \ echohl None
 
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
@@ -194,8 +195,10 @@ autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 let g:airline_theme='molokai'
 let g:airline_powerline_fonts = 1
 
-let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
-let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
+let g:airline_section_error =
+  \ '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
+let g:airline_section_warning =
+  \ '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
 
 let g:airline#extensions#whitespace#enabled = 0 " Whitespace error detection
 let g:airline#extensions#tagbar#enabled = 0
@@ -252,7 +255,7 @@ nnoremap <silent> K :call <SID>ShowDocumentation()<CR>
 
 function! s:ShowDocumentation()
   if &filetype == 'vim'
-    execute 'h '.expand('<cword>')
+    execute 'h '. expand('<cword>')
   else
     call CocAction('doHover')
   endif
@@ -271,9 +274,9 @@ require('fzf-lua').setup {
   default_previewer = 'bat',
 
   previewers = {
-      bat = {
-          theme = 'Monokai Extended',
-      },
+    bat = {
+      theme = 'Monokai Extended',
+    },
   },
 
   -- Git icons are disabled for performance reasons
@@ -381,19 +384,19 @@ require'hop'.setup()
 -- Like hop.jump_target.regex_by_line_start_skip_whitespace() except it also
 -- marks empty or whitespace only lines
 function regexLines()
-    return {
-        oneshot = true,
-        match = function(str)
-            return vim.regex("\\S"):match_str(str) or
-                   vim.regex("\\v.$"):match_str(str) or 0, 1
-        end
-    }
+  return {
+    oneshot = true,
+    match = function(str)
+      return vim.regex("\\S"):match_str(str) or
+             vim.regex("\\v.$"):match_str(str) or 0, 1
+    end
+  }
 end
 
 -- Like :HopLineStart except it also jumps to empty or whitespace only lines
 function hintLines()
-    local gen = require'hop.jump_target'.jump_targets_by_scanning_lines
-    require'hop'.hint_with(gen(regexLines()), require'hop'.opts)
+  local gen = require'hop.jump_target'.jump_targets_by_scanning_lines
+  require'hop'.hint_with(gen(regexLines()), require'hop'.opts)
 end
 EOF
 
@@ -446,7 +449,7 @@ nmap N N<Plug>Pulse
 " Pulse when doing search with / or ?
 runtime autoload/search_pulse.vim
 if exists('*search_pulse#PulseFirst')
-    cmap <silent> <expr> <enter> search_pulse#PulseFirst()
+  cmap <silent> <expr> <enter> search_pulse#PulseFirst()
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
