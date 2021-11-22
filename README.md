@@ -8,7 +8,7 @@
     ```
 
 1. Install [Neovim][nvim-linux] (must be at least v0.5.0)
-   
+
 1. Install dependencies and include them in the `PATH`:
     * `sudo apt install ripgrep universal-ctags clang-format pandoc`
     * [fd][], [fzf][], [bat][], [clangd][]
@@ -20,13 +20,22 @@
     * [Node.js](https://nodejs.org/en/download) (must be at least v12)
         * See [`PATH`][node-install] instructions
         * Dependencies: `npm install -g yarn live-server`
-    
+    * [pyenv][]
+        * Prepare `virtualenv`:
+            ```bash
+            pyenv virtualenv <PYTHON3_VERSION> neovim
+            pyenv activate neovim
+            pip install pynvim
+            ```
+
 1. Create [undo directory][nvim-undo-dir]:
     ```bash
     mkdir -p ~/.local/share/nvim/undo
     ```
 
 1. Install [vim-plug][] and [Nerd Fonts][]
+    * Currently, [JetBrains Mono, No Ligatures][jetbrains-mono] is preferred
+    * Remember to update the terminal font
 
 1. Start Neovim. Ignore any errors and run `:PlugInstall`.
 
@@ -35,10 +44,19 @@
 
 1. Restart Neovim. Installation should now be complete.
 
-# Troubleshooting
+# Tips
 
-* If running Neovim from the terminal and some symbols don't display
-  properly, make sure to update the terminal font accordingly.
+## Python
+
+* Install formatters through the Neovim `virtualenv`, then symlink them to a
+  user `bin` folder available in the `PATH`. Example:
+    ```bash
+    pyenv activate neovim
+    pip install isort black
+
+    ln -s $(pyenv which isort) ~/bin/isort
+    # ...
+    ```
 
 [nvim-linux]: https://github.com/neovim/neovim/wiki/Installing-Neovim#linux
 [node-install]: https://github.com/nodejs/help/wiki/Installation
@@ -53,3 +71,5 @@
 [bat-issue-938]: https://github.com/sharkdp/bat/issues/938
 [nvim-clipboard-wsl]: https://github.com/neovim/neovim/wiki/FAQ#how-to-use-the-windows-clipboard-from-wsl
 [clangd]: https://github.com/clangd/clangd/releases
+[jetbrains-mono]: https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/JetBrainsMono/NoLigatures
+[pyenv]: https://github.com/pyenv/pyenv#installation

@@ -108,7 +108,9 @@ set updatetime=300
 set splitright        " All vertical splits open to the right
 set splitbelow        " All horizontal splits open below
 
-let g:python3_host_prog = 'python3'
+" Python
+let g:loaded_python_provider = 0
+let g:python3_host_prog = '~/.pyenv/versions/neovim/bin/python3'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Variables
