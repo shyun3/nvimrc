@@ -270,6 +270,12 @@ require('fzf-lua').setup {
   preview_layout = 'vertical',
   default_previewer = 'bat',
 
+  previewers = {
+      bat = {
+          theme = 'Monokai Extended',
+      },
+  },
+
   -- Git icons are disabled for performance reasons
   files = {
     git_icons = false,
