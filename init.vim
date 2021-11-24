@@ -108,14 +108,14 @@ set updatetime=300
 set splitright        " All vertical splits open to the right
 set splitbelow        " All horizontal splits open below
 
-" Python
-let g:loaded_python_provider = 0
-let g:python3_host_prog = '~/.pyenv/versions/neovim/bin/python3'
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Variables
 let c_gnu=1              " Highlight GNU keywords
 let NERDTreeHijackNetrw = 0
+
+" Python
+let g:loaded_python_provider = 0
+let g:python3_host_prog = '~/.pyenv/versions/neovim/bin/python3'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mappings
@@ -387,22 +387,30 @@ function regexLines()
   return {
     oneshot = true,
     match = function(str)
-      return vim.regex("\\S"):match_str(str) or
-             vim.regex("\\v.$"):match_str(str) or 0, 1
+      return vim.regex("\\v(\\S|.$)"):match_str(str) or 0, 1
     end
   }
 end
 
 -- Like :HopLineStart except it also jumps to empty or whitespace only lines
-function hintLines()
+function hintLines(opts)
+  -- Taken from override_opts()
+  opts = setmetatable(opts or {}, {__index = require'hop'.opts})
+
   local gen = require'hop.jump_target'.jump_targets_by_scanning_lines
-  require'hop'.hint_with(gen(regexLines()), require'hop'.opts)
+  require'hop'.hint_with(gen(regexLines()), opts)
 end
 EOF
 
-noremap <Space> <Cmd>HopWord<CR>
+nnoremap <Space> <Cmd>HopWord<CR>
+vnoremap <Space> <Cmd>HopWord<CR>
+
+" See `:h forced-motion` for these operator-pending mappings
 noremap _ <Cmd>lua hintLines()<CR>
+onoremap _ V:lua hintLines()<CR>
+
 noremap <Enter> <Cmd>HopChar1<CR>
+onoremap <Enter> v:HopChar1<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Neoformat
