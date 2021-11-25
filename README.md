@@ -19,7 +19,7 @@
         * Latest version of `clangd` is preferred
     * [Node.js](https://nodejs.org/en/download) (must be at least v12)
         * See [`PATH`][node-install] instructions
-        * Dependencies: `npm install -g yarn live-server`
+        * Dependencies: `npm install -g yarn live-server fixjson`
     * [pyenv][]
         * Prepare `virtualenv`:
             ```bash
