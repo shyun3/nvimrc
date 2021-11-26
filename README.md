@@ -44,6 +44,10 @@
 
 1. Restart Neovim. Installation should now be complete.
 
+# Example configuration files
+
+See the corresponding [README](example-configs/readme.md).
+
 # Tips
 
 ## clangd
