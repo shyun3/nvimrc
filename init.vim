@@ -34,6 +34,7 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'amiorin/vim-project'
 Plug 'tpope/vim-projectionist'
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
+Plug 'jeetsukumaran/vim-pythonsense'
 Plug 'tpope/vim-repeat'
 Plug 'inside/vim-search-pulse'
 Plug 'tpope/vim-surround'
