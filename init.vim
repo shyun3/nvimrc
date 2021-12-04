@@ -33,6 +33,7 @@ Plug 'mhinz/vim-grepper'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'amiorin/vim-project'
 Plug 'tpope/vim-projectionist'
+Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
 Plug 'tpope/vim-repeat'
 Plug 'inside/vim-search-pulse'
 Plug 'tpope/vim-surround'
@@ -429,6 +430,11 @@ execute "silent! source " . g:vimDir . "/projects.vim"
 if argc(-1) == 0
   Welcome
 endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Pydocstring
+let g:pydocstring_formatter = 'google'
+let g:pydocstring_enable_mapping = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " QFEnter (use CtrlP mappings)
