@@ -50,6 +50,11 @@ See the corresponding [README](example-configs/readme.md).
 
 # Tips
 
+## Plugins
+
+[coc extensions](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#implemented-coc-extensions)
+can also provide functionality akin to plugins.
+
 ## clangd
 
 To use [coc-clangd](https://github.com/clangd/coc-clangd) on a
