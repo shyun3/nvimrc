@@ -69,9 +69,10 @@ set cinoptions=g0   " Don't indent class scope declarations
 set ignorecase        " Ignore case when searching
 set smartcase         " Consider case when an uppercase character is being used
 
-" Completion menu
+" Completions
 set completeopt="menu"
 set pumheight=10
+set wildmode=longest:full,full
 
 " Display
 set number            " Line numbers
