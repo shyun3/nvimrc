@@ -7,7 +7,7 @@
     git clone https://github.com/shyun3/nvimrc ~/.config/nvim
     ```
 
-1. Install [Neovim][nvim-linux] (must be at least v0.5.0)
+1. Install [Neovim][nvim-linux] (must be at least v0.6.0)
 
 1. Install dependencies and include them in the `PATH`:
     * `sudo apt install ripgrep universal-ctags clang-format pandoc`
