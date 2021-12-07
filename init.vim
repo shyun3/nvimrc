@@ -12,7 +12,6 @@ Plug 'tomasr/molokai'
 Plug 'bkad/CamelCaseMotion'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'vim-scripts/CursorLineCurrentWindow'
-Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'sjl/gundo.vim'
 Plug 'phaazon/hop.nvim'
