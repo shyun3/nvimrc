@@ -341,7 +341,7 @@ function! s:FzfLuaBTags()
 endfunction
 
 nnoremap <C-p> <Cmd>call <SID>FzfLuaFiles()<CR>
-nnoremap <C-q> <Cmd>call <SID>GoToEditWindow()<CR><Cmd>FzfLua files cwd=%:h<CR>
+nnoremap <C-q> <Cmd>call <SID>GoToEditWindow()<CR><Cmd>FzfLua files cwd=%:p:h<CR>
 nnoremap <C-\> <Cmd>call <SID>GoToEditWindow()<CR><Cmd>FzfLua buffers<CR>
 nnoremap <A-p> <Cmd>call <SID>GoToEditWindow()<CR><Cmd>FzfLua oldfiles<CR>
 nnoremap <C-h> <Cmd>call <SID>GoToEditWindow()<CR><Cmd>FzfLua tags<CR>
