@@ -42,7 +42,6 @@ Plug 'tpope/vim-vinegar'
 
 " fzf
 Plug 'ibhagwan/fzf-lua'
-Plug 'vijaymarupudi/nvim-fzf'
 Plug 'kyazdani42/nvim-web-devicons'
 
 " Text objects
