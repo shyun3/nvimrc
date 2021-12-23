@@ -165,7 +165,7 @@ augroup END
 
 " Apply filetypes
 autocmd BufNewFile,BufRead *.xaml setfiletype xml
-autocmd BufNewFile,BufRead .clangd setfiletype yaml
+autocmd BufNewFile,BufRead .clangd,.clang-format setfiletype yaml
 
 " Triger `autoread` when files changes on disk
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
