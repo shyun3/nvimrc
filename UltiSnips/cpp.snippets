@@ -1,26 +1,6 @@
-snippet includeGuard "Include guard"
-#ifndef ${1:MACRO}
-#define $1
-
-#endif  // $1
-endsnippet
+extends c
 
 snippet nonCopyable "Non-copyable"
 ${1:class}(const $1&) = delete;
 $1& operator=(const $1&) = delete;
-endsnippet
-
-snippet doxygenAuthor "Doxygen author block"
-/**
- * @author Mo Hyun
- * @date ${1:yyyy}-${2:mm}-${3:dd}
- *
- * @brief $4
- */
-endsnippet
-
-snippet doxygenComment
-/**
- * $1
- */
 endsnippet
