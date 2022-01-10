@@ -107,8 +107,11 @@ set splitbelow        " All horizontal splits open below
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Variables
-let c_gnu=1              " Highlight GNU keywords
 let NERDTreeHijackNetrw = 0
+
+" C
+let c_gnu = 1
+let c_no_curly_error = 1
 
 " Python
 let g:loaded_python_provider = 0
