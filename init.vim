@@ -262,6 +262,8 @@ function! s:ShowDocumentation()
   endif
 endfunction
 
+nmap <leader>a  <Plug>(coc-codeaction)
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " DoGe
 let g:doge_doc_standard_python = 'google'
