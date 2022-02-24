@@ -91,6 +91,11 @@ plugins.
   the `typings` directory. This can be customized using the `stubPath` option
   in the `pyrightconfig.json`. See also [Generating Type Stubs][type-stubs].
 
+## UltiSnips
+
+* Add snippets under the `UltiSnips/specific` directory for snippets that are
+  meant to be machine-specific and not saved in the repo.
+
 [nvim-linux]: https://github.com/neovim/neovim/wiki/Installing-Neovim#linux
 [node-install]: https://github.com/nodejs/help/wiki/Installation
 [vim-plug]: https://github.com/junegunn/vim-plug#neovim

@@ -1,4 +1,5 @@
 bundle/
+UltiSnips/specific/
 
 autoload/plug.vim*
 projects.vim
