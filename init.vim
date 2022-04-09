@@ -427,6 +427,23 @@ onoremap <Enter> v:HopChar1<CR>
 " Neoformat
 let g:neoformat_run_all_formatters = 1
 
+" Change to directory of file, then perform Neoformat
+" See Neoformat issue #47
+function! s:CdNeoformat(bang, userInput, startLine, endLine) abort
+  let prevCwd = getcwd()
+  cd %:h
+
+  " Derived from neoformat/plugin/neoformat.vim
+  call neoformat#Neoformat(a:bang, a:userInput, a:startLine, a:endLine)
+
+  execute 'cd ' . prevCwd
+endfunction
+
+" Derived from neoformat/plugin/neoformat.vim
+command! -nargs=? -bar -range=% -bang
+      \ -complete=customlist,neoformat#CompleteFormatters ChDirNeoformat
+      \ call s:CdNeoformat(<bang>0, <q-args>, <line1>, <line2>)
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERD Tree
 nnoremap <silent> <C-n> :NERDTree<CR>
