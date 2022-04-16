@@ -10,3 +10,13 @@ snippet doxygenComment
  * $1
  */
 endsnippet
+
+snippet externCGuard "extern C guard"
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef __cplusplus
+}    // extern "C"
+#endif
+endsnippet
