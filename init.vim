@@ -1,5 +1,9 @@
 let g:vimDir = stdpath('config')
 
+" filetype.lua
+let g:do_filetype_lua = 1
+let g:did_load_filetypes = 0
+
 call plug#begin(g:vimDir . '/bundle')
 
 " Plugin manager
@@ -167,11 +171,7 @@ augroup myAutosaveGroup
   autocmd BufLeave,FocusLost * silent! update   " Save when leaving buffer
 augroup END
 
-" Apply filetypes
-autocmd BufNewFile,BufRead *.xaml setfiletype xml
-autocmd BufNewFile,BufRead .clangd,.clang-format setfiletype yaml
-
-" Triger `autoread` when files changes on disk
+" Trigger `autoread` when files changes on disk
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
   \ if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
 
