@@ -67,6 +67,10 @@ plugins.
       "clangd.arguments": ["--query-driver=/usr/bin/arm-none-eabi-gcc"]
   }
   ```
+  This is only necessary when using `compile_flags.txt`. If
+  `compile_commands.json` is available, the
+  [Compiler](https://clangd.llvm.org/config#compiler) setting in the `clangd`
+  configuration may be used.
 * When specifying paths with embedded spaces in `compile_flags.txt`, do not
   introduce quotes or backslashes to escape as this will be handled by
   `clangd`. For example:
