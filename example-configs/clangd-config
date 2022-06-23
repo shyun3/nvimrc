@@ -1,2 +1,12 @@
 CompileFlags:
-  CompilationDatabase: "/path/to/project"
+  Add: -fshort-enums
+  Compiler: arm-none-eabi-gcc
+  CompilationDatabase: /path/to/project
+
+---
+
+If:
+  PathMatch: /path/to/src
+
+CompileFlags:
+  Add: [-DTEST, -Werror]
