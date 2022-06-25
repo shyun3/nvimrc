@@ -256,6 +256,9 @@ nmap <silent> <leader>rr <Plug>(coc-references)
 nmap <silent> <leader>ri <Cmd>call CocAction('showIncomingCalls')<CR>
 nmap <silent> <leader>ro <Cmd>call CocAction('showOutgoingCalls')<CR>
 
+nnoremap <silent><nowait> <C-k>  :<C-u>CocList outline<cr>
+nnoremap <silent><nowait> <C-h>  :<C-u>CocList -I symbols<cr>
+
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
@@ -391,10 +394,10 @@ nnoremap <C-p> <Cmd>call <SID>FzfLuaFiles()<CR>
 nnoremap <C-q> <Cmd>call <SID>GoToEditWindow()<CR><Cmd>FzfLua files cwd=%:p:h<CR>
 nnoremap <C-\> <Cmd>call <SID>GoToEditWindow()<CR><Cmd>FzfLua buffers<CR>
 nnoremap <A-p> <Cmd>call <SID>GoToEditWindow()<CR><Cmd>FzfLua oldfiles<CR>
-nnoremap <C-h> <Cmd>call <SID>GoToEditWindow()<CR><Cmd>FzfLua tags<CR>
-nnoremap <C-k> <Cmd>call <SID>FzfLuaBTags()<CR>
+nnoremap <leader>ft <Cmd>call <SID>GoToEditWindow()<CR><Cmd>FzfLua tags<CR>
+nnoremap <leader>fk <Cmd>call <SID>FzfLuaBTags()<CR>
 nnoremap <C-j> <Cmd>FzfLua blines show_unlisted=true<CR>
-nnoremap <leader>f <Cmd>FzfLua builtin<CR>
+nnoremap <leader>ff <Cmd>FzfLua builtin<CR>
 nnoremap <leader>; <Cmd>FzfLua command_history<CR>
 nnoremap <leader>/ <Cmd>FzfLua search_history<CR>
 nnoremap <leader>h <Cmd>FzfLua help_tags<CR>
