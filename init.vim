@@ -30,6 +30,7 @@ Plug 'shyun3/vim-cmake-lists'
 Plug 'tpope/vim-commentary'
 Plug 'kkoomen/vim-doge', { 'do': './scripts/install.sh' }
 Plug 'junegunn/vim-easy-align'
+Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-grepper'
 Plug 'ludovicchabant/vim-gutentags'
@@ -49,7 +50,7 @@ Plug 'ibhagwan/fzf-lua'
 Plug 'kyazdani42/nvim-web-devicons'
 
 " Text objects
-Plug 'fvictorio/vim-textobj-backticks'
+Plug 'wellle/targets.vim'
 Plug 'glts/vim-textobj-comment'
 Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-indent'
@@ -232,7 +233,7 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+  \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>\<C-R>=EndwiseDiscretionary()\<CR>"
 
 function! CocOpen(command_str)
   if (expand('%') =~# 'NERD_tree' && winnr('$') > 1)
@@ -307,6 +308,10 @@ let g:doge_comment_jump_modes = ['n', 's']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EditorConfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']   " Work with fugitive
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" endwise
+let g:endwise_no_mappings = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " fzf-lua
