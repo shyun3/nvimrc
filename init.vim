@@ -491,8 +491,8 @@ vnoremap <Space> <Cmd>HopWord<CR>
 noremap _ <Cmd>lua hintLines()<CR>
 onoremap _ V:lua hintLines()<CR>
 
-noremap <Tab> <Cmd>HopChar1<CR>
-onoremap <Tab> v:HopChar1<CR>
+noremap <Enter> <Cmd>HopChar1<CR>
+onoremap <Enter> v:HopChar1<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Neoformat
