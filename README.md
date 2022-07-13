@@ -19,7 +19,8 @@
         * Latest version of `clangd` is preferred (at least v14)
     * [Node.js](https://nodejs.org/en/download) (must be at least v12)
         * See [`PATH`][node-install] instructions
-        * Dependencies: `npm install -g yarn live-server prettier`
+        * Dependencies:
+            `npm install -g yarn live-server prettier prettier-plugin-sh`
     * [pyenv][]
         * Prepare `virtualenv`:
             ```bash
