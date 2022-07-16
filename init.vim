@@ -477,38 +477,31 @@ local function regexLines()
 end
 
 -- Like `:HopLineStart` except it also jumps to empty or whitespace only lines
-function hintLines(opts)
-  -- Taken from override_opts()
-  opts = setmetatable(opts or {}, {__index = require'hop'.opts})
-
+function hintLines()
   local gen = require'hop.jump_target'.jump_targets_by_scanning_lines
-  require'hop'.hint_with(gen(regexLines()), opts)
+  require'hop'.hint_with(gen(regexLines()), require'hop'.opts)
 end
 
 -- Derived from `hop.hint_with()`
-local function hintWithTill(jump_target_gtr, opts)
-  if opts == nil then
-    -- Taken from override_opts()
-    opts = setmetatable(opts or {}, {__index = require'hop'.opts})
-  end
+local function hintWithTill(jump_target_gtr)
+  require'hop'.hint_with_callback(jump_target_gtr, require'hop'.opts,
+    function(jt)
+      local jumpLine = jt.line + 1
+      local jumpCol = jt.column - 1
 
-  require'hop'.hint_with_callback(jump_target_gtr, opts, function(jt)
-    local jumpLine = jt.line + 1
-    local jumpCol = jt.column - 1
+      local curPos = vim.api.nvim_win_get_cursor(0)
+      local row = curPos[1]
+      local col = curPos[2]
 
-    local curPos = vim.api.nvim_win_get_cursor(0)
-    local row = curPos[1]
-    local col = curPos[2]
+      local hintOffset
+      if row > jumpLine or (row == jumpLine and col > jumpCol) then
+        hintOffset = 1
+      else
+        hintOffset = -1
+      end
 
-    local hintOffset
-    if row > jumpLine or (row == jumpLine and col > jumpCol) then
-      hintOffset = 1
-    else
-      hintOffset = -1
-    end
-
-    require'hop'.move_cursor_to(jt.window, jumpLine, jumpCol, hintOffset)
-  end)
+      require'hop'.move_cursor_to(jt.window, jumpLine, jumpCol, hintOffset)
+    end)
 end
 
 -- Derived from `hop.get_input_pattern()`
@@ -541,9 +534,8 @@ local function getInputChar(prompt)
 end
 
 -- Derived from `hop.hint_char1()`
-function hintTill1(opts)
-  -- Taken from override_opts()
-  opts = setmetatable(opts or {}, {__index = require'hop'.opts})
+function hintTill1()
+  local opts = require'hop'.opts
 
   local c = getInputChar('Till 1 char: ')
   if not c then
