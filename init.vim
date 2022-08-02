@@ -136,10 +136,6 @@ nnoremap <silent> <C-]> :tjump /\<<C-R><C-W>\>\C<CR>
 nnoremap <silent> <A-]>s :wincmd g<C-V><C-]><CR>
 nnoremap <silent> <A-]>v :vertical wincmd g<C-V><C-]><CR>
 
-" <TAB> completion
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
-
 " Window navigation
 nnoremap <silent> ]w :wincmd w<CR>
 nnoremap <silent> [w :wincmd W<CR>
@@ -229,11 +225,23 @@ let g:coc_global_extensions = ['coc-clangd', 'coc-json', 'coc-pyright',
   \ 'coc-syntax', 'coc-tag', 'coc-ultisnips', 'coc-vimlsp', 'coc-pairs',
   \ 'coc-sh']
 
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+" Insert <tab> when previous text is space, refresh completion if not.
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1):
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
 inoremap <silent><expr> <c-space> coc#refresh()
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm()
   \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>\<C-R>=EndwiseDiscretionary()\<CR>"
 
 function! CocOpen(command_str)
