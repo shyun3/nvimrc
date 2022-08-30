@@ -231,10 +231,9 @@ inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 inoremap <silent><expr> <c-space> coc#refresh()
 
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
+" Make <CR> auto-select the first completion item
 inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm()
-  \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>\<C-R>=EndwiseDiscretionary()\<CR>"
+  \: "\<C-g>u\<CR>\<C-R>=EndwiseDiscretionary()\<CR>"
 
 function! CocOpen(command_str)
   if (expand('%') =~# 'NERD_tree' && winnr('$') > 1)
