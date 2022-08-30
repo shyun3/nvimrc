@@ -584,8 +584,9 @@ command! -nargs=? -bar -range=% -bang
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERD Tree
-nnoremap <silent> <C-n> :NERDTree<CR>
-nnoremap <silent> <A-n> :NERDTree %<CR>
+nnoremap <C-n> <Cmd>NERDTreeFocus<CR>
+nnoremap <A-n> <Cmd>NERDTreeFind<CR>
+nnoremap <leader>n <Cmd>NERDTree<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Project
