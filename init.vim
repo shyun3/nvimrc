@@ -30,6 +30,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'haya14busa/vim-asterisk'
 Plug 'shyun3/vim-cmake-lists'
 Plug 'tpope/vim-commentary'
+Plug 'ryanoasis/vim-devicons'
 Plug 'kkoomen/vim-doge', { 'do': './scripts/install.sh' }
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-endwise'
