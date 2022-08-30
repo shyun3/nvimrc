@@ -429,10 +429,8 @@ nnoremap <C-\> <Cmd>call <SID>GoToEditWindow()<CR><Cmd>FzfLua buffers<CR>
 nnoremap <A-p> <Cmd>call <SID>GoToEditWindow()<CR><Cmd>FzfLua oldfiles<CR>
 nnoremap <C-h> <Cmd>call <SID>GoToEditWindow()<CR><Cmd>FzfLua tags<CR>
 nnoremap <C-k> <Cmd>call <SID>FzfLuaBTags()<CR>
-nnoremap <leader>ft <Cmd>call <SID>GoToEditWindow()<CR><Cmd>FzfLua tags<CR>
-nnoremap <leader>fk <Cmd>call <SID>FzfLuaBTags()<CR>
 nnoremap <C-j> <Cmd>FzfLua blines show_unlisted=true<CR>
-nnoremap <leader>ff <Cmd>FzfLua builtin<CR>
+nnoremap <leader>f <Cmd>FzfLua builtin<CR>
 nnoremap <leader>; <Cmd>FzfLua command_history<CR>
 nnoremap <leader>/ <Cmd>FzfLua search_history<CR>
 nnoremap <leader>h <Cmd>FzfLua help_tags<CR>
