@@ -7,6 +7,9 @@ CompileFlags:
     - -Wpedantic
   CompilationDatabase: /path/to/project
 
+Diagnostics:
+  UnusedIncludes: Strict
+
 ---
 
 If:
