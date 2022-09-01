@@ -11,9 +11,11 @@ Plug 'junegunn/vim-plug'
 
 " GUI
 Plug 'tomasr/molokai'
+Plug 'NvChad/nvim-colorizer.lua'
 
 " Plugins
 Plug 'neoclide/coc.nvim', { 'branch': 'master', 'do': 'yarn install --frozen-lockfile' }
+Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'sjl/gundo.vim'
 Plug 'phaazon/hop.nvim'
@@ -41,7 +43,6 @@ Plug 'amiorin/vim-project'
 Plug 'tpope/vim-projectionist'
 Plug 'jeetsukumaran/vim-pythonsense'
 Plug 'tpope/vim-repeat'
-Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'inside/vim-search-pulse'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
@@ -590,6 +591,10 @@ command! -nargs=? -bar -range=% -bang
 nnoremap <C-n> <Cmd>NERDTreeFocus<CR>
 nnoremap <A-n> <Cmd>NERDTreeFind<CR>
 nnoremap <leader>n <Cmd>NERDTree<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" nvim-colorizer
+lua require'colorizer'.setup()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " nvim-reload
