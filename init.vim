@@ -239,14 +239,6 @@ inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm()
   \: "\<C-g>u\<CR>\<C-R>=EndwiseDiscretionary()\<CR>"
 
-function! CocOpen(command_str)
-  if (expand('%') =~# 'NERD_tree' && winnr('$') > 1)
-    execute "silent normal! \<c-w>\<c-w>"
-    execute "cd " . g:NERDTreeFileNode.GetRootForTab().path.str()
-  endif
-  execute 'silent normal! ' . a:command_str . "\<cr>"
-endfunction
-
 let g:coc_quickfix_open_command = 'botright copen'
 
 nmap <silent> <leader>] <Plug>(coc-definition)
@@ -334,6 +326,26 @@ vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ?
   \ coc#float#scroll(0) : "\<C-b>"
 
 command! -nargs=0 Format :call CocActionAsync('format')
+
+function! s:CheckHighlight(lineNum, colNum)
+    let mode = "name"
+
+    " Highest highlighting group: name of syntax keyword, match or region
+    let hi = synIDattr(synID(a:lineNum, a:colNum, 1), mode)
+
+    " For transparent groups, the group it's in
+    let trans = synIDattr(synID(a:lineNum, a:colNum, 0), mode)
+
+    " Lowest group: basic highlighting spec such as a default highlighting group
+    let lo = synIDattr(synIDtrans(synID(a:lineNum, a:colNum, 1)), mode)
+
+    echo 'hi<' . hi . '> ' . 'trans<' . trans . '> ' . 'lo<' . lo . '> '
+    CocCommand semanticTokens.inspect
+endfunction
+
+command! CheckHighlightUnderCursor call <SID>CheckHighlight(line('.'), col('.'))
+
+hi link CocSemMacro Macro
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " DoGe
