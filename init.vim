@@ -13,7 +13,7 @@ Plug 'junegunn/vim-plug'
 
 " GUI
 Plug 'tomasr/molokai'
-Plug 'NvChad/nvim-colorizer.lua'
+Plug 'brenoprata10/nvim-highlight-colors'
 
 " Plugins
 Plug 'neoclide/coc.nvim', { 'branch': 'master', 'do': 'yarn install --frozen-lockfile' }
@@ -355,14 +355,6 @@ command! CheckHighlightUnderCursor call <SID>CheckHighlight(line('.'), col('.'))
 hi link CocSemMacro Macro
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" colorizer
-lua << EOF
-require'colorizer'.setup{
-  user_default_options = {names = false},
-}
-EOF
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " DoGe
 let g:doge_doc_standard_python = 'google'
 let g:doge_comment_jump_modes = ['n', 's']
@@ -618,6 +610,10 @@ command! -nargs=? -bar -range=% -bang
 nnoremap <C-n> <Cmd>NERDTreeFocus<CR>
 nnoremap <A-n> <Cmd>NERDTreeFind<CR>
 nnoremap <leader>n <Cmd>NERDTree<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" nvim-highlight-colors
+lua require'nvim-highlight-colors'.setup{render = 'background'}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " nvim-reload
