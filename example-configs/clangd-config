@@ -1,8 +1,8 @@
 CompileFlags:
   Add:
     - --target=arm-none-eabi
-    - -mcpu=cpu-such-as-cortex-m4
-    - --sysroot=/path/to/cross-compiler/dir/with/bin/include/lib
+    - -mcpu=cortex-m4
+    - --sysroot=/path/to/cross-compiler/arm-none-eabi/
     - -Wall
     - -Wextra
     - -Wpedantic
