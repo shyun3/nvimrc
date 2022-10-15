@@ -655,6 +655,13 @@ reload.lua_reload_dirs = {vim.fn.stdpath('config'), pluginDirs}
 EOF
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" polyglot
+
+" vim-markdown
+let g:vim_markdown_auto_insert_bullets = 0
+let g:vim_markdown_new_list_item_indent = 0
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Project
 call project#rc()
 execute "silent! source " . g:vimDir . "/projects.vim"
@@ -707,11 +714,6 @@ nmap <silent> <A-t> :TagbarToggle<CR>
 let g:UltiSnipsEditSplit = 'horizontal'
 let g:UltiSnipsExpandTrigger = "<NUL>"
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "UltiSnips/specific"]
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-markdown (included in polyglot)
-let g:vim_markdown_auto_insert_bullets = 0
-let g:vim_markdown_new_list_item_indent = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " which-key
