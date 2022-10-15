@@ -20,7 +20,7 @@
     * [Node.js](https://nodejs.org/en/download) (must be at least v12)
         * See [`PATH`][node-install] instructions
         * Dependencies:
-            `npm install -g yarn live-server prettier prettier-plugin-sh`
+            `npm install -g yarn @compodoc/live-server prettier prettier-plugin-sh`
     * [pyenv][]
         * Prepare `virtualenv`:
             ```bash
@@ -68,7 +68,7 @@ plugins.
   ```
   -Ipath with spaces
   ```
-* To see the compile options used by `coc-clangd`, try [`:CocCommand
+* To see the compile options used by `coc-clangd`, enter [`:CocCommand
   workspace.showOutput clangd`][coc-output-channel]
 * Running `:CocRestart` may not cause `clangd` to re-parse source files, due to
   caching. One way to force this is by deleting buffers using `:bd`.
