@@ -463,10 +463,6 @@ let g:grepper.tools = ['rg', 'git']
 let g:grepper.rg.grepprg = 'rg -H --no-heading --vimgrep --smart-case --follow $*'
 let g:grepper.dir = 'filecwd'
 
-let g:grepper.open = 0
-
-autocmd User Grepper botright copen
-
 nnoremap <leader><leader> <Cmd>call <SID>GoToEditWindow()<CR>:GrepperRg 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
