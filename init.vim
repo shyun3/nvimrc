@@ -1,8 +1,5 @@
 let g:vimDir = stdpath('config')
 
-" filetype.lua
-let g:do_filetype_lua = 1
-
 " To prevent error messages when calling `:Reload`
 let g:polyglot_disabled = ['haxe']
 
@@ -141,7 +138,6 @@ let g:python3_host_prog = '~/.pyenv/versions/neovim/bin/python3'
 " Mappings
 
 " Make & keep sub flags
-nnoremap & :&&<CR>
 xnoremap & :&&<CR>
 
 " Open tags in splits
