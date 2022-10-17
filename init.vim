@@ -243,7 +243,7 @@ inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 inoremap <silent><expr> <c-space> coc#refresh()
 
 " Make <CR> auto-select the first completion item
-inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm()
+inoremap <silent><expr> <cr> coc#pum#visible() ? coc#pum#confirm()
   \: "\<C-g>u\<CR>\<C-R>=EndwiseDiscretionary()\<CR>"
 
 let g:coc_quickfix_open_command = 'botright copen'

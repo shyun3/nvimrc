@@ -8,6 +8,8 @@
   ],
   "coc.preferences.snippetStatusText": "",
 
+  "suggest.noselect": true,
+
   "workspace.bottomUpFiletypes": ["*.py", "*.pyi"],
   "workspace.workspaceFolderCheckCwd": false,
 
