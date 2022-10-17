@@ -103,6 +103,9 @@ set shada=!,'80000,<50,s10,h
 " Formatting
 set nowrap            " Do not wrap text
 
+" Mouse
+set mouse=
+
 " Search
 set maxmempattern=5000
 
