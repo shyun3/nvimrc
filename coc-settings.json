@@ -1,19 +1,5 @@
 {
   "coc.preferences.useQuickfixForLocations": true,
-  "coc.preferences.rootPatterns": [
-      ".git",
-      ".projections.json",
-      "pyrightconfig.json",
-      "pyproject.toml"
-  ],
-  "snippet.statusText": "",
-
-  "suggest.noselect": true,
-
-  "workspace.bottomUpFiletypes": ["*.py", "*.pyi"],
-  "workspace.workspaceFolderCheckCwd": false,
-
-  "semanticTokens.enable": true,
 
   "list.insertMappings": {
     "<C-s>": "action:split",
@@ -21,6 +7,30 @@
     "<C-v>": "action:vsplit"
   },
 
+  "semanticTokens.enable": true,
+
+  "snippet.statusText": "",
+
+  "snippets.extends": {
+      "cpp": ["c"]
+  },
+  "snippets.loadFromExtensions": false,
+  "snippets.ultisnips.directories": [
+      "UltiSnips",
+      "UltiSnips/specific"
+  ],
+
+  "suggest.noselect": true,
+
   "tree.closedIcon": "",
-  "tree.openedIcon": ""
+  "tree.openedIcon": "",
+
+  "workspace.bottomUpFiletypes": ["*.py", "*.pyi"],
+  "workspace.workspaceFolderCheckCwd": false,
+  "workspace.rootPatterns": [
+      ".git",
+      ".projections.json",
+      "pyrightconfig.json",
+      "pyproject.toml"
+  ]
 }
