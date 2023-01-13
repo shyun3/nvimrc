@@ -657,6 +657,7 @@ EOF
 
 " vim-cpp-modern
 hi link cppSTLios NONE  " Turn off STL I/O manipulators highlighting
+hi link cppSTLconstant NONE   " Turn off C++17 constants
 
 " vim-markdown
 let g:vim_markdown_auto_insert_bullets = 0
