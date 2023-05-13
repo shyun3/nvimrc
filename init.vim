@@ -99,7 +99,7 @@ set autowriteall      " Save when switching buffers
 set noswapfile
 set undofile
 set nowritebackup
-set shada=!,'80000,<50,s10,h
+set shada='1000,s1,h
 
 " Formatting
 set nowrap            " Do not wrap text
