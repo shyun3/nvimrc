@@ -32,5 +32,6 @@
       ".projections.json",
       "pyrightconfig.json",
       "pyproject.toml"
-  ]
+  ],
+  "snippets.ultisnips.pythonPrompt": false
 }
