@@ -387,10 +387,6 @@ require('fzf-lua').setup {
   -- Git icons are disabled for performance reasons
   files = {
     git_icons = false,
-
-    -- Same as default except with `-j` to improve performance
-    -- See fd issue #1131
-    fd_opts = "--color=never --type f --hidden --follow --exclude .git -j4",
   },
   oldfiles = {
     include_current_session = true,
