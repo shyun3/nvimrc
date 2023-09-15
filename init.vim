@@ -472,6 +472,10 @@ let g:grepper.dir = 'filecwd'
 
 nnoremap <leader><leader> <Cmd>call <SID>GoToEditWindow()<CR>:GrepperRg 
 
+" Prevent auto-resize of quickfix window
+let g:grepper.open = 0
+autocmd User Grepper copen
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Gundo
 let g:gundo_prefer_python3 = 1
