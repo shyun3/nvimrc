@@ -41,8 +41,7 @@
 1. Start Neovim. Ignore any errors and run `:PlugInstall`.
 
 1. Run `:checkhealth` and resolve any issues.
-    * For `clipboard` on WSL, install `xclip`. Alternatively, see the [Neovim
-      FAQ][nvim-clipboard-wsl].
+    * For `clipboard` on WSL, see `:h clipboard`. Consider using [win32yank][].
 
 1. Restart Neovim. Installation should now be complete.
 
@@ -112,3 +111,4 @@ plugins.
 [type-stubs]: https://github.com/microsoft/pyright/blob/main/docs/type-stubs.md#generating-type-stubs
 [coc-extensions]: https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#implemented-coc-extensions
 [coc-output-channel]: https://github.com/neoclide/coc.nvim/wiki/Debug-language-server#using-output-channel
+[win32yank]: https://github.com/equalsraf/win32yank
