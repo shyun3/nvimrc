@@ -89,6 +89,19 @@ plugins.
     ln -s $(pyenv which isort) ~/bin/isort
     # ...
     ```
+* Formatter options may be specified through a project top-level
+  `pyproject.toml`, for example:
+    ```
+    [tool.black]
+    unstable = true
+
+    [tool.isort]
+    profile = "black"
+    ```
+  Using the unstable option for black may be useful to have it break long
+  strings, see the [future style docs][black-future]. `isort` can also be
+  configured for `black` compatibility by specifying the profile (see
+  [docs][isort-black]).
 * [Pyright](https://github.com/microsoft/pyright) can read type stubs placed in
   the `typings` directory. This can be customized using the `stubPath` option
   in the `pyrightconfig.json`. See also [Generating Type Stubs][type-stubs].
@@ -112,3 +125,6 @@ plugins.
 [coc-extensions]: https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#implemented-coc-extensions
 [coc-output-channel]: https://github.com/neoclide/coc.nvim/wiki/Debug-language-server#using-output-channel
 [win32yank.exe]: https://github.com/equalsraf/win32yank
+[black-unstable]: https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#unstable
+[black-future]: https://black.readthedocs.io/en/stable/the_black_code_style/future_style.html
+[isort-black]: https://pycqa.github.io/isort/docs/configuration/black_compatibility.html
