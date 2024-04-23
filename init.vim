@@ -237,7 +237,7 @@ let g:coc_global_extensions = ['coc-clangd', 'coc-json', 'coc-pyright',
   \ 'coc-syntax', 'coc-tag', 'coc-vimlsp', 'coc-pairs', 'coc-sh', 'coc-snippets']
 
 inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+inoremap <expr> <S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 inoremap <silent><expr> <c-space> coc#refresh()
 
@@ -303,6 +303,7 @@ function! s:IncomingCallsQf()
 endfunction
 
 nmap <leader>a  <Plug>(coc-codeaction)
+nmap <leader>x  <Plug>(coc-fix-current)
 nmap <leader>rn <Plug>(coc-rename)
 
 xmap <leader>gf  <Plug>(coc-format-selected)
@@ -313,6 +314,9 @@ augroup myCocGroup
   " Update signature help on jump placeholder
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
+
+" Highlight the symbol and its references when holding the cursor
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap <C-f> and <C-b> for scroll float windows/popups
 nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ?
