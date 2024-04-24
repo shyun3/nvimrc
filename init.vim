@@ -79,7 +79,7 @@ set ignorecase        " Ignore case when searching
 set smartcase         " Consider case when an uppercase character is being used
 
 " Completions
-set completeopt="menu"
+set completeopt=menu
 set pumheight=10
 set wildmode=longest:full,full
 
@@ -92,6 +92,7 @@ set cursorline
 set cmdheight=2
 set shortmess+=c
 set signcolumn=number
+set noshowmode        " Mode is in status line
 
 " File settings
 set autowriteall      " Save when switching buffers
@@ -200,6 +201,8 @@ augroup ActiveWinCursorLine
     \ if &cursorline && !&pvw | setlocal nocursorline | endif
 augroup END
 
+au TextYankPost * silent! lua vim.highlight.on_yank()
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin specific settings
@@ -262,6 +265,7 @@ nmap <silent> <leader>ro <Cmd>call CocAction('showOutgoingCalls')<CR>
 
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nnoremap <leader>gd <Cmd>CocDiagnostics<CR>
 
 nnoremap <silent> K :call <SID>ShowDocumentation()<CR>
 
