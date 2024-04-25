@@ -310,9 +310,6 @@ nmap <leader>a  <Plug>(coc-codeaction)
 nmap <leader>x  <Plug>(coc-fix-current)
 nmap <leader>rn <Plug>(coc-rename)
 
-xmap <leader>gf  <Plug>(coc-format-selected)
-nmap <leader>gf  <Plug>(coc-format-selected)
-
 augroup myCocGroup
   autocmd!
   " Update signature help on jump placeholder
@@ -392,6 +389,27 @@ vim.api.nvim_create_user_command("Format", function(args)
   end
   require("conform").format({ async = true, lsp_fallback = true, range = range })
 end, { range = true })
+
+-- Derived from https://github.com/neovim/nvim-lspconfig/wiki/User-contributed-tips#range-formatting-with-a-motion
+function format_range_operator()
+  local old_func = vim.go.operatorfunc
+  _G.op_func_formatting = function()
+    require'conform'.format{async = true, lsp_fallback = true, range = {
+        start = vim.api.nvim_buf_get_mark(0, '['),
+        ["end"] = vim.api.nvim_buf_get_mark(0, ']')
+      }
+    }
+
+    vim.go.operatorfunc = old_func
+    _G.op_func_formatting = nil
+  end
+  vim.go.operatorfunc = 'v:lua.op_func_formatting'
+  vim.api.nvim_feedkeys('g@', 'n', false)
+end
+
+vim.keymap.set({"n", "x"}, "<leader>gf",
+  "<cmd>lua format_range_operator()<CR>",
+  {noremap = true, desc = "Format selection"})
 EOF
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
