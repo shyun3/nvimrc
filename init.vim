@@ -20,6 +20,7 @@ Plug 'stevearc/conform.nvim'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'sjl/gundo.vim'
 Plug 'phaazon/hop.nvim'
+Plug 'kdheepak/lazygit.nvim'
 Plug 'scrooloose/nerdtree'
 Plug 'kevinhwang91/nvim-bqf'
 Plug 'davidgranstrom/nvim-markdown-preview'
@@ -36,7 +37,6 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'kkoomen/vim-doge', { 'do': './scripts/install.sh' }
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-grepper'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'sheerun/vim-polyglot'
@@ -619,6 +619,10 @@ onoremap <Enter> v:HopChar1<CR>
 
 noremap + <Cmd>lua hintTill1()<CR>
 onoremap + V:lua hintTill1()<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" lazygit.nvim
+nnoremap <leader>lg <Cmd>LazyGit<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERD Tree

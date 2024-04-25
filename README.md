@@ -12,7 +12,7 @@
 1. Install dependencies and include them in the `PATH`:
     * `sudo apt install ripgrep bat universal-ctags pandoc`
         * Make sure to create a symlink for `bat` (see [link][bat-install])
-    * [fd][], `fzf`
+    * [fd][], `fzf`, `lazygit`
         * `fd` >= 9.0.0 is recommended for improved performance
     * [LLVM][]
         * Latest version is preferred. Prefer the automatic install script.
