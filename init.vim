@@ -1,8 +1,7 @@
 let g:vimDir = stdpath('config')
 
-" haxe: To prevent error messages when calling `:Reload`
 " lua: Covered by treesitter
-let g:polyglot_disabled = ['haxe', 'lua']
+let g:polyglot_disabled = ['lua']
 
 call plug#begin(g:vimDir . '/bundle')
 
@@ -23,7 +22,6 @@ Plug 'phaazon/hop.nvim'
 Plug 'scrooloose/nerdtree'
 Plug 'kevinhwang91/nvim-bqf'
 Plug 'davidgranstrom/nvim-markdown-preview'
-Plug 'famiu/nvim-reload'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'yssl/QFEnter'
 Plug 'majutsushi/tagbar'
@@ -685,17 +683,6 @@ EOF
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " nvim-colorizer
 lua require'colorizer'.setup({'*'}, {names = false})
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" nvim-reload
-lua << EOF
-local reload = require('nvim-reload')
-
-local pluginDirs = vim.fn.stdpath('config') .. '/bundle/*'
-
-reload.vim_reload_dirs = {vim.fn.stdpath('config'), pluginDirs}
-reload.lua_reload_dirs = {vim.fn.stdpath('config'), pluginDirs}
-EOF
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " polyglot
