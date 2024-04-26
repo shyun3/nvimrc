@@ -178,32 +178,30 @@ nnoremap <silent> <leader>q :cclose<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Autocommands
 
-augroup myAutosaveGroup
+augroup myAutoGroup
   autocmd!
   autocmd BufLeave,FocusLost * silent! update   " Save when leaving buffer
-augroup END
 
-" Trigger `autoread` when files changes on disk
-autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
-  \ if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
+  " Trigger `autoread` when files changes on disk
+  autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
+    \ if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
 
-" Notification after file change
-autocmd FileChangedShellPost *
-  \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." |
-  \ echohl None
+  " Notification after file change
+  autocmd FileChangedShellPost *
+    \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." |
+    \ echohl None
 
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+  autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
-" Enable cursorline only for active window
-" See https://github.com/ibhagwan/nvim-lua/blob/main/lua/autocmd.lua
-augroup ActiveWinCursorLine
+  " Enable cursorline only for active window
+  " See https://github.com/ibhagwan/nvim-lua/blob/main/lua/autocmd.lua
   autocmd WinEnter,BufEnter,InsertLeave *
     \ if !&cursorline && !&pvw | setlocal cursorline | endif
   autocmd WinLeave,BufLeave,InsertEnter *
     \ if &cursorline && !&pvw | setlocal nocursorline | endif
-augroup END
 
-au TextYankPost * silent! lua vim.highlight.on_yank()
+  au TextYankPost * silent! lua vim.highlight.on_yank()
+augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -316,10 +314,10 @@ augroup myCocGroup
   autocmd!
   " Update signature help on jump placeholder
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
 
-" Highlight the symbol and its references when holding the cursor
-autocmd CursorHold * silent call CocActionAsync('highlight')
+  " Highlight the symbol and its references when holding the cursor
+  autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup end
 
 " Remap <C-f> and <C-b> for scroll float windows/popups
 nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ?
@@ -527,7 +525,9 @@ nnoremap <leader><leader> <Cmd>call <SID>GoToEditWindow()<CR>:GrepperRg
 
 " Prevent auto-resize of quickfix window
 let g:grepper.open = 0
-autocmd User Grepper botright copen
+augroup myGrepperGroup
+  autocmd User Grepper botright copen
+augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Gundo
