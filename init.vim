@@ -1,9 +1,11 @@
-let g:vimDir = stdpath('config')
+lua << EOF
+vimDir = vim.fn.stdpath('config')
 
-" lua: Covered by treesitter
-let g:polyglot_disabled = ['lua']
+-- lua: Covered by treesitter
+vim.g.polyglot_disabled = {'lua'}
 
-call plug#begin(g:vimDir . '/bundle')
+vim.fn['plug#begin'](vimDir .. '/bundle')
+EOF
 
 " Plugin manager
 Plug 'junegunn/vim-plug'
@@ -63,45 +65,52 @@ Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-user'
 
-call plug#end()
+lua vim.fn['plug#end']()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Options
+lua << EOF
+-- Colors
+vim.cmd.colorscheme('molokai')
+vim.o.termguicolors = true
 
-" Colors
-colorscheme molokai
-set termguicolors
+-- C indent options
+vim.o.cinoptions =
+  "g0" ..   -- Don't indent class scope declarations
+  "N-s" ..  -- Don't indent namespaces
+  "E-s"     -- Don't indent extern blocks
 
-" C indent options
-" Don't indent class scope declarations, namespaces, or extern blocks
-set cinoptions=g0,N-s,E-s
+-- Casing
+vim.o.ignorecase = true
+vim.o.smartcase = true
 
-" Casing
-set ignorecase        " Ignore case when searching
-set smartcase         " Consider case when an uppercase character is being used
+-- Completions
+vim.o.completeopt = "menu"
+vim.o.pumheight = 10
+vim.opt.wildmode = {"longest:full", "full"}
 
-" Completions
-set completeopt=menu
-set pumheight=10
-set wildmode=longest:full,full
+-- Display
+vim.o.number = true   -- Line numbers
+vim.o.colorcolumn = "80"
+vim.opt.listchars = {tab = [[»\ ]], trail = "·", precedes = "◄", extends = "►"}
+vim.o.list = true   -- Show invisible characters
+vim.o.cursorline = true
+vim.o.cmdheight = 2
+vim.opt.shortmess:append("c")   -- Don't give completion menu messages
+vim.o.signcolumn = "number"   -- Replace line number with diagnostic mark
+vim.o.showmode = false    -- Mode is in status line
 
-" Display
-set number            " Line numbers
-set colorcolumn=80    " Show right margin
-set listchars=tab:»\ ,trail:·,precedes:◄,extends:► " Set invisibles
-set list                                           " Show invisibles
-set cursorline
-set cmdheight=2
-set shortmess+=c
-set signcolumn=number
-set noshowmode        " Mode is in status line
-
-" File settings
-set autowriteall      " Save when switching buffers
-set noswapfile
-set undofile
-set nowritebackup
-set shada='1000,s1,h
+-- File settings
+vim.o.autowriteall = true
+vim.o.swapfile = false
+vim.o.undofile = true
+vim.o.writebackup = false
+vim.opt.shada = {
+  "'1000",  -- Max number of previously edited files whose marks are remembered
+  "s1", -- Max size of item contents in kB
+  "h"   -- Disable 'hlsearch' effect when loading shada file
+}
+EOF
 
 " Formatting
 set nowrap            " Do not wrap text
@@ -707,11 +716,13 @@ let g:vim_markdown_new_list_item_indent = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Project
-call project#rc()
-execute "silent! source " . g:vimDir . "/projects.vim"
-if argc(-1) == 0
-  Welcome
-endif
+lua << EOF
+vim.fn['project#rc']()
+vim.cmd.source(vimDir .. '/projects.vim')
+if vim.fn.argc(-1) == 0 then
+ vim.cmd.Welcome()
+end
+EOF
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Pydocstring
