@@ -34,6 +34,7 @@ Plug 'kkoomen/vim-doge', { 'do': './scripts/install.sh' }
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-endwise'
 Plug 'voldikss/vim-floaterm'
+Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-grepper'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'sheerun/vim-polyglot'
