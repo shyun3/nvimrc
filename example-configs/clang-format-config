@@ -37,7 +37,7 @@ BraceWrapping:
   AfterControlStatement: Always
   AfterEnum: true
   AfterFunction: true
-  AfterNamespace: true
+  AfterNamespace: false
   AfterStruct: true
   AfterUnion: true
   AfterExternBlock: false
@@ -103,7 +103,7 @@ MacroBlockBegin: ""
 MacroBlockEnd: ""
 Macros: []
 MaxEmptyLinesToKeep: 1
-NamespaceIndentation: All
+NamespaceIndentation: None
 NamespaceMacros: []
 PPIndentWidth: -1
 PackConstructorInitializers: BinPack
