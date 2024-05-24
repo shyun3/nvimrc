@@ -116,8 +116,6 @@ EOF
 " Formatting
 set nowrap            " Do not wrap text
 
-" Mouse
-set mouse=
 
 " Search
 set maxmempattern=5000
