@@ -20,6 +20,7 @@ Plug 'neoclide/coc.nvim', { 'branch': 'master', 'do': 'yarn install --frozen-loc
 Plug 'numToStr/Comment.nvim'
 Plug 'stevearc/conform.nvim'
 Plug 'vim-scripts/DoxygenToolkit.vim'
+Plug 'ibhagwan/fzf-lua'
 Plug 'sjl/gundo.vim'
 Plug 'phaazon/hop.nvim'
 Plug 'scrooloose/nerdtree'
@@ -51,9 +52,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'chaoren/vim-wordmotion'
 Plug 'folke/which-key.nvim'
-
-" fzf
-Plug 'ibhagwan/fzf-lua'
 
 " Dependencies
 Plug 'nvim-tree/nvim-web-devicons'
@@ -288,13 +286,13 @@ vim.keymap.set('i', '<S-Tab>',
 vim.keymap.set('i', '<C-Space>', 'coc#refresh()', {silent = true, expr = true})
 
 vim.keymap.set('i', '<CR>', function()
+    -- <C-g>u breaks current undo
     return vim.fn['coc#pum#visible']() == 1 and vim.fn['coc#pum#confirm']() or
       "<C-g>u<CR><C-r>=EndwiseDiscretionary()<CR>"
   end,
   {desc = 'Auto-select the first completion item', silent = true, expr = true})
 
-vim.keymap.set('n', '<Leader>]', '<Plug>(coc-definition)',
-  {remap = true, silent = true})
+vim.keymap.set('n', '<Leader>]', '<Plug>(coc-definition)', {silent = true})
 vim.keymap.set('n', '<Leader>v]',
   function() vim.fn.CocAction('jumpDefinition', 'vsplit') end,
   {desc = 'coc: Jump to definition, vertical split', silent = true}
@@ -304,8 +302,7 @@ vim.keymap.set('n', '<Leader>s]',
   {desc = 'coc: Jump to definition, horizontal split', silent = true}
 )
 
-vim.keymap.set('n', '<Leader>[', '<Plug>(coc-declaration)',
-  {remap = true, silent = true})
+vim.keymap.set('n', '<Leader>[', '<Plug>(coc-declaration)', {silent = true})
 vim.keymap.set('n', '<Leader>v[',
   function() vim.fn.CocAction('jumpDeclaration', 'vsplit') end,
   {desc = 'coc: Jump to declaration, vertical split', silent = true}
@@ -315,8 +312,7 @@ vim.keymap.set('n', '<Leader>s[',
   {desc = 'coc: Jump to declaration, horizontal split', silent = true}
 )
 
-vim.keymap.set('n', '<Leader>rr', '<Plug>(coc-references)',
-  {remap = true, silent = true})
+vim.keymap.set('n', '<Leader>rr', '<Plug>(coc-references)', {silent = true})
 vim.keymap.set('n', '<Leader>ri', function()
     local qf = {}
     for _, inCall in ipairs(vim.fn.CocAction('incomingCalls')) do
@@ -352,10 +348,8 @@ vim.keymap.set('n', '<Leader>ro',
   function() vim.fn.CocAction('showOutgoingCalls') end,
   {desc = 'coc: Show outgoing calls', silent = true})
 
-vim.keymap.set('n', '[g', '<Plug>(coc-diagnostic-prev)',
-  {remap = true, silent = true})
-vim.keymap.set('n', ']g', '<Plug>(coc-diagnostic-next)',
-  {remap = true, silent = true})
+vim.keymap.set('n', '[g', '<Plug>(coc-diagnostic-prev)', {silent = true})
+vim.keymap.set('n', ']g', '<Plug>(coc-diagnostic-next)', {silent = true})
 vim.keymap.set('n', '<Leader>gd', '<Cmd>CocDiagnostics<CR>')
 
 vim.keymap.set('n', 'K', function()
@@ -363,75 +357,99 @@ vim.keymap.set('n', 'K', function()
       vim.fn.CocActionAsync('doHover')
     else vim.fn.feedkeys('K', 'in') end
   end,
-  {silent = true})
+  {desc = "Hover", silent = true})
 
 vim.keymap.set('n', '<Leader>ll', '<Cmd>CocList<CR>')
 vim.keymap.set('n', '<Leader>lc', '<Cmd>CocList commands<CR>')
 
-vim.keymap.set('n', '<Leader>ca', '<Plug>(coc-codeaction)', {remap = true})
-vim.keymap.set('n', '<Leader>cx', '<Plug>(coc-fix-current)', {remap = true})
-vim.keymap.set('n', '<Leader>rn', '<Plug>(coc-rename)', {remap = true})
+vim.keymap.set('n', '<Leader>ca', '<Plug>(coc-codeaction)', {silent = true})
+vim.keymap.set('n', '<Leader>cx', '<Plug>(coc-fix-current)', {silent = true})
+vim.keymap.set('n', '<Leader>rn', '<Plug>(coc-rename)', {silent = true})
 
 vim.keymap.set('n', '<Leader>ch', '<Cmd>CocCommand document.toggleInlayHint<CR>')
 
+vim.keymap.set({'n', 'v'}, '<C-f>', function()
+    return vim.fn['coc#float#has_scroll']() == 1 and
+      vim.fn['coc#float#scroll'](1) or "<C-f>"
+  end,
+  {desc = 'coc: Scroll floating window forward', silent = true, nowait = true,
+   expr = true}
+)
+vim.keymap.set({'n', 'v'}, '<C-b>', function()
+    return vim.fn['coc#float#has_scroll']() == 1 and
+      vim.fn['coc#float#scroll'](0) or "<C-b>"
+  end,
+  {desc = 'coc: Scroll floating window backward', silent = true, nowait = true,
+   expr = true}
+)
+vim.keymap.set('i', '<C-f>', function()
+    return vim.fn['coc#float#has_scroll']() == 1 and
+      "<C-r>=coc#float#scroll(1)<CR>" or "<Right>"
+  end,
+  {desc = 'coc: Scroll floating window forward', silent = true, nowait = true,
+   expr = true}
+)
+vim.keymap.set('i', '<C-b>', function()
+    return vim.fn['coc#float#has_scroll']() == 1 and
+      "<C-r>=coc#float#scroll(0)<CR>" or "<Left>"
+  end,
+  {desc = 'coc: Scroll floating window backward', silent = true, nowait = true,
+   expr = true}
+)
+
 local myCocGroup = vim.api.nvim_create_augroup('myCocGroup', {clear = true})
 vim.api.nvim_create_autocmd('User', {
+  group = myCocGroup,
   desc = 'Update signature help on jump placeholder',
   pattern = 'CocJumpPlaceholder',
   callback = function() vim.fn.CocActionAsync('showSignatureHelp') end
 })
-EOF
 
-" Remap <C-f> and <C-b> for scroll float windows/popups
-nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ?
-  \ coc#float#scroll(1) : "\<C-f>"
-nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ?
-  \ coc#float#scroll(0) : "\<C-b>"
-inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ?
-  \ "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ?
-  \ "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ?
-  \ coc#float#scroll(1) : "\<C-f>"
-vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ?
-  \ coc#float#scroll(0) : "\<C-b>"
+vim.api.nvim_create_user_command('CheckHighlightUnderCursor', function()
+    local line = vim.fn.line('.')
+    local col = vim.fn.col('.')
+    local mode = "name"
 
-function! s:CheckHighlight(lineNum, colNum)
-    let mode = "name"
+    -- Highest highlighting group: name of syntax keyword, match or region
+    local hi = vim.fn.synIDattr(vim.fn.synID(line, col, 1), mode)
 
-    " Highest highlighting group: name of syntax keyword, match or region
-    let hi = synIDattr(synID(a:lineNum, a:colNum, 1), mode)
+    -- For transparent groups, the group it's in
+    local trans = vim.fn.synIDattr(vim.fn.synID(line, col, 0), mode)
 
-    " For transparent groups, the group it's in
-    let trans = synIDattr(synID(a:lineNum, a:colNum, 0), mode)
+    -- Lowest group: basic highlighting spec such as a default highlighting group
+    local lo = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.synID(line, col, 1)), mode)
 
-    " Lowest group: basic highlighting spec such as a default highlighting group
-    let lo = synIDattr(synIDtrans(synID(a:lineNum, a:colNum, 1)), mode)
+    vim.api.nvim_echo({{string.format('hi<%s> trans<%s> lo<%s>', hi, trans, lo)}},
+      false, {})
+    if vim.fn.CocHasProvider('semanticTokens') then
+      vim.cmd.CocCommand('semanticTokens.inspect')
+    end
+  end,
+  {}
+)
 
-    echo 'hi<' . hi . '> ' . 'trans<' . trans . '> ' . 'lo<' . lo . '> '
-    CocCommand semanticTokens.inspect
-endfunction
+vim.cmd.highlight('link CocSemTypeMacro Macro')
+vim.cmd.highlight('link CocSemTypeVariable NONE')
+vim.cmd.highlight('link CocSemTypeEnumMember Constant')
+vim.cmd.highlight('link CocSemTypeKeyword NONE')
 
-command! CheckHighlightUnderCursor call <SID>CheckHighlight(line('.'), col('.'))
+-- For Python packages in import statement
+vim.cmd.highlight('link CocSemTypeNamespace NONE')
 
-hi link CocSemTypeMacro Macro
-hi link CocSemTypeVariable NONE
-hi link CocSemTypeEnumMember Constant
-hi link CocSemTypeKeyword NONE
-hi link CocSemTypeNamespace NONE  " For Python packages in import statement
-hi link CocSemTypeParameter NONE
-hi link CocSemTypeTypeParameter NONE  " For Python function parameter type hints
+vim.cmd.highlight('link CocSemTypeParameter NONE')
 
-" Taken from coc.vim
-hi CocMenuSel ctermbg=237 guibg=#13354A
+-- For Python function parameter type hints
+vim.cmd.highlight('link CocSemTypeTypeParameter NONE')
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Comment.nvim
-lua require('Comment').setup()
+-- Taken from coc.vim
+vim.cmd.highlight('CocMenuSel ctermbg=237 guibg=#13354A')
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" conform.nvim
-lua << EOF
+-------------------------------------------------------------------------------
+-- Comment.nvim
+require('Comment').setup()
+
+-------------------------------------------------------------------------------
+-- conform.nvim
 require'conform'.setup{
   formatters = {
     ["clang-format"] = {
@@ -476,32 +494,25 @@ function format_range_operator()
   vim.api.nvim_feedkeys('g@', 'n', false)
 end
 
-vim.keymap.set({"n", "x"}, "<leader>gf",
-  "<cmd>lua format_range_operator()<CR>",
-  {noremap = true, desc = "Format selection"})
-EOF
+vim.keymap.set({"n", "x"}, "<Leader>gf", format_range_operator,
+  {desc = "Format selection", silent = true})
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" DoGe
-let g:doge_doc_standard_python = 'google'
-let g:doge_comment_jump_modes = ['n', 's']
+-------------------------------------------------------------------------------
+-- DoGe
+vim.g.doge_doc_standard_python = 'google'
+vim.g.doge_comment_jump_modes = {'n', 's'}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" endwise
-let g:endwise_no_mappings = 1
+-------------------------------------------------------------------------------
+-- endwise
+vim.g.endwise_no_mappings = 1
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" floaterm
-lua << EOF
+-------------------------------------------------------------------------------
+-- floaterm
 vim.keymap.set("n", "<leader>lg",
-  "<Cmd>FloatermNew --height=0.9 --width=0.9 --title=lazygit lazygit<CR>",
-  {noremap = true, desc = "Launch lazygit"})
-EOF
+  "<Cmd>FloatermNew --height=0.9 --width=0.9 --title=lazygit lazygit<CR>")
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" fzf-lua
-
-lua << EOF
+-------------------------------------------------------------------------------
+-- fzf-lua
 require('fzf-lua').setup {
   preview_layout = 'vertical',
   default_previewer = 'bat',
@@ -526,44 +537,62 @@ require('fzf-lua').setup {
     git_icons = false,
   },
 }
-EOF
 
-" Go to an editable window
-" Derived from ctrlp#normcmd()
-function! s:GoToEditWindow()
-  let invalidBufTypes = ['quickfix', 'help', 'nofile', 'terminal']
-  if index(invalidBufTypes, &l:buftype) == -1
-    return
-  endif
+-- Derived from ctrlp#normcmd()
+function go_to_editable_window()
+  local invalidBufTypes = {'quickfix', 'help', 'nofile', 'terminal'}
+  if not vim.tbl_contains(invalidBufTypes, vim.bo.buftype) then return end
 
-  let editWins = filter(range(1, winnr('$')),
-    \ 'index(invalidBufTypes, getbufvar(winbufnr(v:val), "&buftype")) == -1')
-  for winNum in editWins
-    let bufNum = winbufnr(winNum)
-    if empty(bufname(bufNum)) && empty(getbufvar(bufNum, '&filetype'))
-      let tmpWin = winNum
+  local editWins = vim.tbl_filter(function(winNum)
+      local buf = vim.fn.winbufnr(winNum)
+      return not vim.list_contains(invalidBufTypes, vim.bo[buf].buftype)
+    end,
+    vim.tbl_map(vim.api.nvim_win_get_number, vim.api.nvim_tabpage_list_wins(0)))
+  for _, winNum in ipairs(editWins) do
+    local bufNum = vim.fn.winbufnr(winNum)
+    if vim.fn.bufname(bufNum) == '' and vim.bo[bufNum].filetype == '' then
+      tmpWin = winNum
       break
-    endif
-  endfor
+    end
+  end
 
-  let cwd = getcwd()
-  if !empty(editWins)
-    if index(editWins, winnr()) < 0
-      execute (exists('tmpWin') ? tmpWin : editWins[0]) . 'wincmd w'
-    endif
-  else
-    botright vnew
-  endif
+  local cwd = vim.fn.getcwd()
+  if #editWins > 0 then
+    if not vim.list_contains(editWins, vim.fn.winnr()) then
+      vim.cmd((tmpWin or editWins[1]) .. 'wincmd w')
+    end
+  else vim.cmd.botright('vnew')
+  end
 
-  execute 'lcd ' . cwd
-endfunction
+  vim.cmd.lcd(cwd)
+end
 
-" This is to ensure that FzfLua files is called with the correct current
-" directory.
-function! s:FzfLuaFiles()
-  silent call <SID>GoToEditWindow()
-  silent execute 'FzfLua files cwd=' . getcwd()
-endfunction
+vim.keymap.set('n', '<C-p>', function()
+    go_to_editable_window()
+    require'fzf-lua'.files{cwd = vim.fn.getcwd()}
+  end,
+  {desc = 'fzf-lua: Files', silent = true})
+vim.keymap.set('n', '<C-q>', function()
+    go_to_editable_window()
+    require'fzf-lua'.files{cwd = vim.fn.expand('%:p:h')}
+  end,
+  {desc = 'fzf-lua: Files in current file directory', silent = true})
+vim.keymap.set('n', [[<C-\>]], function()
+    go_to_editable_window()
+    require'fzf-lua'.buffers()
+  end,
+  {desc = 'fzf-lua: Buffers', silent = true})
+vim.keymap.set('n', '<A-p>', function()
+    go_to_editable_window()
+    require'fzf-lua'.oldfiles()
+  end,
+  {desc = 'fzf-lua: Old files', silent = true})
+vim.keymap.set('n', '<C-h>', function()
+    go_to_editable_window()
+    require'fzf-lua'.tags()
+  end,
+  {desc = 'fzf-lua: Tags', silent = true})
+EOF
 
 " FzfLua btags by default uses an existing tags file. This function generates
 " the latest tags for the current file.
@@ -577,11 +606,6 @@ function! s:FzfLuaBTags()
   silent execute 'FzfLua btags ctags_file=' . tmp . ' cwd=' . cwd
 endfunction
 
-nnoremap <C-p> <Cmd>call <SID>FzfLuaFiles()<CR>
-nnoremap <C-q> <Cmd>call <SID>GoToEditWindow()<CR><Cmd>FzfLua files cwd=%:p:h<CR>
-nnoremap <C-\> <Cmd>call <SID>GoToEditWindow()<CR><Cmd>FzfLua buffers<CR>
-nnoremap <A-p> <Cmd>call <SID>GoToEditWindow()<CR><Cmd>FzfLua oldfiles<CR>
-nnoremap <C-h> <Cmd>call <SID>GoToEditWindow()<CR><Cmd>FzfLua tags<CR>
 nnoremap <C-k> <Cmd>call <SID>FzfLuaBTags()<CR>
 nnoremap <C-j> <Cmd>FzfLua blines show_unlisted=true<CR>
 nnoremap <leader>f <Cmd>FzfLua builtin<CR>
