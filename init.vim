@@ -22,7 +22,7 @@ Plug 'stevearc/conform.nvim'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'ibhagwan/fzf-lua'
 Plug 'sjl/gundo.vim'
-Plug 'phaazon/hop.nvim'
+Plug 'smoka7/hop.nvim', {'tag': 'v2.*.*'}
 Plug 'scrooloose/nerdtree'
 Plug 'kevinhwang91/nvim-bqf'
 Plug 'davidgranstrom/nvim-markdown-preview'
@@ -663,88 +663,58 @@ let g:gutentags_define_advanced_commands = 1
 lua << EOF
 require'hop'.setup()
 
--- Like `hop.jump_target.regex_by_line_start_skip_whitespace()` except it also
+-- Like `hop.jump_regex.regex_by_line_start_skip_whitespace()` except it also
 -- marks empty or whitespace only lines
 local function regexLines()
   return {
     oneshot = true,
     match = function(str)
-      return vim.regex("\\v(\\S|.$)"):match_str(str) or 0, 1
+      return vim.regex([[\v(\S|.$)]]):match_str(str) or 0, 1
     end
   }
 end
 
 -- Like `:HopLineStart` except it also jumps to empty or whitespace only lines
 function hintLines()
-  local gen = require'hop.jump_target'.jump_targets_by_scanning_lines
+  local gen = require'hop.jump_target'.jump_target_generator
   require'hop'.hint_with(gen(regexLines()), require'hop'.opts)
 end
 
--- Derived from `hop.hint_with()`
-local function hintWithTill(jump_target_gtr)
-  require'hop'.hint_with_callback(jump_target_gtr, require'hop'.opts,
-    function(jt)
-      local jumpLine = jt.line + 1
-      local jumpCol = jt.column - 1
+function move_cursor_till(jt)
+  local jumpLine = jt.cursor.row
+  local jumpCol = jt.cursor.col
 
-      local curPos = vim.api.nvim_win_get_cursor(0)
-      local row = curPos[1]
-      local col = curPos[2]
+  local curPos = vim.api.nvim_win_get_cursor(0)
+  local row = curPos[1]
+  local col = curPos[2]
 
-      local hintOffset
-      if row > jumpLine or (row == jumpLine and col > jumpCol) then
-        hintOffset = 1
-      else
-        hintOffset = -1
-      end
-
-      require'hop'.move_cursor_to(jt.window, jumpLine, jumpCol, hintOffset)
-    end)
-end
-
--- Derived from `hop.get_input_pattern()`
-local function getInputChar(prompt)
-  local K_Esc = vim.api.nvim_replace_termcodes('<Esc>', true, false, true)
-  local K_BS = vim.api.nvim_replace_termcodes('<BS>', true, false, true)
-  local K_CR = vim.api.nvim_replace_termcodes('<CR>', true, false, true)
-  local key = ''
-
-  vim.api.nvim_echo({}, false, {})
-  vim.cmd('redraw')
-  vim.api.nvim_echo({{prompt, 'Question'}, {key}}, false, {})
-
-  local ok, key = pcall(vim.fn.getchar)
-  if not ok then return key end -- Interrupted by <C-c>
-
-  if type(key) == 'number' then
-    key = vim.fn.nr2char(key)
-  elseif key:byte() == 128 then
-    -- It's a special key in string
+  local hintOffset
+  if row > jumpLine or (row == jumpLine and col > jumpCol) then
+    hintOffset = 1
+  else
+    hintOffset = -1
   end
 
-  if key == K_Esc or key == K_CR or key == K_BS then
-    key = nil
-  end
-
-  vim.api.nvim_echo({}, false, {})
-  vim.cmd('redraw')
-  return key
+  local HintDirection = require'hop.hint'.HintDirection
+  require'hop'.move_cursor_to(jt, {
+    direction = hintOffset == 1 and HintDirection.AFTER_CURSOR or
+      HintDirection.BEFORE_CURSOR,
+    hint_offset = hintOffset})
 end
 
 -- Derived from `hop.hint_char1()`
 function hintTill1()
-  local opts = require'hop'.opts
+  local hop = require'hop'
+  local opts = hop.opts
 
-  local c = getInputChar('Till 1 char: ')
+  local c = hop.get_input_pattern('Till 1 char: ', 1)
   if not c then
     return
   end
 
-  local generator = require'hop.jump_target'.jump_targets_by_scanning_lines
-  hintWithTill(
-    generator(require'hop.jump_target'.regex_by_case_searching(c, true, opts)),
-    opts
-  )
+  hop.hint_with_regex(
+    require'hop.jump_regex'.regex_by_case_searching(c, true, opts), opts,
+    move_cursor_till)
 end
 EOF
 
