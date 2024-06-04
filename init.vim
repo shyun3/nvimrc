@@ -22,11 +22,11 @@ Plug 'stevearc/conform.nvim'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'ibhagwan/fzf-lua'
 Plug 'sjl/gundo.vim'
-Plug 'smoka7/hop.nvim', {'tag': 'v2.*.*'}
+Plug 'smoka7/hop.nvim', { 'tag': 'v2.*.*' }
 Plug 'scrooloose/nerdtree'
 Plug 'kevinhwang91/nvim-bqf'
 Plug 'davidgranstrom/nvim-markdown-preview'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'yssl/QFEnter'
 Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
@@ -705,8 +705,7 @@ end
 
 -- Like `:HopLineStart` except it also jumps to empty or whitespace only lines
 function hintLines()
-  local gen = require'hop.jump_target'.jump_target_generator
-  require'hop'.hint_with(gen(regexLines()), require'hop'.opts)
+  require'hop'.hint_with_regex(regexLines(), require'hop'.opts)
 end
 
 function move_cursor_till(jt)
@@ -752,22 +751,19 @@ vim.keymap.set('', '<Enter>', '<Cmd>HopChar1<CR>')
 
 -- See `:h forced-motion` for usages of `v` and `V` in operator pending mode
 vim.keymap.set({'n', 'v'}, '+', hintTill1, {desc = 'Hop till character'})
-vim.keymap.set('o', '+', 'v:lua hintTill1()<CR>', {desc = 'Hop till character'})
+vim.keymap.set('o', '+', 'v<Cmd>lua hintTill1()<CR>', {desc = 'Hop till character'})
 
 vim.keymap.set({'n', 'v'}, '_', hintLines, {desc = 'Hop to line'})
-vim.keymap.set('o', '_', 'V:lua hintLines()<CR>')
-EOF
+vim.keymap.set('o', '_', 'V<Cmd>lua hintLines()<CR>', {desc = 'Hop to line'})
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" NERD Tree
-nnoremap <C-n> <Cmd>NERDTreeFocus<CR>
-nnoremap <A-n> <Cmd>NERDTreeFind<CR>
-nnoremap <leader>n <Cmd>NERDTree<CR>
+-------------------------------------------------------------------------------
+-- NERD Tree
+vim.keymap.set('n', '<C-n>', '<Cmd>NERDTreeFocus<CR>')
+vim.keymap.set('n', '<A-n>', '<Cmd>NERDTreeFind<CR>')
+vim.keymap.set('n', '<Leader>n', '<Cmd>NERDTree<CR>')
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" nvim-bqf
-
-lua << EOF
+-------------------------------------------------------------------------------
+-- nvim-bqf
 require('bqf').setup{
   preview = {
     should_preview_cb = function(bufnr, qwinid)
@@ -790,45 +786,41 @@ require('bqf').setup{
     vsplit = '<C-x><C-v>',
   },
 }
-EOF
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" nvim-colorizer
-lua require'colorizer'.setup({'*'}, {names = false})
+-------------------------------------------------------------------------------
+-- nvim-colorizer
+require'colorizer'.setup({'*'}, {names = false})
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" polyglot
+-------------------------------------------------------------------------------
+-- polyglot
 
-" vim-cpp-modern
-hi link cppSTLios NONE  " Turn off STL I/O manipulators highlighting
-hi link cppSTLconstant NONE   " Turn off C++17 constants
-hi link cppSTLtype NONE       " Turn off C++17 STL types
-hi link cppSTLconcept NONE    " Turn off C++20 concepts
+-- vim-cpp-modern
+vim.cmd.highlight('link cppSTLios NONE')  -- STL I/O manipulators
+vim.cmd.highlight('link cppSTLconstant NONE')   -- C++17 constants
+vim.cmd.highlight('link cppSTLtype NONE')   -- C++17 STL types
+vim.cmd.highlight('link cppSTLconcept NONE')  -- C++20 concepts
 
-" vim-markdown
-let g:vim_markdown_auto_insert_bullets = 0
-let g:vim_markdown_new_list_item_indent = 0
+-- vim-markdown
+vim.g.vim_markdown_auto_insert_bullets = 0
+vim.g.vim_markdown_new_list_item_indent = 0
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Project
-lua << EOF
+-------------------------------------------------------------------------------
+-- Project
 vim.fn['project#rc']()
 vim.cmd.source(vimDir .. '/projects.vim')
 if vim.fn.argc(-1) == 0 then
  vim.cmd.Welcome()
 end
+
+-------------------------------------------------------------------------------
+-- Pydocstring
+vim.g.pydocstring_formatter = 'google'
+vim.g.pydocstring_enable_mapping = 0
+
+-------------------------------------------------------------------------------
+-- QFEnter
+vim.g.qfenter_keymap = {vopen = {'<C-v>'}, hopen = {'<C-s>'}}
 EOF
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pydocstring
-let g:pydocstring_formatter = 'google'
-let g:pydocstring_enable_mapping = 0
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" QFEnter
-let g:qfenter_keymap = {}
-let g:qfenter_keymap.vopen = ['<C-v>']
-let g:qfenter_keymap.hopen = ['<C-s>']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Search pulse
