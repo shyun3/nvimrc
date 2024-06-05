@@ -820,34 +820,32 @@ vim.g.pydocstring_enable_mapping = 0
 -------------------------------------------------------------------------------
 -- QFEnter
 vim.g.qfenter_keymap = {vopen = {'<C-v>'}, hopen = {'<C-s>'}}
-EOF
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Search pulse
-let g:vim_search_pulse_mode = 'pattern'
-let g:vim_search_pulse_disable_auto_mappings = 1
+-------------------------------------------------------------------------------
+-- Search pulse
+vim.g.vim_search_pulse_mode = 'pattern'
+vim.g.vim_search_pulse_disable_auto_mappings = 1
 
-map * <Plug>(asterisk-*)<Plug>Pulse
-map # <Plug>(asterisk-#)<Plug>Pulse
-map g* <Plug>(asterisk-g*)<Plug>Pulse
-map g# <Plug>(asterisk-g#)<Plug>Pulse
-map z*  <Plug>(asterisk-z*)<Plug>Pulse
-map gz* <Plug>(asterisk-gz*)<Plug>Pulse
-map z#  <Plug>(asterisk-z#)<Plug>Pulse
-map gz# <Plug>(asterisk-gz#)<Plug>Pulse
+local asterisk_keys = {'*', '#', 'g*', 'g#', 'z*', 'gz*', 'z#', 'gz#'}
+for _, key in ipairs(asterisk_keys) do
+  vim.keymap.set('', key, string.format('<Plug>(asterisk-%s)<Plug>Pulse', key))
+end
 
-nmap n n<Plug>Pulse
-nmap N N<Plug>Pulse
+vim.keymap.set('n', 'n', 'n<Plug>Pulse')
+vim.keymap.set('n', 'N', 'N<Plug>Pulse')
 
-" Pulse when doing search with / or ?
-runtime autoload/search_pulse.vim
-if exists('*search_pulse#PulseFirst')
-  cmap <silent> <expr> <enter> search_pulse#PulseFirst()
-endif
+vim.keymap.set('c', '<Enter>', function()
+    -- Derived from `search_pulse#PulseFirst`
+    local cmd_type = vim.fn.getcmdtype()
+    if vim.fn.state() ~= 'o' and (cmd_type == '/' or cmd_type == '?') then
+      return '<CR><Cmd>call search_pulse#Pulse()<CR>'
+    else return '<CR>'
+    end
+  end,
+  {desc = 'Pulse when searching', expr = true})
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" treesitter
-lua << EOF
+-------------------------------------------------------------------------------
+-- treesitter
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
   ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
@@ -882,29 +880,27 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
+
+-------------------------------------------------------------------------------
+-- Tagbar
+vim.g.tagbar_autofocus = 1    -- Move to Tagbar window when opened
+vim.g.tagbar_sort = 0
+
+vim.keymap.set('n', '<A-t>', '<Cmd>TagbarToggle<CR>')
+
+-------------------------------------------------------------------------------
+-- which-key
+require"which-key".setup{}
+
+-------------------------------------------------------------------------------
+-- wordmotion
+vim.g.wordmotion_nomap = 1
+
+local wordmotion_keys = {'w', 'e', 'b', 'ge'}
+for _, key in ipairs(wordmotion_keys) do
+  vim.keymap.set('', '<Leader>' .. key, '<Plug>WordMotion_' .. key)
+end
+
+vim.keymap.set({'o', 'v'}, 'i<Leader>w', '<Plug>WordMotion_iw')
+vim.keymap.set({'o', 'v'}, 'a<Leader>w', '<Plug>WordMotion_aw')
 EOF
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Tagbar
-let g:tagbar_autofocus = 1    " Move to Tagbar window when opened
-let g:tagbar_sort = 0
-nmap <silent> <A-t> :TagbarToggle<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" which-key
-lua require"which-key".setup{}
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" wordmotion
-let g:wordmotion_nomap = 1
-
-map <leader>w <Plug>WordMotion_w
-map <leader>e <Plug>WordMotion_e
-map <leader>b <Plug>WordMotion_b
-map <leader>ge <Plug>WordMotion_ge
-
-omap i<leader>w <Plug>WordMotion_iw
-vmap i<leader>w <Plug>WordMotion_iw
-
-omap a<leader>w <Plug>WordMotion_aw
-vmap a<leader>w <Plug>WordMotion_aw
