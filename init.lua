@@ -1,4 +1,3 @@
-lua << EOF
 vimDir = vim.fn.stdpath('config')
 
 -- lua: Covered by treesitter
@@ -6,65 +5,63 @@ vimDir = vim.fn.stdpath('config')
 vim.g.polyglot_disabled = {'lua', 'sensible'}
 
 vim.fn['plug#begin'](vimDir .. '/bundle')
-EOF
 
-" Plugin manager
-Plug 'junegunn/vim-plug'
+-- Plugin manager
+vim.cmd.Plug([['junegunn/vim-plug']])
 
-" GUI
-Plug 'tomasr/molokai'
-Plug 'norcalli/nvim-colorizer.lua'
+-- GUI
+vim.cmd.Plug([['tomasr/molokai']])
+vim.cmd.Plug([['norcalli/nvim-colorizer.lua']])
 
-" Plugins
-Plug 'neoclide/coc.nvim', { 'branch': 'master', 'do': 'yarn install --frozen-lockfile' }
-Plug 'numToStr/Comment.nvim'
-Plug 'stevearc/conform.nvim'
-Plug 'vim-scripts/DoxygenToolkit.vim'
-Plug 'ibhagwan/fzf-lua'
-Plug 'sjl/gundo.vim'
-Plug 'smoka7/hop.nvim', { 'tag': 'v2.*.*' }
-Plug 'scrooloose/nerdtree'
-Plug 'kevinhwang91/nvim-bqf'
-Plug 'davidgranstrom/nvim-markdown-preview'
-Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-Plug 'yssl/QFEnter'
-Plug 'majutsushi/tagbar'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'haya14busa/vim-asterisk'
-Plug 'shyun3/vim-cmake-lists'
-Plug 'ryanoasis/vim-devicons'
-Plug 'kkoomen/vim-doge', { 'do': './scripts/install.sh' }
-Plug 'junegunn/vim-easy-align'
-Plug 'tpope/vim-endwise'
-Plug 'voldikss/vim-floaterm'
-Plug 'tpope/vim-fugitive'
-Plug 'mhinz/vim-grepper'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'sheerun/vim-polyglot'
-Plug 'amiorin/vim-project'
-Plug 'tpope/vim-projectionist'
-Plug 'jeetsukumaran/vim-pythonsense'
-Plug 'tpope/vim-repeat'
-Plug 'inside/vim-search-pulse'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-vinegar'
-Plug 'chaoren/vim-wordmotion'
-Plug 'folke/which-key.nvim'
+-- Plugins
+vim.cmd.Plug([['neoclide/coc.nvim', { 'branch': 'master', 'do': 'yarn install --frozen-lockfile' }]])
+vim.cmd.Plug([['numToStr/Comment.nvim']])
+vim.cmd.Plug([['stevearc/conform.nvim']])
+vim.cmd.Plug([['vim-scripts/DoxygenToolkit.vim']])
+vim.cmd.Plug([['ibhagwan/fzf-lua']])
+vim.cmd.Plug([['sjl/gundo.vim']])
+vim.cmd.Plug([['smoka7/hop.nvim', { 'tag': 'v2.*.*' }]])
+vim.cmd.Plug([['scrooloose/nerdtree']])
+vim.cmd.Plug([['kevinhwang91/nvim-bqf']])
+vim.cmd.Plug([['davidgranstrom/nvim-markdown-preview']])
+vim.cmd.Plug([['nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }]])
+vim.cmd.Plug([['yssl/QFEnter']])
+vim.cmd.Plug([['majutsushi/tagbar']])
+vim.cmd.Plug([['vim-airline/vim-airline']])
+vim.cmd.Plug([['vim-airline/vim-airline-themes']])
+vim.cmd.Plug([['haya14busa/vim-asterisk']])
+vim.cmd.Plug([['shyun3/vim-cmake-lists']])
+vim.cmd.Plug([['ryanoasis/vim-devicons']])
+vim.cmd.Plug([['kkoomen/vim-doge', { 'do': './scripts/install.sh' }]])
+vim.cmd.Plug([['junegunn/vim-easy-align']])
+vim.cmd.Plug([['tpope/vim-endwise']])
+vim.cmd.Plug([['voldikss/vim-floaterm']])
+vim.cmd.Plug([['tpope/vim-fugitive']])
+vim.cmd.Plug([['mhinz/vim-grepper']])
+vim.cmd.Plug([['ludovicchabant/vim-gutentags']])
+vim.cmd.Plug([['sheerun/vim-polyglot']])
+vim.cmd.Plug([['amiorin/vim-project']])
+vim.cmd.Plug([['tpope/vim-projectionist']])
+vim.cmd.Plug([['jeetsukumaran/vim-pythonsense']])
+vim.cmd.Plug([['tpope/vim-repeat']])
+vim.cmd.Plug([['inside/vim-search-pulse']])
+vim.cmd.Plug([['tpope/vim-surround']])
+vim.cmd.Plug([['tpope/vim-unimpaired']])
+vim.cmd.Plug([['tpope/vim-vinegar']])
+vim.cmd.Plug([['chaoren/vim-wordmotion']])
+vim.cmd.Plug([['folke/which-key.nvim']])
 
-" Dependencies
-Plug 'nvim-tree/nvim-web-devicons'
-Plug 'nvim-lua/plenary.nvim'
+-- Dependencies
+vim.cmd.Plug([['nvim-tree/nvim-web-devicons']])
+vim.cmd.Plug([['nvim-lua/plenary.nvim']])
 
-" Text objects
-Plug 'wellle/targets.vim'
-Plug 'glts/vim-textobj-comment'
-Plug 'kana/vim-textobj-entire'
-Plug 'kana/vim-textobj-indent'
-Plug 'kana/vim-textobj-user'
+-- Text objects
+vim.cmd.Plug([['wellle/targets.vim']])
+vim.cmd.Plug([['glts/vim-textobj-comment']])
+vim.cmd.Plug([['kana/vim-textobj-entire']])
+vim.cmd.Plug([['kana/vim-textobj-indent']])
+vim.cmd.Plug([['kana/vim-textobj-user']])
 
-lua << EOF
 vim.fn['plug#end']()
 
 -------------------------------------------------------------------------------
@@ -903,4 +900,3 @@ end
 
 vim.keymap.set({'o', 'v'}, 'i<Leader>w', '<Plug>WordMotion_iw')
 vim.keymap.set({'o', 'v'}, 'a<Leader>w', '<Plug>WordMotion_aw')
-EOF
