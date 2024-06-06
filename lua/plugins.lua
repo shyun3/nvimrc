@@ -19,4 +19,10 @@ return {
       { "<Leader>n", "<Cmd>NERDTree<CR>" },
     },
   },
+
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    opts = {},
+  },
 }
