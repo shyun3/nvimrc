@@ -1,30 +1,17 @@
-vimDir = vim.fn.stdpath("config")
-
 -- lua: Covered by treesitter
 -- sensible: Do not update vim settings
 vim.g.polyglot_disabled = { "lua", "sensible" }
 
 --[=[
-vim.fn["plug#begin"](vimDir .. "/bundle")
-
--- Plugin manager
-vim.cmd.Plug([['junegunn/vim-plug']])
-
--- GUI
-vim.cmd.Plug([['norcalli/nvim-colorizer.lua']])
 
 -- Plugins
 vim.cmd.Plug(
   [['neoclide/coc.nvim', { 'branch': 'master', 'do': 'yarn install --frozen-lockfile' }]]
 )
-vim.cmd.Plug([['vim-scripts/DoxygenToolkit.vim']])
 vim.cmd.Plug([['ibhagwan/fzf-lua']])
-vim.cmd.Plug([['sjl/gundo.vim']])
 vim.cmd.Plug([['smoka7/hop.nvim', { 'tag': 'v2.*.*' }]])
 vim.cmd.Plug([['kevinhwang91/nvim-bqf']])
-vim.cmd.Plug([['davidgranstrom/nvim-markdown-preview']])
 vim.cmd.Plug([['nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }]])
-vim.cmd.Plug([['yssl/QFEnter']])
 vim.cmd.Plug([['majutsushi/tagbar']])
 vim.cmd.Plug([['vim-airline/vim-airline']])
 vim.cmd.Plug([['vim-airline/vim-airline-themes']])
@@ -34,7 +21,6 @@ vim.cmd.Plug([['ryanoasis/vim-devicons']])
 vim.cmd.Plug([['kkoomen/vim-doge', { 'do': './scripts/install.sh' }]])
 vim.cmd.Plug([['junegunn/vim-easy-align']])
 vim.cmd.Plug([['tpope/vim-endwise']])
-vim.cmd.Plug([['voldikss/vim-floaterm']])
 vim.cmd.Plug([['tpope/vim-fugitive']])
 vim.cmd.Plug([['ludovicchabant/vim-gutentags']])
 vim.cmd.Plug([['sheerun/vim-polyglot']])
@@ -42,9 +28,6 @@ vim.cmd.Plug([['tpope/vim-projectionist']])
 vim.cmd.Plug([['jeetsukumaran/vim-pythonsense']])
 vim.cmd.Plug([['tpope/vim-repeat']])
 vim.cmd.Plug([['inside/vim-search-pulse']])
-vim.cmd.Plug([['tpope/vim-surround']])
-vim.cmd.Plug([['tpope/vim-unimpaired']])
-vim.cmd.Plug([['tpope/vim-vinegar']])
 vim.cmd.Plug([['chaoren/vim-wordmotion']])
 
 -- Dependencies
@@ -58,7 +41,6 @@ vim.cmd.Plug([['kana/vim-textobj-entire']])
 vim.cmd.Plug([['kana/vim-textobj-indent']])
 vim.cmd.Plug([['kana/vim-textobj-user']])
 
-vim.fn["plug#end"]()
 ]=]
 
 require("options")
@@ -506,14 +488,6 @@ vim.g.doge_comment_jump_modes = { "n", "s" }
 vim.g.endwise_no_mappings = 1
 
 -------------------------------------------------------------------------------
--- floaterm
-vim.keymap.set(
-  "n",
-  "<leader>lg",
-  "<Cmd>FloatermNew --height=0.9 --width=0.9 --title=lazygit lazygit<CR>"
-)
-
--------------------------------------------------------------------------------
 -- fzf-lua
 require("fzf-lua").setup({
   preview_layout = "vertical",
@@ -582,10 +556,6 @@ vim.keymap.set("n", "<Leader>/", "<Cmd>FzfLua search_history<CR>")
 vim.keymap.set("n", "<Leader>h", "<Cmd>FzfLua help_tags<CR>")
 vim.keymap.set("n", "<Leader>x", "<Cmd>FzfLua commands<CR>")
 vim.keymap.set("n", "<Leader>cf", "<Cmd>FzfLua quickfix<CR>")
-
--------------------------------------------------------------------------------
--- Gundo
-vim.g.gundo_prefer_python3 = 1
 
 -------------------------------------------------------------------------------
 -- Gutentags
@@ -724,10 +694,6 @@ require("bqf").setup({
 })
 
 -------------------------------------------------------------------------------
--- nvim-colorizer
-require("colorizer").setup({ "*" }, { names = false })
-
--------------------------------------------------------------------------------
 -- polyglot
 
 -- vim-cpp-modern
@@ -744,10 +710,6 @@ vim.g.vim_markdown_new_list_item_indent = 0
 -- Pydocstring
 vim.g.pydocstring_formatter = "google"
 vim.g.pydocstring_enable_mapping = 0
-
--------------------------------------------------------------------------------
--- QFEnter
-vim.g.qfenter_keymap = { vopen = { "<C-v>" }, hopen = { "<C-s>" } }
 
 -------------------------------------------------------------------------------
 -- Search pulse
