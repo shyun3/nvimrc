@@ -7,8 +7,6 @@ vim.cmd.Plug(
 vim.cmd.Plug([['kevinhwang91/nvim-bqf']])
 vim.cmd.Plug([['nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }]])
 vim.cmd.Plug([['majutsushi/tagbar']])
-vim.cmd.Plug([['vim-airline/vim-airline']])
-vim.cmd.Plug([['vim-airline/vim-airline-themes']])
 vim.cmd.Plug([['haya14busa/vim-asterisk']])
 vim.cmd.Plug([['shyun3/vim-cmake-lists']])
 vim.cmd.Plug([['kkoomen/vim-doge', { 'do': './scripts/install.sh' }]])
@@ -35,29 +33,6 @@ require("lazy-setup")
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 -- Plugin specific settings
-
--------------------------------------------------------------------------------
--- Airline
-vim.g.airline_theme = "molokai"
-vim.g.airline_powerline_fonts = 1
-
-vim.g.airline_section_error =
-  "%{airline#util#wrap(airline#extensions#coc#get_error(),0)}"
-vim.g.airline_section_warning =
-  "%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}"
-
-vim.g["airline#extensions#whitespace#enabled"] = 0 -- Whitespace error detection
-vim.g["airline#extensions#tagbar#enabled"] = 0
-
-vim.g["airline#extensions#tabline#enabled"] = 1
-vim.g["airline#extensions#tabline#formatter"] = "uniq_tail_or_proj"
-vim.g["airline#extensions#tabline#fnamemod"] = ":t" -- Default tab name formatter
-vim.g["airline#extensions#tabline#fnamecollapse"] = 0 -- Short parent names in tabs
-vim.g["airline#extensions#tabline#tab_nr_type"] = 1
-vim.g["airline#extensions#tabline#show_close_button"] = 0
-vim.g["airline#extensions#tabline#show_splits"] = 0
-vim.g["airline#extensions#tabline#show_buffers"] = 0
-vim.g["airline#extensions#tabline#show_tab_type"] = 0
 
 -------------------------------------------------------------------------------
 -- Asterisk
