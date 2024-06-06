@@ -1,10 +1,12 @@
 return {
   "sheerun/vim-polyglot",
+
   init = function()
     -- lua: Covered by treesitter
     -- sensible: Do not update vim settings
     vim.g.polyglot_disabled = { "lua", "sensible" }
   end,
+
   config = function()
     -- polyglot sets this variable, which prevents loading of `filetype.lua`
     vim.g.did_load_filetypes = nil

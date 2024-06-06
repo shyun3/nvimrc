@@ -1,6 +1,7 @@
 return {
   "ibhagwan/fzf-lua",
   dependencies = { "nvim-tree/nvim-web-devicons" },
+
   opts = {
     preview_layout = "vertical",
     default_previewer = "bat",
@@ -25,6 +26,7 @@ return {
       git_icons = false,
     },
   },
+
   keys = {
     {
       "<C-p>",
