@@ -40,7 +40,6 @@ vim.cmd.Plug([['tpope/vim-fugitive']])
 vim.cmd.Plug([['mhinz/vim-grepper']])
 vim.cmd.Plug([['ludovicchabant/vim-gutentags']])
 vim.cmd.Plug([['sheerun/vim-polyglot']])
-vim.cmd.Plug([['amiorin/vim-project']])
 vim.cmd.Plug([['tpope/vim-projectionist']])
 vim.cmd.Plug([['jeetsukumaran/vim-pythonsense']])
 vim.cmd.Plug([['tpope/vim-repeat']])
@@ -873,12 +872,6 @@ vim.cmd.highlight("link cppSTLconcept NONE") -- C++20 concepts
 -- vim-markdown
 vim.g.vim_markdown_auto_insert_bullets = 0
 vim.g.vim_markdown_new_list_item_indent = 0
-
--------------------------------------------------------------------------------
--- Project
-vim.fn["project#rc"]()
-vim.cmd.source(vimDir .. "/projects.vim")
-if vim.fn.argc(-1) == 0 then vim.cmd.Welcome() end
 
 -------------------------------------------------------------------------------
 -- Pydocstring
