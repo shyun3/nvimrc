@@ -26,13 +26,6 @@ vim.cmd.Plug([['chaoren/vim-wordmotion']])
 -- Dependencies
 vim.cmd.Plug([['nvim-lua/plenary.nvim']])
 
--- Text objects
-vim.cmd.Plug([['wellle/targets.vim']])
-vim.cmd.Plug([['glts/vim-textobj-comment']])
-vim.cmd.Plug([['kana/vim-textobj-entire']])
-vim.cmd.Plug([['kana/vim-textobj-indent']])
-vim.cmd.Plug([['kana/vim-textobj-user']])
-
 ]=]
 
 require("options")
