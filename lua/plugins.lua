@@ -29,6 +29,7 @@ return {
   },
   {
     "scrooloose/nerdtree",
+    dependencies = { "ryanoasis/vim-devicons" },
     init = function() vim.g.NERDTreeHijackNetrw = 0 end,
     keys = {
       { "<C-n>", "<Cmd>NERDTreeFocus<CR>" },
