@@ -37,7 +37,6 @@ vim.cmd.Plug([['junegunn/vim-easy-align']])
 vim.cmd.Plug([['tpope/vim-endwise']])
 vim.cmd.Plug([['voldikss/vim-floaterm']])
 vim.cmd.Plug([['tpope/vim-fugitive']])
-vim.cmd.Plug([['mhinz/vim-grepper']])
 vim.cmd.Plug([['ludovicchabant/vim-gutentags']])
 vim.cmd.Plug([['sheerun/vim-polyglot']])
 vim.cmd.Plug([['tpope/vim-projectionist']])
@@ -608,38 +607,6 @@ require("fzf-lua").setup({
   },
 })
 
--- Derived from ctrlp#normcmd()
-function go_to_editable_window()
-  local invalidBufTypes = { "quickfix", "help", "nofile", "terminal" }
-  if not vim.tbl_contains(invalidBufTypes, vim.bo.buftype) then return end
-
-  local editWins = vim.tbl_filter(
-    function(winNum)
-      local buf = vim.fn.winbufnr(winNum)
-      return not vim.list_contains(invalidBufTypes, vim.bo[buf].buftype)
-    end,
-    vim.tbl_map(vim.api.nvim_win_get_number, vim.api.nvim_tabpage_list_wins(0))
-  )
-  for _, winNum in ipairs(editWins) do
-    local bufNum = vim.fn.winbufnr(winNum)
-    if vim.fn.bufname(bufNum) == "" and vim.bo[bufNum].filetype == "" then
-      tmpWin = winNum
-      break
-    end
-  end
-
-  local cwd = vim.fn.getcwd()
-  if #editWins > 0 then
-    if not vim.list_contains(editWins, vim.fn.winnr()) then
-      vim.cmd((tmpWin or editWins[1]) .. "wincmd w")
-    end
-  else
-    vim.cmd.botright("vnew")
-  end
-
-  vim.cmd.lcd(cwd)
-end
-
 vim.keymap.set("n", "<C-p>", function()
   go_to_editable_window()
   require("fzf-lua").files({ cwd = vim.fn.getcwd() })
@@ -682,39 +649,6 @@ vim.keymap.set("n", "<Leader>/", "<Cmd>FzfLua search_history<CR>")
 vim.keymap.set("n", "<Leader>h", "<Cmd>FzfLua help_tags<CR>")
 vim.keymap.set("n", "<Leader>x", "<Cmd>FzfLua commands<CR>")
 vim.keymap.set("n", "<Leader>cf", "<Cmd>FzfLua quickfix<CR>")
-
--------------------------------------------------------------------------------
--- grepper
-
--- Initialize g:grepper with default values
-vim.cmd.runtime("plugin/grepper.vim")
-
-do
-  local grepper = vim.g.grepper
-
-  grepper.tools = { "rg", "git" }
-  grepper.rg.grepprg = "rg -H --no-heading --vimgrep --smart-case --follow"
-  grepper.dir = "filecwd"
-
-  -- Prevent auto-resize of quickfix window
-  grepper.open = 0
-
-  vim.g.grepper = grepper
-end
-
-vim.keymap.set("n", "<Leader><Leader>", function()
-  go_to_editable_window()
-  vim.cmd.Grepper()
-end, { desc = "Grepper: Prompt" })
-vim.keymap.set("n", "<Leader>*", "<Cmd>Grepper -cword -noprompt<CR>")
-vim.keymap.set({ "n", "x" }, "gs", "<Plug>(GrepperOperator)")
-
-local myGrepperGroup = vim.api.nvim_create_augroup("myGrepperGroup", {})
-vim.api.nvim_create_autocmd("User", {
-  group = myGrepperGroup,
-  pattern = "Grepper",
-  command = "botright copen",
-})
 
 -------------------------------------------------------------------------------
 -- Gundo
