@@ -13,12 +13,8 @@ vim.cmd.Plug([['haya14busa/vim-asterisk']])
 vim.cmd.Plug([['shyun3/vim-cmake-lists']])
 vim.cmd.Plug([['kkoomen/vim-doge', { 'do': './scripts/install.sh' }]])
 vim.cmd.Plug([['junegunn/vim-easy-align']])
-vim.cmd.Plug([['tpope/vim-endwise']])
-vim.cmd.Plug([['tpope/vim-fugitive']])
 vim.cmd.Plug([['ludovicchabant/vim-gutentags']])
-vim.cmd.Plug([['tpope/vim-projectionist']])
 vim.cmd.Plug([['jeetsukumaran/vim-pythonsense']])
-vim.cmd.Plug([['tpope/vim-repeat']])
 vim.cmd.Plug([['inside/vim-search-pulse']])
 vim.cmd.Plug([['chaoren/vim-wordmotion']])
 
@@ -463,10 +459,6 @@ vim.cmd.highlight("CocMenuSel ctermbg=237 guibg=#13354A")
 -- DoGe
 vim.g.doge_doc_standard_python = "google"
 vim.g.doge_comment_jump_modes = { "n", "s" }
-
--------------------------------------------------------------------------------
--- endwise
-vim.g.endwise_no_mappings = 1
 
 -------------------------------------------------------------------------------
 -- Gutentags
