@@ -4,7 +4,6 @@
 vim.cmd.Plug(
   [['neoclide/coc.nvim', { 'branch': 'master', 'do': 'yarn install --frozen-lockfile' }]]
 )
-vim.cmd.Plug([['ibhagwan/fzf-lua']])
 vim.cmd.Plug([['smoka7/hop.nvim', { 'tag': 'v2.*.*' }]])
 vim.cmd.Plug([['kevinhwang91/nvim-bqf']])
 vim.cmd.Plug([['nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }]])
@@ -26,7 +25,6 @@ vim.cmd.Plug([['inside/vim-search-pulse']])
 vim.cmd.Plug([['chaoren/vim-wordmotion']])
 
 -- Dependencies
-vim.cmd.Plug([['nvim-tree/nvim-web-devicons']])
 vim.cmd.Plug([['nvim-lua/plenary.nvim']])
 
 -- Text objects
@@ -478,76 +476,6 @@ vim.g.doge_comment_jump_modes = { "n", "s" }
 -------------------------------------------------------------------------------
 -- endwise
 vim.g.endwise_no_mappings = 1
-
--------------------------------------------------------------------------------
--- fzf-lua
-require("fzf-lua").setup({
-  preview_layout = "vertical",
-  default_previewer = "bat",
-
-  previewers = {
-    bat = {
-      theme = "Monokai Extended",
-    },
-  },
-
-  -- Git icons are disabled for performance reasons
-  files = {
-    git_icons = false,
-  },
-  oldfiles = {
-    include_current_session = true,
-  },
-  tags = {
-    git_icons = false,
-  },
-  btags = {
-    git_icons = false,
-  },
-})
-
-vim.keymap.set("n", "<C-p>", function()
-  go_to_editable_window()
-  require("fzf-lua").files({ cwd = vim.fn.getcwd() })
-end, { desc = "fzf-lua: Files", silent = true })
-vim.keymap.set("n", "<C-q>", function()
-  go_to_editable_window()
-  require("fzf-lua").files({ cwd = vim.fn.expand("%:p:h") })
-end, { desc = "fzf-lua: Files in current file directory", silent = true })
-vim.keymap.set("n", [[<C-\>]], function()
-  go_to_editable_window()
-  require("fzf-lua").buffers()
-end, { desc = "fzf-lua: Buffers", silent = true })
-vim.keymap.set("n", "<A-p>", function()
-  go_to_editable_window()
-  require("fzf-lua").oldfiles()
-end, { desc = "fzf-lua: Old files", silent = true })
-vim.keymap.set("n", "<C-h>", function()
-  go_to_editable_window()
-  require("fzf-lua").tags()
-end, { desc = "fzf-lua: Tags", silent = true })
-vim.keymap.set("n", "<C-k>", function()
-  -- `FzfLua btags` by default uses an existing tags file
-  -- Generate the latest tags for the current file
-  local filePath = vim.fn.expand("%")
-  local tmp = vim.fn.tempname()
-  vim.cmd({
-    cmd = "!",
-    args = { "ctags -f", tmp, string.format('"%s"', filePath) },
-    mods = { silent = true },
-  })
-
-  -- Don't specify cwd for tags call if current file is not under cwd
-  local cwd = filePath[0] ~= "/" and vim.fn.getcwd() or ""
-  require("fzf-lua").btags({ ctags_file = tmp, cwd = cwd })
-end, { desc = "fzf-lua: Buffer tags", silent = true })
-vim.keymap.set("n", "<C-j>", "<Cmd>FzfLua blines show_unlisted=true<CR>")
-vim.keymap.set("n", "<Leader>f", "<Cmd>FzfLua builtin<CR>")
-vim.keymap.set("n", "<Leader>;", "<Cmd>FzfLua command_history<CR>")
-vim.keymap.set("n", "<Leader>/", "<Cmd>FzfLua search_history<CR>")
-vim.keymap.set("n", "<Leader>h", "<Cmd>FzfLua help_tags<CR>")
-vim.keymap.set("n", "<Leader>x", "<Cmd>FzfLua commands<CR>")
-vim.keymap.set("n", "<Leader>cf", "<Cmd>FzfLua quickfix<CR>")
 
 -------------------------------------------------------------------------------
 -- Gutentags
