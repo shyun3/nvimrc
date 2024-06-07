@@ -1,6 +1,6 @@
 return {
   "vim-airline/vim-airline",
-  dependencies = { "vim-airline/vim-airline-themes" },
+  dependencies = { "vim-airline/vim-airline-themes", "ryanoasis/vim-devicons" },
 
   init = function()
     vim.g.airline_theme = "molokai"
