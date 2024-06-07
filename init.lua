@@ -6,12 +6,6 @@ vim.cmd.Plug(
 )
 vim.cmd.Plug([['kevinhwang91/nvim-bqf']])
 vim.cmd.Plug([['nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }]])
-vim.cmd.Plug([['majutsushi/tagbar']])
-vim.cmd.Plug([['haya14busa/vim-asterisk']])
-vim.cmd.Plug([['shyun3/vim-cmake-lists']])
-vim.cmd.Plug([['kkoomen/vim-doge', { 'do': './scripts/install.sh' }]])
-vim.cmd.Plug([['ludovicchabant/vim-gutentags']])
-vim.cmd.Plug([['jeetsukumaran/vim-pythonsense']])
 vim.cmd.Plug([['inside/vim-search-pulse']])
 vim.cmd.Plug([['chaoren/vim-wordmotion']])
 
@@ -32,10 +26,6 @@ require("lazy-setup")
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 -- Plugin specific settings
-
--------------------------------------------------------------------------------
--- Asterisk
-vim.g["asterisk#keeppos"] = 1
 
 -------------------------------------------------------------------------------
 -- coc
@@ -307,15 +297,6 @@ vim.cmd.highlight("link CocSemTypeTypeParameter NONE")
 vim.cmd.highlight("CocMenuSel ctermbg=237 guibg=#13354A")
 
 -------------------------------------------------------------------------------
--- DoGe
-vim.g.doge_doc_standard_python = "google"
-vim.g.doge_comment_jump_modes = { "n", "s" }
-
--------------------------------------------------------------------------------
--- Gutentags
-vim.g.gutentags_define_advanced_commands = 1
-
--------------------------------------------------------------------------------
 -- nvim-bqf
 require("bqf").setup({
   preview = {
@@ -400,13 +381,6 @@ require("nvim-treesitter.configs").setup({
     additional_vim_regex_highlighting = false,
   },
 })
-
--------------------------------------------------------------------------------
--- Tagbar
-vim.g.tagbar_autofocus = 1 -- Move to Tagbar window when opened
-vim.g.tagbar_sort = 0
-
-vim.keymap.set("n", "<A-t>", "<Cmd>TagbarToggle<CR>")
 
 -------------------------------------------------------------------------------
 -- wordmotion
