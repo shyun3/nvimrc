@@ -6,7 +6,6 @@ vim.cmd.Plug(
 )
 vim.cmd.Plug([['kevinhwang91/nvim-bqf']])
 vim.cmd.Plug([['nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }]])
-vim.cmd.Plug([['chaoren/vim-wordmotion']])
 
 -- Dependencies
 vim.cmd.Plug([['nvim-lua/plenary.nvim']])
@@ -353,15 +352,4 @@ require("nvim-treesitter.configs").setup({
   },
 })
 
--------------------------------------------------------------------------------
--- wordmotion
-vim.g.wordmotion_nomap = 1
-
-local wordmotion_keys = { "w", "e", "b", "ge" }
-for _, key in ipairs(wordmotion_keys) do
-  vim.keymap.set("", "<Leader>" .. key, "<Plug>WordMotion_" .. key)
-end
-
-vim.keymap.set({ "o", "v" }, "i<Leader>w", "<Plug>WordMotion_iw")
-vim.keymap.set({ "o", "v" }, "a<Leader>w", "<Plug>WordMotion_aw")
 ]=]
