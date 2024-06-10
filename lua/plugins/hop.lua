@@ -1,9 +1,11 @@
+
 return {
   "smoka7/hop.nvim",
   version = "*",
 
   config = function()
     require("hop").setup()
+    local hopped
 
     -- Same as `hint_with_callback` except it resets any operator mode forced
     -- motion if a hop was executed. Using this workaround is needed otherwise
