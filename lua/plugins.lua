@@ -10,13 +10,8 @@ return {
     end,
   },
 
+  { "numToStr/Comment.nvim", opts = {} },
   { "vim-scripts/DoxygenToolkit.vim", cmd = "Dox" },
-
-  {
-    "numToStr/Comment.nvim",
-    opts = {},
-    lazy = false,
-  },
 
   {
     "sjl/gundo.vim",
