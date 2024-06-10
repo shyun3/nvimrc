@@ -4,7 +4,6 @@
 vim.cmd.Plug(
   [['neoclide/coc.nvim', { 'branch': 'master', 'do': 'yarn install --frozen-lockfile' }]]
 )
-vim.cmd.Plug([['kevinhwang91/nvim-bqf']])
 vim.cmd.Plug([['nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }]])
 
 -- Dependencies
@@ -293,31 +292,6 @@ vim.cmd.highlight("link CocSemTypeTypeParameter NONE")
 
 -- Taken from coc.vim
 vim.cmd.highlight("CocMenuSel ctermbg=237 guibg=#13354A")
-
--------------------------------------------------------------------------------
--- nvim-bqf
-require("bqf").setup({
-  preview = {
-    should_preview_cb = function(bufnr, qwinid)
-      local ret = true
-      local bufname = vim.api.nvim_buf_get_name(bufnr)
-      local fsize = vim.fn.getfsize(bufname)
-      if fsize > 100 * 1024 then
-        -- skip file size greater than 100k
-        ret = false
-      elseif bufname:match("^fugitive://") then
-        -- skip fugitive buffer
-        ret = false
-      end
-      return ret
-    end,
-  },
-  func_map = {
-    -- Other split mappings defined by QFEnter
-    split = "<C-x><C-s>",
-    vsplit = "<C-x><C-v>",
-  },
-})
 
 -------------------------------------------------------------------------------
 -- treesitter
