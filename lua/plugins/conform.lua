@@ -31,6 +31,7 @@ return {
       c = { "clang-format" },
       cpp = { "clang-format" },
       json = { "prettier" },
+      jsonc = { "prettier" },
       lua = { "stylua" },
       python = { "isort", "black" },
     },
