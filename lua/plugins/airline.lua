@@ -2,6 +2,7 @@ return {
   "vim-airline/vim-airline",
 
   dependencies = {
+    "neoclide/coc.nvim",
     "vim-airline/vim-airline-themes",
     "ryanoasis/vim-devicons",
     "tpope/vim-fugitive",
