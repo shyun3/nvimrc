@@ -39,12 +39,12 @@
     mkdir -p ~/.local/share/nvim/undo
     ```
 
-1. Install [vim-plug][] and [Nerd Fonts][]
+1. Install [Nerd Fonts][]
     * Currently, JetBrains Mono v2.304 with no ligatures and bigger icons is
       preferred
     * Remember to update the terminal font
 
-1. Start Neovim. Ignore any errors and run `:PlugInstall`.
+1. Start Neovim. Plugins should be automatically installed.
 
 1. Run `:checkhealth` and resolve any issues.
     * For `clipboard` on WSL, see `:h clipboard`. Consider using
