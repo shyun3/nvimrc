@@ -8,6 +8,7 @@ return {
     vim.g.coc_global_extensions = {
       "coc-clangd",
       "coc-json",
+      "coc-lua",
       "coc-pyright",
       "coc-syntax",
       "coc-tag",
