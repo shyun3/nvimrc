@@ -1,5 +1,9 @@
 return {
-  { "tpope/vim-endwise", init = function() vim.g.endwise_no_mappings = 1 end },
+  {
+    "tpope/vim-endwise",
+    lazy = true, -- See coc
+    init = function() vim.g.endwise_no_mappings = 1 end,
+  },
 
   {
     "tpope/vim-fugitive",
