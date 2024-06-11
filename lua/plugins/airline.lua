@@ -14,10 +14,7 @@ return {
     vim.g.airline_theme = "molokai"
     vim.g.airline_powerline_fonts = 1
 
-    vim.g.airline_section_error =
-    "%{airline#util#wrap(airline#extensions#coc#get_error(),0)}"
-    vim.g.airline_section_warning =
-    "%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}"
+    vim.g["airline#extensions#coc#show_coc_status"] = 1
 
     vim.g["airline#extensions#whitespace#enabled"] = 0 -- Whitespace error detection
     vim.g["airline#extensions#tagbar#enabled"] = 0
@@ -42,8 +39,8 @@ return {
     local group = vim.api.nvim_create_augroup("my_airline", {})
     vim.api.nvim_create_autocmd("User", {
       group = group,
-      pattern = "GutentagsUpdated",
+      pattern = { "GutentagsUpdated", "CocStatusChange" },
       command = "AirlineRefresh",
     })
-  end
+  end,
 }
