@@ -37,4 +37,13 @@ return {
   -- initialize intermittently. Consequences include brackets appearing around
   -- Nerd Tree icons.
   event = "UIEnter",
+
+  config = function()
+    local group = vim.api.nvim_create_augroup("my_airline", {})
+    vim.api.nvim_create_autocmd("User", {
+      group = group,
+      pattern = "GutentagsUpdated",
+      command = "AirlineRefresh",
+    })
+  end
 }
