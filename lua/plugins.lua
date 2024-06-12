@@ -36,8 +36,6 @@ return {
     config = function() require("colorizer").setup({ "*" }, { names = false }) end,
   },
 
-  { "davidgranstrom/nvim-markdown-preview", ft = "markdown" },
-
   {
     "yssl/QFEnter",
     init = function()
