@@ -10,7 +10,7 @@
 1. Install [Neovim][nvim-linux]
 
 1. Install dependencies and include them in the `PATH`:
-    * `sudo apt install ripgrep bat universal-ctags pandoc`
+    * `sudo apt install ripgrep bat universal-ctags pandoc wl-clipboard`
         * Make sure to create a symlink for `bat` (see [link][bat-install])
     * [fd][], `fzf`, `lazygit`
         * `fd` >= 9.0.0 is recommended for improved performance
@@ -47,8 +47,6 @@
 1. Start Neovim. Plugins should be automatically installed.
 
 1. Run `:checkhealth` and resolve any issues.
-    * For `clipboard` on WSL, see `:h clipboard`. Consider using
-      [win32yank.exe][].
 
 1. Restart Neovim. Installation should now be complete.
 
@@ -125,7 +123,6 @@ plugins.
 [type-stubs]: https://github.com/microsoft/pyright/blob/main/docs/type-stubs.md#generating-type-stubs
 [coc-extensions]: https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#implemented-coc-extensions
 [coc-output-channel]: https://github.com/neoclide/coc.nvim/wiki/Debug-language-server#using-output-channel
-[win32yank.exe]: https://github.com/equalsraf/win32yank
 [black-unstable]: https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#unstable
 [black-future]: https://black.readthedocs.io/en/stable/the_black_code_style/future_style.html
 [isort-black]: https://pycqa.github.io/isort/docs/configuration/black_compatibility.html
