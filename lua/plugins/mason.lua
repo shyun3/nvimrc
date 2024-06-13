@@ -5,15 +5,13 @@ return {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     dependencies = { "williamboman/mason.nvim" },
 
-    opts = {
-      ensure_installed = {
-        "black",
-        "clang-format",
-        "clangd",
-        "isort",
-        "prettier",
-        "stylua",
-      },
-    },
+    opts = { ensure_installed = { "clangd" } },
+  },
+
+  {
+    "zapling/mason-conform.nvim",
+    dependencies = { "williamboman/mason.nvim", "stevearc/conform.nvim" },
+
+    opts = {},
   },
 }
