@@ -1,5 +1,6 @@
 require("options")
 require("variables")
+require("commands")
 require("mappings")
 require("autocommands")
 
