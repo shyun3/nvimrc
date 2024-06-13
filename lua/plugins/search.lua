@@ -1,7 +1,6 @@
 return {
   {
     "haya14busa/vim-asterisk",
-    lazy = true,
     init = function() vim.g["asterisk#keeppos"] = 1 end,
   },
 

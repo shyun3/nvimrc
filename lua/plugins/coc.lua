@@ -1,6 +1,5 @@
 return {
   "neoclide/coc.nvim",
-  lazy = true, -- See airline
   dependencies = { "tpope/vim-endwise" },
   build = "npm ci",
 
