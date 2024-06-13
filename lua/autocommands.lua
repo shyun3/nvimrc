@@ -7,40 +7,6 @@ vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, {
   command = "update",
 })
 
-vim.api.nvim_create_autocmd(
-  { "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" },
-  {
-    group = myAutoGroup,
-    desc = "Trigger `autoread` when files changes on disk",
-    callback = function()
-      if
-        string.find("cr!t", vim.fn.mode()) and vim.fn.getcmdwintype() == ""
-      then
-        vim.cmd.checktime()
-      end
-    end,
-  }
-)
-vim.api.nvim_create_autocmd("FileChangedShellPost", {
-  group = myAutoGroup,
-  desc = "Notification after file change",
-  callback = function()
-    vim.api.nvim_echo(
-      { { "File changed on disk. Buffer reloaded.", "WarningMsg" } },
-      false,
-      {}
-    )
-  end,
-})
-
-vim.api.nvim_create_autocmd("CompleteDone", {
-  group = myAutoGroup,
-  desc = "Close preview window on insert mode done",
-  callback = function()
-    if vim.fn.pumvisible() == 0 then vim.cmd.pclose() end
-  end,
-})
-
 -- See https://github.com/ibhagwan/nvim-lua/blob/main/lua/autocmd.lua
 vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter", "InsertLeave" }, {
   group = myAutoGroup,
