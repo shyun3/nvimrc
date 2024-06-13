@@ -34,26 +34,26 @@ return {
     -- See `:h forced-motion` for usages of `v` and `V` in operator pending mode
     {
       "+",
-      require("util.hop").hintTill1,
+      require("util.hop_hints").hintTill1,
       mode = { "n", "v" },
       desc = "Hop till character",
     },
     {
       "+",
-      "v<Cmd>lua require('util.hop').hintTill1()<CR>",
+      "v<Cmd>lua require('util.hop_hints').hintTill1()<CR>",
       mode = "o",
       desc = "Hop till character",
     },
 
     {
       "_",
-      require("util.hop").hintLines,
+      require("util.hop_hints").hintLines,
       mode = { "n", "v" },
       desc = "Hop to line",
     },
     {
       "_",
-      "V<Cmd>lua require('util.hop').hintLines()<CR>",
+      "V<Cmd>lua require('util.hop_hints').hintLines()<CR>",
       mode = "o",
       desc = "Hop to line",
     },
