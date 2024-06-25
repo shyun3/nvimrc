@@ -1,16 +1,17 @@
 vim.filetype.add({
-    extension = {
-        xaml = "xml",
+  extension = {
+    h = function()
+      if vim.fn.search("\\C^#include <[^>.]\\+>$", "nw") ~= 0 then
+        return "cpp"
+      end
+      return "c"
+    end,
 
-        h = function(path, bufnr)
-            if vim.fn.search("\\C^#include <[^>.]\\+>$", "nw") ~= 0 then
-                return "cpp"
-            end
-            return "c"
-        end,
-    },
-    filename = {
-        [".clangd"] = "yaml",
-        [".clang-format"] = "yaml",
-    },
+    lds = "ld",
+    xaml = "xml",
+  },
+  filename = {
+    [".clangd"] = "yaml",
+    [".clang-format"] = "yaml",
+  },
 })
