@@ -1,6 +1,18 @@
+-- Derived from https://github.com/windwp/nvim-autopairs/wiki/Completion-plugin
+local function completion_confirm()
+  if vim.fn["coc#pum#visible"]() ~= 0 then
+    return vim.fn["coc#pum#confirm"]()
+  else
+    -- For some reason, calling the Lua function directly inserts a bunch of
+    -- noise unless the mapping is created using `vim.api.nvim_set_keymap`.
+    -- There isn't supposed to be any difference from `vim.keymap.set` though.
+    return "<Cmd>call feedkeys(v:lua.require('nvim-autopairs').autopairs_cr(), 'in')<CR>"
+  end
+end
+
 return {
   "neoclide/coc.nvim",
-  dependencies = { "tpope/vim-endwise" },
+  dependencies = { "tpope/vim-endwise", "windwp/nvim-autopairs" },
   build = "npm ci",
 
   init = function()
@@ -11,7 +23,6 @@ return {
       "coc-pyright",
       "coc-vimlsp",
       "coc-markdown-preview-enhanced",
-      "coc-pairs",
       "coc-sh",
       "coc-snippets",
       "coc-webview",
@@ -81,9 +92,7 @@ return {
     {
       "<CR>",
       function()
-        -- <C-g>u breaks current undo
-        return vim.fn["coc#pum#visible"]() == 1 and vim.fn["coc#pum#confirm"]()
-          or "<C-g>u<CR><C-r>=EndwiseDiscretionary()<CR>"
+        return completion_confirm() .. "<C-r>=EndwiseDiscretionary()<CR>"
       end,
       mode = "i",
       desc = "Auto-select the first completion item",

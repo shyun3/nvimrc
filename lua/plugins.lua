@@ -24,6 +24,12 @@ return {
   },
 
   {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    opts = { map_cr = false },
+  },
+
+  {
     "norcalli/nvim-colorizer.lua",
 
     init = function()
