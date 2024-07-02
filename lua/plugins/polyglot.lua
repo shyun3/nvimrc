@@ -2,9 +2,10 @@ return {
   "sheerun/vim-polyglot",
 
   init = function()
+    -- ftdetect: Use filetype.lua
     -- lua: Covered by treesitter
     -- sensible: Do not update vim settings
-    vim.g.polyglot_disabled = { "lua", "r-lang", "sensible" }
+    vim.g.polyglot_disabled = { "ftdetect", "lua", "sensible" }
   end,
 
   config = function()
