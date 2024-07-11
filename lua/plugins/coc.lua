@@ -21,10 +21,8 @@ return {
       "coc-lua",
       "coc-pyright",
       "coc-vimlsp",
-      "coc-markdown-preview-enhanced",
       "coc-sh",
       "coc-snippets",
-      "coc-webview",
 
       -- From coc-sources
       "coc-syntax",
