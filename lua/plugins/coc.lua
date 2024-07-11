@@ -35,9 +35,8 @@ return {
   end,
 
   config = function()
-    local myCocGroup = vim.api.nvim_create_augroup("myCocGroup", {})
     vim.api.nvim_create_autocmd("User", {
-      group = myCocGroup,
+      group = vim.api.nvim_create_augroup("myCocGroup", {}),
       desc = "Update signature help on jump placeholder",
       pattern = "CocJumpPlaceholder",
       callback = function() vim.fn.CocActionAsync("showSignatureHelp") end,

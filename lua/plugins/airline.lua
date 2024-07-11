@@ -30,9 +30,8 @@ return {
   end,
 
   config = function()
-    local group = vim.api.nvim_create_augroup("my_airline", {})
     vim.api.nvim_create_autocmd("User", {
-      group = group,
+      group = vim.api.nvim_create_augroup("my_airline", {}),
       pattern = { "GutentagsUpdated", "CocStatusChange", "CocDiagnosticChange" },
       command = "AirlineRefresh",
     })
