@@ -8,7 +8,7 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- Completions
-vim.o.completeopt = "menu"
+vim.o.completeopt = "menu,menuone,noinsert"
 vim.o.pumheight = 10
 vim.opt.wildmode = { "longest:full", "full" }
 
