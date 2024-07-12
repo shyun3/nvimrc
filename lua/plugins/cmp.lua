@@ -1,6 +1,6 @@
 return {
   "hrsh7th/nvim-cmp",
-  event = "InsertEnter",
+  event = { "InsertEnter", "CmdlineEnter" },
 
   dependencies = {
     "windwp/nvim-autopairs",
@@ -37,6 +37,13 @@ return {
       sources = cmp.config.sources({
         { name = "buffer" },
       }),
+    })
+
+    cmp.setup.cmdline({ "/", "?" }, {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = {
+        { name = "buffer" },
+      },
     })
   end,
 }
