@@ -58,35 +58,6 @@ return {
 
   keys = {
     {
-      "<Tab>",
-      function()
-        return vim.fn["coc#pum#visible"]() == 1 and vim.fn["coc#pum#next"](1)
-          or "<Tab>"
-      end,
-      mode = "i",
-      desc = "Next completion option",
-      silent = true,
-      expr = true,
-    },
-    {
-      "<S-Tab>",
-      function()
-        return vim.fn["coc#pum#visible"]() == 1 and vim.fn["coc#pum#prev"](1)
-          or "<C-h>"
-      end,
-      mode = "i",
-      desc = "Previous completion option",
-      silent = true,
-      expr = true,
-    },
-    {
-      "<C-Space>",
-      "coc#refresh()",
-      mode = "i",
-      silent = true,
-      expr = true,
-    },
-    {
       "<CR>",
       function()
         return completion_confirm() .. "<C-r>=EndwiseDiscretionary()<CR>"
@@ -220,58 +191,5 @@ return {
     { "af", "<Plug>(coc-funcobj-a)", mode = { "x", "o" } },
     { "ik", "<Plug>(coc-classobj-i)", mode = { "x", "o" } },
     { "ak", "<Plug>(coc-classobj-a)", mode = { "x", "o" } },
-
-    {
-      "<C-f>",
-      function()
-        return vim.fn["coc#float#has_scroll"]() == 1
-            and vim.fn["coc#float#scroll"](1)
-          or "<C-f>"
-      end,
-      mode = { "n", "v" },
-      desc = "coc: Scroll floating window forward",
-      silent = true,
-      nowait = true,
-      expr = true,
-    },
-    {
-      "<C-b>",
-      function()
-        return vim.fn["coc#float#has_scroll"]() == 1
-            and vim.fn["coc#float#scroll"](0)
-          or "<C-b>"
-      end,
-      mode = { "n", "v" },
-      desc = "coc: Scroll floating window backward",
-      silent = true,
-      nowait = true,
-      expr = true,
-    },
-    {
-      "<C-f>",
-      function()
-        return vim.fn["coc#float#has_scroll"]() == 1
-            and "<C-r>=coc#float#scroll(1)<CR>"
-          or "<Right>"
-      end,
-      mode = "i",
-      desc = "coc: Scroll floating window forward",
-      silent = true,
-      nowait = true,
-      expr = true,
-    },
-    {
-      "<C-b>",
-      function()
-        return vim.fn["coc#float#has_scroll"]() == 1
-            and "<C-r>=coc#float#scroll(0)<CR>"
-          or "<Left>"
-      end,
-      mode = "i",
-      desc = "coc: Scroll floating window backward",
-      silent = true,
-      nowait = true,
-      expr = true,
-    },
   },
 }
