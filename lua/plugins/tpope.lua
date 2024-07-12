@@ -1,15 +1,7 @@
 return {
   {
     "tpope/vim-endwise",
-
-    init = function()
-      -- The plugin automatically wraps any existing <CR> mapping to insert the
-      -- endwise pair at the end, but this doesn't seem to be silent. So, the
-      -- mapping is disabled.
-      vim.g.endwise_no_mappings = 1
-    end,
-
-    event = "InsertEnter",
+    init = function() vim.g.endwise_no_mappings = 1 end,
   },
 
   "tpope/vim-fugitive",
