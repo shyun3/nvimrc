@@ -11,6 +11,10 @@ return {
       -- See `:h treesitter-highlight-groups`
       vim.cmd.highlight("link @variable NONE")
       vim.cmd.highlight("link @variable.parameter NONE")
+
+      -- See `:h lsp-semantic-highlight`
+      vim.api.nvim_set_hl(0, "@lsp.type.variable", { fg = "fg" })
+      vim.cmd.highlight("link @lsp.type.parameter NONE")
     end,
   },
 

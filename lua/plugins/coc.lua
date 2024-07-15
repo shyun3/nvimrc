@@ -25,20 +25,6 @@ return {
       pattern = "CocJumpPlaceholder",
       callback = function() vim.fn.CocActionAsync("showSignatureHelp") end,
     })
-
-    vim.api.nvim_set_hl(0, "CocSemTypeVariable", { fg = "fg" })
-
-    vim.cmd.highlight("link CocSemTypeMacro Macro")
-    vim.cmd.highlight("link CocSemTypeEnumMember Constant")
-    vim.cmd.highlight("link CocSemTypeKeyword NONE")
-    vim.cmd.highlight("link CocSemTypeNamespace NONE")
-    vim.cmd.highlight("link CocSemTypeParameter NONE")
-
-    -- For Python function parameter type hints
-    vim.cmd.highlight("link CocSemTypeTypeParameter NONE")
-
-    -- Taken from coc.vim
-    vim.cmd.highlight("CocMenuSel ctermbg=237 guibg=#13354A")
   end,
 
   keys = {
