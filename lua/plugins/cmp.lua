@@ -9,14 +9,19 @@ return {
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-cmdline",
+    "quangnguyen30192/cmp-nvim-ultisnips",
   },
 
   config = function()
     local cmp = require("cmp")
     cmp.setup({
+      snippet = {
+        expand = function(args) vim.fn["UltiSnips#Anon"](args.body) end,
+      },
       mapping = cmp.mapping.preset.insert({
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
+
         ["<CR>"] = function(fallback)
           if cmp.visible() then
             if cmp.get_active_entry() then
@@ -36,11 +41,14 @@ return {
             )
           end
         end,
+
         ["<Tab>"] = cmp.mapping.select_next_item(),
         ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+
         ["<C-Space>"] = cmp.mapping.complete(),
       }),
       sources = cmp.config.sources({
+        { name = "ultisnips" },
         {
           name = "buffer",
           option = {

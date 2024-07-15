@@ -74,6 +74,7 @@ return {
     "SirVer/ultisnips",
     init = function()
       vim.g.UltiSnipsSnippetDirectories = { "UltiSnips", "UltiSnips/specific" }
+      vim.g.UltiSnipsExpandTrigger = "<Nop>" -- Handled by cmp
     end,
   },
 
