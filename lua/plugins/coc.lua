@@ -5,9 +5,7 @@ return {
 
   init = function()
     vim.g.coc_global_extensions = {
-      "coc-clangd",
       "coc-json",
-      "coc-lua",
       "coc-pyright",
       "coc-vimlsp",
       "coc-sh",
@@ -134,21 +132,7 @@ return {
       desc = "coc: Show outgoing calls",
     },
 
-    { "[g", "<Plug>(coc-diagnostic-prev)" },
-    { "]g", "<Plug>(coc-diagnostic-next)" },
     { "<Leader>gd", "<Cmd>CocDiagnostics<CR>" },
-
-    {
-      "K",
-      function()
-        if vim.fn.CocAction("hasProvider", "hover") then
-          vim.fn.CocActionAsync("doHover")
-        else
-          vim.fn.feedkeys("K", "in")
-        end
-      end,
-      desc = "Hover",
-    },
 
     { "<Leader>ll", "<Cmd>CocList<CR>" },
     { "<Leader>lc", "<Cmd>CocList commands<CR>" },
