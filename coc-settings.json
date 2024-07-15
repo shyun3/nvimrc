@@ -22,9 +22,5 @@
     ".projections.json",
     "pyrightconfig.json",
     "pyproject.toml"
-  ],
-
-  "[lua]": {
-    "semanticTokens.enable": false
-  }
+  ]
 }
