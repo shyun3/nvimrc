@@ -108,7 +108,7 @@ return {
           jump_to_single_result_action = require("fzf-lua.actions").file_split,
         })
       end,
-      desc = "LSP: Definition, split",
+      desc = "LSP: Definition, horizontal split",
     },
     {
       "<Leader>v]",
@@ -119,6 +119,74 @@ return {
         })
       end,
       desc = "LSP: Definition, vertical split",
+    },
+
+    {
+      "<Leader>D",
+      "<Cmd>FzfLua lsp_typedefs jump_to_single_result=true<CR>",
+    },
+    {
+      "<Leader>sD",
+      function()
+        require("fzf-lua").lsp_typedefs({
+          jump_to_single_result = true,
+          jump_to_single_result_action = require("fzf-lua.actions").file_split,
+        })
+      end,
+      desc = "LSP: Type definition, horizontal split",
+    },
+    {
+      "<Leader>vD",
+      function()
+        require("fzf-lua").lsp_typedefs({
+          jump_to_single_result = true,
+          jump_to_single_result_action = require("fzf-lua.actions").file_vsplit,
+        })
+      end,
+      desc = "LSP: Type definition, vertical split",
+    },
+
+    {
+      "<Leader>[",
+      "<Cmd>FzfLua lsp_declarations jump_to_single_result=true<CR>",
+    },
+    {
+      "<Leader>s[",
+      function()
+        require("fzf-lua").lsp_declarations({
+          jump_to_single_result = true,
+          jump_to_single_result_action = require("fzf-lua.actions").file_split,
+        })
+      end,
+      desc = "LSP: Declaration, horizontal split",
+    },
+    {
+      "<Leader>v[",
+      function()
+        require("fzf-lua").lsp_declarations({
+          jump_to_single_result = true,
+          jump_to_single_result_action = require("fzf-lua.actions").file_vsplit,
+        })
+      end,
+      desc = "LSP: Declaration, vertical split",
+    },
+
+    { "<Leader>ds", "<Cmd>FzfLua lsp_document_symbols<CR>" },
+    { "<Leader>ws", "<Cmd>FzfLua lsp_workspace_symbols<CR>" },
+
+    { "<Leader>rr", vim.lsp.buf.references, desc = "LSP: References" },
+    { "<Leader>ri", vim.lsp.buf.incoming_calls, desc = "LSP: Incoming calls" },
+    { "<Leader>ro", vim.lsp.buf.outgoing_calls, desc = "LSP: Outgoing calls" },
+
+    {
+      "<Leader>gd",
+      function()
+        local diag = vim.diagnostic.get(0)
+        local qf = vim.diagnostic.toqflist(diag)
+        vim.fn.setqflist(qf)
+        vim.cmd("botright copen")
+      end,
+      desc = "LSP: Buffer diagnostics",
     },
   },
 }
