@@ -28,7 +28,7 @@ function M.go_to_editable_window()
       vim.cmd((tmpWin or editWins[1]) .. "wincmd w")
     end
   else
-    vim.cmd.botright("vnew")
+    vim.cmd("botright copen")
   end
 
   vim.cmd.lcd(cwd)
