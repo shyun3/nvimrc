@@ -40,10 +40,6 @@ return {
         end,
       })
     end,
-
-    keys = {
-      { "<Leader>]", vim.lsp.buf.definition, desc = "LSP: Definition" },
-    },
   },
 
   {
