@@ -7,6 +7,7 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       { "j-hui/fidget.nvim", opts = {} },
     },
+    lazy = false,
 
     config = function()
       vim.api.nvim_create_autocmd("LspAttach", {
@@ -40,6 +41,43 @@ return {
         end,
       })
     end,
+
+    keys = {
+      { "<Leader>rr", vim.lsp.buf.references, desc = "LSP: References" },
+      {
+        "<Leader>ri",
+        vim.lsp.buf.incoming_calls,
+        desc = "LSP: Incoming calls",
+      },
+      {
+        "<Leader>ro",
+        vim.lsp.buf.outgoing_calls,
+        desc = "LSP: Outgoing calls",
+      },
+
+      {
+        "<Leader>gd",
+        function()
+          local diag = vim.diagnostic.get(0)
+          local qf = vim.diagnostic.toqflist(diag)
+          vim.fn.setqflist(qf)
+          vim.cmd("botright copen")
+        end,
+        desc = "LSP: Buffer diagnostics",
+      },
+
+      { "<Leader>ca", vim.lsp.buf.code_action, desc = "LSP: Code action" },
+      { "<Leader>rn", vim.lsp.buf.rename, desc = "LSP: Rename" },
+
+      {
+        "<Leader>ch",
+        function()
+          ---@diagnostic disable-next-line: missing-parameter
+          vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+        end,
+        desc = "LSP: Toggle inlay hints",
+      },
+    },
   },
 
   {
