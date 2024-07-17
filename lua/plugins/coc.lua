@@ -26,12 +26,4 @@ return {
       callback = function() vim.fn.CocActionAsync("showSignatureHelp") end,
     })
   end,
-
-  keys = {
-    -- Requires 'textDocument.documentSymbol' support from the language server
-    { "if", "<Plug>(coc-funcobj-i)", mode = { "x", "o" } },
-    { "af", "<Plug>(coc-funcobj-a)", mode = { "x", "o" } },
-    { "ik", "<Plug>(coc-classobj-i)", mode = { "x", "o" } },
-    { "ak", "<Plug>(coc-classobj-a)", mode = { "x", "o" } },
-  },
 }
