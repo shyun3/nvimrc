@@ -19,6 +19,9 @@ return {
     "williamboman/mason-lspconfig.nvim",
     dependencies = { "williamboman/mason.nvim" },
 
-    opts = { ensure_installed = { "clangd" }, automatic_installation = true },
+    opts = {
+      ensure_installed = { "bashls", "clangd", "jsonls", "pyright", "vimls" },
+      automatic_installation = true,
+    },
   },
 }
