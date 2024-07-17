@@ -27,10 +27,15 @@ return {
   end,
 
   config = function()
+    local group = vim.api.nvim_create_augroup("my_airline", {})
     vim.api.nvim_create_autocmd("User", {
-      group = vim.api.nvim_create_augroup("my_airline", {}),
+      group = group,
       pattern = "GutentagsUpdated",
       command = "AirlineRefresh",
     })
+    vim.api.nvim_create_autocmd(
+      "DiagnosticChanged",
+      { group = group, command = "AirlineRefresh" }
+    )
   end,
 }
