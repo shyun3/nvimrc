@@ -11,9 +11,10 @@ return {
 
     config = function()
       vim.api.nvim_create_autocmd("LspAttach", {
-        callback = function(ev)
-          -- See `:h lsp-defaults-disable`
-          vim.bo[ev.buf].tagfunc = ""
+        group = vim.api.nvim_create_augroup("my_lsp", {}),
+        callback = function()
+          -- Derived from `:h lsp-defaults-disable`
+          vim.bo.tagfunc = ""
         end,
       })
 
