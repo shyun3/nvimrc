@@ -47,11 +47,6 @@ See the corresponding [README](example-configs/readme.md).
 
 # Tips
 
-## Plugins
-
-[coc extensions][coc-extensions] can also provide functionality akin to
-plugins.
-
 ## clangd
 
 * The [example clangd config](example-configs/clangd-config) contains hints for
@@ -64,10 +59,6 @@ plugins.
   ```
   -Ipath with spaces
   ```
-* To see the compile options used by `coc-clangd`, enter [`:CocCommand
-  workspace.showOutput clangd`][coc-output-channel]
-* Running `:CocRestart` may not cause `clangd` to re-parse source files, due to
-  caching. One way to force this is by deleting buffers using `:bd`.
 
 ## Python
 
@@ -102,7 +93,5 @@ plugins.
 [fd]: https://github.com/sharkdp/fd#on-ubuntu
 [bat-install]: https://github.com/sharkdp/bat#on-ubuntu-using-apt
 [type-stubs]: https://github.com/microsoft/pyright/blob/main/docs/type-stubs.md#generating-type-stubs
-[coc-extensions]: https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#implemented-coc-extensions
-[coc-output-channel]: https://github.com/neoclide/coc.nvim/wiki/Debug-language-server#using-output-channel
 [black-future]: https://black.readthedocs.io/en/stable/the_black_code_style/future_style.html
 [isort-black]: https://pycqa.github.io/isort/docs/configuration/black_compatibility.html
