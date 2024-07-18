@@ -3,7 +3,7 @@ return {
   event = { "InsertEnter", "CmdlineEnter" },
 
   dependencies = {
-    "windwp/nvim-autopairs",
+    "windwp/nvim-autopairs", -- To make sure <CR> gets mapped first
     "tpope/vim-endwise",
 
     "hrsh7th/cmp-buffer",
@@ -13,6 +13,8 @@ return {
     "folke/lazydev.nvim",
     "hrsh7th/cmp-nvim-lsp",
     "quangnguyen30192/cmp-nvim-tags",
+
+    "onsails/lspkind.nvim",
   },
 
   config = function()
@@ -63,6 +65,11 @@ return {
         },
         { name = "path" },
       }),
+
+      ---@diagnostic disable-next-line: missing-fields
+      formatting = {
+        format = require("lspkind").cmp_format(),
+      },
     })
 
     cmp.setup.cmdline({ "/", "?" }, {
