@@ -36,10 +36,6 @@ cp ~/.config/nvim/example-configs/gutctags /path/to/project/.gutctags
 
 For use with [Gutentags][].
 
-Currently when this file is detected by Gutentags, only the options listed will
-be used despite the docs saying otherwise. See [issue #265](
-https://github.com/ludovicchabant/vim-gutentags/issues/265).
-
 ## .projections.json
 
 Copy to project root and customize. For use with [vim-projectionist][]:
