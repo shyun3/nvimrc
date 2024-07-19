@@ -96,6 +96,6 @@ return {
   {
     "ray-x/lsp_signature.nvim",
     event = "VeryLazy",
-    opts = {},
+    opts = { toggle_key = "<A-x>", select_signature_key = "<A-n>" },
   },
 }
