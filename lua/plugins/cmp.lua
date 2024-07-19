@@ -1,81 +1,51 @@
+local function link_hl(name, link) vim.api.nvim_set_hl(0, name, { link = link }) end
+
 local function highlight_cmp_menu()
   -- Some colors taken from:
   -- https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#how-to-add-visual-studio-code-dark-theme-colors-to-the-menu
 
-  vim.api.nvim_set_hl(
-    0,
-    "CmpItemAbbrDeprecated",
-    { link = "@lsp.mod.deprecated" }
-  )
+  link_hl("CmpItemAbbrDeprecated", "@lsp.mod.deprecated")
 
   -- Taken from CocSearch
   vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { bg = "NONE", fg = "#15aabf" })
-  vim.api.nvim_set_hl(
-    0,
-    "CmpItemAbbrMatchFuzzy",
-    { link = "CmpIntemAbbrMatch" }
-  )
+  link_hl("CmpItemAbbrMatchFuzzy", "CmpIntemAbbrMatch")
 
   -- Taken from CocMenuSel
   vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#13354A" })
 
-  vim.api.nvim_set_hl(0, "CmpItemKindFunction", { link = "@lsp.type.function" })
-  vim.api.nvim_set_hl(0, "CmpItemKindMethod", { link = "@lsp.type.method" })
-  vim.api.nvim_set_hl(
-    0,
-    "CmpItemKindConstructor",
-    { link = "CmpItemKindMethod" }
-  )
+  link_hl("CmpItemKindFunction", "@lsp.type.function")
+  link_hl("CmpItemKindMethod", "@lsp.type.method")
+  link_hl("CmpItemKindConstructor", "CmpItemKindMethod")
 
-  vim.api.nvim_set_hl(0, "CmpItemKindText", { link = "String" })
+  link_hl("CmpItemKindText", "String")
 
-  vim.api.nvim_set_hl(0, "CmpItemKindProperty", { link = "@lsp.type.property" })
-  vim.api.nvim_set_hl(0, "CmpItemKindField", { link = "CmpItemKindProperty" })
+  link_hl("CmpItemKindProperty", "@lsp.type.property")
+  link_hl("CmpItemKindField", "CmpItemKindProperty")
 
-  vim.api.nvim_set_hl(0, "CmpItemKindVariable", { link = "@lsp.type.variable" })
-  vim.api.nvim_set_hl(
-    0,
-    "CmpItemKindTypeParameter",
-    { link = "@lsp.type.parameter" }
-  )
-  vim.api.nvim_set_hl(
-    0,
-    "CmpItemKindReference",
-    { link = "CmpItemKindVariable" }
-  )
+  link_hl("CmpItemKindVariable", "@lsp.type.variable")
+  link_hl("CmpItemKindTypeParameter", "@lsp.type.parameter")
+  link_hl("CmpItemKindReference", "CmpItemKindVariable")
 
-  vim.api.nvim_set_hl(0, "CmpItemKindClass", { link = "@lsp.type.class" })
-  vim.api.nvim_set_hl(0, "CmpItemKindStruct", { link = "@lsp.type.struct" })
-  vim.api.nvim_set_hl(
-    0,
-    "CmpItemKindInterface",
-    { link = "@lsp.type.interface" }
-  )
-  vim.api.nvim_set_hl(0, "CmpItemKindEnum", { link = "@lsp.type.enum" })
+  link_hl("CmpItemKindClass", "@lsp.type.class")
+  link_hl("CmpItemKindStruct", "@lsp.type.struct")
+  link_hl("CmpItemKindInterface", "@lsp.type.interface")
+  link_hl("CmpItemKindEnum", "@lsp.type.enum")
 
-  vim.api.nvim_set_hl(0, "CmpItemKindKeyword", { link = "@lsp.type.keyword" })
+  link_hl("CmpItemKindKeyword", "@lsp.type.keyword")
 
   -- front
   vim.api.nvim_set_hl(0, "CmpItemKindSnippet", { bg = "NONE", fg = "#D4D4D4" })
 
-  vim.api.nvim_set_hl(0, "CmpItemKindModule", { link = "@lsp.type.namespace" })
+  link_hl("CmpItemKindModule", "@lsp.type.namespace")
 
   -- pink
   vim.api.nvim_set_hl(0, "CmpItemKindFile", { bg = "NONE", fg = "#C586C0" })
-  vim.api.nvim_set_hl(0, "CmpItemKindFolder", { link = "CmpItemKindFile" })
+  link_hl("CmpItemKindFolder", "CmpItemKindFile")
 
-  vim.api.nvim_set_hl(
-    0,
-    "CmpItemKindEnumMember",
-    { link = "@lsp.type.enumMember" }
-  )
-  vim.api.nvim_set_hl(
-    0,
-    "CmpItemKindConstant",
-    { link = "CmpItemKindEnumMember" }
-  )
+  link_hl("CmpItemKindEnumMember", "@lsp.type.enumMember")
+  link_hl("CmpItemKindConstant", "CmpItemKindEnumMember")
 
-  vim.api.nvim_set_hl(0, "CmpItemKindOperator", { link = "@lsp.type.operator" })
+  link_hl("CmpItemKindOperator", "@lsp.type.operator")
 end
 
 return {
