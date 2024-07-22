@@ -32,6 +32,7 @@ local function highlight_cmp_menu()
   link_hl("CmpItemKindEnum", "@lsp.type.enum")
 
   link_hl("CmpItemKindKeyword", "@lsp.type.keyword")
+  link_hl("CmpItemKindOperator", "@lsp.type.operator")
 
   -- front
   vim.api.nvim_set_hl(0, "CmpItemKindSnippet", { bg = "NONE", fg = "#D4D4D4" })
@@ -45,7 +46,7 @@ local function highlight_cmp_menu()
   link_hl("CmpItemKindEnumMember", "@lsp.type.enumMember")
   link_hl("CmpItemKindConstant", "CmpItemKindEnumMember")
 
-  link_hl("CmpItemKindOperator", "@lsp.type.operator")
+  link_hl("CmpItemKindEvent", "@lsp.type.event")
 end
 
 return {
