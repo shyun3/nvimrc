@@ -13,6 +13,9 @@ local function highlight_cmp_menu()
   -- Taken from CocMenuSel
   vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#13354A" })
 
+  -- gray
+  vim.api.nvim_set_hl(0, "CmpItemMenu", { bg = "NONE", fg = "#808080" })
+
   link_hl("CmpItemKindFunction", "@lsp.type.function")
   link_hl("CmpItemKindMethod", "@lsp.type.method")
   link_hl("CmpItemKindConstructor", "CmpItemKindMethod")
@@ -76,6 +79,7 @@ return {
       snippet = {
         expand = function(args) vim.fn["UltiSnips#Anon"](args.body) end,
       },
+
       mapping = cmp.mapping.preset.insert({
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -100,6 +104,7 @@ return {
 
         ["<C-Space>"] = cmp.mapping.complete(),
       }),
+
       sources = cmp.config.sources({
         { name = "ultisnips" },
         { name = "lazydev" },
@@ -123,7 +128,17 @@ return {
 
       ---@diagnostic disable-next-line: missing-fields
       formatting = {
-        format = require("lspkind").cmp_format(),
+        format = require("lspkind").cmp_format({
+          menu = {
+            ultisnips = "[US]",
+            lazydev = "[LD]",
+            nvim_lsp = "[LSP]",
+            tags = "[T]",
+            path = "[P]",
+            buffer = "[B]",
+            cmdline = "[CMD]",
+          },
+        }),
       },
     })
 
