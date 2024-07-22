@@ -15,6 +15,10 @@ return {
       -- See `:h lsp-semantic-highlight`
       vim.api.nvim_set_hl(0, "@lsp.type.variable", { fg = "fg" })
       vim.cmd.highlight("link @lsp.type.parameter NONE")
+
+      -- Taken from glepnir/nvim
+      vim.cmd.highlight("IndentLine guifg=#2c2e33")
+      vim.cmd.highlight("IndentLineCurrent guifg=#9b9ea4")
     end,
   },
 
@@ -25,6 +29,28 @@ return {
     "sjl/gundo.vim",
     init = function() vim.g.gundo_prefer_python3 = 1 end,
     keys = { { "<F5>", "<Cmd>GundoToggle<CR>" } },
+  },
+
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+
+    opts = {
+      indent = {
+        char = "│", -- center aligned solid
+        highlight = "IndentLine",
+      },
+
+      whitespace = { remove_blankline_trail = false },
+
+      scope = {
+        show_start = false,
+        show_end = false,
+        highlight = "IndentLineCurrent",
+      },
+
+      exclude = { filetypes = { "project" } },
+    },
   },
 
   {
