@@ -35,8 +35,8 @@
 1. Prepare a Python virtual environment:
     ```bash
     cd ~/.config/nvim
-    virtualenv -p python3.7 venv
-    venv/bin/pip install pynvim
+    virtualenv -p python3.7 nvim-venv
+    nvim-venv/bin/pip install pynvim
     ```
     * Note that Neovim may not work with Python newer than 3.7
     * Pip may need to be [configured][pip-conf]
@@ -97,8 +97,8 @@
 1. Prepare a Python virtual environment:
     ```bash
     cd ~/.config/nvim
-    virtualenv -p python3.7 venv
-    venv/bin/pip install pynvim
+    virtualenv -p python3.7 nvim-venv
+    nvim-venv/bin/pip install pynvim
     ```
     * Note that Neovim may not work with Python newer than 3.7
     * Python 3.7 may be installed by: `brew install python@3.7`
