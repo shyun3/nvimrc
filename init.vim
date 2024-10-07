@@ -13,6 +13,7 @@ Plug 'equalsraf/neovim-gui-shim'
 Plug 'bkad/CamelCaseMotion'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'Shougo/neosnippet.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'yssl/QFEnter'
 Plug 'majutsushi/tagbar'
@@ -167,6 +168,26 @@ let g:LanguageClient_serverCommands = {
   \ 'c': ['clangd'],
   \ 'cpp': ['clangd'],
 \ }
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" neosnippet
+
+" Plugin key-mappings
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+
+let g:neosnippet#disable_runtime_snippets = {'_' : 1}
+let g:neosnippet#snippets_directory = s:vim_dir . '/neosnippets'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERD Tree
