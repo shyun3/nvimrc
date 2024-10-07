@@ -237,7 +237,7 @@ let g:asterisk#keeppos = 1
 let g:coc_global_extensions = ['coc-clangd', 'coc-json', 'coc-pyright',
   \ 'coc-syntax', 'coc-tag', 'coc-vimlsp', 'coc-pairs', 'coc-sh', 'coc-snippets']
 
-inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#next(1): "\<Tab>"
+inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -387,6 +387,10 @@ require('fzf-lua').setup {
   -- Git icons are disabled for performance reasons
   files = {
     git_icons = false,
+
+    -- Same as default except with `-j` to improve performance
+    -- See fd issue #1131
+    fd_opts = "--color=never --type f --hidden --follow --exclude .git -j4",
   },
   oldfiles = {
     include_current_session = true,
