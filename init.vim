@@ -296,7 +296,7 @@ lua << EOF
 require'hop'.setup()
 vim.api.nvim_set_keymap('', '<Space>', "<cmd>lua require'hop'.hint_words()<cr>", {})
 vim.api.nvim_set_keymap('', '_', "<cmd>lua require'hop'.hint_lines()<cr>", {})
-vim.api.nvim_set_keymap('', 'f', "<cmd>lua require'hop'.hint_char1()<cr>", {})
+vim.api.nvim_set_keymap('', 'g<Space>', "<cmd>lua require'hop'.hint_char1()<cr>", {})
 EOF
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
