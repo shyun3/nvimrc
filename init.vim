@@ -12,6 +12,7 @@ Plug 'equalsraf/neovim-gui-shim'
 
 " Plugins
 Plug 'bkad/CamelCaseMotion'
+Plug 'nixprime/cpsm'
 Plug 'shyun3/ctrlp.vim', {'branch': 'personal'}
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'editorconfig/editorconfig-vim'
@@ -272,13 +273,18 @@ let g:ctrlp_switch_buffer = 0     " Always open a new instance
 let g:ctrlp_extensions = ['tag', 'buffertag']
 let g:ctrlp_user_command = 'fd --type file --follow --color never . %s'
 let g:ctrlp_by_filename = 1       " Search filenames by default
+let g:ctrlp_match_current_file = 1
 let g:ctrlp_working_path_mode = ''
+let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
+let g:ctrlp_max_files = 0
+let g:ctrlp_map = ''
 
+nnoremap <silent> <C-p> :let g:cpsm_match_empty_query = 1<CR>:CtrlP<CR>
 nnoremap <silent> <C-\> :CtrlPBuffer<CR>
 nnoremap <silent> <C-H> :CtrlPTag<CR>
 nnoremap <silent> <C-K> :CtrlPBufTag<CR>
 nnoremap <silent> <C-Q> :CtrlP %:h<CR>
-execute 'nnoremap <silent> ' . Meta('p', 'π') . ' :CtrlPMRU<CR>'
+nnoremap <silent> <A-p> :let g:cpsm_match_empty_query = 0<CR>:CtrlPMRU<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " diminactive
