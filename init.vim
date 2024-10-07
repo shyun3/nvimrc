@@ -592,7 +592,6 @@ nnoremap <silent> <A-n> :NERDTree %<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Project
-let g:project_use_nerdtree = 1
 call project#rc()
 execute "silent! source " . g:vimDir . "/projects.vim"
 if argc(-1) == 0
