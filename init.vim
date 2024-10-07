@@ -179,13 +179,18 @@ nnoremap <silent> <leader>q :cclose<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Autocommands
+lua << EOF
+local myAutoGroup = vim.api.nvim_create_augroup('myAutoGroup', {clear = true})
+
+-- Save when leaving buffer
+vim.api.nvim_create_autocmd({'BufLeave', 'FocusLost'}, {
+  group = myAutoGroup,
+  nested = true,
+  command = 'update'
+})
+EOF
 
 augroup myAutoGroup
-  autocmd!
-
-  " Save when leaving buffer
-  autocmd BufLeave,FocusLost * ++nested silent! update
-
   " Trigger `autoread` when files changes on disk
   autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
     \ if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
