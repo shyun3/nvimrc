@@ -312,9 +312,6 @@ augroup myCocGroup
   autocmd!
   " Update signature help on jump placeholder
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-
-  " Highlight the symbol and its references when holding the cursor
-  autocmd CursorHold * silent call CocActionAsync('highlight')
 augroup end
 
 " Remap <C-f> and <C-b> for scroll float windows/popups
