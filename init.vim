@@ -307,6 +307,7 @@ function! s:IncomingCallsQf()
 endfunction
 
 nmap <leader>ca  <Plug>(coc-codeaction)
+nmap <leader>ch  <Cmd>CocCommand document.toggleInlayHint<CR>
 nmap <leader>cx  <Plug>(coc-fix-current)
 nmap <leader>rn <Plug>(coc-rename)
 
