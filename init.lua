@@ -11,7 +11,6 @@ vim.fn["plug#begin"](vimDir .. "/bundle")
 vim.cmd.Plug([['junegunn/vim-plug']])
 
 -- GUI
-vim.cmd.Plug([['tomasr/molokai']])
 vim.cmd.Plug([['norcalli/nvim-colorizer.lua']])
 
 -- Plugins
@@ -87,7 +86,6 @@ require("lazy").setup("plugins")
 -- Options
 
 -- Colors
-vim.cmd.colorscheme("molokai")
 vim.o.termguicolors = true
 
 -- C indent options
