@@ -1,5 +1,12 @@
 return {
-  { "williamboman/mason.nvim", config = true },
+  {
+    "williamboman/mason.nvim",
+
+    -- PATH should be updated early
+    priority = 100,
+
+    config = true,
+  },
 
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
