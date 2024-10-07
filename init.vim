@@ -624,7 +624,7 @@ do
   local grepper = vim.g.grepper
 
   grepper.tools = {'rg', 'git'}
-  grepper.rg.grepprg = 'rg -H --no-heading --vimgrep --smart-case --follow $*'
+  grepper.rg.grepprg = 'rg -H --no-heading --vimgrep --smart-case --follow'
   grepper.dir = 'filecwd'
 
   -- Prevent auto-resize of quickfix window
@@ -639,6 +639,8 @@ vim.keymap.set('n', '<Leader><Leader>', function()
   end,
   {desc = 'Grepper: Prompt'}
 )
+vim.keymap.set('n', '<Leader>*', '<Cmd>Grepper -cword -noprompt<CR>')
+vim.keymap.set({'n', 'x'}, 'gs', '<Plug>(GrepperOperator)')
 
 local myGrepperGroup = vim.api.nvim_create_augroup('myGrepperGroup', {})
 vim.api.nvim_create_autocmd('User', {
