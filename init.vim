@@ -13,7 +13,7 @@ Plug 'junegunn/vim-plug'
 
 " GUI
 Plug 'tomasr/molokai'
-Plug 'brenoprata10/nvim-highlight-colors'
+Plug 'norcalli/nvim-colorizer.lua'
 
 " Plugins
 Plug 'neoclide/coc.nvim', { 'branch': 'master', 'do': 'yarn install --frozen-lockfile' }
@@ -612,8 +612,8 @@ nnoremap <A-n> <Cmd>NERDTreeFind<CR>
 nnoremap <leader>n <Cmd>NERDTree<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" nvim-highlight-colors
-lua require'nvim-highlight-colors'.setup{render = 'background'}
+" nvim-colorizer
+lua require'colorizer'.setup({'*'}, {names = false})
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " nvim-reload
