@@ -173,20 +173,5 @@ return {
 
     { "<Leader>ds", "<Cmd>FzfLua lsp_document_symbols<CR>" },
     { "<Leader>ws", "<Cmd>FzfLua lsp_workspace_symbols<CR>" },
-
-    { "<Leader>rr", vim.lsp.buf.references, desc = "LSP: References" },
-    { "<Leader>ri", vim.lsp.buf.incoming_calls, desc = "LSP: Incoming calls" },
-    { "<Leader>ro", vim.lsp.buf.outgoing_calls, desc = "LSP: Outgoing calls" },
-
-    {
-      "<Leader>gd",
-      function()
-        local diag = vim.diagnostic.get(0)
-        local qf = vim.diagnostic.toqflist(diag)
-        vim.fn.setqflist(qf)
-        vim.cmd("botright copen")
-      end,
-      desc = "LSP: Buffer diagnostics",
-    },
   },
 }

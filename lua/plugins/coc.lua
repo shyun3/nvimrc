@@ -28,18 +28,6 @@ return {
   end,
 
   keys = {
-    { "<Leader>ll", "<Cmd>CocList<CR>" },
-    { "<Leader>lc", "<Cmd>CocList commands<CR>" },
-
-    { "<Leader>ca", "<Plug>(coc-codeaction)", silent = true },
-    { "<Leader>cx", "<Plug>(coc-fix-current)" },
-    { "<Leader>rn", "<Plug>(coc-rename)" },
-
-    {
-      "<Leader>ch",
-      "<Cmd>CocCommand document.toggleInlayHint<CR>",
-    },
-
     -- Requires 'textDocument.documentSymbol' support from the language server
     { "if", "<Plug>(coc-funcobj-i)", mode = { "x", "o" } },
     { "af", "<Plug>(coc-funcobj-a)", mode = { "x", "o" } },

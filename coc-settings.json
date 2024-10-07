@@ -1,8 +1,6 @@
 {
   "coc.preferences.useQuickfixForLocations": true,
 
-  "inlayHint.display": false,
-
   "list.insertMappings": {
     "<C-s>": "action:split",
     "<C-t>": "action:tabe",
