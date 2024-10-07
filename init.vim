@@ -661,6 +661,37 @@ vim.g.gutentags_define_advanced_commands = 1
 -- Hop
 require'hop'.setup()
 
+-- Same as `hint_with_callback` except it resets any operator mode forced
+-- motion if a hop was executed. Using this workaround is needed otherwise the
+-- operator will still apply on the current cursor or line if motion is forced,
+-- even though the hop gets cancelled. Of course, this assumes that the hop
+-- uses this function.
+local orig_hint_with_callback = require'hop'.hint_with_callback
+require'hop'.hint_with_callback = function(...)
+  orig_hint_with_callback(...)
+  if not hopped then reset_forced_motion() end
+  hopped = false
+end
+
+-- Same as `move_cursor_to` but records if a hop was executed. Of course, this
+-- assumes that the hop uses this function.
+local orig_move_cursor_to = require'hop'.move_cursor_to
+require'hop'.move_cursor_to = function(...)
+  orig_move_cursor_to(...)
+  hopped = true
+end
+
+function reset_forced_motion()
+  if vim.startswith(vim.fn.mode(1), 'no') then
+    -- Using `:normal` or `feedkeys` with `x` will reset forced motion (see
+    -- vim#9332).
+    vim.api.nvim_feedkeys('', 'x', true)
+
+    -- Exit operator pending mode
+    vim.api.nvim_feedkeys([[\<Esc>]], 'n', true)
+  end
+end
+
 -- Like `hop.jump_regex.regex_by_line_start_skip_whitespace()` except it also
 -- marks empty or whitespace only lines
 local function regexLines()
@@ -707,6 +738,7 @@ function hintTill1()
 
   local c = hop.get_input_pattern('Till 1 char: ', 1)
   if not c then
+    reset_forced_motion()
     return
   end
 
