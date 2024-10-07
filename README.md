@@ -17,7 +17,7 @@
         * `bat` should be installed through a `.deb` package,
           see [issue #938][bat-issue-938]
         * Latest version of `clangd` is preferred (at least v14)
-    * [Node.js](https://nodejs.org/en/download) (must be at least v12)
+    * [Node.js](https://nodejs.org/en/download) (must be at least v16.18)
         * See [`PATH`][node-install] instructions
         * Dependencies:
             `npm install -g yarn @compodoc/live-server prettier prettier-plugin-sh`
