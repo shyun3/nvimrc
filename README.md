@@ -7,24 +7,28 @@
     git clone https://github.com/shyun3/nvimrc ~/.config/nvim
     ```
 
-1. Install [Neovim][nvim-linux] (must be at least v0.6.0)
+1. Install [Neovim][nvim-linux]
 
 1. Install dependencies and include them in the `PATH`:
-    * `sudo apt install ripgrep universal-ctags clang-format pandoc`
-    * [fd][], [fzf][], [bat][], [clangd][]
-        * `fd` should be >= v8.1.0 to support global ignore files
-        * `fzf` must be >= v0.23.1, see [issue #63][fzf-issue-63]
-        * `bat` should be installed through a `.deb` package,
-          see [issue #938][bat-issue-938]
-        * Latest version of `clangd` is preferred (at least v14)
-    * [Node.js](https://nodejs.org/en/download) (must be at least v16.18)
-        * See [`PATH`][node-install] instructions
+    * `sudo apt install ripgrep bat universal-ctags pandoc`
+        * Make sure to create a symlink for `bat` (see [link][bat-install])
+    * [fd][], `fzf`
+        * `fd` >= 9.0.0 is recommended for improved performance
+    * [LLVM][]
+        * Latest version is preferred. Prefer the automatic install script.
+        * Remember to create symlink for `clangd`
+        * The install script does not include `clang-format` so make sure to
+          install that through `apt` afterwards. Make sure to also create a
+          symlink.
+    * `node`
+        * Latest version (with `npm`) can be installed through `nvm`:
+            `nvm install node`
         * Dependencies:
             `npm install -g yarn @compodoc/live-server prettier prettier-plugin-sh`
-    * [pyenv][]
-        * Prepare `virtualenv`:
-            ```bash
-            pyenv virtualenv <PYTHON3_VERSION> neovim
+    * `pyenv`
+        * Prepare virtual environment:
+            ```zsh
+            pyenv virtualenv 3 neovim
             pyenv activate neovim
             pip install pynvim
             ```
@@ -41,7 +45,8 @@
 1. Start Neovim. Ignore any errors and run `:PlugInstall`.
 
 1. Run `:checkhealth` and resolve any issues.
-    * For `clipboard` on WSL, see `:h clipboard`. Consider using [win32yank][].
+    * For `clipboard` on WSL, see `:h clipboard`. Consider using
+      [win32yank.exe][].
 
 1. Restart Neovim. Installation should now be complete.
 
@@ -93,22 +98,17 @@ plugins.
 * Add snippets under the `UltiSnips/specific` directory for snippets that are
   meant to be machine-specific and not saved in the repo.
 
-[nvim-linux]: https://github.com/neovim/neovim/wiki/Installing-Neovim#linux
+[nvim-linux]: https://github.com/neovim/neovim/blob/master/INSTALL.md
 [node-install]: https://github.com/nodejs/help/wiki/Installation
 [vim-plug]: https://github.com/junegunn/vim-plug#neovim
 [Nerd Fonts]: https://www.nerdfonts.com/font-downloads
 [nvim-config-dir]: https://neovim.io/doc/user/starting.html#config
 [nvim-undo-dir]: https://neovim.io/doc/user/options.html#'undodir'
 [fd]: https://github.com/sharkdp/fd#on-ubuntu
-[fzf]: https://github.com/junegunn/fzf#using-git
-[fzf-issue-63]: https://github.com/ibhagwan/fzf-lua/issues/63
-[bat]: https://github.com/sharkdp/bat#on-ubuntu-using-most-recent-deb-packages
-[bat-issue-938]: https://github.com/sharkdp/bat/issues/938
-[nvim-clipboard-wsl]: https://github.com/neovim/neovim/wiki/FAQ#how-to-use-the-windows-clipboard-from-wsl
-[clangd]: https://github.com/clangd/clangd/releases
+[bat-install]: https://github.com/sharkdp/bat#on-ubuntu-using-apt
+[LLVM]: https://apt.llvm.org/
 [jetbrains-mono]: https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/JetBrainsMono/NoLigatures
-[pyenv]: https://github.com/pyenv/pyenv#installation
 [type-stubs]: https://github.com/microsoft/pyright/blob/main/docs/type-stubs.md#generating-type-stubs
 [coc-extensions]: https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#implemented-coc-extensions
 [coc-output-channel]: https://github.com/neoclide/coc.nvim/wiki/Debug-language-server#using-output-channel
-[win32yank]: https://github.com/equalsraf/win32yank
+[win32yank.exe]: https://github.com/equalsraf/win32yank
