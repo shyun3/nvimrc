@@ -488,6 +488,7 @@ nmap <silent> <A-t> :TagbarToggle<CR>
 " UltiSnips
 let g:UltiSnipsEditSplit = 'horizontal'
 let g:UltiSnipsExpandTrigger = "<NUL>"
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "UltiSnips/specific"]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " wordmotion
