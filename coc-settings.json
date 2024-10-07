@@ -13,6 +13,5 @@
        "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".editorconfig", ".git/"],
        "filetypes": ["c", "cpp"]
     }
-  },
-  "python.jediEnabled": false
+  }
 }
