@@ -5,7 +5,7 @@
     scoop install git
     scoop bucket add extras
     scoop install neovim ripgrep universal-ctags nodejs yarn openssl miniconda3 llvm
-    pip install pynvim python-language-server
+    pip3 install neovim
     ```
 
 1. Clone this repo to the proper directory (using Powershell):
@@ -24,8 +24,6 @@
 
 1. Start Neovim: `nvim-qt`. Ignore any errors and run `:PlugInstall`.
 
-1. Install [coc extensions](#coc-extensions)
-
 1. Restart Neovim. Run `:checkhealth` and resolve any issues.
 
 1. Done!
@@ -35,6 +33,7 @@
 1. Install [Neovim][nvim-linux] and [neovim-qt][]
    
 1. Install dependencies:
+* `pip3 install neovim`
 * [ripgrep][] and [Universal Ctags][]
 * [Node.js](https://nodejs.org/en/), recent version
     * Make sure to set the [`PATH`][node-install] and handle any
@@ -62,16 +61,9 @@
 
 1. Start Neovim: `nvim-qt`. Ignore any errors and run `:PlugInstall`.
 
-1. Install [coc extensions](#coc-extensions)
-
 1. Restart Neovim. Run `:checkhealth` and resolve any issues.
 
 1. Done!
-
-# CoC Extensions
-```vim
-:CocInstall coc-json coc-tag coc-ultisnips coc-syntax coc-pyls coc-omnisharp
-```
 
 [nvim-linux]: https://github.com/neovim/neovim/wiki/Installing-Neovim#linux
 [neovim-qt]: https://github.com/equalsraf/neovim-qt
