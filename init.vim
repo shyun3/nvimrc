@@ -15,7 +15,6 @@ Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'sjl/gundo.vim'
 Plug 'phaazon/hop.nvim'
-Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdtree'
 Plug 'yssl/QFEnter'
@@ -68,6 +67,11 @@ Plug 'glts/vim-textobj-comment'
 Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-user'
+
+" Telescope
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 call plug#end()
 
@@ -307,81 +311,6 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'project',
   \ 'markdown']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" LeaderF
-let g:Lf_DefaultMode = 'NameOnly'
-let g:Lf_JumpToExistingWindow = 0
-
-let g:Lf_StlSeparator = {'left': '', 'right': ''}
-let g:Lf_ExternalCommand = 'fd -t f -L -c never -H -E .git -E .svn . %s'
-
-let g:Lf_WindowPosition = 'popup'
-let g:Lf_PreviewInPopup = 1
-let g:Lf_PreviewCode = 1
-let g:Lf_PreviewResult = {
-  \ 'File': 1,
-  \ 'Buffer': 1,
-  \ 'Mru': 1,
-  \ 'Tag': 1,
-  \ 'BufTag': 1,
-  \ 'Function': 1,
-  \ 'Line': 1,
-  \ 'Colorscheme': 1,
-  \ 'Rg': 1,
-  \ 'Gtags': 0,
-  \ 'QuickFix': 1,
-  \}
-
-let g:Lf_ShortcutF = ''
-let g:Lf_ShortcutB = ''
-
-let g:Lf_MruMaxFiles = 8000
-let g:Lf_HistoryNumber = 8000
-
-" Go to an editable window
-" Derived from ctrlp#normcmd()
-function! s:GoToEditWindow()
-  let invalidBufTypes = ['quickfix', 'help', 'nofile', 'terminal']
-  if index(invalidBufTypes, &l:buftype) == -1
-    return
-  endif
-
-  let editWins = filter(range(1, winnr('$')),
-    \ 'index(invalidBufTypes, getbufvar(winbufnr(v:val), "&buftype")) == -1')
-  for winNum in editWins
-    let bufNum = winbufnr(winNum)
-    if empty(bufname(bufNum)) && empty(getbufvar(bufNum, '&filetype'))
-      let tmpWin = winNum
-      break
-    endif
-  endfor
-
-  let cwd = getcwd()
-  if !empty(editWins)
-    if index(editWins, winnr()) < 0
-      execute (exists('tmpWin') ? tmpWin : editWins[0]) . 'wincmd w'
-    endif
-  else
-    botright vnew
-  endif
-
-  execute 'lcd ' . cwd
-endfunction
-
-nnoremap <silent> <C-p> :call <SID>GoToEditWindow()<CR>:LeaderfFile<CR>
-nnoremap <silent> <C-q> :call <SID>GoToEditWindow()<CR>:LeaderfFile %:h<CR>
-nnoremap <silent> <C-\> :call <SID>GoToEditWindow()<CR>:LeaderfBuffer<CR>
-nnoremap <silent> <A-p> :call <SID>GoToEditWindow()<CR>:LeaderfMru<CR>
-nnoremap <silent> <C-h> :call <SID>GoToEditWindow()<CR>:LeaderfTag<CR>
-nnoremap <silent> <C-k> :LeaderfBufTag<CR>
-nnoremap <silent> <C-j> :LeaderfLine<CR>
-nnoremap <silent> <A-f> :LeaderfSelf<CR>
-nnoremap <silent> <leader>; :LeaderfHistoryCmd<CR>
-nnoremap <silent> <leader>/ :Leaderf searchHistory<CR>
-nnoremap <silent> <leader>h :LeaderfHelp<CR>
-nnoremap <silent> <leader>x :LeaderfCommand<CR>
-nnoremap <silent> <leader>c :LeaderfQuickFix<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Neoformat
 let g:neoformat_run_all_formatters = 1
 
@@ -431,6 +360,62 @@ cmap <silent> <expr> <enter> search_pulse#PulseFirst()
 let g:tagbar_autofocus = 1    " Move to Tagbar window when opened
 let g:tagbar_sort = 0
 nmap <silent> <A-t> :TagbarToggle<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Telescope
+
+" Go to an editable window
+" Derived from ctrlp#normcmd()
+function! s:GoToEditWindow()
+  let invalidBufTypes = ['quickfix', 'help', 'nofile', 'terminal']
+  if index(invalidBufTypes, &l:buftype) == -1
+    return
+  endif
+
+  let editWins = filter(range(1, winnr('$')),
+    \ 'index(invalidBufTypes, getbufvar(winbufnr(v:val), "&buftype")) == -1')
+  for winNum in editWins
+    let bufNum = winbufnr(winNum)
+    if empty(bufname(bufNum)) && empty(getbufvar(bufNum, '&filetype'))
+      let tmpWin = winNum
+      break
+    endif
+  endfor
+
+  let cwd = getcwd()
+  if !empty(editWins)
+    if index(editWins, winnr()) < 0
+      execute (exists('tmpWin') ? tmpWin : editWins[0]) . 'wincmd w'
+    endif
+  else
+    botright vnew
+  endif
+
+  execute 'lcd ' . cwd
+endfunction
+
+lua << EOF
+function fd(opts)
+  opts.find_command = {'fd', '--type', 'file', '--follow', '--color', 'never',
+    '--hidden', '--exclude', '.git', '--exclude', '.svn'
+  }
+  require'telescope.builtin'.fd(opts)
+end
+EOF
+
+nnoremap <silent> <C-p> :call <SID>GoToEditWindow()<CR>:lua fd({})<CR>
+nnoremap <silent> <C-q> :call <SID>GoToEditWindow()<CR>:lua fd({ cwd = vim.fn.expand('%:h') })<CR>
+nnoremap <silent> <C-\> :call <SID>GoToEditWindow()<CR>:Telescope buffers<CR>
+nnoremap <silent> <A-p> :call <SID>GoToEditWindow()<CR>:Telescope oldfiles<CR>
+nnoremap <silent> <C-h> :call <SID>GoToEditWindow()<CR>:Telescope tags<CR>
+nnoremap <C-k> <cmd>Telescope current_buffer_tags<CR>
+nnoremap <C-j> <cmd>Telescope current_buffer_fuzzy_find<CR>
+nnoremap <A-f> <cmd>Telescope builtin<CR>
+nnoremap <leader>; <cmd>Telescope command_history<CR>
+nnoremap <leader>/ <cmd>Telescope search_history<CR>
+nnoremap <leader>h <cmd>Telescope help_tags<CR>
+nnoremap <leader>x <cmd>Telescope commands<CR>
+nnoremap <leader>c <cmd>Telescope quickfix<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UltiSnips
