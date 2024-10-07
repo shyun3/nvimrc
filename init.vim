@@ -178,7 +178,9 @@ nnoremap <silent> <leader>q :cclose<CR>
 
 augroup myAutoGroup
   autocmd!
-  autocmd BufLeave,FocusLost * silent! update   " Save when leaving buffer
+
+  " Save when leaving buffer
+  autocmd BufLeave,FocusLost * ++nested silent! update
 
   " Trigger `autoread` when files changes on disk
   autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
