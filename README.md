@@ -23,7 +23,7 @@
     mkdir -p ~/.local/share/nvim/undo
     ```
 
-1. Install [vim-plug][] and [Powerline fonts][]
+1. Install [vim-plug][] and [Nerd Fonts][]
 
 1. Start Neovim. Ignore any errors and run `:PlugInstall`.
 
@@ -59,7 +59,7 @@
     
 1. Make sure to update any certificate settings for Node.js and Yarn
 
-1. Install [vim-plug][] and [Powerline fonts][]
+1. Install [vim-plug][] and [Nerd Fonts][]
 
 1. Start Neovim. Ignore any errors and run `:PlugInstall`.
 
@@ -79,7 +79,7 @@
 [Universal Ctags]: https://github.com/universal-ctags/ctags
 [node-install]: https://github.com/nodejs/help/wiki/Installation
 [vim-plug]: https://github.com/junegunn/vim-plug#neovim
-[Powerline fonts]: https://github.com/powerline/fonts#installation
+[Nerd Fonts]: https://github.com/ryanoasis/nerd-fonts#tldr
 [nvim-config-dir]: https://neovim.io/doc/user/starting.html#config
 [mac-univ-ctags]: https://github.com/universal-ctags/homebrew-universal-ctags
 [nvim-undo-dir]: https://neovim.io/doc/user/options.html#'undodir'
