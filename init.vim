@@ -72,7 +72,8 @@ colorscheme molokai
 set termguicolors
 
 " C indent options
-set cinoptions=g0   " Don't indent class scope declarations
+" Don't indent class scope declarations, namespaces, or extern blocks
+set cinoptions=g0,N-s,E-s
 
 " Casing
 set ignorecase        " Ignore case when searching
