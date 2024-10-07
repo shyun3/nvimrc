@@ -159,6 +159,8 @@ augroup END
 
 autocmd BufNewFile,BufRead *.xaml setf xml
 
+autocmd FocusGained * silent! checktime
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin specific settings
