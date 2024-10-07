@@ -12,10 +12,6 @@
   "semanticTokens.enable": true,
 
   "snippet.statusText": "",
-
-  "snippets.extends": {
-    "cpp": ["c"]
-  },
   "snippets.loadFromExtensions": false,
   "snippets.ultisnips.directories": ["UltiSnips", "UltiSnips/specific"],
 
