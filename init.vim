@@ -377,7 +377,7 @@ let g:grepper.open = 0
 
 autocmd User Grepper FzfLua quickfix
 
-nnoremap <leader><leader> :GrepperRg 
+nnoremap <leader><leader> <Cmd>call <SID>GoToEditWindow()<CR><Cmd>Grepper<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Gundo
