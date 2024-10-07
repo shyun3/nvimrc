@@ -77,6 +77,7 @@ call plug#end()
 
 " Colors
 colorscheme molokai
+set termguicolors
 
 " Buffers
 set hidden
@@ -208,9 +209,7 @@ autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Airline
 let g:airline_theme='molokai'
-if &termguicolors
-  let g:airline_powerline_fonts = 1
-endif
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#whitespace#enabled = 0 " Whitespace error detection
 let g:airline#extensions#tagbar#enabled = 0
 
