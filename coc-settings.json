@@ -9,8 +9,6 @@
     "<C-v>": "action:vsplit"
   },
 
-  "semanticTokens.enable": true,
-
   "suggest.noselect": true,
   "suggest.reTriggerAfterIndent": false,
 
