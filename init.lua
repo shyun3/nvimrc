@@ -1,7 +1,3 @@
--- lua: Covered by treesitter
--- sensible: Do not update vim settings
-vim.g.polyglot_disabled = { "lua", "sensible" }
-
 --[=[
 
 -- Plugins
@@ -23,7 +19,6 @@ vim.cmd.Plug([['junegunn/vim-easy-align']])
 vim.cmd.Plug([['tpope/vim-endwise']])
 vim.cmd.Plug([['tpope/vim-fugitive']])
 vim.cmd.Plug([['ludovicchabant/vim-gutentags']])
-vim.cmd.Plug([['sheerun/vim-polyglot']])
 vim.cmd.Plug([['tpope/vim-projectionist']])
 vim.cmd.Plug([['jeetsukumaran/vim-pythonsense']])
 vim.cmd.Plug([['tpope/vim-repeat']])
@@ -64,9 +59,6 @@ require("lazy").setup("plugins", {
 
 -------------------------------------------------------------------------------
 -- Variables
-
--- vim-polyglot sets this variable, which prevents loading of `filetype.lua`
-vim.g.did_load_filetypes = nil
 
 -- C
 vim.g.c_gnu = 1
@@ -692,19 +684,6 @@ require("bqf").setup({
     vsplit = "<C-x><C-v>",
   },
 })
-
--------------------------------------------------------------------------------
--- polyglot
-
--- vim-cpp-modern
-vim.cmd.highlight("link cppSTLios NONE") -- STL I/O manipulators
-vim.cmd.highlight("link cppSTLconstant NONE") -- C++17 constants
-vim.cmd.highlight("link cppSTLtype NONE") -- C++17 STL types
-vim.cmd.highlight("link cppSTLconcept NONE") -- C++20 concepts
-
--- vim-markdown
-vim.g.vim_markdown_auto_insert_bullets = 0
-vim.g.vim_markdown_new_list_item_indent = 0
 
 -------------------------------------------------------------------------------
 -- Pydocstring
