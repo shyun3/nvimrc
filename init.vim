@@ -192,12 +192,22 @@ call deoplete#custom#source('LanguageClient', 'min_pattern_length', 2)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " fzf
-nnoremap <silent> <C-p> :call fzf#vim#files('',
-  \ {'source': 'rg --files -F --color never --hidden --follow -g "!.*/"'})<CR>
-nnoremap <C-\> :Buffers<CR>
-nnoremap <C-H> :Tags<CR>
-nnoremap <C-K> :BTags<CR>
-nnoremap <A-p> :History<CR>
+function! FZFOpen(command_str)
+  if (expand('%') =~# 'NERD_tree' && winnr('$') > 1)
+    exe "silent normal! \<c-w>\<c-w>"
+  endif
+  exe 'silent normal! ' . a:command_str . "\<cr>"
+endfunction
+
+nnoremap <silent> <C-p> :call FZFOpen(":call fzf#vim#files\('',
+  \ {'source': 'rg --files -F --color never --hidden --follow -g \"!.*/\"'}\)"
+  \ )<CR>
+nnoremap <silent> <C-\> :Buffers<CR>
+nnoremap <silent> <C-H> :Tags<CR>
+nnoremap <silent> <C-K> :BTags<CR>
+nnoremap <silent> <A-p> :History<CR>
+
+let g:fzf_layout = { 'down': '~20%' }
 
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
