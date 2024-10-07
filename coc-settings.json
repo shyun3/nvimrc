@@ -6,6 +6,7 @@
       "pyrightconfig.json",
       "pyproject.toml"
   ],
+  "coc.preferences.snippetStatusText": "",
 
   "workspace.bottomUpFiletypes": ["*.py", "*.pyi"],
   "workspace.workspaceFolderCheckCwd": false,
