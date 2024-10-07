@@ -214,8 +214,8 @@ let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_er
 let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
 
 nmap <silent> <leader>d <Plug>(coc-definition)
-nmap <silent> <leader>vd :call CocAction('jumpDefinition', 'vsplit')
-nmap <silent> <leader>sd :call CocAction('jumpDefinition', 'split')
+nmap <silent> <leader>vd :call CocAction('jumpDefinition', 'vsplit')<CR>
+nmap <silent> <leader>sd :call CocAction('jumpDefinition', 'split')<CR>
 
 nmap <silent> <leader>r <Plug>(coc-references)
 
