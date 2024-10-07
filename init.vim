@@ -296,7 +296,7 @@ let g:gutentags_cache_dir = g:vimDir . '/.gutentags-cache'
 lua << EOF
 require'hop'.setup()
 vim.api.nvim_set_keymap('', '<Space>', "<cmd>lua require'hop'.hint_words()<cr>", {})
-vim.api.nvim_set_keymap('', '-', "<cmd>lua require'hop'.hint_lines()<cr>", {})
+vim.api.nvim_set_keymap('', '_', "<cmd>lua require'hop'.hint_lines()<cr>", {})
 vim.api.nvim_set_keymap('', 'f', "<cmd>lua require'hop'.hint_char1()<cr>", {})
 EOF
 
