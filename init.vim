@@ -3,6 +3,9 @@ let g:vimDir = stdpath('config')
 " filetype.lua
 let g:do_filetype_lua = 1
 
+" To prevent error messages when calling `:Reload`
+let g:polyglot_disabled = ['haxe']
+
 call plug#begin(g:vimDir . '/bundle')
 
 " Plugin manager
