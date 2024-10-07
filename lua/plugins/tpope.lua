@@ -1,6 +1,11 @@
 return {
   { "tpope/vim-endwise", init = function() vim.g.endwise_no_mappings = 1 end },
-  "tpope/vim-fugitive",
+
+  {
+    "tpope/vim-fugitive",
+    lazy = true, -- See airline
+  },
+
   "tpope/vim-projectionist",
   "tpope/vim-repeat",
   "tpope/vim-surround",
