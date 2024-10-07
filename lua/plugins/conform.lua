@@ -22,12 +22,6 @@ return {
   "stevearc/conform.nvim",
 
   opts = {
-    formatters = {
-      ["clang-format"] = {
-        prepend_args = { "-style=file" },
-      },
-    },
-
     formatters_by_ft = {
       c = { "clang-format" },
       cpp = { "clang-format" },
