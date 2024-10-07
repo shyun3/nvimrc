@@ -54,9 +54,6 @@ return {
       },
     },
   },
-  "tpope/vim-surround",
-  "tpope/vim-unimpaired",
-  "tpope/vim-vinegar",
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
