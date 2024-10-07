@@ -150,14 +150,14 @@ let g:python3_host_prog = '~/.pyenv/versions/neovim/bin/python3'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mappings
+lua << EOF
+-- List tags before jumping if more than one match
+vim.keymap.set({'n', 'v'}, '<C-]>', 'g<C-]>')
 
-" Make & keep sub flags
-xnoremap & :&&<CR>
-
-" Open tags in splits
-nnoremap <silent> <C-]> :tjump /\<<C-R><C-W>\>\C<CR>
-nnoremap <silent> <A-]>s :wincmd g<C-V><C-]><CR>
-nnoremap <silent> <A-]>v :vertical wincmd g<C-V><C-]><CR>
+-- Open tags in splits
+vim.keymap.set('n', '<A-]>s', '<Cmd>wincmd g<C-]><CR>')
+vim.keymap.set('n', '<A-]>v', '<Cmd>vertical wincmd g<C-]><CR>')
+EOF
 
 " Window navigation
 nnoremap <silent> ]w :wincmd w<CR>
