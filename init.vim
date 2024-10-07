@@ -271,7 +271,7 @@ endfunction
 " CtrlP
 let g:ctrlp_switch_buffer = 0     " Always open a new instance
 let g:ctrlp_extensions = ['tag', 'buffertag']
-let g:ctrlp_user_command = 'rg --files -F --color never --hidden --follow -g !.*/ %s'
+let g:ctrlp_user_command = 'fd --type file --follow --color never . %s'
 let g:ctrlp_by_filename = 1       " Search filenames by default
 let g:ctrlp_working_path_mode = ''
 
