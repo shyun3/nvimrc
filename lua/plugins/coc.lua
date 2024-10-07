@@ -16,13 +16,4 @@ return {
 
     vim.g.coc_quickfix_open_command = "botright copen"
   end,
-
-  config = function()
-    vim.api.nvim_create_autocmd("User", {
-      group = vim.api.nvim_create_augroup("myCocGroup", {}),
-      desc = "Update signature help on jump placeholder",
-      pattern = "CocJumpPlaceholder",
-      callback = function() vim.fn.CocActionAsync("showSignatureHelp") end,
-    })
-  end,
 }

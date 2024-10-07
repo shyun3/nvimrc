@@ -5,9 +5,7 @@ return {
     dependencies = {
       "williamboman/mason-lspconfig.nvim",
       "hrsh7th/cmp-nvim-lsp",
-      { "j-hui/fidget.nvim", opts = {} },
     },
-    lazy = false,
 
     config = function()
       vim.api.nvim_create_autocmd("LspAttach", {
@@ -92,5 +90,12 @@ return {
         { path = "luvit-meta/library", words = { "vim%.uv" } },
       },
     },
+  },
+
+  { "j-hui/fidget.nvim", opts = {} },
+  {
+    "ray-x/lsp_signature.nvim",
+    event = "VeryLazy",
+    opts = {},
   },
 }
