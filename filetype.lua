@@ -8,8 +8,10 @@ vim.filetype.add({
     end,
 
     lds = "ld",
+    S = "asm",
     xaml = "xml",
   },
+
   filename = {
     [".clangd"] = "yaml",
     [".clang-format"] = "yaml",

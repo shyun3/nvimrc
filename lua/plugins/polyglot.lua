@@ -4,7 +4,7 @@ return {
   init = function()
     -- lua: Covered by treesitter
     -- sensible: Do not update vim settings
-    vim.g.polyglot_disabled = { "lua", "sensible" }
+    vim.g.polyglot_disabled = { "lua", "r-lang", "sensible" }
   end,
 
   config = function()
