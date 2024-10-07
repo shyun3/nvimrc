@@ -1,6 +1,3 @@
--- Colors
-vim.o.termguicolors = true
-
 -- C indent options
 vim.o.cinoptions = "g0" -- Don't indent class scope declarations
   .. "N-s" -- Don't indent namespaces

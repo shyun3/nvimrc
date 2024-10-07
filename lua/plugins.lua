@@ -21,6 +21,15 @@ return {
 
   {
     "norcalli/nvim-colorizer.lua",
+
+    init = function()
+      -- 'termguicolors' is auto-detected as of nvim 0.10, but the plugin
+      -- requires the option to be set. It could be loaded later to wait for
+      -- the auto-detect, e.g. at VeryLazy, but that may result in a visual
+      -- glitch at startup. See issue #96.
+      vim.o.termguicolors = true
+    end,
+
     config = function() require("colorizer").setup({ "*" }, { names = false }) end,
   },
 
