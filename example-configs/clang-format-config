@@ -1,4 +1,5 @@
 # clang-format 18.1.4
+# vim: ft=yaml
 
 BasedOnStyle: LLVM
 AccessModifierOffset: -4
@@ -120,7 +121,7 @@ PackConstructorInitializers: BinPack
 # PenaltyReturnTypeOnItsOwnLine:
 PointerAlignment: Left
 QualifierAlignment: Custom
-QualifierOrder: ['inline', 'static', 'const', 'volatile', 'type']
+QualifierOrder: ["inline", "static", "const", "volatile", "type"]
 RawStringFormats: []
 ReferenceAlignment: Pointer
 ReflowComments: true
