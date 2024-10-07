@@ -119,7 +119,6 @@ let c_gnu = 1
 let c_no_curly_error = 1
 
 " Python
-let g:loaded_python_provider = 0
 let g:python3_host_prog = '~/.pyenv/versions/neovim/bin/python3'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
