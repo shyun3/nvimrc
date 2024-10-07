@@ -125,6 +125,8 @@ set updatetime=300
 set splitright        " All vertical splits open to the right
 set splitbelow        " All horizontal splits open below
 
+let g:python3_host_prog = 'python3'
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Variables
 let c_gnu=1              " Highlight GNU keywords
