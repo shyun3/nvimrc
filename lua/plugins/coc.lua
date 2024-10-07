@@ -142,8 +142,11 @@ return {
     {
       "<Leader>ri",
       function()
+        local ok, calls = pcall(vim.fn.CocAction, "incomingCalls")
+        if not ok then return end
+
         local qf = {}
-        for _, inCall in ipairs(vim.fn.CocAction("incomingCalls")) do
+        for _, inCall in ipairs(calls) do
           local from = inCall.from
 
           local i, j = from.uri:find("file://")
@@ -171,7 +174,7 @@ return {
         end
 
         vim.fn.setqflist(qf)
-        vim.cmd.FzfLua("quickfix")
+        if not vim.tbl_isempty(qf) then vim.cmd.FzfLua("quickfix") end
       end,
       desc = "coc: Populate quickfix list with incoming calls",
     },
