@@ -1,5 +1,5 @@
 snippet includeGuard "Include guard"
-#ifndef ${1:`!v toupper(expand('%:t:r')) . '_H_'`}
+#ifndef ${1:`!v toupper(expand('%:t:r')) . '_' . toupper(expand('%:e')) . '_'`}
 #define $1
 
 #endif    // $1
