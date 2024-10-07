@@ -16,9 +16,9 @@ return {
       vim.api.nvim_set_hl(0, "@lsp.type.variable", { fg = "fg" })
       vim.cmd.highlight("link @lsp.type.parameter NONE")
 
-      -- Taken from glepnir/nvim
-      vim.cmd.highlight("IndentLine guifg=#2c2e33")
-      vim.cmd.highlight("IndentLineCurrent guifg=#9b9ea4")
+      -- Taken from default vscode theme (Dark Modern)
+      vim.cmd.highlight("IndentLine guifg=#404040")
+      vim.cmd.highlight("IndentLineCurrent guifg=#707070")
     end,
   },
 
