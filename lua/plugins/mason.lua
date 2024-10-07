@@ -27,6 +27,7 @@ return {
         "lua_ls",
         "pyright",
         "vimls",
+        "yamlls",
       },
       automatic_installation = true,
     },
