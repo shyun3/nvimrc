@@ -11,14 +11,10 @@
 
 1. Clone this repo to the proper directory (using Powershell):
     ```
-    git clone --recursive https://github.com/shyun3/nvimrc ~/AppData/Local/nvim
+    git clone https://github.com/shyun3/nvimrc ~/AppData/Local/nvim
     ```
 
 1. Install [vim-plug](https://github.com/junegunn/vim-plug)
-
-1. Build the [ccls](https://github.com/MaskRay/ccls) submodule
-    - Remember to use the x86 Visual Studio command prompt and forward slashes
-      in paths
 
 1. Download [Powerline fonts](https://github.com/powerline/fonts). Install them
    by running `install.ps1`.
@@ -27,7 +23,7 @@
 
 1. Install coc extensions:
     ```
-    :CocInstall coc-json coc-tag coc-ultisnips coc-source-neco coc-source-neoinclude coc-syntax coc-pyls
+    :CocInstall coc-json coc-tag coc-ultisnips coc-source-neco coc-source-neoinclude coc-syntax coc-pyls coc-omnisharp
     ```
 
 1. Restart Neovim and begin using
