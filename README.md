@@ -74,10 +74,8 @@
 
 1. Install Neovim and some dependencies:
     ```bash
-    brew install neovim qt ripgrep
+    brew install neovim ripgrep node yarn
     ```
-
-1. Install [neovim-qt][]
 
 1. Clone this repo to the [proper directory][nvim-config-dir]:
     ```bash
@@ -92,32 +90,21 @@
 1. Prepare a Python virtual environment:
     ```bash
     cd ~/.config/nvim
-    virtualenv -p python3.7 nvim-venv
-    nvim-venv/bin/pip install pynvim vim-bridge
+    virtualenv -p python3 nvim-venv
+    nvim-venv/bin/pip install pynvim
     ```
-    * Note that Neovim may not work with Python newer than 3.7
-    * Python 3.7 may be installed by: `brew install python@3.7`
     * Pip may need to be [configured][pip-conf]
     
-1. Install [Universal Ctags][mac-univ-ctags]:
-    ```bash
-    brew install --HEAD universal-ctags/universal-ctags/universal-ctags
-    ```
+1. Install [Universal Ctags][mac-univ-ctags]
     
 1. Install LLVM: `brew install llvm`
     * Make sure that `clangd` and `clang-format` are on the `PATH`
     
 1. Make sure to update any certificate settings for Node.js and Yarn
 
-1. Install [vim-plug][]:
-    ```bash
-    curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
-        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    ```
-    
-1. Download [Powerline fonts][]. Install them by running `install.sh`.
+1. Install [vim-plug][] and [Powerline fonts][]
 
-1. Start Neovim: `nvim-qt`. Ignore any errors and run `:PlugInstall`.
+1. Start Neovim. Ignore any errors and run `:PlugInstall`.
 
 1. Restart Neovim. Run `:checkhealth` and resolve any issues.
 
