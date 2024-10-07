@@ -15,6 +15,8 @@ return {
       -- Prevent auto-resize of quickfix window
       grepper.open = 0
 
+      grepper.operator.prompt = 1
+
       vim.g.grepper = grepper
     end
 
@@ -35,7 +37,7 @@ return {
       end,
       desc = "Grepper: Prompt",
     },
-    { "<Leader>*", "<Cmd>Grepper -cword -noprompt<CR>" },
+    { "<Leader>*", "<Cmd>Grepper -cword<CR>" },
     { "gs", "<Plug>(GrepperOperator)", mode = { "n", "x" } },
   },
 }
