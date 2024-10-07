@@ -41,7 +41,8 @@
 1. Start Neovim. Ignore any errors and run `:PlugInstall`.
 
 1. Run `:checkhealth` and resolve any issues.
-    * For `clipboard` on WSL, see [Neovim FAQ][nvim-clipboard-wsl]
+    * For `clipboard` on WSL, install `xclip`. Alternatively, see the [Neovim
+      FAQ][nvim-clipboard-wsl].
 
 1. Restart Neovim. Installation should now be complete.
 
