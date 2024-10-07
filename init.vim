@@ -135,8 +135,7 @@ let NERDTreeHijackNetrw = 0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mappings
 
-nnoremap <silent> <C-L>
-  \ :nohlsearch<CR>:call DisableCocDelayed()<CR>:call EnableCocDelayed(1000)<CR>
+nnoremap <silent> <C-L> :nohlsearch<CR>
 
 tnoremap <Esc> <C-\><C-n>
 tnoremap <C-v><Esc> <Esc>
