@@ -26,10 +26,7 @@ return {
 
   {
     "preservim/nerdtree",
-    dependencies = {
-      "ryanoasis/vim-devicons",
-      "tiagofumo/vim-nerdtree-syntax-highlight",
-    },
+    dependencies = { "ryanoasis/vim-devicons" },
     init = function() vim.g.NERDTreeHijackNetrw = 0 end,
 
     keys = {
@@ -45,6 +42,7 @@ return {
   },
 
   { "davidgranstrom/nvim-markdown-preview", ft = "markdown" },
+  { "nvim-tree/nvim-web-devicons", opts = {} },
 
   {
     "yssl/QFEnter",
