@@ -14,6 +14,7 @@ Plug 'bkad/CamelCaseMotion'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'sjl/gundo.vim'
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdtree'
 Plug 'yssl/QFEnter'
@@ -290,6 +291,77 @@ let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'project',
   \ 'markdown']
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" LeaderF
+let g:Lf_DefaultMode = 'NameOnly'
+let g:Lf_StlSeparator = {'left': '', 'right': ''}
+let g:Lf_ExternalCommand = 'fd -t f -L -c never -H -E .git -E .svn . %s'
+
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+let g:Lf_PreviewCode = 1
+let g:Lf_PreviewResult = {
+  \ 'File': 1,
+  \ 'Buffer': 1,
+  \ 'Mru': 1,
+  \ 'Tag': 1,
+  \ 'BufTag': 1,
+  \ 'Function': 1,
+  \ 'Line': 1,
+  \ 'Colorscheme': 1,
+  \ 'Rg': 1,
+  \ 'Gtags': 0
+  \}
+
+let g:Lf_ShortcutF = ''
+let g:Lf_ShortcutB = ''
+
+let g:Lf_MruMaxFiles = 8000
+let g:Lf_HistoryNumber = 8000
+
+" Go to an editable window
+" Derived from ctrlp#normcmd()
+function! s:GoToEditWindow()
+  let invalidBufTypes = ['quickfix', 'help', 'nofile', 'terminal']
+  if index(invalidBufTypes, &l:buftype) == -1
+    return
+  endif
+
+  let editWins = filter(range(1, winnr('$')),
+    \ 'index(invalidBufTypes, getbufvar(winbufnr(v:val), "&buftype")) == -1')
+  for winNum in editWins
+    let bufNum = winbufnr(winNum)
+    if empty(bufname(bufNum)) && empty(getbufvar(bufNum, '&filetype'))
+      let tmpWin = winNum
+      break
+    endif
+  endfor
+
+  let cwd = getcwd()
+  if !empty(editWins)
+    if index(editWins, winnr()) < 0
+      execute (exists('tmpWin') ? tmpWin : editWins[0]) . 'wincmd w'
+    endif
+  else
+    botright vnew
+  endif
+
+  execute 'lcd ' . cwd
+endfunction
+
+nnoremap <silent> <C-p> :call <SID>GoToEditWindow()<CR>:LeaderfFile<CR>
+nnoremap <silent> <C-\> :call <SID>GoToEditWindow()<CR>:LeaderfBuffer<CR>
+nnoremap <silent> <A-p> :call <SID>GoToEditWindow()<CR>:LeaderfMru<CR>
+nnoremap <silent> <C-h> :call <SID>GoToEditWindow()<CR>:LeaderfTag<CR>
+nnoremap <silent> <C-k> :LeaderfBufTag<CR>
+nnoremap <silent> <C-j> :LeaderfLine<CR>
+nnoremap <silent> <A-f> :LeaderfSelf<CR>
+nnoremap <silent> <leader>; :LeaderfHistoryCmd<CR>
+nnoremap <silent> <leader>/ :Leaderf searchHistory<CR>
+nnoremap <silent> <leader>h :LeaderfHelp<CR>
+nnoremap <silent> <leader>x :LeaderfCommand<CR>
+nnoremap <silent> <leader>c :LeaderfQuickFix<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERD Tree
