@@ -79,7 +79,6 @@ set hidden
 
 " C indent options
 set cinoptions=g0   " Don't indent class scope declarations
-set cinoptions+=N-s " Don't indent contents of namespace
 
 " Casing
 set ignorecase        " Ignore case when searching
