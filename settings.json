@@ -1,7 +1,4 @@
 {
   "initializationOptions": {
-    "index": {
-      "threads": 2
-    }
   }
 }
