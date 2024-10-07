@@ -292,7 +292,8 @@ function! s:IncomingCallsQf()
     let endCol = rangeEnd['character'] + 1
 
     call add(qf, {'filename': absFile, 'lnum': startLine, 'end_lnum': endLine,
-          \ 'col': startCol, 'end_col': endCol, 'text': getline(startLine)})
+          \ 'col': startCol, 'end_col': endCol,
+          \ 'text': readfile(absFile, '', startLine)[-1]})
   endfor
 
   call setqflist(qf)
