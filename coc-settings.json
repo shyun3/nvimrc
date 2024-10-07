@@ -15,6 +15,9 @@
       "initializationOptions": {
         "cache": {
           "request.timeout": "10000"
+        },
+        "index": {
+          "threads": 2
         }
       }
     }
