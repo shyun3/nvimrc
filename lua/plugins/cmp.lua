@@ -19,7 +19,11 @@ return {
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<CR>"] = function(fallback)
           if cmp.visible() then
-            cmp.confirm({ select = false })
+            if cmp.get_active_entry() then
+              cmp.confirm({ select = false })
+            else
+              cmp.abort()
+            end
           else
             fallback()
             vim.fn.feedkeys(
