@@ -20,7 +20,14 @@ return {
     dependencies = { "williamboman/mason.nvim" },
 
     opts = {
-      ensure_installed = { "bashls", "clangd", "jsonls", "pyright", "vimls" },
+      ensure_installed = {
+        "bashls",
+        "clangd",
+        "jsonls",
+        "lua_ls",
+        "pyright",
+        "vimls",
+      },
       automatic_installation = true,
     },
   },
