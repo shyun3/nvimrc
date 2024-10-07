@@ -11,6 +11,12 @@ return {
   },
 
   {
+    "numToStr/Comment.nvim",
+    opts = {},
+    lazy = false,
+  },
+
+  {
     "scrooloose/nerdtree",
     init = function() vim.g.NERDTreeHijackNetrw = 0 end,
     keys = {

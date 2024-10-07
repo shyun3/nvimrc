@@ -17,7 +17,6 @@ vim.cmd.Plug([['norcalli/nvim-colorizer.lua']])
 vim.cmd.Plug(
   [['neoclide/coc.nvim', { 'branch': 'master', 'do': 'yarn install --frozen-lockfile' }]]
 )
-vim.cmd.Plug([['numToStr/Comment.nvim']])
 vim.cmd.Plug([['vim-scripts/DoxygenToolkit.vim']])
 vim.cmd.Plug([['ibhagwan/fzf-lua']])
 vim.cmd.Plug([['sjl/gundo.vim']])
@@ -557,10 +556,6 @@ vim.cmd.highlight("link CocSemTypeTypeParameter NONE")
 
 -- Taken from coc.vim
 vim.cmd.highlight("CocMenuSel ctermbg=237 guibg=#13354A")
-
--------------------------------------------------------------------------------
--- Comment.nvim
-require("Comment").setup()
 
 -------------------------------------------------------------------------------
 -- DoGe
