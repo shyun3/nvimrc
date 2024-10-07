@@ -409,8 +409,9 @@ nmap n n<Plug>Pulse
 nmap N N<Plug>Pulse
 
 " Pulse when doing search with / or ?
+runtime autoload/search_pulse.vim
 if exists('*search_pulse#PulseFirst')
-  cmap <silent> <expr> <enter> search_pulse#PulseFirst()
+    cmap <silent> <expr> <enter> search_pulse#PulseFirst()
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
