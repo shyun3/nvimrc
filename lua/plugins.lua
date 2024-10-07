@@ -20,17 +20,6 @@ return {
   },
 
   {
-    "preservim/nerdtree",
-    init = function() vim.g.NERDTreeHijackNetrw = 0 end,
-
-    keys = {
-      { "<C-n>", "<Cmd>NERDTreeFocus<CR>" },
-      { "<A-n>", "<Cmd>NERDTreeFind<CR>" },
-      { "<Leader>n", "<Cmd>NERDTree<CR>" },
-    },
-  },
-
-  {
     "norcalli/nvim-colorizer.lua",
     config = function() require("colorizer").setup({ "*" }, { names = false }) end,
   },
