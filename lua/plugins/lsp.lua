@@ -1,6 +1,7 @@
 return {
   {
     "neovim/nvim-lspconfig",
+
     dependencies = {
       "williamboman/mason-lspconfig.nvim",
       "hrsh7th/cmp-nvim-lsp",
@@ -8,6 +9,13 @@ return {
     },
 
     config = function()
+      vim.api.nvim_create_autocmd("LspAttach", {
+        callback = function(ev)
+          -- See `:h lsp-defaults-disable`
+          vim.bo[ev.buf].tagfunc = ""
+        end,
+      })
+
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend(
         "force",
@@ -32,6 +40,10 @@ return {
         end,
       })
     end,
+
+    keys = {
+      { "<Leader>]", vim.lsp.buf.definition, desc = "LSP: Definition" },
+    },
   },
 
   {
