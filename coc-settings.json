@@ -14,13 +14,10 @@
   "snippet.statusText": "",
 
   "snippets.extends": {
-      "cpp": ["c"]
+    "cpp": ["c"]
   },
   "snippets.loadFromExtensions": false,
-  "snippets.ultisnips.directories": [
-      "UltiSnips",
-      "UltiSnips/specific"
-  ],
+  "snippets.ultisnips.directories": ["UltiSnips", "UltiSnips/specific"],
 
   "suggest.noselect": true,
   "suggest.reTriggerAfterIndent": false,
@@ -31,10 +28,10 @@
   "workspace.bottomUpFiletypes": ["*.py", "*.pyi"],
   "workspace.workspaceFolderCheckCwd": false,
   "workspace.rootPatterns": [
-      ".git",
-      ".projections.json",
-      "pyrightconfig.json",
-      "pyproject.toml"
+    ".git",
+    ".projections.json",
+    "pyrightconfig.json",
+    "pyproject.toml"
   ],
   "snippets.ultisnips.pythonPrompt": false
 }
