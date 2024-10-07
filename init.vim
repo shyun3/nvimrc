@@ -282,6 +282,13 @@ let g:LanguageClient_serverCommands = {
 
 let g:LanguageClient_diagnosticsList = "Location"
 
+function! LcRestart()
+  LanguageClientStop
+  sleep 2
+  LanguageClientStart
+endfunction
+command! LanguageClientRestart call LcRestart()
+
 nnoremap <silent> <leader>d :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <leader>sd :call LanguageClient_textDocument_definition(
   \ {'gotoCmd': 'split'})<CR>
