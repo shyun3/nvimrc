@@ -1,3 +1,5 @@
+local util = require("util")
+
 return {
   "ibhagwan/fzf-lua",
   dependencies = { { "nvim-tree/nvim-web-devicons", opts = {} } },
@@ -32,7 +34,7 @@ return {
     {
       "<C-p>",
       function()
-        require("util").go_to_editable_window()
+        util.go_to_editable_window()
         require("fzf-lua").files({ cwd = vim.fn.getcwd() })
       end,
       desc = "fzf-lua: Files",
@@ -40,7 +42,7 @@ return {
     {
       "<C-q>",
       function()
-        require("util").go_to_editable_window()
+        util.go_to_editable_window()
         require("fzf-lua").files({ cwd = vim.fn.expand("%:p:h") })
       end,
       desc = "fzf-lua: Files in current file directory",
@@ -48,7 +50,7 @@ return {
     {
       [[<C-\>]],
       function()
-        require("util").go_to_editable_window()
+        util.go_to_editable_window()
         require("fzf-lua").buffers()
       end,
       desc = "fzf-lua: Buffers",
@@ -56,13 +58,13 @@ return {
     {
       "<A-p>",
       function()
-        require("util").go_to_editable_window()
+        util.go_to_editable_window()
         require("fzf-lua").oldfiles()
       end,
       desc = "fzf-lua: Old files",
     },
     {
-      "<C-h>",
+      "<Leader>tt",
       function()
         require("util").go_to_editable_window()
         require("fzf-lua").tags()
@@ -70,7 +72,7 @@ return {
       desc = "fzf-lua: Tags",
     },
     {
-      "<C-k>",
+      "<Leader>tb",
       function()
         -- `FzfLua btags` by default uses an existing tags file
         -- Generate the latest tags for the current file
@@ -171,7 +173,14 @@ return {
       desc = "LSP: Declaration, vertical split",
     },
 
-    { "<Leader>ds", "<Cmd>FzfLua lsp_document_symbols<CR>" },
-    { "<Leader>ws", "<Cmd>FzfLua lsp_workspace_symbols<CR>" },
+    { "<C-k>", "<Cmd>FzfLua lsp_document_symbols<CR>" },
+    {
+      "<C-h>",
+      function()
+        util.go_to_editable_window()
+        require("fzf-lua").lsp_workspace_symbols()
+      end,
+      desc = "LSP: Workspace symbols",
+    },
   },
 }
