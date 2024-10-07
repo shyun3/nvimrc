@@ -29,6 +29,7 @@ return {
       jsonc = { "prettier" },
       lua = { "stylua" },
       python = { "isort", "black" },
+      yaml = { "prettier" },
     },
 
     -- Derived from recipe
@@ -43,6 +44,12 @@ return {
 
   config = function(_, opts)
     require("conform").setup(opts)
+
+    -- Force prettier to parse certain filetypes
+    require("conform.formatters").prettier.options.ft_parsers = {
+      -- Otherwise, .clangd and others cannot be parsed
+      yaml = "yaml",
+    }
 
     -- Command to run async formatting, taken from recipes
     vim.api.nvim_create_user_command("Format", function(args)
