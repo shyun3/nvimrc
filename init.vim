@@ -135,12 +135,8 @@ let NERDTreeHijackNetrw = 0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mappings
 
-function! EnableCoc(timerId)
-  silent! CocEnable
-endfunction
-
 nnoremap <silent> <C-L>
-  \ :nohlsearch<CR>:silent! CocDisable<CR>:call timer_start(1000, 'EnableCoc')<CR>
+  \ :nohlsearch<CR>:call DisableCocDelayed()<CR>:call EnableCocDelayed(1000)<CR>
 
 tnoremap <Esc> <C-\><C-n>
 tnoremap <C-v><Esc> <Esc>
@@ -271,6 +267,24 @@ function! s:ShowDocumentation()
   endif
 endfunction
 
+let s:cocTimer = []
+
+function! DisableCocDelayed()
+  silent! timer_stop(s:cocTimer[0])
+  silent! remove(s:cocTimer, 0)
+  silent CocDisable
+endfunction
+
+function! EnableCocDelayed(time)
+  let timerId = timer_start(a:time, 'EnableCocDelayedImpl')
+  call add(s:cocTimer, timerId)
+endfunction
+
+function! EnableCocDelayedImpl(timerId)
+  silent CocEnable
+  silent! call remove(s:cocTimer, 0)
+endfunction
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CtrlP
 let g:ctrlp_switch_buffer = 0     " Always open a new instance
@@ -304,8 +318,8 @@ map _ <Plug>(easymotion-s)
 map <C-J> <Plug>(easymotion-bd-jk)
 nmap <Space> <Plug>(easymotion-jumptoanywhere)
 
-autocmd User EasyMotionPromptBegin silent! CocDisable
-autocmd User EasyMotionPromptEnd silent! CocEnable
+autocmd User EasyMotionPromptBegin call DisableCocDelayed()
+autocmd User EasyMotionPromptEnd call EnableCocDelayed(250)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EditorConfig
