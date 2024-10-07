@@ -1,4 +1,12 @@
 {
+  "list.insertMappings": {
+    "<C-s>": "action:split",
+    "<C-t>": "action:tabe",
+    "<C-v>": "action:vsplit"
+  },
+  "list.source.files.command": "rg",
+  "list.source.files.args": ["--files", "-F", "--color", "never", "--hidden",
+    "--follow", "-g", "!.*/"],
   "languageserver": {
     "ccls": {
       "command": "ccls",
