@@ -29,8 +29,6 @@
 
 1. Run `:checkhealth` and resolve any issues.
 
-1. Install [cpsm][]
-
 1. Done!
 
 ## macOS
@@ -65,8 +63,6 @@
 
 1. Run `:checkhealth` and resolve any issues.
 
-1. Install [cpsm][]
-
 1. Done!
 
 # Troubleshooting
@@ -83,5 +79,4 @@
 [nvim-config-dir]: https://neovim.io/doc/user/starting.html#config
 [mac-univ-ctags]: https://github.com/universal-ctags/homebrew-universal-ctags
 [nvim-undo-dir]: https://neovim.io/doc/user/options.html#'undodir'
-[cpsm]: https://github.com/nixprime/cpsm
 [fd]: https://github.com/sharkdp/fd#installation
