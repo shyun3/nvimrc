@@ -5,7 +5,7 @@ endfunction
 function! neoformat#formatters#python#isort() abort
     return {
                 \ 'exe': 'isort',
-                \ 'args': ['-', '--quiet',],
+                \ 'args': ['-', '--quiet', '--profile black'],
                 \ 'stdin': 1,
                 \ }
 endfunction
