@@ -11,7 +11,7 @@
 
 1. Clone this repo to the proper directory (using Powershell):
     ```
-    git clone https://github.com/shyun3/nvimrc ~/AppData/Local/nvim
+    git clone https://github.com/shyun3/nvimrc "$(Resolve-Path ~)/AppData/Local/nvim"
     ```
 
 1. Install [vim-plug](https://github.com/junegunn/vim-plug)
