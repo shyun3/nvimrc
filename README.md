@@ -26,8 +26,7 @@
 
 1. Install coc extensions:
     ```
-    :CocInstall coc-json coc-tag coc-ultisnips coc-source-neco
-    coc-source-neoinclude coc-syntax coc-pyls
+    :CocInstall coc-json coc-tag coc-ultisnips coc-source-neco coc-source-neoinclude coc-syntax coc-pyls
     ```
 
 1. Restart Neovim and begin using
