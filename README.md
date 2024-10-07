@@ -22,7 +22,7 @@
 
 1. Install coc extensions:
     ```vim
-    :CocInstall coc-json coc-tag coc-ultisnips coc-source-neco coc-source-neoinclude coc-syntax coc-pyls coc-omnisharp
+    :CocInstall coc-json coc-tag coc-ultisnips coc-syntax coc-pyls coc-omnisharp
     ```
 
 1. Restart Neovim and begin using
