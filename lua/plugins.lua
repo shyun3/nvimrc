@@ -50,7 +50,7 @@ return {
     keys = { { "<A-t>", "<Cmd>TagbarToggle<CR>" } },
   },
 
-  "shyun3/vim-cmake-lists",
+  { "shyun3/vim-cmake-lists", ft = "cmake" },
 
   {
     "kkoomen/vim-doge",
@@ -60,6 +60,8 @@ return {
       vim.g.doge_doc_standard_python = "google"
       vim.g.doge_comment_jump_modes = { "n", "s" }
     end,
+
+    keys = "<Leader>d",
   },
 
   {
@@ -77,7 +79,7 @@ return {
     init = function() vim.g.gutentags_define_advanced_commands = 1 end,
   },
 
-  "jeetsukumaran/vim-pythonsense",
+  { "jeetsukumaran/vim-pythonsense", ft = "python" },
 
   {
     "folke/which-key.nvim",
