@@ -9,16 +9,16 @@ return {
   },
 
   {
-    "WhoIsSethDaniel/mason-tool-installer.nvim",
-    dependencies = { "williamboman/mason.nvim" },
-
-    opts = { ensure_installed = { "clangd" } },
-  },
-
-  {
     "zapling/mason-conform.nvim",
     dependencies = { "williamboman/mason.nvim", "stevearc/conform.nvim" },
 
     opts = {},
+  },
+
+  {
+    "williamboman/mason-lspconfig.nvim",
+    dependencies = { "williamboman/mason.nvim" },
+
+    opts = { ensure_installed = { "clangd", "lua_ls" } },
   },
 }
