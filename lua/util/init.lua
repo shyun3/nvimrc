@@ -32,4 +32,15 @@ function M.go_to_editable_window()
   vim.cmd.lcd(cwd)
 end
 
+function M.reset_forced_motion()
+  if vim.startswith(vim.fn.mode(1), "no") then
+    -- Using `:normal` or `feedkeys` with `x` will reset forced motion (see
+    -- vim#9332).
+    vim.api.nvim_feedkeys("", "x", true)
+
+    -- Exit operator pending mode
+    vim.api.nvim_feedkeys([[\<Esc>]], "n", true)
+  end
+end
+
 return M
