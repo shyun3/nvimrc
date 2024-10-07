@@ -4,16 +4,20 @@
     ```
     scoop install git
     scoop bucket add extras
-    scoop install neovim python ripgrep universal-ctags fzf llvm
+    scoop install neovim python ripgrep universal-ctags fzf
     pip install --user pynvim
     ```
 
 1. Extract this repo to the proper directory (using Powershell):
     ```
-    git clone https://github.com/shyun3/nvimrc ~/AppData/Local/nvim
+    git clone --recursive https://github.com/shyun3/nvimrc ~/AppData/Local/nvim
     ```
 
 1. Install [vim-plug](https://github.com/junegunn/vim-plug)
+
+1. Build [ccls](https://github.com/MaskRay/ccls)
+  - Remember to use the x86 Visual Studio command prompt, RTTI, and forward
+    slashes in paths
 
 1. Start Neovim. Ignore any errors and run `:PlugInstall`. Exit when finished.
 
