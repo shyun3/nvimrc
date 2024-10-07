@@ -1,3 +1,72 @@
+local function highlight_cmp_menu()
+  vim.api.nvim_set_hl(
+    0,
+    "CmpItemAbbrDeprecated",
+    { link = "@lsp.mod.deprecated" }
+  )
+
+  -- Taken from CocSearch
+  vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { bg = "NONE", fg = "#15aabf" })
+  vim.api.nvim_set_hl(
+    0,
+    "CmpItemAbbrMatchFuzzy",
+    { link = "CmpIntemAbbrMatch" }
+  )
+
+  -- Taken from CocMenuSel
+  vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#13354A" })
+
+  vim.api.nvim_set_hl(0, "CmpItemKindFunction", { link = "@lsp.type.function" })
+  vim.api.nvim_set_hl(0, "CmpItemKindMethod", { link = "@lsp.type.method" })
+  vim.api.nvim_set_hl(
+    0,
+    "CmpItemKindConstructor",
+    { link = "CmpItemKindFunction" }
+  )
+
+  vim.api.nvim_set_hl(0, "CmpItemKindProperty", { link = "@lsp.type.property" })
+  vim.api.nvim_set_hl(0, "CmpItemKindField", { link = "CmpItemKindProperty" })
+
+  vim.api.nvim_set_hl(0, "CmpItemKindVariable", { link = "@lsp.type.variable" })
+  vim.api.nvim_set_hl(
+    0,
+    "CmpItemKindTypeParameter",
+    { link = "@lsp.type.parameter" }
+  )
+
+  vim.api.nvim_set_hl(0, "CmpItemKindClass", { link = "@lsp.type.class" })
+  vim.api.nvim_set_hl(0, "CmpItemKindStruct", { link = "@lsp.type.struct" })
+  vim.api.nvim_set_hl(
+    0,
+    "CmpItemKindInterface",
+    { link = "@lsp.type.interface" }
+  )
+  vim.api.nvim_set_hl(0, "CmpItemKindEnum", { link = "@lsp.type.enum" })
+
+  vim.api.nvim_set_hl(0, "CmpItemKindKeyword", { link = "@lsp.type.keyword" })
+
+  -- front
+  -- See https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#how-to-add-visual-studio-code-dark-theme-colors-to-the-menu
+  vim.api.nvim_set_hl(0, "CmpItemKindSnippet", { bg = "NONE", fg = "#D4D4D4" })
+
+  vim.api.nvim_set_hl(0, "CmpItemKindModule", { link = "@lsp.type.namespace" })
+  vim.api.nvim_set_hl(0, "CmpItemKindFile", { link = "CmpItemKindModule" })
+  vim.api.nvim_set_hl(0, "CmpItemKindFolder", { link = "CmpItemKindModule" })
+
+  vim.api.nvim_set_hl(
+    0,
+    "CmpItemKindEnumMember",
+    { link = "@lsp.type.enumMember" }
+  )
+  vim.api.nvim_set_hl(
+    0,
+    "CmpItemKindConstant",
+    { link = "CmpItemKindEnumMember" }
+  )
+
+  vim.api.nvim_set_hl(0, "CmpItemKindOperator", { link = "@lsp.type.operator" })
+end
+
 return {
   "hrsh7th/nvim-cmp",
   event = { "InsertEnter", "CmdlineEnter" },
@@ -18,6 +87,8 @@ return {
   },
 
   config = function()
+    highlight_cmp_menu()
+
     local cmp = require("cmp")
     cmp.setup({
       snippet = {
