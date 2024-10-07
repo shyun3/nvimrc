@@ -34,16 +34,14 @@ https://github.com/ludovicchabant/vim-gutentags/issues/265).
 
 Copy to project root and customize. For use with [prettier-plugin-sh][]:
 ```bash
-cp ~/.config/nvim/example-configs/prettierrc.json
-/path/to/project/.prettierrc.json
+cp ~/.config/nvim/example-configs/prettierrc.json /path/to/project/.prettierrc.json
 ```
 
 ## .projections.json
 
 Copy to project root and customize. For use with [vim-projectionist][]:
 ```bash
-cp ~/.config/nvim/example-configs/projections.json
-/path/to/project/.projections.json
+cp ~/.config/nvim/example-configs/projections.json /path/to/project/.projections.json
 ```
 
 ## projects.vim
