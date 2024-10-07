@@ -8,14 +8,14 @@
     pip install --user pynvim
     ```
 
-1. Extract this repo to the proper directory (using Powershell):
+1. Clone this repo to the proper directory (using Powershell):
     ```
     git clone --recursive https://github.com/shyun3/nvimrc ~/AppData/Local/nvim
     ```
 
 1. Install [vim-plug](https://github.com/junegunn/vim-plug)
 
-1. Build [ccls](https://github.com/MaskRay/ccls)
+1. Build the [ccls](https://github.com/MaskRay/ccls) submodule
     - Remember to use the x86 Visual Studio command prompt, RTTI, and forward
     slashes in paths
 
