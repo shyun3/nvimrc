@@ -6,7 +6,6 @@ vim.cmd.Plug(
 )
 vim.cmd.Plug([['kevinhwang91/nvim-bqf']])
 vim.cmd.Plug([['nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }]])
-vim.cmd.Plug([['inside/vim-search-pulse']])
 vim.cmd.Plug([['chaoren/vim-wordmotion']])
 
 -- Dependencies
@@ -325,29 +324,6 @@ require("bqf").setup({
 -- Pydocstring
 vim.g.pydocstring_formatter = "google"
 vim.g.pydocstring_enable_mapping = 0
-
--------------------------------------------------------------------------------
--- Search pulse
-vim.g.vim_search_pulse_mode = "pattern"
-vim.g.vim_search_pulse_disable_auto_mappings = 1
-
-local asterisk_keys = { "*", "#", "g*", "g#", "z*", "gz*", "z#", "gz#" }
-for _, key in ipairs(asterisk_keys) do
-  vim.keymap.set("", key, string.format("<Plug>(asterisk-%s)<Plug>Pulse", key))
-end
-
-vim.keymap.set("n", "n", "n<Plug>Pulse")
-vim.keymap.set("n", "N", "N<Plug>Pulse")
-
-vim.keymap.set("c", "<Enter>", function()
-  -- Derived from `search_pulse#PulseFirst`
-  local cmd_type = vim.fn.getcmdtype()
-  if vim.fn.state() ~= "o" and (cmd_type == "/" or cmd_type == "?") then
-    return "<CR><Cmd>call search_pulse#Pulse()<CR>"
-  else
-    return "<CR>"
-  end
-end, { desc = "Pulse when searching", expr = true })
 
 -------------------------------------------------------------------------------
 -- treesitter

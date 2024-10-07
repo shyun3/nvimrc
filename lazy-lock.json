@@ -30,6 +30,7 @@
   "vim-projectionist": { "branch": "master", "commit": "729f3630a4c19e52e1fd825802d2a1659daeaf48" },
   "vim-pythonsense": { "branch": "master", "commit": "9200a57629c904ed2ab8c9b2e8c5649d311794ba" },
   "vim-repeat": { "branch": "master", "commit": "24afe922e6a05891756ecf331f39a1f6743d3d5a" },
+  "vim-search-pulse": { "branch": "master", "commit": "006934330dc9eab47a09eeee4c8a50a9b4c065b8" },
   "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" },
   "vim-textobj-comment": { "branch": "master", "commit": "58ae4571b76a5bf74850698f23d235eef991dd4b" },
   "vim-textobj-entire": { "branch": "master", "commit": "64a856c9dff3425ed8a863b9ec0a21dbaee6fb3a" },
