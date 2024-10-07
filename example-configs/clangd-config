@@ -1,6 +1,5 @@
 CompileFlags:
-  Add: -fshort-enums
-  Compiler: arm-none-eabi-gcc
+  Add: [-Wall, -Wextra, -Wpedantic]
   CompilationDatabase: /path/to/project
 
 ---
@@ -9,4 +8,4 @@ If:
   PathMatch: /path/to/src
 
 CompileFlags:
-  Add: [-DTEST, -Werror]
+  Add: [-DNDEBUG, -Werror]
