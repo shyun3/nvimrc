@@ -39,6 +39,8 @@ return {
 
         lua_ls = function()
           require("lspconfig").lua_ls.setup({
+            capabilities = capabilities,
+
             -- Derived from `:h vim.lsp.semantic_tokens.start()`
             on_attach = function(client)
               client.server_capabilities.semanticTokensProvider = nil
