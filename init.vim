@@ -13,7 +13,6 @@ Plug 'equalsraf/neovim-gui-shim'
 
 " Plugins
 Plug 'bkad/CamelCaseMotion'
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'scrooloose/nerdtree'
@@ -39,6 +38,13 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'vimwiki/vimwiki'
+
+" Auto-complete
+Plug 'Shougo/neco-vim'
+Plug 'neoclide/coc-neco'
+Plug 'Shougo/neoinclude.vim'
+Plug 'jsfaint/coc-neoinclude'
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 
 " Text objects
 Plug 'fvictorio/vim-textobj-backticks'
