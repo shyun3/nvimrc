@@ -2,7 +2,6 @@ let g:vimDir = stdpath('config')
 
 " filetype.lua
 let g:do_filetype_lua = 1
-let g:did_load_filetypes = 0
 
 call plug#begin(g:vimDir . '/bundle')
 
@@ -39,6 +38,7 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-grepper'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'sheerun/vim-polyglot'
 Plug 'amiorin/vim-project'
 Plug 'tpope/vim-projectionist'
 Plug 'jeetsukumaran/vim-pythonsense'
@@ -120,7 +120,11 @@ set splitbelow        " All horizontal splits open below
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Variables
+
 let NERDTreeHijackNetrw = 0
+
+" vim-polyglot sets this variable, which prevents loading of `filetype.lua`
+unlet g:did_load_filetypes
 
 " C
 let c_gnu = 1
