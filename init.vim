@@ -304,8 +304,8 @@ function! s:IncomingCallsQf()
   FzfLua quickfix
 endfunction
 
-nmap <leader>a  <Plug>(coc-codeaction)
-nmap <leader>x  <Plug>(coc-fix-current)
+nmap <leader>ca  <Plug>(coc-codeaction)
+nmap <leader>cx  <Plug>(coc-fix-current)
 nmap <leader>rn <Plug>(coc-rename)
 
 augroup myCocGroup
@@ -518,7 +518,7 @@ nnoremap <leader>; <Cmd>FzfLua command_history<CR>
 nnoremap <leader>/ <Cmd>FzfLua search_history<CR>
 nnoremap <leader>h <Cmd>FzfLua help_tags<CR>
 nnoremap <leader>x <Cmd>FzfLua commands<CR>
-nnoremap <leader>c <Cmd>FzfLua quickfix<CR>
+nnoremap <leader>cf <Cmd>FzfLua quickfix<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " grepper
