@@ -334,9 +334,14 @@ endfunction
 " FzfLua btags by default uses an existing tags file. This function generates
 " the latest tags for the current file.
 function! s:FzfLuaBTags()
+  let filePath = expand('%')
   let tmp = tempname()
-  silent execute '!ctags -f ' . tmp . ' ' . expand('%')
-  silent execute 'FzfLua btags ctags_file=' . tmp
+  silent execute '!ctags -f ' . tmp . ' ' . filePath
+
+  " Don't specify cwd for tags call if current file is not under cwd
+  let cwd = filePath[0] != '/' ? getcwd() : ''
+  silent execute 'FzfLua btags ctags_file=' . tmp . ' cwd=' . cwd
+
   silent execute '!rm ' . tmp
 endfunction
 
