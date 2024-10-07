@@ -18,7 +18,7 @@ return {
           if vim.fn.winnr() ~= 1 then return end
 
           -- Derived from project.vim
-          if vim.fn.line2byte("$") == -1 then vim.cmd.Welcome() end
+          if vim.fn.line2byte(vim.fn.line("$")) == -1 then vim.cmd.Welcome() end
 
           vim.api.nvim_clear_autocmds({ group = group })
         end,

@@ -12,6 +12,8 @@ function M.go_to_editable_window()
     end,
     vim.tbl_map(vim.api.nvim_win_get_number, vim.api.nvim_tabpage_list_wins(0))
   )
+
+  local tmpWin
   for _, winNum in ipairs(editWins) do
     local bufNum = vim.fn.winbufnr(winNum)
     if vim.fn.bufname(bufNum) == "" and vim.bo[bufNum].filetype == "" then
