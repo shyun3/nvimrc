@@ -11,6 +11,7 @@ Plug 'equalsraf/neovim-gui-shim'
 
 " Plugins
 Plug 'bkad/CamelCaseMotion'
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'Shougo/neosnippet.vim'

@@ -4,8 +4,7 @@
     ```
     scoop install git
     scoop bucket add extras
-    scoop install neovim python ripgrep universal-ctags fzf perl
-    pip install --user pynvim
+    scoop install neovim python ripgrep universal-ctags nodejs yarn
     ```
 
 1. Clone this repo to the proper directory (using Powershell):
