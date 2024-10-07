@@ -26,6 +26,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'schickling/vim-bufonly'
 Plug 'shyun3/vim-cmake-lists'
 Plug 'tpope/vim-commentary'
+Plug 'blueyed/vim-diminactive'
 Plug 'junegunn/vim-easy-align'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-fugitive'
@@ -279,6 +280,10 @@ nnoremap <silent> <C-H> :CtrlPTag<CR>
 nnoremap <silent> <C-K> :CtrlPBufTag<CR>
 nnoremap <silent> <C-Q> :CtrlP %:h<CR>
 execute 'nnoremap <silent> ' . Meta('p', 'π') . ' :CtrlPMRU<CR>'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" diminactive
+let g:diminactive_enable_focus = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EasyMotion
