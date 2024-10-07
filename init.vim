@@ -409,7 +409,9 @@ nmap n n<Plug>Pulse
 nmap N N<Plug>Pulse
 
 " Pulse when doing search with / or ?
-cmap <silent> <expr> <enter> search_pulse#PulseFirst()
+if exists('*search_pulse#PulseFirst')
+  cmap <silent> <expr> <enter> search_pulse#PulseFirst()
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tagbar
