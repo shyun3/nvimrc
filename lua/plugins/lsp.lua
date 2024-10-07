@@ -107,13 +107,14 @@ return {
 
     opts = {
       toggle_key = "<A-x>",
-      select_signature_key = "<A-n>",
+
       hint_prefix = {
         above = "↙ ", -- when the hint is on the line above the current line
         current = "← ", -- when the hint is on the same line
         below = "↖ ", -- when the hint is on the line below the current line
       },
     },
+
     keys = {
       {
         "<Leader>k",
@@ -122,6 +123,24 @@ return {
       },
 
       {
+        -- The `select_signature_key` option doesn't seem to apply in
+        -- visual/select mode
+        "<A-n>",
+        function()
+          require("lsp_signature").signature({ trigger = "NextSignature" })
+        end,
+        mode = { "i", "v" },
+        desc = "LSP: Select next signature",
+      },
+      {
+        -- The `move_cursor_key` option doesn't seem to apply in
+        -- visual/select mode
+        "<A-p>",
+        function() require("lsp_signature.helper").change_focus() end,
+        mode = { "i", "v" },
+        desc = "LSP: Jump to signature window",
+      },
+
       {
         "<A-u>",
         function()
