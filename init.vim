@@ -26,7 +26,6 @@ Plug 'kevinhwang91/nvim-bqf'
 Plug 'davidgranstrom/nvim-markdown-preview'
 Plug 'famiu/nvim-reload'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-lua/plenary.nvim'
 Plug 'yssl/QFEnter'
 Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
@@ -53,7 +52,10 @@ Plug 'folke/which-key.nvim'
 
 " fzf
 Plug 'ibhagwan/fzf-lua'
-Plug 'kyazdani42/nvim-web-devicons'
+
+" Dependencies
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'nvim-lua/plenary.nvim'
 
 " Text objects
 Plug 'wellle/targets.vim'
