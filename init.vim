@@ -157,27 +157,21 @@ vim.keymap.set({'n', 'v'}, '<C-]>', 'g<C-]>')
 -- Open tags in splits
 vim.keymap.set('n', '<A-]>s', '<Cmd>wincmd g<C-]><CR>')
 vim.keymap.set('n', '<A-]>v', '<Cmd>vertical wincmd g<C-]><CR>')
-EOF
 
-" Window navigation
-nnoremap <silent> ]w :wincmd w<CR>
-nnoremap <silent> [w :wincmd W<CR>
-nnoremap <silent> <BS> :wincmd p<CR>
-nnoremap <silent> <Left> :wincmd h<CR>
-nnoremap <silent> <Down> :wincmd j<CR>
-nnoremap <silent> <Up> :wincmd k<CR>
-nnoremap <silent> <Right> :wincmd l<CR>
-nnoremap <silent> <A-c> :wincmd c<CR>
-nnoremap <silent> <A-o> :wincmd o<CR>
-nnoremap <silent> <A-1> :1wincmd w<CR>
-nnoremap <silent> <A-2> :2wincmd w<CR>
-nnoremap <silent> <A-3> :3wincmd w<CR>
-nnoremap <silent> <A-4> :4wincmd w<CR>
-nnoremap <silent> <A-5> :5wincmd w<CR>
-nnoremap <silent> <A-6> :6wincmd w<CR>
-nnoremap <silent> <A-7> :7wincmd w<CR>
-nnoremap <silent> <A-8> :8wincmd w<CR>
-nnoremap <silent> <A-9> :9wincmd w<CR>
+-- Window navigation
+vim.keymap.set('n', ']w', '<Cmd>wincmd w<CR>')
+vim.keymap.set('n', '[w', '<Cmd>wincmd W<CR>')
+vim.keymap.set('n', '<BS>', '<Cmd>wincmd p<CR>')
+vim.keymap.set('n', '<Left>', '<Cmd>wincmd h<CR>')
+vim.keymap.set('n', '<Down>', '<Cmd>wincmd j<CR>')
+vim.keymap.set('n', '<Up>', '<Cmd>wincmd k<CR>')
+vim.keymap.set('n', '<Right>', '<Cmd>wincmd l<CR>')
+vim.keymap.set('n', '<A-c>', '<Cmd>wincmd c<CR>')
+vim.keymap.set('n', '<A-o>', '<Cmd>wincmd o<CR>')
+for i = 1, 9 do
+  vim.keymap.set('n', string.format("<A-%d>", i), string.format("<Cmd>%dwincmd w<CR>", i))
+end
+EOF
 
 " Quickfix
 nnoremap <silent> <A-q> :botright copen<CR>
