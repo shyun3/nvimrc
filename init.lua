@@ -22,7 +22,6 @@ vim.cmd.Plug([['vim-scripts/DoxygenToolkit.vim']])
 vim.cmd.Plug([['ibhagwan/fzf-lua']])
 vim.cmd.Plug([['sjl/gundo.vim']])
 vim.cmd.Plug([['smoka7/hop.nvim', { 'tag': 'v2.*.*' }]])
-vim.cmd.Plug([['scrooloose/nerdtree']])
 vim.cmd.Plug([['kevinhwang91/nvim-bqf']])
 vim.cmd.Plug([['davidgranstrom/nvim-markdown-preview']])
 vim.cmd.Plug([['nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }]])
@@ -147,7 +146,6 @@ vim.o.splitbelow = true
 
 -------------------------------------------------------------------------------
 -- Variables
-vim.g.NERDTreeHijackNetrw = 0
 
 -- vim-polyglot sets this variable, which prevents loading of `filetype.lua`
 vim.g.did_load_filetypes = nil
@@ -832,12 +830,6 @@ vim.keymap.set(
 
 vim.keymap.set({ "n", "v" }, "_", hintLines, { desc = "Hop to line" })
 vim.keymap.set("o", "_", "V<Cmd>lua hintLines()<CR>", { desc = "Hop to line" })
-
--------------------------------------------------------------------------------
--- NERD Tree
-vim.keymap.set("n", "<C-n>", "<Cmd>NERDTreeFocus<CR>")
-vim.keymap.set("n", "<A-n>", "<Cmd>NERDTreeFind<CR>")
-vim.keymap.set("n", "<Leader>n", "<Cmd>NERDTree<CR>")
 
 -------------------------------------------------------------------------------
 -- nvim-bqf
