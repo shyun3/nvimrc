@@ -348,10 +348,13 @@ endfunction
 
 command! CheckHighlightUnderCursor call <SID>CheckHighlight(line('.'), col('.'))
 
-hi link CocSemMacro Macro
-hi link CocSemVariable NONE
-hi link CocSemParameter NONE
-hi link CocSemEnumMember Constant
+hi link CocSemTypeMacro Macro
+hi link CocSemTypeVariable NONE
+hi link CocSemTypeEnumMember Constant
+hi link CocSemTypeKeyword NONE
+hi link CocSemTypeNamespace NONE  " For Python packages in import statement
+hi link CocSemTypeParameter NONE
+hi link CocSemTypeTypeParameter NONE  " For Python function parameter type hints
 
 " Taken from coc.vim
 hi CocMenuSel ctermbg=237 guibg=#13354A
