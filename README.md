@@ -10,11 +10,12 @@
 1. Install [Neovim][nvim-linux] (must be at least v0.5.0)
    
 1. Install dependencies:
-    * `sudo apt install ripgrep universal-ctags fzf fd-find clangd clang-format`
+    * `sudo apt install ripgrep universal-ctags fd-find clangd clang-format`
         * Make sure to create a symlink for `fd`, see [note][fd-install]
-    * [bat][]
-        * Note that this should be installed through a `.deb`
-          package, see [issue #938](https://github.com/sharkdp/bat/issues/938)
+    * [fzf][], [bat][]
+        * `fzf` must be > v0.23.1, see [issue #63][fzf-issue-63]
+        * `bat` should be installed through a `.deb` package,
+          see [issue #938][bat-issue-938]
     * [Node.js](https://nodejs.org/en/) (must be at least v12)
         * Make sure to set the [`PATH`][node-install]
     * [Yarn](https://yarnpkg.com/getting-started/install)
@@ -44,4 +45,7 @@
 [nvim-config-dir]: https://neovim.io/doc/user/starting.html#config
 [nvim-undo-dir]: https://neovim.io/doc/user/options.html#'undodir'
 [fd-install]: https://github.com/sharkdp/fd#on-ubuntu
+[fzf]: https://github.com/junegunn/fzf#using-git
+[fzf-issue-63]: https://github.com/ibhagwan/fzf-lua/issues/63
 [bat]: https://github.com/sharkdp/bat#on-ubuntu-using-most-recent-deb-packages
+[bat-issue-938]: https://github.com/sharkdp/bat/issues/938
