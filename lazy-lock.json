@@ -13,6 +13,7 @@
   "fzf-lua": { "branch": "main", "commit": "d368f76b37448d31918c81f020b0c725781c8354" },
   "gundo.vim": { "branch": "master", "commit": "c5efef192b975b8e7d5fa3c6db932648d3b76323" },
   "hop.nvim": { "branch": "master", "commit": "036462a345792279c58f2f6445756efab706f04a" },
+  "indent-blankline.nvim": { "branch": "master", "commit": "65e20ab94a26d0e14acac5049b8641336819dfc7" },
   "lazy.nvim": { "branch": "main", "commit": "a9d7ade203b3f3ee3058c082c62afdf8e4bcb416" },
   "lazydev.nvim": { "branch": "main", "commit": "02f1055a777264d4b65896051ec28d0f322f7932" },
   "lsp-overloads.nvim": { "branch": "main", "commit": "93e11c9a01f81daa4a5644e772a7a77f53dc270f" },
