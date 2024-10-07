@@ -4,13 +4,3 @@ snippet nonCopyable "Non-copyable"
 ${1:class}(const $1&) = delete;
 $1& operator=(const $1&) = delete;
 endsnippet
-
-snippet externCGuard "extern C guard"
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#ifdef __cplusplus
-}    // extern "C"
-#endif
-endsnippet
