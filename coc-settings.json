@@ -1,6 +1,7 @@
 {
-  "coc.preferences.useQuickfixForLocations": true,
   "coc.preferences.formatOnType": true,
+  "coc.preferences.useQuickfixForLocations": true,
+  "semanticTokens.filetypes": ["*"],
 
   "list.insertMappings": {
     "<C-s>": "action:split",
