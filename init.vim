@@ -23,6 +23,7 @@ Plug 'sjl/gundo.vim'
 Plug 'phaazon/hop.nvim'
 Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdtree'
+Plug 'kevinhwang91/nvim-bqf'
 Plug 'davidgranstrom/nvim-markdown-preview'
 Plug 'famiu/nvim-reload'
 Plug 'nvim-lua/plenary.nvim'
@@ -466,7 +467,7 @@ let g:grepper.dir = 'filecwd'
 
 let g:grepper.open = 0
 
-autocmd User Grepper FzfLua quickfix
+autocmd User Grepper botright copen
 
 nnoremap <leader><leader> <Cmd>call <SID>GoToEditWindow()<CR>:GrepperRg 
 
@@ -609,6 +610,34 @@ nnoremap <A-n> <Cmd>NERDTreeFind<CR>
 nnoremap <leader>n <Cmd>NERDTree<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" nvim-bqf
+
+lua << EOF
+require('bqf').setup{
+  preview = {
+    should_preview_cb = function(bufnr, qwinid)
+      local ret = true
+      local bufname = vim.api.nvim_buf_get_name(bufnr)
+      local fsize = vim.fn.getfsize(bufname)
+      if fsize > 100 * 1024 then
+          -- skip file size greater than 100k
+          ret = false
+      elseif bufname:match('^fugitive://') then
+          -- skip fugitive buffer
+          ret = false
+      end
+      return ret
+    end
+  },
+  func_map = {
+    -- Other split mappings defined by QFEnter
+    split = '<C-x><C-s>',
+    vsplit = '<C-x><C-v>',
+  },
+}
+EOF
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " nvim-colorizer
 lua require'colorizer'.setup({'*'}, {names = false})
 
@@ -637,11 +666,10 @@ let g:pydocstring_formatter = 'google'
 let g:pydocstring_enable_mapping = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" QFEnter (use CtrlP mappings)
+" QFEnter
 let g:qfenter_keymap = {}
 let g:qfenter_keymap.vopen = ['<C-v>']
-let g:qfenter_keymap.hopen = ['<C-CR>', '<C-s>', '<C-x>']
-let g:qfenter_keymap.topen = ['<C-t>']
+let g:qfenter_keymap.hopen = ['<C-s>']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Search pulse
