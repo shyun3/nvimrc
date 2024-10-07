@@ -32,4 +32,9 @@ return {
       automatic_installation = true,
     },
   },
+
+  {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    dependencies = { "williamboman/mason.nvim" },
+  },
 }
