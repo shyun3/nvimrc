@@ -89,12 +89,7 @@ return {
           else
             fallback()
             vim.fn.feedkeys(
-              vim.api.nvim_replace_termcodes(
-                "<Plug>DiscretionaryEnd",
-                true,
-                true,
-                true
-              )
+              require("util").replace_termcodes("<Plug>DiscretionaryEnd")
             )
           end
         end,

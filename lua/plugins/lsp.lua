@@ -1,3 +1,10 @@
+-- Derived from https://github.com/ray-x/lsp_signature.nvim/issues/228#issuecomment-1712704798
+local function scroll_sig(map)
+  local winnr = _G._LSP_SIG_CFG.winnr
+  local float_open = winnr and winnr ~= 0 and vim.api.nvim_win_is_valid(winnr)
+  if float_open then vim.fn.win_execute(winnr, ":normal! " .. map) end
+end
+
 return {
   {
     "neovim/nvim-lspconfig",
@@ -93,9 +100,11 @@ return {
   },
 
   { "j-hui/fidget.nvim", opts = {} },
+
   {
     "ray-x/lsp_signature.nvim",
     event = "VeryLazy",
+
     opts = {
       toggle_key = "<A-x>",
       select_signature_key = "<A-n>",
@@ -103,6 +112,33 @@ return {
         above = "↙ ", -- when the hint is on the line above the current line
         current = "← ", -- when the hint is on the same line
         below = "↖ ", -- when the hint is on the line below the current line
+      },
+    },
+    keys = {
+      {
+        "<Leader>k",
+        function() require("lsp_signature").toggle_float_win() end,
+        desc = "LSP: Toggle signature",
+      },
+
+      {
+      {
+        "<A-u>",
+        function()
+          local code = require("util").replace_termcodes("<C-u>")
+          scroll_sig(code)
+        end,
+        mode = { "i", "v" },
+        desc = "LSP: Scroll signature up",
+      },
+      {
+        "<A-d>",
+        function()
+          local code = require("util").replace_termcodes("<C-d>")
+          scroll_sig(code)
+        end,
+        mode = { "i", "v" },
+        desc = "LSP: Scroll signature down",
       },
     },
   },
