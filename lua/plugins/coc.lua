@@ -28,17 +28,6 @@ return {
   end,
 
   keys = {
-    {
-      "<Leader>v]",
-      function() vim.fn.CocAction("jumpDefinition", "vsplit") end,
-      desc = "coc: Jump to definition, vertical split",
-    },
-    {
-      "<Leader>s]",
-      function() vim.fn.CocAction("jumpDefinition", "split") end,
-      desc = "coc: Jump to definition, horizontal split",
-    },
-
     { "<Leader>D", "<Plug>(coc-type-definition)" },
     {
       "<Leader>vD",

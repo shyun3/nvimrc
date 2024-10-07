@@ -95,5 +95,30 @@ return {
     { "<Leader>h", "<Cmd>FzfLua help_tags<CR>" },
     { "<Leader>x", "<Cmd>FzfLua commands<CR>" },
     { "<Leader>cf", "<Cmd>FzfLua quickfix<CR>" },
+
+    {
+      "<Leader>]",
+      "<Cmd>FzfLua lsp_definitions jump_to_single_result=true<CR>",
+    },
+    {
+      "<Leader>s]",
+      function()
+        require("fzf-lua").lsp_definitions({
+          jump_to_single_result = true,
+          jump_to_single_result_action = require("fzf-lua.actions").file_split,
+        })
+      end,
+      desc = "LSP: Definition, split",
+    },
+    {
+      "<Leader>v]",
+      function()
+        require("fzf-lua").lsp_definitions({
+          jump_to_single_result = true,
+          jump_to_single_result_action = require("fzf-lua.actions").file_vsplit,
+        })
+      end,
+      desc = "LSP: Definition, vertical split",
+    },
   },
 }
