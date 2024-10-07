@@ -13,6 +13,7 @@ Plug 'equalsraf/neovim-gui-shim'
 
 " Plugins
 Plug 'bkad/CamelCaseMotion'
+Plug 'shyun3/ctrlp.vim', {'branch': 'personal'}
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'scrooloose/nerdtree'
@@ -209,11 +210,19 @@ function! CocOpen(command_str)
   execute 'silent normal! ' . a:command_str . "\<cr>"
 endfunction
 
-nnoremap <silent> <C-p> :call CocOpen(":CocList files")<CR>
-nnoremap <silent> <A-p> :CocList mru<CR>
-nnoremap <silent> <C-\> :CocList buffers<CR>
-nnoremap <silent> <C-k> :CocList outline<CR>
-nnoremap <silent> <C-h> :CocList --interactive symbols <CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CtrlP
+let g:ctrlp_switch_buffer = 0     " Always open a new instance
+let g:ctrlp_extensions = ['tag', 'buffertag']
+let g:ctrlp_user_command = 'rg --files -F --color never --hidden --follow -g !.*/ %s'
+let g:ctrlp_by_filename = 1       " Search filenames by default
+let g:ctrlp_working_path_mode = ''
+
+nnoremap <C-\> :CtrlPBuffer<CR>
+nnoremap <C-H> :CtrlPTag<CR>
+nnoremap <C-K> :CtrlPBufTag<CR>
+nnoremap <A-p> :CtrlPMRU<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EasyMotion
