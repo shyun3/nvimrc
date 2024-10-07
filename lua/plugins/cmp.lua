@@ -11,6 +11,7 @@ return {
     "hrsh7th/cmp-cmdline",
     "quangnguyen30192/cmp-nvim-ultisnips",
     "folke/lazydev.nvim",
+    "hrsh7th/cmp-nvim-lsp",
   },
 
   config = function()
@@ -50,6 +51,7 @@ return {
       }),
       sources = cmp.config.sources({
         { name = "ultisnips" },
+        { name = "nvim_lsp" },
         { name = "lazydev" },
         {
           name = "buffer",
@@ -75,7 +77,6 @@ return {
       }, {
         { name = "cmdline" },
       }),
-      matching = { disallow_symbol_nonprefix_matching = false },
     })
   end,
 }
