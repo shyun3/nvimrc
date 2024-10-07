@@ -197,10 +197,10 @@ function! CocOpen(command_str)
 endfunction
 
 nnoremap <silent> <C-p> :call CocOpen(":CocList files")<CR>
-nnoremap <A-p> :CocList mru<CR>
-nnoremap <C-\> :CocList buffers<CR>
-nnoremap <C-k> :CocList outline<CR>
-nnoremap <C-h> :CocList --interactive symbols <CR>
+nnoremap <silent> <A-p> :CocList mru<CR>
+nnoremap <silent> <C-\> :CocList buffers<CR>
+nnoremap <silent> <C-k> :CocList outline<CR>
+nnoremap <silent> <C-h> :CocList --interactive symbols <CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EasyMotion
