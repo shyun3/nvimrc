@@ -254,7 +254,8 @@ nmap <silent> <leader>v[ :call CocAction('jumpDeclaration', 'vsplit')<CR>
 nmap <silent> <leader>s[ :call CocAction('jumpDeclaration', 'split')<CR>
 
 nmap <silent> <leader>rr <Plug>(coc-references)
-nmap <silent> <leader>ri <Cmd>call CocAction('showIncomingCalls')<CR>
+nmap <silent> <leader>ri <Cmd>call <SID>IncomingCallsQf()<CR>
+nmap <silent> <leader>rti <Cmd>call CocAction('showIncomingCalls')<CR>
 nmap <silent> <leader>ro <Cmd>call CocAction('showOutgoingCalls')<CR>
 
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -262,12 +263,40 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 nnoremap <silent> K :call <SID>ShowDocumentation()<CR>
 
+nnoremap <leader>ll <Cmd>CocList<CR>
+nnoremap <leader>lc <Cmd>CocList commands<CR>
+
 function! s:ShowDocumentation()
   if CocAction('hasProvider', 'hover')
     call CocActionAsync('doHover')
   else
     call feedkeys('K', 'in')
   endif
+endfunction
+
+function! s:IncomingCallsQf()
+  let inCalls = CocAction('incomingCalls')
+  let qf = []
+  for inCall in inCalls
+    let fileUri = inCall['from']['uri']
+    let absFile = substitute(fileUri, "^file://", "", "")
+
+    let range = inCall['from']['range']
+    let rangeStart = range['start']
+    let rangeEnd = range['end']
+
+    let startLine = rangeStart['line'] + 1
+    let endLine = rangeEnd['line'] + 1
+
+    let startCol = rangeStart['character'] + 1
+    let endCol = rangeEnd['character'] + 1
+
+    call add(qf, {'filename': absFile, 'lnum': startLine, 'end_lnum': endLine,
+          \ 'col': startCol, 'end_col': endCol, 'text': getline(startLine)})
+  endfor
+
+  call setqflist(qf)
+  botright copen
 endfunction
 
 " Highlight the symbol and its references when holding the cursor
@@ -484,7 +513,7 @@ endfunction
 " Derived from neoformat/plugin/neoformat.vim
 command! -nargs=? -bar -range=% -bang
       \ -complete=customlist,neoformat#CompleteFormatters ChDirNeoformat
-      \ call s:CdNeoformat(<bang>0, <q-args>, <line1>, <line2>)
+      \ call <SID>CdNeoformat(<bang>0, <q-args>, <line1>, <line2>)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERD Tree
