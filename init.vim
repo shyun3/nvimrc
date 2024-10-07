@@ -252,7 +252,7 @@ nmap <silent> <leader>[ <Plug>(coc-declaration)
 nmap <silent> <leader>v[ :call CocAction('jumpDeclaration', 'vsplit')<CR>
 nmap <silent> <leader>s[ :call CocAction('jumpDeclaration', 'split')<CR>
 
-nmap <silent> <C-,> <Plug>(coc-references)
+nmap <silent> <leader>r <Plug>(coc-references)
 
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
