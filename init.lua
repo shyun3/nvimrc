@@ -47,7 +47,6 @@ vim.cmd.Plug([['tpope/vim-surround']])
 vim.cmd.Plug([['tpope/vim-unimpaired']])
 vim.cmd.Plug([['tpope/vim-vinegar']])
 vim.cmd.Plug([['chaoren/vim-wordmotion']])
-vim.cmd.Plug([['folke/which-key.nvim']])
 
 -- Dependencies
 vim.cmd.Plug([['nvim-tree/nvim-web-devicons']])
@@ -878,10 +877,6 @@ vim.g.tagbar_autofocus = 1 -- Move to Tagbar window when opened
 vim.g.tagbar_sort = 0
 
 vim.keymap.set("n", "<A-t>", "<Cmd>TagbarToggle<CR>")
-
--------------------------------------------------------------------------------
--- which-key
-require("which-key").setup({})
 
 -------------------------------------------------------------------------------
 -- wordmotion
