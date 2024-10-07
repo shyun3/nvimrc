@@ -321,11 +321,6 @@ require("bqf").setup({
 })
 
 -------------------------------------------------------------------------------
--- Pydocstring
-vim.g.pydocstring_formatter = "google"
-vim.g.pydocstring_enable_mapping = 0
-
--------------------------------------------------------------------------------
 -- treesitter
 require("nvim-treesitter.configs").setup({
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
