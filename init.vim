@@ -125,6 +125,10 @@ nnoremap <F5>
   \ :!start "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
   \ "%:p"<CR>
 
+" <TAB> completion
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
+
 " Window navigation
 nnoremap <silent> ]w :wincmd w<CR>
 nnoremap <silent> [w :wincmd W<CR>
