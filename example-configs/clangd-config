@@ -1,5 +1,10 @@
 CompileFlags:
-  Add: [-Wall, -Wextra, -Wpedantic]
+  Add:
+    - --target=arm-none-eabi
+    - --sysroot=/path/to/cross-compiler/dir/with/bin/include/lib
+    - -Wall
+    - -Wextra
+    - -Wpedantic
   CompilationDatabase: /path/to/project
 
 ---
