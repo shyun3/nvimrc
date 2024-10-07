@@ -17,6 +17,19 @@ For use with [clangd][] (v11 or later).
 
 Copy to C/C++ project root and customize. For use with [clangd][].
 
+## .gutctags
+
+Copy to C/C++ project root and customize:
+```bash
+cp /path/to/gutctags /path/to/project/.gutctags
+```
+
+For use with [Gutentags][].
+
+Currently when this file is detected by Gutentags, only the options listed will
+be used despite the docs saying otherwise. See [issue #265](
+https://github.com/ludovicchabant/vim-gutentags/issues/265).
+
 ## .projections.json
 
 Copy to project root and customize. For use with [vim-projectionist][]:
@@ -36,4 +49,5 @@ cp /path/to/projects.vim ~/.config/nvim
 Copy to Python project root and customize.
 
 [clangd]: https://clangd.llvm.org/
+[Gutentags]: https://github.com/ludovicchabant/vim-gutentags
 [vim-projectionist]: https://github.com/tpope/vim-projectionist
