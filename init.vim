@@ -10,7 +10,6 @@ Plug 'tomasr/molokai'
 
 " Plugins
 Plug 'bkad/CamelCaseMotion'
-Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 Plug 'vim-scripts/CursorLineCurrentWindow'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'editorconfig/editorconfig-vim'
@@ -38,6 +37,10 @@ Plug 'inside/vim-search-pulse'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
+
+" coc
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'shyun3/coc-vimlsp', {'branch': 'fix-40', 'do': 'yarn install --frozen-lockfile'}
 
 " fzf
 Plug 'ibhagwan/fzf-lua'
@@ -206,7 +209,7 @@ let g:camelcasemotion_key = '<leader>'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " coc
 let g:coc_global_extensions = ['coc-clangd', 'coc-json', 'coc-pyright',
-  \ 'coc-syntax', 'coc-tag', 'coc-ultisnips', 'coc-vimlsp@0.12.2']
+  \ 'coc-syntax', 'coc-tag', 'coc-ultisnips']
 
 inoremap <silent><expr> <c-space> coc#refresh()
 
@@ -320,10 +323,10 @@ function! s:FzfLuaBTags()
 endfunction
 
 nnoremap <C-p> <Cmd>call <SID>FzfLuaFiles()<CR>
-nnoremap <C-q> <Cmd>call <SID>GoToEditWindow()<CR>:FzfLua files cwd=%:h<CR>
-nnoremap <C-\> <Cmd>call <SID>GoToEditWindow()<CR>:FzfLua buffers<CR>
-nnoremap <A-p> <Cmd>call <SID>GoToEditWindow()<CR>:FzfLua oldfiles<CR>
-nnoremap <C-h> <Cmd>call <SID>GoToEditWindow()<CR>:FzfLua tags<CR>
+nnoremap <C-q> <Cmd>call <SID>GoToEditWindow()<CR><Cmd>FzfLua files cwd=%:h<CR>
+nnoremap <C-\> <Cmd>call <SID>GoToEditWindow()<CR><Cmd>FzfLua buffers<CR>
+nnoremap <A-p> <Cmd>call <SID>GoToEditWindow()<CR><Cmd>FzfLua oldfiles<CR>
+nnoremap <C-h> <Cmd>call <SID>GoToEditWindow()<CR><Cmd>FzfLua tags<CR>
 nnoremap <C-k> <Cmd>call <SID>FzfLuaBTags()<CR>
 nnoremap <C-j> <Cmd>FzfLua blines<CR>
 nnoremap <leader>f <Cmd>FzfLua builtin<CR>
