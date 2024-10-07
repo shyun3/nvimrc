@@ -38,15 +38,6 @@
     ```
 
 1. Install [Neovim][nvim-linux]
-
-1. Prepare a Python virtual environment:
-    ```bash
-    cd ~/.config/nvim
-    virtualenv -p python3.7 nvim-venv
-    nvim-venv/bin/pip install pynvim
-    ```
-    * Note that Neovim may not work with Python newer than 3.7
-    * Pip may need to be [configured][pip-conf]
    
 1. Install dependencies:
     * [ripgrep][] and [Universal Ctags][]
@@ -65,6 +56,8 @@
 1. Install [vim-plug][] and [Powerline fonts][]
 
 1. Start Neovim. Ignore any errors and run `:PlugInstall`.
+
+1. Install [cpsm][]
 
 1. Restart Neovim. Run `:checkhealth` and resolve any issues.
 
@@ -88,14 +81,6 @@
     ```bash
     mkdir -p ~/.local/share/nvim/undo
     ```
-
-1. Prepare a Python virtual environment:
-    ```bash
-    cd ~/.config/nvim
-    virtualenv -p python3 nvim-venv
-    nvim-venv/bin/pip install pynvim
-    ```
-    * Pip may need to be [configured][pip-conf]
     
 1. Install [Universal Ctags][mac-univ-ctags]
     
@@ -107,6 +92,8 @@
 1. Install [vim-plug][] and [Powerline fonts][]
 
 1. Start Neovim. Ignore any errors and run `:PlugInstall`.
+
+1. Install [cpsm][]
 
 1. Restart Neovim. Run `:checkhealth` and resolve any issues.
 
@@ -124,6 +111,6 @@
 [vim-plug]: https://github.com/junegunn/vim-plug
 [Powerline fonts]: https://github.com/powerline/fonts
 [nvim-config-dir]: https://neovim.io/doc/user/starting.html#config
-[pip-conf]: https://pip.pypa.io/en/stable/user_guide/#config-file
 [mac-univ-ctags]: https://github.com/universal-ctags/homebrew-universal-ctags
 [nvim-undo-dir]: https://neovim.io/doc/user/options.html#'undodir'
+[cpsm]: https://github.com/nixprime/cpsm
