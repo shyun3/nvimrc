@@ -1,18 +1,6 @@
--- Derived from https://github.com/windwp/nvim-autopairs/wiki/Completion-plugin
-local function completion_confirm()
-  if vim.fn["coc#pum#visible"]() ~= 0 then
-    return vim.fn["coc#pum#confirm"]()
-  else
-    -- `autopairs_cr()` replaces keycodes (see issue #415), so this workaround
-    -- is being used
-    return "<Cmd>call feedkeys(v:lua.require('nvim-autopairs').autopairs_cr(), 'in')<CR>"
-  end
-end
-
 return {
   "neoclide/coc.nvim",
   enabled = false,
-  dependencies = { "tpope/vim-endwise", "windwp/nvim-autopairs" },
   build = "npm ci",
 
   init = function()
@@ -57,17 +45,6 @@ return {
   end,
 
   keys = {
-    {
-      "<CR>",
-      function()
-        return completion_confirm() .. "<C-r>=EndwiseDiscretionary()<CR>"
-      end,
-      mode = "i",
-      desc = "Auto-select the first completion item",
-      silent = true,
-      expr = true,
-    },
-
     { "<Leader>]", "<Plug>(coc-definition)" },
     {
       "<Leader>v]",
