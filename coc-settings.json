@@ -11,7 +11,13 @@
     "ccls": {
       "command": "ccls",
       "filetypes": ["c", "cpp"],
-      "rootPatterns": [".ccls", "compile_commands.json", ".editorconfig", ".git/", ".svn/"]
+      "rootPatterns": [".ccls", "compile_commands.json", ".editorconfig", ".git/",
+        ".svn/"],
+      "initializationOptions": {
+        "cache": {
+          "request.timeout": "10000"
+        }
+      }
     }
   }
 }
