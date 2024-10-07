@@ -3,9 +3,8 @@ local function completion_confirm()
   if vim.fn["coc#pum#visible"]() ~= 0 then
     return vim.fn["coc#pum#confirm"]()
   else
-    -- For some reason, calling the Lua function directly inserts a bunch of
-    -- noise unless the mapping is created using `vim.api.nvim_set_keymap`.
-    -- There isn't supposed to be any difference from `vim.keymap.set` though.
+    -- `autopairs_cr()` replaces keycodes (see issue #415), so this workaround
+    -- is being used
     return "<Cmd>call feedkeys(v:lua.require('nvim-autopairs').autopairs_cr(), 'in')<CR>"
   end
 end

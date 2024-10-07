@@ -40,7 +40,9 @@ return {
       vim.o.termguicolors = true
     end,
 
-    config = function() require("colorizer").setup({ "*" }, { names = false }) end,
+    config = function()
+      require("colorizer").setup({ "*" }, { RGB = false, names = false })
+    end,
   },
 
   {
