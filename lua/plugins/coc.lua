@@ -10,12 +10,16 @@ return {
       "coc-json",
       "coc-lua",
       "coc-pyright",
-      "coc-syntax",
-      "coc-tag",
       "coc-vimlsp",
+      "coc-markdown-preview-enhanced",
       "coc-pairs",
       "coc-sh",
       "coc-snippets",
+      "coc-webview",
+
+      -- From coc-sources
+      "coc-syntax",
+      "coc-tag",
     }
 
     vim.g.coc_quickfix_open_command = "botright copen"

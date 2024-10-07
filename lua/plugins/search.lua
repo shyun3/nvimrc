@@ -27,7 +27,13 @@ return {
       { "n", "n<Plug>Pulse" },
       { "N", "N<Plug>Pulse" },
 
-      { "<Enter>", "search_pulse#PulseFirst()", mode = "c", expr = true },
+      {
+        "<Enter>",
+        "search_pulse#PulseFirst()",
+        mode = "c",
+        silent = true,
+        expr = true,
+      },
     },
   },
 }

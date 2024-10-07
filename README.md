@@ -10,7 +10,7 @@
 1. Install [Neovim][nvim-linux]
 
 1. Install dependencies and include them in the `PATH`:
-    * `sudo apt install ripgrep bat universal-ctags pandoc wl-clipboard`
+    * `sudo apt install ripgrep bat universal-ctags wl-clipboard`
         * Make sure to create a symlink for `bat` (see [link][bat-install])
     * [fd][], `fzf`, `lazygit`
         * `fd` >= 9.0.0 is recommended for improved performance
@@ -24,7 +24,7 @@
         * Latest version (with `npm`) can be installed through `nvm`:
             `nvm install node`
         * Dependencies:
-            `npm install -g yarn @compodoc/live-server prettier prettier-plugin-sh
+            `npm install -g yarn prettier prettier-plugin-sh
              @johnnymorganz/stylua-bin`
     * `pyenv`
         * Prepare virtual environment:
