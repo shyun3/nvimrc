@@ -5,7 +5,8 @@ endfunction
 function! neoformat#formatters#c#clangformat() abort
     return {
             \ 'exe': 'clang-format',
-            \ 'args': ['-style=file', '-assume-filename=' . expand('%:p')],
+            \ 'args': ['-style=file',
+            \          '-assume-filename=' . '"'. expand('%:p') . '"'],
             \ 'stdin': 1,
             \ }
 endfunction
