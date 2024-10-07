@@ -28,7 +28,6 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lua/plenary.nvim'
 Plug 'yssl/QFEnter'
 Plug 'majutsushi/tagbar'
-Plug 'SirVer/ultisnips'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'haya14busa/vim-asterisk'
@@ -236,8 +235,7 @@ let g:asterisk#keeppos = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " coc
 let g:coc_global_extensions = ['coc-clangd', 'coc-json', 'coc-pyright',
-  \ 'coc-syntax', 'coc-tag', 'coc-ultisnips', 'coc-vimlsp', 'coc-pairs',
-  \ 'coc-sh']
+  \ 'coc-syntax', 'coc-tag', 'coc-vimlsp', 'coc-pairs', 'coc-sh', 'coc-snippets']
 
 inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#next(1): "\<Tab>"
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
@@ -742,12 +740,6 @@ EOF
 let g:tagbar_autofocus = 1    " Move to Tagbar window when opened
 let g:tagbar_sort = 0
 nmap <silent> <A-t> :TagbarToggle<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" UltiSnips
-let g:UltiSnipsEditSplit = 'horizontal'
-let g:UltiSnipsExpandTrigger = "<NUL>"
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "UltiSnips/specific"]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " which-key
