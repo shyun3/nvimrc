@@ -1,5 +1,3 @@
-colorscheme molokai
-
 call GuiClipboard()
 call GuiWindowMaximized(1)
 
@@ -10,5 +8,3 @@ else
 endif
 GuiTabline 0
 GuiPopupmenu 0
-
-Welcome

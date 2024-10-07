@@ -74,6 +74,9 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Options
 
+" Colors
+colorscheme molokai
+
 " Buffers
 set hidden
 
@@ -204,7 +207,9 @@ autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Airline
 let g:airline_theme='molokai'
-let g:airline_powerline_fonts = 1
+if &termguicolors
+  let g:airline_powerline_fonts = 1
+endif
 let g:airline#extensions#whitespace#enabled = 0 " Whitespace error detection
 let g:airline#extensions#tagbar#enabled = 0
 
@@ -322,6 +327,9 @@ nnoremap <silent> <C-n> :NERDTree<CR>
 let g:project_use_nerdtree = 1
 call project#rc()
 execute "silent! source " . g:vimDir . "/projects.vim"
+if argc(-1) == 0
+  Welcome
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " QFEnter (use CtrlP mappings)
