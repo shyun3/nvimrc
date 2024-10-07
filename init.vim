@@ -131,7 +131,6 @@ set splitbelow        " All horizontal splits open below
 " Variables
 let c_gnu=1              " Highlight GNU keywords
 let NERDTreeHijackNetrw = 0
-let g:python3_host_prog = stdpath('config') . '/nvim-venv/bin/python'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mappings

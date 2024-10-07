@@ -1,6 +1,4 @@
 bundle/
-nvim-venv/
 autoload/plug.vim*
 projects.vim
-tags
 .netrwhist
