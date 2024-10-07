@@ -367,13 +367,28 @@ let g:gutentags_define_advanced_commands = 1
 " Hop
 lua << EOF
 require'hop'.setup()
+
+-- Like hop.jump_target.regex_by_line_start_skip_whitespace() except it also
+-- marks empty or whitespace only lines
+function regexLines()
+    return {
+        oneshot = true,
+        match = function(str)
+            return vim.regex("\\S"):match_str(str) or
+                   vim.regex("\\v.$"):match_str(str) or 0, 1
+        end
+    }
+end
+
+-- Like :HopLineStart except it also jumps to empty or whitespace only lines
+function hintLines()
+    local gen = require'hop.jump_target'.jump_targets_by_scanning_lines
+    require'hop'.hint_with(gen(regexLines()), require'hop'.opts)
+end
 EOF
 
-map <Space> <Cmd>HopWord<CR>
-map _ <Cmd>HopLine<CR>
-map g<Space> <Cmd>HopChar1<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+noremap <Space> <Cmd>HopWord<CR>
+noremap _ <Cmd>lua hintLines()<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Neoformat
