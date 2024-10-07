@@ -1,6 +1,7 @@
-let s:vim_dir = stdpath('config')
+let g:isMac = has('unix') ? system('uname -s') =~? 'darwin' : 0
+let g:vimDir = stdpath('config')
 
-call plug#begin(s:vim_dir . '/bundle')
+call plug#begin(g:vimDir . '/bundle')
 
 " Plugin manager
 Plug 'junegunn/vim-plug'
@@ -50,7 +51,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " coc extensions
 Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-python', {'do': 'npm install --no-package-lock'}
 Plug 'neoclide/coc-sources',
   \ {'as': 'coc-syntax', 'rtp': 'packages/syntax',
   \  'do': 'yarn install --frozen-lockfile'}
@@ -124,9 +125,14 @@ set splitbelow        " All horizontal splits open below
 " Variables
 let c_gnu=1              " Highlight GNU keywords
 let NERDTreeHijackNetrw = 0
+let g:python3_host_prog = stdpath('config') . '/venv/bin/python'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mappings
+function Meta(key, macKey)
+  return !g:isMac ? '<A-' . a:key . '>' : a:macKey
+endfunction
+
 nnoremap <silent> <C-L> :nohlsearch<CR>
 
 tnoremap <Esc> <C-\><C-n>
@@ -141,8 +147,8 @@ nnoremap Y y$
 
 " Open tags in splits
 nnoremap <silent> <C-]> :tjump /\<<C-R><C-W>\>\C<CR>
-nnoremap <silent> <A-]>s :wincmd g<C-V><C-]><CR>
-nnoremap <silent> <A-]>v :vertical wincmd g<C-V><C-]><CR>
+execute 'nnoremap <silent> ' Meta(']', '‘') . 's :wincmd g<C-V><C-]><CR>'
+execute 'nnoremap <silent> ' Meta(']', '‘') . 'v :vertical wincmd g<C-V><C-]><CR>'
 
 " Open current file in explorer
 nnoremap <silent> <F10> :silent !start explorer /select,%:p<CR>
@@ -165,18 +171,18 @@ nnoremap <silent> <Left> :wincmd h<CR>
 nnoremap <silent> <Down> :wincmd j<CR>
 nnoremap <silent> <Up> :wincmd k<CR>
 nnoremap <silent> <Right> :wincmd l<CR>
-nnoremap <silent> <A-c> :wincmd c<CR>
-nnoremap <silent> <A-q> :botright copen<CR>
-nnoremap <silent> <A-o> :wincmd o<CR>
-nnoremap <silent> <A-1> :1wincmd w<CR>
-nnoremap <silent> <A-2> :2wincmd w<CR>
-nnoremap <silent> <A-3> :3wincmd w<CR>
-nnoremap <silent> <A-4> :4wincmd w<CR>
-nnoremap <silent> <A-5> :5wincmd w<CR>
-nnoremap <silent> <A-6> :6wincmd w<CR>
-nnoremap <silent> <A-7> :7wincmd w<CR>
-nnoremap <silent> <A-8> :8wincmd w<CR>
-nnoremap <silent> <A-9> :9wincmd w<CR>
+execute 'nnoremap <silent> ' . Meta('c', 'ç') . ' :wincmd c<CR>'
+execute 'nnoremap <silent> ' . Meta('q', 'œ') . ' :botright copen<CR>'
+execute 'nnoremap <silent> ' . Meta('o', 'ø') . ' :wincmd o<CR>'
+execute 'nnoremap <silent> ' . Meta('1', '¡') . ' :1wincmd w<CR>'
+execute 'nnoremap <silent> ' . Meta('2', '™') . ' :2wincmd w<CR>'
+execute 'nnoremap <silent> ' . Meta('3', '£') . ' :3wincmd w<CR>'
+execute 'nnoremap <silent> ' . Meta('4', '¢') . ' :4wincmd w<CR>'
+execute 'nnoremap <silent> ' . Meta('5', '∞') . ' :5wincmd w<CR>'
+execute 'nnoremap <silent> ' . Meta('6', '§') . ' :6wincmd w<CR>'
+execute 'nnoremap <silent> ' . Meta('7', '¶') . ' :7wincmd w<CR>'
+execute 'nnoremap <silent> ' . Meta('8', '•') . ' :8wincmd w<CR>'
+execute 'nnoremap <silent> ' . Meta('9', 'ª') . ' :9wincmd w<CR>'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Autocommands
@@ -245,9 +251,9 @@ nmap <silent> <C-,> <Plug>(coc-references)
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> K :call <SID>ShowDocumentation()<CR>
 
-function! s:show_documentation()
+function! s:ShowDocumentation()
   if &filetype == 'vim'
     execute 'h '.expand('<cword>')
   else
@@ -266,7 +272,7 @@ let g:ctrlp_working_path_mode = ''
 nnoremap <silent> <C-\> :CtrlPBuffer<CR>
 nnoremap <silent> <C-H> :CtrlPTag<CR>
 nnoremap <silent> <C-K> :CtrlPBufTag<CR>
-nnoremap <silent> <A-p> :CtrlPMRU<CR>
+execute 'nnoremap <silent> ' . Meta('p', 'π') . ' :CtrlPMRU<CR>'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EasyMotion
@@ -315,7 +321,7 @@ nnoremap <silent> <C-n> :NERDTree<CR>
 " Project
 let g:project_use_nerdtree = 1
 call project#rc()
-execute "silent! source " . s:vim_dir . "/projects.vim"
+execute "silent! source " . g:vimDir . "/projects.vim"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " QFEnter (use CtrlP mappings)
@@ -332,7 +338,7 @@ let g:vim_search_pulse_mode = 'pattern'
 " Tagbar
 let g:tagbar_autofocus = 1    " Move to Tagbar window when opened
 let g:tagbar_sort = 0
-nmap <silent> <A-t> :TagbarToggle<CR>
+execute 'nmap <silent> ' . Meta('t', '†') . ' :TagbarToggle<CR>'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UltiSnips
