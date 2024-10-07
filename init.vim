@@ -270,19 +270,22 @@ endfunction
 let s:cocTimer = []
 
 function! DisableCocDelayed()
-  silent! timer_stop(s:cocTimer[0])
-  silent! remove(s:cocTimer, 0)
+  if !empty(s:cocTimer)
+    call timer_stop(s:cocTimer[0])
+    call remove(s:cocTimer, 0)
+  endif
+
   silent CocDisable
 endfunction
 
-function! EnableCocDelayed(time)
-  let timerId = timer_start(a:time, 'EnableCocDelayedImpl')
+function! EnableCocDelayed(ms)
+  let timerId = timer_start(a:ms, 'EnableCocDelayedImpl')
   call add(s:cocTimer, timerId)
 endfunction
 
 function! EnableCocDelayedImpl(timerId)
+  if !empty(s:cocTimer) | call remove(s:cocTimer, 0) | endif
   silent CocEnable
-  silent! call remove(s:cocTimer, 0)
 endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
