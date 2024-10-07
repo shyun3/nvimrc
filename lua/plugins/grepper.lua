@@ -18,9 +18,8 @@ return {
       vim.g.grepper = grepper
     end
 
-    local myGrepperGroup = vim.api.nvim_create_augroup("myGrepperGroup", {})
     vim.api.nvim_create_autocmd("User", {
-      group = myGrepperGroup,
+      group = vim.api.nvim_create_augroup("myGrepperGroup", {}),
       pattern = "Grepper",
       command = "botright copen",
       nested = true,
