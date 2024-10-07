@@ -11,7 +11,6 @@ Plug 'tomasr/molokai'
 " Plugins
 Plug 'bkad/CamelCaseMotion'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-Plug 'vim-scripts/CursorLineCurrentWindow'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'sjl/gundo.vim'
 Plug 'phaazon/hop.nvim'
@@ -178,6 +177,15 @@ autocmd FileChangedShellPost *
   \ echohl None
 
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
+" Enable cursorline only for active window
+" See https://github.com/ibhagwan/nvim-lua/blob/main/lua/autocmd.lua
+augroup ActiveWinCursorLine
+  autocmd WinEnter,BufEnter,InsertLeave *
+    \ if !&cursorline && !&pvw | setlocal cursorline | endif
+  autocmd WinLeave,BufLeave,InsertEnter *
+    \ if &cursorline && !&pvw | setlocal nocursorline | endif
+augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
