@@ -277,14 +277,8 @@ let g:grepper.dir = 'filecwd'
 
 let g:grepper.open = 0
 
-function! OpenLeaderfQuickFix(timerId)
-  call <SID>GoToEditWindow()
-  LeaderfQuickFix
-endfunction
+autocmd User Grepper call <SID>GoToEditWindow() | Telescope quickfix
 
-" Hack to call LeaderfQuickFix 'outside' of autocommand. Otherwise files opened
-" from LeaderfQuickFix may not have a filetype.
-autocmd User Grepper call timer_start(100, "OpenLeaderfQuickFix")
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Gundo
