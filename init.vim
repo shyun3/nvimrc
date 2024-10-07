@@ -2,7 +2,7 @@ lua << EOF
 vimDir = vim.fn.stdpath('config')
 
 -- lua: Covered by treesitter
--- sensible: Do not update settings
+-- sensible: Do not update vim settings
 vim.g.polyglot_disabled = {'lua', 'sensible'}
 
 vim.fn['plug#begin'](vimDir .. '/bundle')
@@ -66,11 +66,12 @@ Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-user'
 
-lua vim.fn['plug#end']()
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Options
 lua << EOF
+vim.fn['plug#end']()
+
+-------------------------------------------------------------------------------
+-- Options
+
 -- Colors
 vim.cmd.colorscheme('molokai')
 vim.o.termguicolors = true
@@ -93,7 +94,7 @@ vim.opt.wildmode = {"longest:full", "full"}
 -- Display
 vim.o.number = true   -- Line numbers
 vim.o.colorcolumn = "80"
-vim.opt.listchars = {tab = [[»\ ]], trail = "·", precedes = "◄", extends = "►"}
+vim.opt.listchars = {tab = "» ", trail = "·", precedes = "◄", extends = "►"}
 vim.o.list = true   -- Show invisible characters
 vim.o.cursorline = true
 vim.o.cmdheight = 2
@@ -111,46 +112,43 @@ vim.opt.shada = {
   "s1", -- Max size of item contents in kB
   "h"   -- Disable 'hlsearch' effect when loading shada file
 }
-EOF
 
-" Formatting
-set nowrap            " Do not wrap text
+-- Formatting
+vim.o.wrap = false
 
+-- Search
+vim.o.maxmempattern = 5000
 
-" Search
-set maxmempattern=5000
+-- Tabs
+vim.o.expandtab = true  -- Change tabs to spaces
+vim.o.tabstop = 4
+vim.o.softtabstop = vim.o.tabstop   -- Tab stop positions for spaces
+vim.o.shiftwidth = vim.o.tabstop
 
-" Tabs
-set expandtab     " Change tabs to spaces
-set tabstop=4     " Number of spaces in a tab
-set softtabstop=4 " Tab stop positions for spaces
-set shiftwidth=4  " Indentation width
+-- Timing
+vim.o.updatetime = 300
 
-" Timing
-set updatetime=300
+-- Windows
+vim.o.splitright = true
+vim.o.splitbelow = true
 
-" Windows
-set splitright        " All vertical splits open to the right
-set splitbelow        " All horizontal splits open below
+-------------------------------------------------------------------------------
+-- Variables
+vim.g.NERDTreeHijackNetrw = 0
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Variables
+-- vim-polyglot sets this variable, which prevents loading of `filetype.lua`
+vim.g.did_load_filetypes = nil
 
-let NERDTreeHijackNetrw = 0
+-- C
+vim.g.c_gnu = 1
+vim.g.c_no_curly_error = 1
 
-" vim-polyglot sets this variable, which prevents loading of `filetype.lua`
-unlet g:did_load_filetypes
+-- Python
+vim.g.python3_host_prog = '~/.pyenv/versions/neovim/bin/python3'
 
-" C
-let c_gnu = 1
-let c_no_curly_error = 1
+-------------------------------------------------------------------------------
+-- Mappings
 
-" Python
-let g:python3_host_prog = '~/.pyenv/versions/neovim/bin/python3'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Mappings
-lua << EOF
 -- List tags before jumping if more than one match
 vim.keymap.set({'n', 'v'}, '<C-]>', 'g<C-]>')
 
@@ -171,160 +169,218 @@ vim.keymap.set('n', '<A-o>', '<Cmd>wincmd o<CR>')
 for i = 1, 9 do
   vim.keymap.set('n', string.format("<A-%d>", i), string.format("<Cmd>%dwincmd w<CR>", i))
 end
-EOF
 
-" Quickfix
-nnoremap <silent> <A-q> :botright copen<CR>
-nnoremap <silent> <leader>q :cclose<CR>
+-- Quickfix
+vim.keymap.set('n', '<A-q>', '<Cmd>botright copen<CR>')
+vim.keymap.set('n', '<Leader>q', '<Cmd>cclose<CR>')
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Autocommands
-lua << EOF
+-------------------------------------------------------------------------------
+-- Autocommands
 local myAutoGroup = vim.api.nvim_create_augroup('myAutoGroup', {clear = true})
 
--- Save when leaving buffer
 vim.api.nvim_create_autocmd({'BufLeave', 'FocusLost'}, {
   group = myAutoGroup,
+  desc = 'Save when leaving buffer',
   nested = true,
   command = 'update'
 })
+
+vim.api.nvim_create_autocmd({'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI'},
+  {
+    group = myAutoGroup,
+    desc = 'Trigger `autoread` when files changes on disk',
+    callback = function()
+      if string.find("cr!t", vim.fn.mode()) and vim.fn.getcmdwintype() == '' then
+        vim.cmd.checktime()
+      end
+    end,
+  })
+vim.api.nvim_create_autocmd('FileChangedShellPost', {
+  group = myAutoGroup,
+  desc = 'Notification after file change',
+  callback = function()
+    vim.api.nvim_echo({{'File changed on disk. Buffer reloaded.', 'WarningMsg'}}, false, {})
+  end
+})
+
+vim.api.nvim_create_autocmd('CompleteDone', {
+  group = myAutoGroup,
+  desc = 'Close preview window on insert mode done',
+  callback = function()
+    if vim.fn.pumvisible() == 0 then vim.cmd.pclose() end
+  end
+})
+
+-- See https://github.com/ibhagwan/nvim-lua/blob/main/lua/autocmd.lua
+vim.api.nvim_create_autocmd({'WinEnter', 'BufEnter','InsertLeave'}, {
+  group = myAutoGroup,
+  desc = 'Enable cursorline for active window',
+  callback = function()
+    if not vim.o.cursorline and not vim.o.previewwindow then
+      vim.opt_local.cursorline = true
+    end
+  end
+})
+vim.api.nvim_create_autocmd({'WinLeave', 'BufLeave','InsertEnter'}, {
+  group = myAutoGroup,
+  desc = 'Disable cursorline for active window',
+  callback = function()
+    if vim.o.cursorline and not vim.o.previewwindow then
+      vim.opt_local.cursorline = false
+    end
+  end
+})
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+  group = myAutoGroup,
+  desc = 'Highlight on yank',
+  callback = function() vim.highlight.on_yank() end
+})
+
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-- Plugin specific settings
+
+-------------------------------------------------------------------------------
+-- Airline
+vim.g.airline_theme = 'molokai'
+vim.g.airline_powerline_fonts = 1
+
+vim.g.airline_section_error =
+  '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
+vim.g.airline_section_warning =
+  '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
+
+vim.g['airline#extensions#whitespace#enabled'] = 0  -- Whitespace error detection
+vim.g['airline#extensions#tagbar#enabled'] = 0
+
+vim.g['airline#extensions#tabline#enabled'] = 1
+vim.g['airline#extensions#tabline#formatter'] = 'uniq_tail_or_proj'
+vim.g['airline#extensions#tabline#fnamemod'] = ':t'   -- Default tab name formatter
+vim.g['airline#extensions#tabline#fnamecollapse'] = 0   -- Short parent names in tabs
+vim.g['airline#extensions#tabline#tab_nr_type'] = 1
+vim.g['airline#extensions#tabline#show_close_button'] = 0
+vim.g['airline#extensions#tabline#show_splits'] = 0
+vim.g['airline#extensions#tabline#show_buffers'] = 0
+vim.g['airline#extensions#tabline#show_tab_type'] = 0
+
+-------------------------------------------------------------------------------
+-- Asterisk
+vim.g['asterisk#keeppos'] = 1
+
+-------------------------------------------------------------------------------
+-- coc
+vim.g.coc_global_extensions = {'coc-clangd', 'coc-json', 'coc-pyright',
+  'coc-syntax', 'coc-tag', 'coc-vimlsp', 'coc-pairs', 'coc-sh', 'coc-snippets'}
+vim.g.coc_quickfix_open_command = 'botright copen'
+
+vim.keymap.set('i', '<Tab>',
+  function()
+    return vim.fn['coc#pum#visible']() == 1 and vim.fn['coc#pum#next'](1) or '<Tab>'
+  end,
+  {desc = 'Next completion option', silent = true, expr = true})
+vim.keymap.set('i', '<S-Tab>',
+  function()
+    return vim.fn['coc#pum#visible']() == 1 and vim.fn['coc#pum#prev'](1) or '<C-h>'
+  end,
+  {desc = 'Previous completion option', silent = true, expr = true})
+
+vim.keymap.set('i', '<C-Space>', 'coc#refresh()', {silent = true, expr = true})
+
+vim.keymap.set('i', '<CR>', function()
+    return vim.fn['coc#pum#visible']() == 1 and vim.fn['coc#pum#confirm']() or
+      "<C-g>u<CR><C-r>=EndwiseDiscretionary()<CR>"
+  end,
+  {desc = 'Auto-select the first completion item', silent = true, expr = true})
+
+vim.keymap.set('n', '<Leader>]', '<Plug>(coc-definition)',
+  {remap = true, silent = true})
+vim.keymap.set('n', '<Leader>v]',
+  function() vim.fn.CocAction('jumpDefinition', 'vsplit') end,
+  {desc = 'coc: Jump to definition, vertical split', silent = true}
+)
+vim.keymap.set('n', '<Leader>s]',
+  function() vim.fn.CocAction('jumpDefinition', 'split') end,
+  {desc = 'coc: Jump to definition, horizontal split', silent = true}
+)
+
+vim.keymap.set('n', '<Leader>[', '<Plug>(coc-declaration)',
+  {remap = true, silent = true})
+vim.keymap.set('n', '<Leader>v[',
+  function() vim.fn.CocAction('jumpDeclaration', 'vsplit') end,
+  {desc = 'coc: Jump to declaration, vertical split', silent = true}
+)
+vim.keymap.set('n', '<Leader>s[',
+  function() vim.fn.CocAction('jumpDeclaration', 'split') end,
+  {desc = 'coc: Jump to declaration, horizontal split', silent = true}
+)
+
+vim.keymap.set('n', '<Leader>rr', '<Plug>(coc-references)',
+  {remap = true, silent = true})
+vim.keymap.set('n', '<Leader>ri', function()
+    local qf = {}
+    for _, inCall in ipairs(vim.fn.CocAction('incomingCalls')) do
+      local from = inCall.from
+
+      local i, j = from.uri:find('file://')
+      local absFile = from.uri:sub(i == 1 and j+1 or 1)
+
+      local range = from.range
+      local rangeStart = range.start
+      local rangeEnd = range['end']
+
+      local startLine = rangeStart.line + 1
+      local endLine = rangeEnd.line + 1
+
+      local startCol = rangeStart.character + 1
+      local endCol = rangeEnd.character + 1
+
+      local file = vim.fn.readfile(absFile, '', startLine)
+      table.insert(qf, {filename = absFile, lnum = startLine,
+        end_lnum = endLine, col = startCol, end_col = endCol,
+        text = file[#file]})
+    end
+
+    vim.fn.setqflist(qf)
+    vim.cmd.FzfLua('quickfix')
+  end,
+  {desc = 'coc: Populate quickfix list with incoming calls', silent = true})
+vim.keymap.set('n', '<Leader>rti',
+  function() vim.fn.CocAction('showIncomingCalls') end,
+  {desc = 'coc: Show incoming calls', silent = true})
+vim.keymap.set('n', '<Leader>ro',
+  function() vim.fn.CocAction('showOutgoingCalls') end,
+  {desc = 'coc: Show outgoing calls', silent = true})
+
+vim.keymap.set('n', '[g', '<Plug>(coc-diagnostic-prev)',
+  {remap = true, silent = true})
+vim.keymap.set('n', ']g', '<Plug>(coc-diagnostic-next)',
+  {remap = true, silent = true})
+vim.keymap.set('n', '<Leader>gd', '<Cmd>CocDiagnostics<CR>')
+
+vim.keymap.set('n', 'K', function()
+    if vim.fn.CocAction('hasProvider', 'hover') then
+      vim.fn.CocActionAsync('doHover')
+    else vim.fn.feedkeys('K', 'in') end
+  end,
+  {silent = true})
+
+vim.keymap.set('n', '<Leader>ll', '<Cmd>CocList<CR>')
+vim.keymap.set('n', '<Leader>lc', '<Cmd>CocList commands<CR>')
+
+vim.keymap.set('n', '<Leader>ca', '<Plug>(coc-codeaction)', {remap = true})
+vim.keymap.set('n', '<Leader>cx', '<Plug>(coc-fix-current)', {remap = true})
+vim.keymap.set('n', '<Leader>rn', '<Plug>(coc-rename)', {remap = true})
+
+vim.keymap.set('n', '<Leader>ch', '<Cmd>CocCommand document.toggleInlayHint<CR>')
+
+local myCocGroup = vim.api.nvim_create_augroup('myCocGroup', {clear = true})
+vim.api.nvim_create_autocmd('User', {
+  desc = 'Update signature help on jump placeholder',
+  pattern = 'CocJumpPlaceholder',
+  callback = function() vim.fn.CocActionAsync('showSignatureHelp') end
+})
 EOF
-
-augroup myAutoGroup
-  " Trigger `autoread` when files changes on disk
-  autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
-    \ if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
-
-  " Notification after file change
-  autocmd FileChangedShellPost *
-    \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." |
-    \ echohl None
-
-  autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-
-  " Enable cursorline only for active window
-  " See https://github.com/ibhagwan/nvim-lua/blob/main/lua/autocmd.lua
-  autocmd WinEnter,BufEnter,InsertLeave *
-    \ if !&cursorline && !&pvw | setlocal cursorline | endif
-  autocmd WinLeave,BufLeave,InsertEnter *
-    \ if &cursorline && !&pvw | setlocal nocursorline | endif
-
-  au TextYankPost * silent! lua vim.highlight.on_yank()
-augroup END
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin specific settings
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Airline
-let g:airline_theme='molokai'
-let g:airline_powerline_fonts = 1
-
-let g:airline_section_error =
-  \ '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
-let g:airline_section_warning =
-  \ '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
-
-let g:airline#extensions#whitespace#enabled = 0 " Whitespace error detection
-let g:airline#extensions#tagbar#enabled = 0
-
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'uniq_tail_or_proj'
-let g:airline#extensions#tabline#fnamemod = ':t'   " Default tab name formatter
-let g:airline#extensions#tabline#fnamecollapse = 0 " Short parent names in tabs
-let g:airline#extensions#tabline#tab_nr_type = 1
-let g:airline#extensions#tabline#show_close_button = 0
-let g:airline#extensions#tabline#show_splits = 0
-let g:airline#extensions#tabline#show_buffers = 0
-let g:airline#extensions#tabline#show_tab_type = 0
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Asterisk
-let g:asterisk#keeppos = 1
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" coc
-let g:coc_global_extensions = ['coc-clangd', 'coc-json', 'coc-pyright',
-  \ 'coc-syntax', 'coc-tag', 'coc-vimlsp', 'coc-pairs', 'coc-sh', 'coc-snippets']
-
-inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
-inoremap <silent><expr> <S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Make <CR> auto-select the first completion item
-inoremap <silent><expr> <cr> coc#pum#visible() ? coc#pum#confirm()
-  \: "\<C-g>u\<CR>\<C-R>=EndwiseDiscretionary()\<CR>"
-
-let g:coc_quickfix_open_command = 'botright copen'
-
-nmap <silent> <leader>] <Plug>(coc-definition)
-nmap <silent> <leader>v] :call CocAction('jumpDefinition', 'vsplit')<CR>
-nmap <silent> <leader>s] :call CocAction('jumpDefinition', 'split')<CR>
-
-nmap <silent> <leader>[ <Plug>(coc-declaration)
-nmap <silent> <leader>v[ :call CocAction('jumpDeclaration', 'vsplit')<CR>
-nmap <silent> <leader>s[ :call CocAction('jumpDeclaration', 'split')<CR>
-
-nmap <silent> <leader>rr <Plug>(coc-references)
-nmap <silent> <leader>ri <Cmd>call <SID>IncomingCallsQf()<CR>
-nmap <silent> <leader>rti <Cmd>call CocAction('showIncomingCalls')<CR>
-nmap <silent> <leader>ro <Cmd>call CocAction('showOutgoingCalls')<CR>
-
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-nnoremap <leader>gd <Cmd>CocDiagnostics<CR>
-
-nnoremap <silent> K :call <SID>ShowDocumentation()<CR>
-
-nnoremap <leader>ll <Cmd>CocList<CR>
-nnoremap <leader>lc <Cmd>CocList commands<CR>
-
-function! s:ShowDocumentation()
-  if CocAction('hasProvider', 'hover')
-    call CocActionAsync('doHover')
-  else
-    call feedkeys('K', 'in')
-  endif
-endfunction
-
-function! s:IncomingCallsQf()
-  let inCalls = CocAction('incomingCalls')
-  let qf = []
-  for inCall in inCalls
-    let fileUri = inCall['from']['uri']
-    let absFile = substitute(fileUri, "^file://", "", "")
-
-    let range = inCall['from']['range']
-    let rangeStart = range['start']
-    let rangeEnd = range['end']
-
-    let startLine = rangeStart['line'] + 1
-    let endLine = rangeEnd['line'] + 1
-
-    let startCol = rangeStart['character'] + 1
-    let endCol = rangeEnd['character'] + 1
-
-    call add(qf, {'filename': absFile, 'lnum': startLine, 'end_lnum': endLine,
-          \ 'col': startCol, 'end_col': endCol,
-          \ 'text': readfile(absFile, '', startLine)[-1]})
-  endfor
-
-  call setqflist(qf)
-  FzfLua quickfix
-endfunction
-
-nmap <leader>ca  <Plug>(coc-codeaction)
-nmap <leader>ch  <Cmd>CocCommand document.toggleInlayHint<CR>
-nmap <leader>cx  <Plug>(coc-fix-current)
-nmap <leader>rn <Plug>(coc-rename)
-
-augroup myCocGroup
-  autocmd!
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
 
 " Remap <C-f> and <C-b> for scroll float windows/popups
 nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ?
