@@ -52,21 +52,29 @@ See the corresponding [README](example-configs/readme.md).
 
 ## Plugins
 
-[coc extensions](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#implemented-coc-extensions)
-can also provide functionality akin to plugins.
+[coc extensions][coc-extensions] can also provide functionality akin to
+plugins.
 
 ## clangd
 
-To use [coc-clangd](https://github.com/clangd/coc-clangd) on a
-cross-compiled project, try setting the
-[--query-driver](https://clangd.llvm.org/guides/system-headers#query-driver)
-option to the cross-compiler path in the local `coc-settings.json`. This file
-can be created with `:CocLocalConfig`. For example:
-```json
-{
-    "clangd.arguments": ["--query-driver=/usr/bin/arm-none-eabi-gcc"]
-}
-```
+* To use [coc-clangd](https://github.com/clangd/coc-clangd) on a
+  cross-compiled project, try setting the
+  [--query-driver](https://clangd.llvm.org/guides/system-headers#query-driver)
+  option to the cross-compiler path in the local `coc-settings.json`. This file
+  can be created with `:CocLocalConfig`. For example:
+  ```json
+  {
+      "clangd.arguments": ["--query-driver=/usr/bin/arm-none-eabi-gcc"]
+  }
+  ```
+* When specifying paths with embedded spaces in `compile_flags.txt`, do not
+  introduce quotes or backslashes to escape as this will be handled by
+  `clangd`. For example:
+  ```
+  -Ipath with spaces
+  ```
+* To see the compile options used by `coc-clangd`, try [`:CocCommand
+  workspace.showOutput`][coc-output-channel]
 
 ## Python
 
@@ -99,3 +107,5 @@ can be created with `:CocLocalConfig`. For example:
 [jetbrains-mono]: https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/JetBrainsMono/NoLigatures
 [pyenv]: https://github.com/pyenv/pyenv#installation
 [type-stubs]: https://github.com/microsoft/pyright/blob/main/docs/type-stubs.md#generating-type-stubs
+[coc-extensions]: https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#implemented-coc-extensions
+[coc-output-channel]: https://github.com/neoclide/coc.nvim/wiki/Debug-language-server#using-output-channel
