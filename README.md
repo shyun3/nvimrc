@@ -40,7 +40,8 @@
     ```
 
 1. Install [vim-plug][] and [Nerd Fonts][]
-    * Currently, JetBrains Mono v2.304 with no ligatures is preferred
+    * Currently, JetBrains Mono v2.304 with no ligatures and bigger icons is
+      preferred
     * Remember to update the terminal font
 
 1. Start Neovim. Ignore any errors and run `:PlugInstall`.

@@ -25,6 +25,7 @@ return {
     btags = {
       git_icons = false,
     },
+    file_icon_padding = " ",  -- En space, U+2002
   },
 
   keys = {
