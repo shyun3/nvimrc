@@ -52,6 +52,7 @@ Plug 'jsfaint/coc-neoinclude'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " coc extensions
+Plug 'clangd/coc-clangd', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 Plug 'fannheyward/coc-pyright', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-sources',
