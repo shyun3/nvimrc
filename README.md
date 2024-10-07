@@ -14,18 +14,9 @@
         * Make sure to create a symlink for `bat` (see [link][bat-install])
     * [fd][], `fzf`, `lazygit`
         * `fd` >= 9.0.0 is recommended for improved performance
-    * [LLVM][]
-        * Latest version is preferred. Prefer the automatic install script.
-        * Remember to create symlink for `clangd`
-        * The install script does not include `clang-format` so make sure to
-          install that through `apt` afterwards. Make sure to also create a
-          symlink.
     * `node`
         * Latest version (with `npm`) can be installed through `nvm`:
             `nvm install node`
-        * Dependencies:
-            `npm install -g yarn prettier prettier-plugin-sh
-             @johnnymorganz/stylua-bin`
     * `pyenv`
         * Prepare virtual environment:
             ```zsh
@@ -80,15 +71,6 @@ plugins.
 
 ## Python
 
-* Install formatters through the Neovim `virtualenv`, then symlink them to a
-  user `bin` folder available in the `PATH`. Example:
-    ```bash
-    pyenv activate neovim
-    pip install isort black
-
-    ln -s $(pyenv which isort) ~/bin/isort
-    # ...
-    ```
 * Formatter options may be specified through a project top-level
   `pyproject.toml`, for example:
     ```
@@ -119,10 +101,8 @@ plugins.
 [nvim-undo-dir]: https://neovim.io/doc/user/options.html#'undodir'
 [fd]: https://github.com/sharkdp/fd#on-ubuntu
 [bat-install]: https://github.com/sharkdp/bat#on-ubuntu-using-apt
-[LLVM]: https://apt.llvm.org/
 [type-stubs]: https://github.com/microsoft/pyright/blob/main/docs/type-stubs.md#generating-type-stubs
 [coc-extensions]: https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#implemented-coc-extensions
 [coc-output-channel]: https://github.com/neoclide/coc.nvim/wiki/Debug-language-server#using-output-channel
-[black-unstable]: https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#unstable
 [black-future]: https://black.readthedocs.io/en/stable/the_black_code_style/future_style.html
 [isort-black]: https://pycqa.github.io/isort/docs/configuration/black_compatibility.html
