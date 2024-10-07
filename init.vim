@@ -1,7 +1,5 @@
 let s:vim_dir = stdpath('config')
 
-let $PATH .= ';' . s:vim_dir . '/ccls/Release'
-
 call plug#begin(s:vim_dir . '/bundle')
 
 " Plugin manager
@@ -47,7 +45,7 @@ Plug 'Shougo/neco-vim'
 Plug 'neoclide/coc-neco'
 Plug 'Shougo/neoinclude.vim'
 Plug 'jsfaint/coc-neoinclude'
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
 
 " Text objects
 Plug 'fvictorio/vim-textobj-backticks'
@@ -220,7 +218,14 @@ nmap <silent> <leader>] <Plug>(coc-definition)
 nmap <silent> <leader>v] :call CocAction('jumpDefinition', 'vsplit')<CR>
 nmap <silent> <leader>s] :call CocAction('jumpDefinition', 'split')<CR>
 
+nmap <silent> <leader>[ <Plug>(coc-declaration)
+nmap <silent> <leader>v[ :call CocAction('jumpDeclaration', 'vsplit')<CR>
+nmap <silent> <leader>s[ :call CocAction('jumpDeclaration', 'split')<CR>
+
 nmap <silent> <C-,> <Plug>(coc-references)
+
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
@@ -231,97 +236,6 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
-
-" First child declaration
-nn <silent> <leader><Down>
-  \ :call CocLocationsAsync('ccls','$ccls/navigate',{'direction':'D'})<cr>
-nn <silent> <leader>v<Down>
-  \ :call CocLocationsAsync('ccls','$ccls/navigate',{'direction':'D'}, 'vsplit')<cr>
-nn <silent> <leader>s<Down>
-  \ :call CocLocationsAsync('ccls','$ccls/navigate',{'direction':'D'}, 'split')<cr>
-
-" Previous declaration
-nn <silent> <leader><Left>
-  \ :call CocLocationsAsync('ccls','$ccls/navigate',{'direction':'L'})<cr>
-nn <silent> <leader>v<Left>
-  \ :call CocLocationsAsync('ccls','$ccls/navigate',{'direction':'L'}, 'vsplit')<cr>
-nn <silent> <leader>s<Left>
-  \ :call CocLocationsAsync('ccls','$ccls/navigate',{'direction':'L'}, 'split')<cr>
-
-" Next declaration
-nn <silent> <leader><Right>
-  \ :call CocLocationsAsync('ccls','$ccls/navigate',{'direction':'R'})<cr>
-nn <silent> <leader>v<Right>
-  \ :call CocLocationsAsync('ccls','$ccls/navigate',{'direction':'R'}, 'vsplit')<cr>
-nn <silent> <leader>s<Right>
-  \ :call CocLocationsAsync('ccls','$ccls/navigate',{'direction':'R'}, 'split')<cr>
-
-" Parent declaration
-nn <silent> <leader><Up>
-  \ :call CocLocationsAsync('ccls','$ccls/navigate',{'direction':'U'})<cr>
-nn <silent> <leader>v<Up>
-  \ :call CocLocationsAsync('ccls','$ccls/navigate',{'direction':'U'}, 'vsplit')<cr>
-nn <silent> <leader>s<Up>
-  \ :call CocLocationsAsync('ccls','$ccls/navigate',{'direction':'U'}, 'split')<cr>
-
-" bases
-nn <silent> <leader>b :call CocLocationsAsync('ccls','$ccls/inheritance')<cr>
-nn <silent> <leader>vb :call CocLocationsAsync('ccls','$ccls/inheritance', 'vsplit')<cr>
-nn <silent> <leader>sb :call CocLocationsAsync('ccls','$ccls/inheritance', 'split')<cr>
-
-" derived
-nn <silent> <leader>d
-  \ :call CocLocationsAsync('ccls','$ccls/inheritance',{'derived':v:true})<cr>
-nn <silent> <leader>vd
-  \ :call CocLocationsAsync('ccls','$ccls/inheritance',{'derived':v:true}, 'vsplit')<cr>
-nn <silent> <leader>sd
-  \ :call CocLocationsAsync('ccls','$ccls/inheritance',{'derived':v:true}, 'split')<cr>
-
-" caller
-nn <silent> <leader>c :call CocLocationsAsync('ccls','$ccls/call')<cr>
-nn <silent> <leader>vc :call CocLocationsAsync('ccls','$ccls/call', {}, 'vsplit')<cr>
-nn <silent> <leader>sc :call CocLocationsAsync('ccls','$ccls/call', {}, 'split')<cr>
-
-" callee
-nn <silent> <leader>C
-  \ :call CocLocationsAsync('ccls','$ccls/call',{'callee':v:true})<cr>
-nn <silent> <leader>vC
-  \ :call CocLocationsAsync('ccls','$ccls/call',{'callee':v:true}, 'vsplit')<cr>
-nn <silent> <leader>sC
-  \ :call CocLocationsAsync('ccls','$ccls/call',{'callee':v:true}, 'split')<cr>
-
-" member variables / variables in a namespace
-nn <silent> <leader>mv :call CocLocationsAsync('ccls','$ccls/member')<cr>
-nn <silent> <leader>vmv :call CocLocationsAsync('ccls','$ccls/member', 'vsplit')<cr>
-nn <silent> <leader>smv :call CocLocationsAsync('ccls','$ccls/member', 'split')<cr>
-
-" member functions / functions in a namespace
-nn <silent> <leader>mf
-  \ :call CocLocationsAsync('ccls','$ccls/member',{'kind':3})<cr>
-nn <silent> <leader>vmf
-  \ :call CocLocationsAsync('ccls','$ccls/member',{'kind':3}, 'vsplit')<cr>
-nn <silent> <leader>smf
-  \ :call CocLocationsAsync('ccls','$ccls/member',{'kind':3}, 'split')<cr>
-
-" nested classes / types in a namespace
-nn <silent> <leader>mt
-  \ :call CocLocationsAsync('ccls','$ccls/member',{'kind':2})<cr>
-nn <silent> <leader>vmt
-  \ :call CocLocationsAsync('ccls','$ccls/member',{'kind':2}, 'vsplit')<cr>
-nn <silent> <leader>smt
-  \ :call CocLocationsAsync('ccls','$ccls/member',{'kind':2}, 'split')<cr>
-
-" Instances of a type
-nn <silent> <leader>gv :call CocLocationsAsync('ccls','$ccls/vars')<cr>
-nn <silent> <leader>vgv :call CocLocationsAsync('ccls','$ccls/vars', 'vsplit')<cr>
-nn <silent> <leader>sgv :call CocLocationsAsync('ccls','$ccls/vars', 'split')<cr>
-
-nn <silent> <leader>gV
-  \ :call CocLocationsAsync('ccls','$ccls/vars',{'kind':1})<cr>
-nn <silent> <leader>vgV
-  \ :call CocLocationsAsync('ccls','$ccls/vars',{'kind':1}, 'vsplit')<cr>
-nn <silent> <leader>sgV
-  \ :call CocLocationsAsync('ccls','$ccls/vars',{'kind':1}, 'split')<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CtrlP

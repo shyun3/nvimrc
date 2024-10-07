@@ -1,5 +1,4 @@
 {
-  "suggest.timeout": 500,
   "coc.preferences.useQuickfixForLocations": true,
   "coc.source.around.firstMatch": false,
   "coc.source.buffer.firstMatch": false,
@@ -9,19 +8,10 @@
     "<C-v>": "action:vsplit"
   },
   "languageserver": {
-    "ccls": {
-      "command": "ccls",
-      "filetypes": ["c", "cpp"],
-      "rootPatterns": [".ccls", "compile_commands.json", ".editorconfig", ".git/",
-        ".svn/"],
-      "initializationOptions": {
-        "cache": {
-          "request.timeout": "10000"
-        },
-        "index": {
-          "threads": 2
-        }
-      }
+    "clangd": {
+       "command": "clangd",
+       "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".editorconfig", ".git/", ".svn/"],
+       "filetypes": ["c", "cpp"]
     }
   }
 }
