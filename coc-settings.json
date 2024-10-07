@@ -1,6 +1,8 @@
 {
   "suggest.timeout": 500,
   "coc.preferences.useQuickfixForLocations": true,
+  "coc.source.around.firstMatch": false,
+  "coc.source.buffer.firstMatch": false,
   "list.insertMappings": {
     "<C-s>": "action:split",
     "<C-t>": "action:tabe",
