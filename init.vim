@@ -128,7 +128,7 @@ nnoremap <silent> <F5>
 
 " <TAB> completion
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
+inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Window navigation
@@ -192,7 +192,7 @@ call camelcasemotion#CreateMotionMappings(',')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " coc
-imap <c-space> coc#refresh()
+inoremap <silent><expr> <c-space> coc#refresh()
 
 function! CocOpen(command_str)
   if (expand('%') =~# 'NERD_tree' && winnr('$') > 1)
