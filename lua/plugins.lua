@@ -26,8 +26,12 @@ return {
 
   {
     "preservim/nerdtree",
-    dependencies = { "ryanoasis/vim-devicons" },
+    dependencies = {
+      "ryanoasis/vim-devicons",
+      "tiagofumo/vim-nerdtree-syntax-highlight",
+    },
     init = function() vim.g.NERDTreeHijackNetrw = 0 end,
+
     keys = {
       { "<C-n>", "<Cmd>NERDTreeFocus<CR>" },
       { "<A-n>", "<Cmd>NERDTreeFind<CR>" },
