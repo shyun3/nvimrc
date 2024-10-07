@@ -13,6 +13,11 @@
     git clone https://github.com/shyun3/nvimrc "$(Resolve-Path ~)/AppData/Local/nvim"
     ```
 
+1. Create undo directory
+    ```powershell
+    mkdir ~/AppData/Local/nvim-data/undo
+    ```
+
 1. Install [vim-plug](https://github.com/junegunn/vim-plug)
 
 1. Download [Powerline fonts](https://github.com/powerline/fonts). Install them
