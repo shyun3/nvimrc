@@ -21,7 +21,6 @@ return {
 
   {
     "preservim/nerdtree",
-    dependencies = { "ryanoasis/vim-devicons" },
     init = function() vim.g.NERDTreeHijackNetrw = 0 end,
 
     keys = {
@@ -67,6 +66,19 @@ return {
     end,
 
     keys = "<Leader>d",
+  },
+
+  {
+    "ryanoasis/vim-devicons",
+
+    -- According to installation instructions, icons should be loaded after
+    -- these other plugins
+    dependencies = { "preservim/nerdtree", "vim-airline/vim-airline" },
+
+    -- Note: Loading icons at startup may cause it to improperly
+    -- initialize intermittently. Consequences include brackets appearing
+    -- around Nerd Tree icons.
+    event = "UIEnter",
   },
 
   {
