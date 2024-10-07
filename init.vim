@@ -1,6 +1,6 @@
 let s:vim_dir = stdpath('config')
 
-execute 'silent! source ' . s:vim_dir . '/path.vim'
+let $PATH .= ';' . s:vim_dir . '/ccls/Release'
 
 call plug#begin(s:vim_dir . '/bundle')
 
