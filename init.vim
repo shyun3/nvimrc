@@ -62,9 +62,6 @@ call plug#end()
 colorscheme molokai
 set termguicolors
 
-" Buffers
-set hidden
-
 " C indent options
 set cinoptions=g0   " Don't indent class scope declarations
 
@@ -122,14 +119,9 @@ let g:python3_host_prog = '~/.pyenv/versions/neovim/bin/python3'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mappings
 
-nnoremap <silent> <C-L> :nohlsearch<CR>:redraw<CR>
-
 " Make & keep sub flags
 nnoremap & :&&<CR>
 xnoremap & :&&<CR>
-
-" Make Y behave like C and D
-nnoremap Y y$
 
 " Open tags in splits
 nnoremap <silent> <C-]> :tjump /\<<C-R><C-W>\>\C<CR>
