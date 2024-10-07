@@ -322,6 +322,7 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'project',
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERD Tree
 nnoremap <silent> <C-n> :NERDTree<CR>
+nnoremap <silent> <A-n> :NERDTree %<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Project
