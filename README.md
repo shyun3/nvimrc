@@ -10,7 +10,8 @@
 1. Install [Neovim][nvim-linux] (must be at least v0.5.0)
    
 1. Install dependencies:
-    * `sudo apt install ripgrep universal-ctags fd-find clangd clang-format`
+    * `sudo apt install ripgrep universal-ctags fd-find clangd clang-format
+      pandoc`
         * Make sure to create a symlink for `fd`, see [note][fd-install]
     * [fzf][], [bat][]
         * `fzf` must be > v0.23.1, see [issue #63][fzf-issue-63]
@@ -18,7 +19,10 @@
           see [issue #938][bat-issue-938]
     * [Node.js](https://nodejs.org/en/) (must be at least v12)
         * Make sure to set the [`PATH`][node-install]
-    * [Yarn](https://yarnpkg.com/getting-started/install)
+        * Dependencies:
+            ```bash
+            npm install -g yarn live-server
+            ```
     
 1. Create [undo directory][nvim-undo-dir]:
     ```bash
