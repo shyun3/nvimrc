@@ -389,6 +389,7 @@ EOF
 
 noremap <Space> <Cmd>HopWord<CR>
 noremap _ <Cmd>lua hintLines()<CR>
+noremap <Enter> <Cmd>HopChar1<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Neoformat
