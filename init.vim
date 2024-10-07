@@ -44,6 +44,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'chaoren/vim-wordmotion'
+Plug 'folke/which-key.nvim'
 
 " fzf
 Plug 'ibhagwan/fzf-lua'
@@ -644,6 +645,10 @@ nmap <silent> <A-t> :TagbarToggle<CR>
 let g:UltiSnipsEditSplit = 'horizontal'
 let g:UltiSnipsExpandTrigger = "<NUL>"
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "UltiSnips/specific"]
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" which-key
+lua require"which-key".setup{}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " wordmotion
