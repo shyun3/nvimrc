@@ -353,6 +353,9 @@ hi link CocSemMacro Macro
 hi link CocSemVariable NONE
 hi link CocSemParameter NONE
 
+" Taken from coc.vim
+hi CocMenuSel ctermbg=237 guibg=#13354A
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " DoGe
 let g:doge_doc_standard_python = 'google'

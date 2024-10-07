@@ -6,14 +6,14 @@
       "pyrightconfig.json",
       "pyproject.toml"
   ],
-  "coc.preferences.snippetStatusText": "",
+  "snippet.statusText": "",
 
   "suggest.noselect": true,
 
   "workspace.bottomUpFiletypes": ["*.py", "*.pyi"],
   "workspace.workspaceFolderCheckCwd": false,
 
-  "semanticTokens.filetypes": ["*"],
+  "semanticTokens.enable": true,
 
   "list.insertMappings": {
     "<C-s>": "action:split",
