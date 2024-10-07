@@ -24,7 +24,8 @@
         * Latest version (with `npm`) can be installed through `nvm`:
             `nvm install node`
         * Dependencies:
-            `npm install -g yarn @compodoc/live-server prettier prettier-plugin-sh`
+            `npm install -g yarn @compodoc/live-server prettier prettier-plugin-sh
+             @johnnymorganz/stylua-bin`
     * `pyenv`
         * Prepare virtual environment:
             ```zsh

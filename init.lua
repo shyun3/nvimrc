@@ -457,6 +457,7 @@ require'conform'.setup{
     c = {"clang-format"},
     cpp = {"clang-format"},
     json = {"prettier"},
+    lua = {"stylua"},
     python = {"isort", "black"},
   }
 }
