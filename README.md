@@ -58,18 +58,10 @@ plugins.
 
 ## clangd
 
-* To use [coc-clangd](https://github.com/clangd/coc-clangd) on a
-  cross-compiled project, try setting the
-  [--query-driver](https://clangd.llvm.org/guides/system-headers#query-driver)
-  option to the cross-compiler path in the local `coc-settings.json`. This file
-  can be created with `:CocLocalConfig`. For example:
-  ```json
-  {
-      "clangd.arguments": ["--query-driver=/usr/bin/arm-none-eabi-gcc"]
-  }
-  ```
-  If using `compile_commands.json`, make sure the compiler argument for each
-  command matches the query driver.
+* The [example clangd config](example-configs/clangd-config) contains hints for
+  cross-compiling and resolving system header issues. The `clangd` [system
+  headers](https://clangd.llvm.org/guides/system-headers) documentation is also
+  helpful.
 * When specifying paths with embedded spaces in `compile_flags.txt`, do not
   introduce quotes or backslashes to escape as this will be handled by
   `clangd`. For example:
@@ -77,7 +69,9 @@ plugins.
   -Ipath with spaces
   ```
 * To see the compile options used by `coc-clangd`, try [`:CocCommand
-  workspace.showOutput`][coc-output-channel]
+  workspace.showOutput clangd`][coc-output-channel]
+* Running `:CocRestart` may not cause `clangd` to re-parse source files, due to
+  caching. One way to force this is by deleting buffers using `:bd`.
 
 ## Python
 
