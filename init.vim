@@ -83,6 +83,8 @@ set listchars=tab:»\ ,trail:·,precedes:◄,extends:► " Set invisibles
 set list                                           " Show invisibles
 set cursorline
 set cmdheight=2
+set shortmess+=c
+set signcolumn=number
 
 " File settings
 set autowriteall      " Save when switching buffers
@@ -136,7 +138,6 @@ nnoremap <silent> <A-]>v :vertical wincmd g<C-V><C-]><CR>
 " <TAB> completion
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Window navigation
 nnoremap <silent> ]w :wincmd w<CR>
@@ -228,6 +229,11 @@ let g:coc_global_extensions = ['coc-clangd', 'coc-json', 'coc-pyright',
 
 inoremap <silent><expr> <c-space> coc#refresh()
 
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
 function! CocOpen(command_str)
   if (expand('%') =~# 'NERD_tree' && winnr('$') > 1)
     execute "silent normal! \<c-w>\<c-w>"
@@ -246,7 +252,9 @@ nmap <silent> <leader>[ <Plug>(coc-declaration)
 nmap <silent> <leader>v[ :call CocAction('jumpDeclaration', 'vsplit')<CR>
 nmap <silent> <leader>s[ :call CocAction('jumpDeclaration', 'split')<CR>
 
-nmap <silent> <leader>r <Plug>(coc-references)
+nmap <silent> <leader>rr <Plug>(coc-references)
+nmap <silent> <leader>ri <Cmd>call CocAction('showIncomingCalls')<CR>
+nmap <silent> <leader>ro <Cmd>call CocAction('showOutgoingCalls')<CR>
 
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
@@ -254,14 +262,42 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 nnoremap <silent> K :call <SID>ShowDocumentation()<CR>
 
 function! s:ShowDocumentation()
-  if &filetype == 'vim'
-    execute 'h '. expand('<cword>')
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
   else
-    call CocAction('doHover')
+    call feedkeys('K', 'in')
   endif
 endfunction
 
+" Highlight the symbol and its references when holding the cursor
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
 nmap <leader>a  <Plug>(coc-codeaction)
+
+xmap <leader>gf  <Plug>(coc-format-selected)
+nmap <leader>gf  <Plug>(coc-format-selected)
+
+augroup myCocGroup
+  autocmd!
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Remap <C-f> and <C-b> for scroll float windows/popups
+nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ?
+  \ coc#float#scroll(1) : "\<C-f>"
+nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ?
+  \ coc#float#scroll(0) : "\<C-b>"
+inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ?
+  \ "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ?
+  \ "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ?
+  \ coc#float#scroll(1) : "\<C-f>"
+vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ?
+  \ coc#float#scroll(0) : "\<C-b>"
+
+command! -nargs=0 Format :call CocActionAsync('format')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " DoGe

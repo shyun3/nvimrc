@@ -1,7 +1,6 @@
 {
   "coc.preferences.useQuickfixForLocations": true,
-  "coc.source.around.firstMatch": false,
-  "coc.source.buffer.firstMatch": false,
+  "coc.preferences.formatOnType": true,
 
   "list.insertMappings": {
     "<C-s>": "action:split",
