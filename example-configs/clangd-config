@@ -16,8 +16,10 @@ CompileFlags:
 
   CompilationDatabase: /path/to/project
 
+  Remove: [-munknown-arg]
+
 Diagnostics:
-  UnusedIncludes: Strict
+  UnusedIncludes: Strict  # Default since clangd 17
 
 ---
 
