@@ -2,7 +2,8 @@ lua << EOF
 vimDir = vim.fn.stdpath('config')
 
 -- lua: Covered by treesitter
-vim.g.polyglot_disabled = {'lua'}
+-- sensible: Do not update settings
+vim.g.polyglot_disabled = {'lua', 'sensible'}
 
 vim.fn['plug#begin'](vimDir .. '/bundle')
 EOF
