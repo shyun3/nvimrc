@@ -82,6 +82,22 @@ return {
     end,
   },
 
+  {
+    "haya14busa/vim-asterisk",
+    init = function() vim.g["asterisk#keeppos"] = 1 end,
+
+    keys = {
+      { "*", "<Plug>(asterisk-*)", mode = "" },
+      { "#", "<Plug>(asterisk-#)", mode = "" },
+      { "g*", "<Plug>(asterisk-g*)", mode = "" },
+      { "g#", "<Plug>(asterisk-g#)", mode = "" },
+      { "z*", "<Plug>(asterisk-z*)", mode = "" },
+      { "gz*", "<Plug>(asterisk-gz*)", mode = "" },
+      { "z#", "<Plug>(asterisk-z#)", mode = "" },
+      { "gz#", "<Plug>(asterisk-gz#)", mode = "" },
+    },
+  },
+
   { "shyun3/vim-cmake-lists", ft = "cmake" },
 
   {
