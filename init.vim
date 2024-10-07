@@ -27,6 +27,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-grepper'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'amiorin/vim-project'
 Plug 'tpope/vim-projectionist'
@@ -258,6 +259,11 @@ nmap <Space> <Plug>(easymotion-jumptoanywhere)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EditorConfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']   " Work with fugitive
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Gutentags
+let g:gutentags_project_root = ['.ccls', '.ccls-cache', '.ignore', '.rgignore',
+  \ '.editorconfig', '.gutctags', '.notags', '.projections.json']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Indent guides
