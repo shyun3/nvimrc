@@ -225,7 +225,7 @@ let g:asterisk#keeppos = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " coc
 let g:coc_global_extensions = ['coc-clangd', 'coc-json', 'coc-pyright',
-  \ 'coc-syntax', 'coc-tag', 'coc-ultisnips', 'coc-vimlsp']
+  \ 'coc-syntax', 'coc-tag', 'coc-ultisnips', 'coc-vimlsp', 'coc-pairs']
 
 inoremap <silent><expr> <c-space> coc#refresh()
 
