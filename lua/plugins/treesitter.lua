@@ -1,11 +1,24 @@
 return {
   "nvim-treesitter/nvim-treesitter",
+  dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
   build = ":TSUpdate",
 
   config = function()
+    ---@diagnostic disable-next-line: missing-fields
     require("nvim-treesitter.configs").setup({
-      -- A list of parser names, or "all" (the five listed parsers should always be installed)
-      ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
+      -- A list of parser names, or "all"
+      ensure_installed = {
+        -- These parsers MUST always be installed
+        "c",
+        "lua",
+        "vim",
+        "vimdoc",
+        "query",
+        "markdown",
+        "markdown_inline",
+
+        "cpp",
+      },
 
       -- Install parsers synchronously (only applied to `ensure_installed`)
       sync_install = false,
@@ -18,12 +31,13 @@ return {
         enable = true,
 
         disable = function(lang, buf)
-          if lang == "c" then return true end
+          local disable_langs = { "c", "cpp" }
+          if vim.tbl_contains(disable_langs, lang) then return true end
 
           -- disable slow treesitter highlight for large files
           local max_filesize = 100 * 1024 -- 100 KB
           local ok, stats =
-            pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+            pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(buf))
           if ok and stats and stats.size > max_filesize then return true end
         end,
 
@@ -32,6 +46,29 @@ return {
         -- Using this option may slow down your editor, and you may see some duplicate highlights.
         -- Instead of true it can also be a list of languages
         additional_vim_regex_highlighting = false,
+      },
+
+      textobjects = {
+        select = {
+          enable = true,
+
+          -- Automatically jump forward to textobj, similar to targets.vim
+          lookahead = false,
+
+          keymaps = {
+            -- You can use the capture groups defined in textobjects.scm
+            ["af"] = {
+              query = "@function.outer",
+              desc = "Select function, outer",
+            },
+            ["if"] = {
+              query = "@function.inner",
+              desc = "Select function, inner",
+            },
+            ["ac"] = { query = "@class.outer", desc = "Select class, outer" },
+            ["ic"] = { query = "@class.inner", desc = "Select class, inner" },
+          },
+        },
       },
     })
   end,
