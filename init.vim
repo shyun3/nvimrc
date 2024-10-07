@@ -655,6 +655,9 @@ EOF
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " polyglot
 
+" vim-cpp-modern
+hi link cppSTLios NONE  " Turn off STL I/O manipulators highlighting
+
 " vim-markdown
 let g:vim_markdown_auto_insert_bullets = 0
 let g:vim_markdown_new_list_item_indent = 0
