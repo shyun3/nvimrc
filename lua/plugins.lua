@@ -78,7 +78,12 @@ return {
     "SirVer/ultisnips",
     init = function()
       vim.g.UltiSnipsSnippetDirectories = { "UltiSnips", "UltiSnips/specific" }
-      vim.g.UltiSnipsExpandTrigger = "<Nop>" -- Handled by cmp
+
+      -- Handled by cmp
+      --
+      -- Note that if triggers are left empty, UltiSnips emits "No mapping
+      -- found" messages. Untypable character is used as a workaround.
+      vim.g.UltiSnipsExpandTrigger = "�"
     end,
   },
 
