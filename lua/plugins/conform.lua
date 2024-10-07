@@ -29,6 +29,7 @@ return {
       jsonc = { "prettier" },
       lua = { "stylua" },
       python = { "isort", "black" },
+      shfmt = { "sh" },
       yaml = { "prettier" },
     },
 
