@@ -14,6 +14,7 @@ return {
 
     vim.g["airline#extensions#whitespace#enabled"] = 0 -- Whitespace error detection
     vim.g["airline#extensions#tagbar#enabled"] = 0
+    vim.g["airline#extensions#searchcount#enabled"] = 0
 
     vim.g["airline#extensions#tabline#enabled"] = 1
     vim.g["airline#extensions#tabline#formatter"] = "uniq_tail_or_proj"
