@@ -648,19 +648,17 @@ vim.api.nvim_create_autocmd('User', {
   pattern = 'Grepper',
   command = 'botright copen'
 })
-EOF
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Gundo
-let g:gundo_prefer_python3 = 1
+-------------------------------------------------------------------------------
+-- Gundo
+vim.g.gundo_prefer_python3 = 1
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Gutentags
-let g:gutentags_define_advanced_commands = 1
+-------------------------------------------------------------------------------
+-- Gutentags
+vim.g.gutentags_define_advanced_commands = 1
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Hop
-lua << EOF
+-------------------------------------------------------------------------------
+-- Hop
 require'hop'.setup()
 
 -- Like `hop.jump_regex.regex_by_line_start_skip_whitespace()` except it also
@@ -716,20 +714,17 @@ function hintTill1()
     require'hop.jump_regex'.regex_by_case_searching(c, true, opts), opts,
     move_cursor_till)
 end
+
+vim.keymap.set('', '<Space>', '<Cmd>HopWord<CR>')
+vim.keymap.set('', '<Enter>', '<Cmd>HopChar1<CR>')
+
+-- See `:h forced-motion` for usages of `v` and `V` in operator pending mode
+vim.keymap.set({'n', 'v'}, '+', hintTill1, {desc = 'Hop till character'})
+vim.keymap.set('o', '+', 'v:lua hintTill1()<CR>', {desc = 'Hop till character'})
+
+vim.keymap.set({'n', 'v'}, '_', hintLines, {desc = 'Hop to line'})
+vim.keymap.set('o', '_', 'V:lua hintLines()<CR>')
 EOF
-
-nnoremap <Space> <Cmd>HopWord<CR>
-vnoremap <Space> <Cmd>HopWord<CR>
-
-" See `:h forced-motion` for these operator-pending mappings
-noremap _ <Cmd>lua hintLines()<CR>
-onoremap _ V:lua hintLines()<CR>
-
-noremap <Enter> <Cmd>HopChar1<CR>
-onoremap <Enter> v:HopChar1<CR>
-
-noremap + <Cmd>lua hintTill1()<CR>
-onoremap + V:lua hintTill1()<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERD Tree
