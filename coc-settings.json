@@ -3,8 +3,6 @@
   "coc.source.around.firstMatch": false,
   "coc.source.buffer.firstMatch": false,
 
-  "http.proxyStrictSSL": false,
-
   "list.insertMappings": {
     "<C-s>": "action:split",
     "<C-t>": "action:tabe",
