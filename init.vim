@@ -350,6 +350,7 @@ function! s:GoToEditWindow()
 endfunction
 
 nnoremap <silent> <C-p> :call <SID>GoToEditWindow()<CR>:LeaderfFile<CR>
+nnoremap <silent> <C-q> :call <SID>GoToEditWindow()<CR>:LeaderfFile %:h<CR>
 nnoremap <silent> <C-\> :call <SID>GoToEditWindow()<CR>:LeaderfBuffer<CR>
 nnoremap <silent> <A-p> :call <SID>GoToEditWindow()<CR>:LeaderfMru<CR>
 nnoremap <silent> <C-h> :call <SID>GoToEditWindow()<CR>:LeaderfTag<CR>
