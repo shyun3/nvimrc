@@ -11,6 +11,8 @@ Plug 'equalsraf/neovim-gui-shim'
 
 " Plugins
 Plug 'bkad/CamelCaseMotion'
+Plug 'vim-scripts/DoxygenToolkit.vim'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'Shougo/neosnippet.vim'
@@ -19,13 +21,22 @@ Plug 'yssl/QFEnter'
 Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'shyun3/vim-cmake-lists'
+Plug 'tpope/vim-commentary'
+Plug 'junegunn/vim-easy-align'
 Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-fugitive'
+Plug 'mhinz/vim-grepper'
+Plug 'nathanaelkane/vim-indent-guides'
 Plug 'amiorin/vim-project'
+Plug 'tpope/vim-projectionist'
+Plug 'PProvost/vim-ps1'
 Plug 'tpope/vim-repeat'
 Plug 'inside/vim-search-pulse'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'nelstrom/vim-visual-star-search'
+Plug 'vimwiki/vimwiki'
 
 " Autocomplete
 Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
@@ -33,6 +44,13 @@ Plug 'autozimu/LanguageClient-neovim', {
   \ 'branch': 'next',
   \ 'do': 'powershell -Command ./install.ps1',
 \}
+
+" Text objects
+Plug 'fvictorio/vim-textobj-backticks'
+Plug 'glts/vim-textobj-comment'
+Plug 'kana/vim-textobj-entire'
+Plug 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-user'
 
 call plug#end()
 
@@ -154,6 +172,16 @@ call camelcasemotion#CreateMotionMappings(',')
 let g:deoplete#enable_at_startup = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" grepper
+runtime plugin/grepper.vim
+let g:grepper.tools = ['rg', 'git']
+let g:grepper.rg.grepprg .= ' --smart-case --follow'
+let g:grepper.dir = 'filecwd'
+
+let g:grepper.open = 0
+autocmd User Grepper botright copen
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EasyMotion
 let g:EasyMotion_do_mapping = 0            " Disable default mappings
 let g:EasyMotion_re_anywhere = '\v(<.|^$)' " Beginning of word
@@ -161,6 +189,17 @@ let g:EasyMotion_startofline = 0           " Keep cursor column JK motion
 map _ <Plug>(easymotion-s)
 map <C-J> <Plug>(easymotion-bd-jk)
 nmap <Space> <Plug>(easymotion-jumptoanywhere)
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" EditorConfig
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']   " Work with fugitive
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Indent guides
+let g:indent_guides_guide_size = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'project',
+  \ 'markdown']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LanguageClient
