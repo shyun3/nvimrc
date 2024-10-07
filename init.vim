@@ -248,3 +248,9 @@ let g:qfenter_keymap.topen = ['<C-t>']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Search pulse
 let g:vim_search_pulse_mode = 'pattern'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tagbar
+let g:tagbar_autofocus = 1    " Move to Tagbar window when opened
+let g:tagbar_sort = 0
+nmap <A-t> :TagbarToggle<CR>
