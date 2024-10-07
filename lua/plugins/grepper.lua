@@ -23,6 +23,7 @@ return {
       group = myGrepperGroup,
       pattern = "Grepper",
       command = "botright copen",
+      nested = true,
     })
   end,
 
