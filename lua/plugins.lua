@@ -104,7 +104,6 @@ return {
 
   {
     "ludovicchabant/vim-gutentags",
-    lazy = true, -- See airline
     init = function() vim.g.gutentags_define_advanced_commands = 1 end,
   },
 
