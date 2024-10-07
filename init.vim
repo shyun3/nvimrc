@@ -297,9 +297,8 @@ let g:gundo_prefer_python3 = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Gutentags
-let g:gutentags_ctags_exclude = ['.ccls-cache']
-let g:gutentags_project_root = ['.ccls', '.ccls-cache', '.ignore', '.rgignore',
-  \ '.editorconfig', '.gutctags', '.notags', '.projections.json']
+let g:gutentags_project_root = ['.ignore', '.rgignore', '.editorconfig',
+  \ '.gutctags', '.notags', '.projections.json']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Indent guides
