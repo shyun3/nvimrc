@@ -40,13 +40,6 @@ Currently when this file is detected by Gutentags, only the options listed will
 be used despite the docs saying otherwise. See [issue #265](
 https://github.com/ludovicchabant/vim-gutentags/issues/265).
 
-## .prettierrc.json
-
-Copy to project root and customize. For use with [prettier-plugin-sh][]:
-```sh
-cp ~/.config/nvim/example-configs/prettierrc.json /path/to/project/.prettierrc.json
-```
-
 ## .projections.json
 
 Copy to project root and customize. For use with [vim-projectionist][]:
@@ -67,5 +60,4 @@ Copy to Python project root and customize.
 
 [clangd]: https://clangd.llvm.org/
 [Gutentags]: https://github.com/ludovicchabant/vim-gutentags
-[prettierrc-plugin-sh]: https://github.com/un-ts/prettier/tree/master/packages/sh
 [vim-projectionist]: https://github.com/tpope/vim-projectionist
