@@ -16,7 +16,6 @@ Plug 'norcalli/nvim-colorizer.lua'
 " Plugins
 Plug 'neoclide/coc.nvim', { 'branch': 'master', 'do': 'yarn install --frozen-lockfile' }
 Plug 'vim-scripts/DoxygenToolkit.vim'
-Plug 'editorconfig/editorconfig-vim'
 Plug 'sjl/gundo.vim'
 Plug 'phaazon/hop.nvim'
 Plug 'sbdchd/neoformat'
@@ -361,10 +360,6 @@ hi CocMenuSel ctermbg=237 guibg=#13354A
 " DoGe
 let g:doge_doc_standard_python = 'google'
 let g:doge_comment_jump_modes = ['n', 's']
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" EditorConfig
-let g:EditorConfig_exclude_patterns = ['fugitive://.*']   " Work with fugitive
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " endwise
