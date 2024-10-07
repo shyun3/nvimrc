@@ -1,4 +1,7 @@
 local function highlight_cmp_menu()
+  -- Some colors taken from:
+  -- https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#how-to-add-visual-studio-code-dark-theme-colors-to-the-menu
+
   vim.api.nvim_set_hl(
     0,
     "CmpItemAbbrDeprecated",
@@ -21,8 +24,10 @@ local function highlight_cmp_menu()
   vim.api.nvim_set_hl(
     0,
     "CmpItemKindConstructor",
-    { link = "CmpItemKindFunction" }
+    { link = "CmpItemKindMethod" }
   )
+
+  vim.api.nvim_set_hl(0, "CmpItemKindText", { link = "String" })
 
   vim.api.nvim_set_hl(0, "CmpItemKindProperty", { link = "@lsp.type.property" })
   vim.api.nvim_set_hl(0, "CmpItemKindField", { link = "CmpItemKindProperty" })
@@ -32,6 +37,11 @@ local function highlight_cmp_menu()
     0,
     "CmpItemKindTypeParameter",
     { link = "@lsp.type.parameter" }
+  )
+  vim.api.nvim_set_hl(
+    0,
+    "CmpItemKindReference",
+    { link = "CmpItemKindVariable" }
   )
 
   vim.api.nvim_set_hl(0, "CmpItemKindClass", { link = "@lsp.type.class" })
@@ -46,12 +56,13 @@ local function highlight_cmp_menu()
   vim.api.nvim_set_hl(0, "CmpItemKindKeyword", { link = "@lsp.type.keyword" })
 
   -- front
-  -- See https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#how-to-add-visual-studio-code-dark-theme-colors-to-the-menu
   vim.api.nvim_set_hl(0, "CmpItemKindSnippet", { bg = "NONE", fg = "#D4D4D4" })
 
   vim.api.nvim_set_hl(0, "CmpItemKindModule", { link = "@lsp.type.namespace" })
-  vim.api.nvim_set_hl(0, "CmpItemKindFile", { link = "CmpItemKindModule" })
-  vim.api.nvim_set_hl(0, "CmpItemKindFolder", { link = "CmpItemKindModule" })
+
+  -- pink
+  vim.api.nvim_set_hl(0, "CmpItemKindFile", { bg = "NONE", fg = "#C586C0" })
+  vim.api.nvim_set_hl(0, "CmpItemKindFolder", { link = "CmpItemKindFile" })
 
   vim.api.nvim_set_hl(
     0,
