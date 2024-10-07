@@ -274,6 +274,7 @@ let g:grepper.dir = 'filecwd'
 let g:grepper.open = 0
 
 function! OpenLeaderfQuickFix(timerId)
+  call <SID>GoToEditWindow()
   LeaderfQuickFix
 endfunction
 
