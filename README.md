@@ -27,14 +27,9 @@
 
 1. Start Neovim. Ignore any errors and run `:PlugInstall`.
 
-1. Install Coc plugins:
-    ```
-    CocInstall coc-clangd coc-json coc-pyright coc-syntax coc-tag coc-ultisnips coc-vimlsp
-    ```
-
 1. Run `:checkhealth` and resolve any issues.
 
-1. Done!
+1. Restart Neovim. Installation should now be complete.
 
 ## macOS
 
@@ -67,14 +62,9 @@
 
 1. Start Neovim. Ignore any errors and run `:PlugInstall`.
 
-1. Install Coc plugins:
-    ```
-    CocInstall coc-clangd coc-json coc-pyright coc-syntax coc-tag coc-ultisnips coc-vimlsp
-    ```
-
 1. Run `:checkhealth` and resolve any issues.
 
-1. Done!
+1. Restart Neovim. Installation should now be complete.
 
 # Troubleshooting
 
