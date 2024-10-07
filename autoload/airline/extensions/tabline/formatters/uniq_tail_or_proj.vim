@@ -4,6 +4,7 @@ function! airline#extensions#tabline#formatters#uniq_tail_or_proj#format(bufnr, 
     return airline#extensions#tabline#formatters#unique_tail_improved#format(a:bufnr, a:buffers)
   else
     return projName
+  endif
 endfunction
 
 
