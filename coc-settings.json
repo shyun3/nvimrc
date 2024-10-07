@@ -33,5 +33,9 @@
     "pyrightconfig.json",
     "pyproject.toml"
   ],
-  "snippets.ultisnips.pythonPrompt": false
+  "snippets.ultisnips.pythonPrompt": false,
+
+  "[lua]": {
+    "semanticTokens.enable": false
+  }
 }
