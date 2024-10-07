@@ -171,6 +171,8 @@ call camelcasemotion#CreateMotionMappings(',')
 " deoplete
 let g:deoplete#enable_at_startup = 1
 
+call deoplete#custom#source('LanguageClient', 'min_pattern_length', 2)
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " fzf
 nnoremap <silent> <C-p> :call fzf#vim#files('',
@@ -241,6 +243,50 @@ let g:LanguageClient_serverCommands = {
   \ 'cpp': ['clangd'],
 \ }
 
+let g:LanguageClient_diagnosticsList = "Location"
+
+nnoremap <leader>d :call LanguageClient_textDocument_definition()<CR>
+nnoremap <leader>sd :call LanguageClient_textDocument_definition(
+  \ {'gotoCmd': 'split'})<CR>
+nnoremap <leader>vd :call LanguageClient_textDocument_definition(
+  \ {'gotoCmd': 'vsplit'})<CR>
+
+nnoremap <leader>i :call LanguageClient_textDocument_implementation()<CR>
+nnoremap <leader>si :call LanguageClient_textDocument_implementation(
+  \ {'gotoCmd': 'split'})<CR>
+nnoremap <leader>vi :call LanguageClient_textDocument_implementation(
+  \ {'gotoCmd': 'vsplit'})<CR>
+
+nnoremap <leader>t :call LanguageClient_textDocument_typeDefinition()<CR>
+nnoremap <leader>st :call LanguageClient_textDocument_typeDefinition(
+  \ {'gotoCmd': 'split'})<CR>
+nnoremap <leader>vt :call LanguageClient_textDocument_typeDefinition(
+  \ {'gotoCmd': 'vsplit'})<CR>
+
+nnoremap <leader>h :call LanguageClient_textDocument_hover()<CR>
+nnoremap <leader>sh :call LanguageClient_textDocument_hover(
+  \ {'gotoCmd': 'split'})<CR>
+nnoremap <leader>vh :call LanguageClient_textDocument_hover(
+  \ {'gotoCmd': 'vsplit'})<CR>
+
+nnoremap <leader>r :call LanguageClient_textDocument_references()<CR>
+nnoremap <leader>sr :call LanguageClient_textDocument_references(
+  \ {'gotoCmd': 'split'})<CR>
+nnoremap <leader>vr :call LanguageClient_textDocument_references(
+  \ {'gotoCmd': 'vsplit'})<CR>
+
+nnoremap <leader>k :call LanguageClient_textDocument_documentSymbol()<CR>
+nnoremap <leader>sk :call LanguageClient_textDocument_documentSymbol(
+  \ {'gotoCmd': 'split'})<CR>
+nnoremap <leader>vk :call LanguageClient_textDocument_documentSymbol(
+  \ {'gotoCmd': 'vsplit'})<CR>
+
+nnoremap <leader>w :call LanguageClient_textDocument_workspace_symbol()<CR>
+nnoremap <leader>sw :call LanguageClient_textDocument_workspace_symbol(
+  \ {'gotoCmd': 'split'})<CR>
+nnoremap <leader>vw :call LanguageClient_textDocument_workspace_symbol(
+  \ {'gotoCmd': 'vsplit'})<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " neosnippet
 
@@ -259,6 +305,7 @@ if has('conceal')
 endif
 
 let g:neosnippet#disable_runtime_snippets = {'_' : 1}
+let g:neosnippet#enable_complete_done = 1
 let g:neosnippet#snippets_directory = s:vim_dir . '/neosnippets'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
