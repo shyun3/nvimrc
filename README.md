@@ -10,7 +10,7 @@
 1. Install [Neovim][nvim-linux]
    
 1. Install dependencies:
-    * [ripgrep][], [Universal Ctags][], [fd][]
+    * [ripgrep][], [Universal Ctags][], [fzf][], [fd][], [bat][]
     * [Node.js](https://nodejs.org/en/), recent version
         * Make sure to set the [`PATH`][node-install] and handle any
           certificate issues
@@ -43,7 +43,8 @@
 
 1. Install Neovim and some dependencies:
     ```bash
-    brew install neovim ripgrep node yarn fd
+    brew install neovim ripgrep node yarn fzf fd bat
+    $(brew --prefix)/opt/fzf/install
     ```
 
 1. Clone this repo to the [proper directory][nvim-config-dir]:
@@ -91,4 +92,6 @@
 [nvim-config-dir]: https://neovim.io/doc/user/starting.html#config
 [mac-univ-ctags]: https://github.com/universal-ctags/homebrew-universal-ctags
 [nvim-undo-dir]: https://neovim.io/doc/user/options.html#'undodir'
+[fzf]: https://github.com/junegunn/fzf#installation
 [fd]: https://github.com/sharkdp/fd#installation
+[bat]: https://github.com/sharkdp/bat#installation
