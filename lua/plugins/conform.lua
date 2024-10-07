@@ -19,56 +19,56 @@ local function format_range_operator()
 end
 
 return {
-  {
-    "stevearc/conform.nvim",
-    opts = {
-      formatters = {
-        ["clang-format"] = {
-          prepend_args = { "-style=file" },
-        },
-      },
-      formatters_by_ft = {
-        c = { "clang-format" },
-        cpp = { "clang-format" },
-        json = { "prettier" },
-        lua = { "stylua" },
-        python = { "isort", "black" },
+  "stevearc/conform.nvim",
+
+  opts = {
+    formatters = {
+      ["clang-format"] = {
+        prepend_args = { "-style=file" },
       },
     },
-    config = function(_, opts)
-      require("conform").setup(opts)
+    formatters_by_ft = {
+      c = { "clang-format" },
+      cpp = { "clang-format" },
+      json = { "prettier" },
+      lua = { "stylua" },
+      python = { "isort", "black" },
+    },
+  },
 
-      -- Command to run async formatting, taken from recipes
-      vim.api.nvim_create_user_command("Format", function(args)
-        local range = nil
-        if args.count ~= -1 then
-          local end_line =
-            vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)[1]
-          range = {
-            start = { args.line1, 0 },
-            ["end"] = { args.line2, end_line:len() },
-          }
-        end
-        require("conform").format({
-          async = true,
-          lsp_fallback = true,
-          range = range,
-        })
-      end, { desc = "Format buffer", range = true })
-    end,
+  config = function(_, opts)
+    require("conform").setup(opts)
 
-    -- Derived from lazy loading recipe
-    event = "BufWritePre",
-    cmd = { "ConformInfo", "Format" },
+    -- Command to run async formatting, taken from recipes
+    vim.api.nvim_create_user_command("Format", function(args)
+      local range = nil
+      if args.count ~= -1 then
+        local end_line =
+          vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)[1]
+        range = {
+          start = { args.line1, 0 },
+          ["end"] = { args.line2, end_line:len() },
+        }
+      end
+      require("conform").format({
+        async = true,
+        lsp_fallback = true,
+        range = range,
+      })
+    end, { desc = "Format buffer", range = true })
+  end,
 
-    keys = {
-      {
-        "<Leader>gf",
-        format_range_operator,
-        mode = { "n", "x" },
-        desc = "Format selection",
-        silent = true,
-      },
+  -- Derived from lazy loading recipe
+  event = "BufWritePre",
+  cmd = { "ConformInfo", "Format" },
+
+  keys = {
+    {
+      "<Leader>gf",
+      format_range_operator,
+      mode = { "n", "x" },
+      desc = "Format selection",
+      silent = true,
     },
   },
 }
