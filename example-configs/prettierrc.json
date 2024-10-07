@@ -1,0 +1,12 @@
+{
+    "overrides": [
+        {
+            "files": "*.sh",
+            "options": {
+                "indent": 4,
+                "spaceRedirects": true,
+                "functionNextLine": true
+            }
+        }
+    ]
+}

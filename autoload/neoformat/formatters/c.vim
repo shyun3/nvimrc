@@ -6,7 +6,7 @@ function! neoformat#formatters#c#clangformat() abort
     return {
             \ 'exe': 'clang-format',
             \ 'args': ['-style=file',
-            \          '-assume-filename=' . '"'. expand('%:p') . '"'],
+            \          '-assume-filename=' . fnameescape(expand('%:t'))],
             \ 'stdin': 1,
             \ }
 endfunction
