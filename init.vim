@@ -345,7 +345,7 @@ endfunction
 function! s:FzfLuaBTags()
   let filePath = expand('%')
   let tmp = tempname()
-  silent execute '!ctags -f ' . tmp . ' ' . filePath
+  silent execute '!ctags -f ' . tmp . ' "' . filePath . '"'
 
   " Don't specify cwd for tags call if current file is not under cwd
   let cwd = filePath[0] != '/' ? getcwd() : ''
