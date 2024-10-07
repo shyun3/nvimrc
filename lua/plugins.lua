@@ -7,6 +7,10 @@ return {
     config = function()
       -- load the colorscheme here
       vim.cmd([[colorscheme molokai]])
+
+      -- See `:h treesitter-highlight-groups`
+      vim.cmd.highlight("link @variable NONE")
+      vim.cmd.highlight("link @variable.parameter NONE")
     end,
   },
 
