@@ -15,10 +15,11 @@ Plug 'norcalli/nvim-colorizer.lua'
 
 " Plugins
 Plug 'neoclide/coc.nvim', { 'branch': 'master', 'do': 'yarn install --frozen-lockfile' }
+Plug 'numToStr/Comment.nvim'
+Plug 'stevearc/conform.nvim'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'sjl/gundo.vim'
 Plug 'phaazon/hop.nvim'
-Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdtree'
 Plug 'kevinhwang91/nvim-bqf'
 Plug 'davidgranstrom/nvim-markdown-preview'
@@ -31,7 +32,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'haya14busa/vim-asterisk'
 Plug 'shyun3/vim-cmake-lists'
-Plug 'tpope/vim-commentary'
 Plug 'ryanoasis/vim-devicons'
 Plug 'kkoomen/vim-doge', { 'do': './scripts/install.sh' }
 Plug 'junegunn/vim-easy-align'
@@ -332,8 +332,6 @@ vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ?
 vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ?
   \ coc#float#scroll(0) : "\<C-b>"
 
-command! -nargs=0 Format :call CocActionAsync('format')
-
 function! s:CheckHighlight(lineNum, colNum)
     let mode = "name"
 
@@ -362,6 +360,35 @@ hi link CocSemTypeTypeParameter NONE  " For Python function parameter type hints
 
 " Taken from coc.vim
 hi CocMenuSel ctermbg=237 guibg=#13354A
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Comment.nvim
+lua require('Comment').setup()
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" conform.nvim
+lua << EOF
+require'conform'.setup{
+  formatters_by_ft = {
+    c = {"clang-format"},
+    cpp = {"clang-format"},
+    python = {"isort", "black"},
+  }
+}
+
+-- Command to run async formatting, taken from recipes
+vim.api.nvim_create_user_command("Format", function(args)
+  local range = nil
+  if args.count ~= -1 then
+    local end_line = vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)[1]
+    range = {
+      start = { args.line1, 0 },
+      ["end"] = { args.line2, end_line:len() },
+    }
+  end
+  require("conform").format({ async = true, lsp_fallback = true, range = range })
+end, { range = true })
+EOF
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " DoGe
@@ -588,27 +615,6 @@ onoremap <Enter> v:HopChar1<CR>
 
 noremap + <Cmd>lua hintTill1()<CR>
 onoremap + V:lua hintTill1()<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Neoformat
-let g:neoformat_run_all_formatters = 1
-
-" Change to directory of file, then perform Neoformat
-" See Neoformat issue #47
-function! s:CdNeoformat(bang, userInput, startLine, endLine) abort
-  let prevCwd = getcwd()
-  cd %:h
-
-  " Derived from neoformat/plugin/neoformat.vim
-  call neoformat#Neoformat(a:bang, a:userInput, a:startLine, a:endLine)
-
-  execute 'cd ' . prevCwd
-endfunction
-
-" Derived from neoformat/plugin/neoformat.vim
-command! -nargs=? -bar -range=% -bang
-      \ -complete=customlist,neoformat#CompleteFormatters ChDirNeoformat
-      \ call <SID>CdNeoformat(<bang>0, <q-args>, <line1>, <line2>)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERD Tree
