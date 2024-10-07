@@ -169,6 +169,7 @@ return {
 
   {
     "voldikss/vim-floaterm",
+    cmd = "FloatermNew",
     keys = {
       {
         "<Leader>lg",
