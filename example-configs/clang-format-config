@@ -129,7 +129,7 @@ RemoveParentheses: Leave
 RemoveSemicolon: false
 RequiresClausePosition: WithPreceding
 RequiresExpressionIndentation: OuterScope
-SeparateDefinitionBlocks: Always
+SeparateDefinitionBlocks: Leave
 ShortNamespaceLines: 1
 SkipMacroDefinitionBody: false
 SortIncludes: CaseSensitive

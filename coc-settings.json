@@ -21,6 +21,7 @@
   ],
 
   "suggest.noselect": true,
+  "suggest.reTriggerAfterIndent": false,
 
   "tree.closedIcon": "",
   "tree.openedIcon": "",
