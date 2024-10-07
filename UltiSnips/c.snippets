@@ -2,5 +2,20 @@ snippet includeGuard "Include guard"
 #ifndef ${1:MACRO}
 #define $1
 
-#endif  // $1
+#endif    // $1
+endsnippet
+
+snippet doxygenAuthor "Doxygen author block"
+/**
+ * @author Mo Hyun
+ * @date `date +%F`
+ *
+ * @brief $4
+ */
+endsnippet
+
+snippet doxygenComment
+/**
+ * $1
+ */
 endsnippet
