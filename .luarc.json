@@ -2,7 +2,6 @@
   "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
 
   "completion.callSnippet": "Replace",
-  "workspace.library": ["$VIMRUNTIME/lua"],
   "runtime.version": "Lua 5.3",
   "hint.enable": true
 }
