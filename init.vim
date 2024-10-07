@@ -20,6 +20,8 @@ Plug 'phaazon/hop.nvim'
 Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdtree'
 Plug 'davidgranstrom/nvim-markdown-preview'
+Plug 'famiu/nvim-reload'
+Plug 'nvim-lua/plenary.nvim'
 Plug 'yssl/QFEnter'
 Plug 'majutsushi/tagbar'
 Plug 'SirVer/ultisnips'
@@ -587,6 +589,17 @@ command! -nargs=? -bar -range=% -bang
 nnoremap <C-n> <Cmd>NERDTreeFocus<CR>
 nnoremap <A-n> <Cmd>NERDTreeFind<CR>
 nnoremap <leader>n <Cmd>NERDTree<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" nvim-reload
+lua << EOF
+local reload = require('nvim-reload')
+
+local pluginDirs = vim.fn.stdpath('config') .. '/bundle/*'
+
+reload.vim_reload_dirs = {vim.fn.stdpath('config'), pluginDirs}
+reload.lua_reload_dirs = {vim.fn.stdpath('config'), pluginDirs}
+EOF
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Project
