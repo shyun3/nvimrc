@@ -79,6 +79,9 @@ can be created with `:CocLocalConfig`. For example:
     ln -s $(pyenv which isort) ~/bin/isort
     # ...
     ```
+* [Pyright](https://github.com/microsoft/pyright) can read type stubs placed in
+  the `typings` directory. This can be customized using the `stubPath` option
+  in the `pyrightconfig.json`. See also [Generating Type Stubs][type-stubs].
 
 [nvim-linux]: https://github.com/neovim/neovim/wiki/Installing-Neovim#linux
 [node-install]: https://github.com/nodejs/help/wiki/Installation
@@ -95,3 +98,4 @@ can be created with `:CocLocalConfig`. For example:
 [clangd]: https://github.com/clangd/clangd/releases
 [jetbrains-mono]: https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/JetBrainsMono/NoLigatures
 [pyenv]: https://github.com/pyenv/pyenv#installation
+[type-stubs]: https://github.com/microsoft/pyright/blob/main/docs/type-stubs.md#generating-type-stubs
