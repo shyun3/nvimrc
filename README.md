@@ -46,6 +46,19 @@
 
 # Tips
 
+## clangd
+
+To use [coc-clangd](https://github.com/clangd/coc-clangd) on a
+cross-compiled project, try setting the
+[--query-driver](https://clangd.llvm.org/guides/system-headers#query-driver)
+option to the cross-compiler path in the local `coc-settings.json`. This file
+can be created with `:CocLocalConfig`. For example:
+```json
+{
+    "clangd.arguments": ["--query-driver=/usr/bin/arm-none-eabi-gcc"]
+}
+```
+
 ## Python
 
 * Install formatters through the Neovim `virtualenv`, then symlink them to a
