@@ -352,6 +352,14 @@ command! CheckHighlightUnderCursor call <SID>CheckHighlight(line('.'), col('.'))
 hi link CocSemMacro Macro
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" colorizer
+lua << EOF
+require'colorizer'.setup{
+  user_default_options = {names = false},
+}
+EOF
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " DoGe
 let g:doge_doc_standard_python = 'google'
 let g:doge_comment_jump_modes = ['n', 's']
@@ -607,10 +615,6 @@ command! -nargs=? -bar -range=% -bang
 nnoremap <C-n> <Cmd>NERDTreeFocus<CR>
 nnoremap <A-n> <Cmd>NERDTreeFind<CR>
 nnoremap <leader>n <Cmd>NERDTree<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" nvim-colorizer
-lua require'colorizer'.setup()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " nvim-reload
