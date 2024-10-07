@@ -268,10 +268,6 @@ nnoremap <leader><leader> :GrepperRg
 " Gundo
 let g:gundo_prefer_python3 = 1
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Gutentags
-let g:gutentags_define_advanced_commands = 1
-let g:gutentags_cache_dir = g:vimDir . '/.gutentags-cache'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Hop
@@ -364,6 +360,10 @@ nnoremap <silent> <leader>/ :Leaderf searchHistory<CR>
 nnoremap <silent> <leader>h :LeaderfHelp<CR>
 nnoremap <silent> <leader>x :LeaderfCommand<CR>
 nnoremap <silent> <leader>c :LeaderfQuickFix<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Gutentags
+let g:gutentags_define_advanced_commands = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Neoformat

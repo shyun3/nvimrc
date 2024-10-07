@@ -1,5 +1,4 @@
 bundle/
-.gutentags-cache/
 
 autoload/plug.vim*
 projects.vim
