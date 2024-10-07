@@ -14,6 +14,6 @@ function! neoformat#formatters#python#black() abort
     return {
                 \ 'exe': 'black',
                 \ 'stdin': 1,
-                \ 'args': ['-q', '-'],
+                \ 'args': ['-q', '--preview', '-'],
                 \ }
 endfunction
