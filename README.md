@@ -86,7 +86,6 @@ See the corresponding [README](example-configs/readme.md).
 
 [nvim-linux]: https://github.com/neovim/neovim/blob/master/INSTALL.md
 [node-install]: https://github.com/nodejs/help/wiki/Installation
-[vim-plug]: https://github.com/junegunn/vim-plug#neovim
 [Nerd Fonts]: https://www.nerdfonts.com/font-downloads
 [nvim-config-dir]: https://neovim.io/doc/user/starting.html#config
 [nvim-undo-dir]: https://neovim.io/doc/user/options.html#'undodir'
