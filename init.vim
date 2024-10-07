@@ -293,7 +293,7 @@ function! s:IncomingCallsQf()
   endfor
 
   call setqflist(qf)
-  botright copen
+  FzfLua quickfix
 endfunction
 
 " Highlight the symbol and its references when holding the cursor
