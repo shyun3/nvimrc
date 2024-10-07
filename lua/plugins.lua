@@ -51,7 +51,35 @@ return {
     init = function()
       vim.g.qfenter_keymap = { vopen = { "<C-v>" }, hopen = { "<C-s>" } }
     end,
+
     ft = "qf",
+  },
+
+  {
+    "majutsushi/tagbar",
+    init = function()
+      vim.g.tagbar_autofocus = 1 -- Move to Tagbar window when opened
+      vim.g.tagbar_sort = 0
+    end,
+
+    keys = { { "<A-t>", "<Cmd>TagbarToggle<CR>" } },
+  },
+
+  {
+    "haya14busa/vim-asterisk",
+    init = function() vim.g["asterisk#keeppos"] = 1 end,
+  },
+
+  "shyun3/vim-cmake-lists",
+
+  {
+    "kkoomen/vim-doge",
+    build = function() vim.fn["doge#install"]() end,
+
+    init = function()
+      vim.g.doge_doc_standard_python = "google"
+      vim.g.doge_comment_jump_modes = { "n", "s" }
+    end,
   },
 
   {
@@ -63,6 +91,13 @@ return {
       },
     },
   },
+
+  {
+    "ludovicchabant/vim-gutentags",
+    init = function() vim.g.gutentags_define_advanced_commands = 1 end,
+  },
+
+  "jeetsukumaran/vim-pythonsense",
 
   {
     "folke/which-key.nvim",
