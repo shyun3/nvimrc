@@ -12,6 +12,7 @@ return {
     "quangnguyen30192/cmp-nvim-ultisnips",
     "folke/lazydev.nvim",
     "hrsh7th/cmp-nvim-lsp",
+    "quangnguyen30192/cmp-nvim-tags",
   },
 
   config = function()
@@ -51,8 +52,9 @@ return {
       }),
       sources = cmp.config.sources({
         { name = "ultisnips" },
-        { name = "nvim_lsp" },
         { name = "lazydev" },
+        { name = "nvim_lsp" },
+        { name = "tags" },
         {
           name = "buffer",
           option = {

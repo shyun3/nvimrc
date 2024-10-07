@@ -12,7 +12,6 @@ return {
 
       -- From coc-sources
       "coc-syntax",
-      "coc-tag",
     }
 
     vim.g.coc_quickfix_open_command = "botright copen"
