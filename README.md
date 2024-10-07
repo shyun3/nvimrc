@@ -9,16 +9,16 @@
 
 1. Install [Neovim][nvim-linux] (must be at least v0.5.0)
    
-1. Install dependencies:
-    * `sudo apt install ripgrep universal-ctags fd-find clangd clang-format
-      pandoc`
-        * Make sure to create a symlink for `fd`, see [note][fd-install]
-    * [fzf][], [bat][]
-        * `fzf` must be > v0.23.1, see [issue #63][fzf-issue-63]
+1. Install dependencies and include them in the `PATH`:
+    * `sudo apt install ripgrep universal-ctags clang-format pandoc`
+    * [fd][], [fzf][], [bat][], [clangd][]
+        * `fd` should be >= v8.1.0 to support global ignore files
+        * `fzf` must be >= v0.23.1, see [issue #63][fzf-issue-63]
         * `bat` should be installed through a `.deb` package,
           see [issue #938][bat-issue-938]
+        * Latest version of `clangd` is preferred
     * [Node.js](https://nodejs.org/en/download) (must be at least v12)
-        * Make sure to set the [`PATH`][node-install]
+        * See [`PATH`][node-install] instructions
         * Dependencies: `npm install -g yarn live-server`
     
 1. Create [undo directory][nvim-undo-dir]:
@@ -46,9 +46,10 @@
 [Nerd Fonts]: https://www.nerdfonts.com/font-downloads
 [nvim-config-dir]: https://neovim.io/doc/user/starting.html#config
 [nvim-undo-dir]: https://neovim.io/doc/user/options.html#'undodir'
-[fd-install]: https://github.com/sharkdp/fd#on-ubuntu
+[fd]: https://github.com/sharkdp/fd#on-ubuntu
 [fzf]: https://github.com/junegunn/fzf#using-git
 [fzf-issue-63]: https://github.com/ibhagwan/fzf-lua/issues/63
 [bat]: https://github.com/sharkdp/bat#on-ubuntu-using-most-recent-deb-packages
 [bat-issue-938]: https://github.com/sharkdp/bat/issues/938
 [nvim-clipboard-wsl]: https://github.com/neovim/neovim/wiki/FAQ#how-to-use-the-windows-clipboard-from-wsl
+[clangd]: https://github.com/clangd/clangd/releases
