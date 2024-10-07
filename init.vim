@@ -474,7 +474,7 @@ nnoremap <leader><leader> <Cmd>call <SID>GoToEditWindow()<CR>:GrepperRg
 
 " Prevent auto-resize of quickfix window
 let g:grepper.open = 0
-autocmd User Grepper copen
+autocmd User Grepper botright copen
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Gundo
