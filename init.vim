@@ -13,7 +13,7 @@ Plug 'junegunn/vim-plug'
 Plug 'tomasr/molokai'
 
 " Plugins
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'editorconfig/editorconfig-vim'
 Plug 'sjl/gundo.vim'
 Plug 'phaazon/hop.nvim'
