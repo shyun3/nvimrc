@@ -188,7 +188,8 @@ augroup myAutosaveGroup
   autocmd BufLeave,FocusLost * silent! update   " Save when leaving buffer
 augroup END
 
-autocmd BufNewFile,BufRead *.xaml setf xml
+autocmd BufNewFile,BufRead *.xaml setfiletype xml
+autocmd BufReadPost,BufNewFile *.control setfiletype control
 
 autocmd FocusGained * silent! checktime
 
