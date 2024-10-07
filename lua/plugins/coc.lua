@@ -108,6 +108,18 @@ return {
       desc = "coc: Jump to definition, horizontal split",
     },
 
+    { "<Leader>D", "<Plug>(coc-type-definition)" },
+    {
+      "<Leader>vD",
+      function() vim.fn.CocAction("jumpTypeDefinition", "vsplit") end,
+      desc = "coc: Jump to type definition, vertical split",
+    },
+    {
+      "<Leader>sD",
+      function() vim.fn.CocAction("jumpTypeDefinition", "split") end,
+      desc = "coc: Jump to type definition, horizontal split",
+    },
+
     { "<Leader>[", "<Plug>(coc-declaration)" },
     {
       "<Leader>v[",
@@ -119,6 +131,9 @@ return {
       function() vim.fn.CocAction("jumpDeclaration", "split") end,
       desc = "coc: Jump to declaration, horizontal split",
     },
+
+    { "<Leader>ds", "<Cmd>CocList -A outline<CR>" },
+    { "<Leader>ws", "<Cmd>CocList -I -A symbols<CR>" },
 
     { "<Leader>rr", "<Plug>(coc-references)" },
     {
@@ -198,6 +213,12 @@ return {
       "<Leader>ch",
       "<Cmd>CocCommand document.toggleInlayHint<CR>",
     },
+
+    -- Requires 'textDocument.documentSymbol' support from the language server
+    { "if", "<Plug>(coc-funcobj-i)", mode = { "x", "o" } },
+    { "af", "<Plug>(coc-funcobj-a)", mode = { "x", "o" } },
+    { "ik", "<Plug>(coc-classobj-i)", mode = { "x", "o" } },
+    { "ak", "<Plug>(coc-classobj-a)", mode = { "x", "o" } },
 
     {
       "<C-f>",
