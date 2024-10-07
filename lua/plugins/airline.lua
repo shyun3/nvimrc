@@ -2,7 +2,6 @@ return {
   "vim-airline/vim-airline",
 
   dependencies = {
-    "neoclide/coc.nvim",
     "vim-airline/vim-airline-themes",
     "tpope/vim-fugitive",
     "mhinz/vim-grepper",
@@ -12,8 +11,6 @@ return {
   init = function()
     vim.g.airline_theme = "molokai"
     vim.g.airline_powerline_fonts = 1
-
-    vim.g["airline#extensions#coc#show_coc_status"] = 1
 
     vim.g["airline#extensions#whitespace#enabled"] = 0 -- Whitespace error detection
     vim.g["airline#extensions#tagbar#enabled"] = 0
@@ -32,7 +29,7 @@ return {
   config = function()
     vim.api.nvim_create_autocmd("User", {
       group = vim.api.nvim_create_augroup("my_airline", {}),
-      pattern = { "GutentagsUpdated", "CocStatusChange", "CocDiagnosticChange" },
+      pattern = "GutentagsUpdated",
       command = "AirlineRefresh",
     })
   end,

@@ -11,6 +11,7 @@ end
 
 return {
   "neoclide/coc.nvim",
+  enabled = false,
   dependencies = { "tpope/vim-endwise", "windwp/nvim-autopairs" },
   build = "npm ci",
 
