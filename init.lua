@@ -4,6 +4,7 @@ vimDir = vim.fn.stdpath("config")
 -- sensible: Do not update vim settings
 vim.g.polyglot_disabled = { "lua", "sensible" }
 
+--[=[
 vim.fn["plug#begin"](vimDir .. "/bundle")
 
 -- Plugin manager
@@ -65,6 +66,7 @@ vim.cmd.Plug([['kana/vim-textobj-indent']])
 vim.cmd.Plug([['kana/vim-textobj-user']])
 
 vim.fn["plug#end"]()
+]=]
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -78,6 +80,8 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup("plugins")
 
 -------------------------------------------------------------------------------
 -- Options
@@ -258,7 +262,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight on yank",
   callback = function() vim.highlight.on_yank() end,
 })
-
+--[=[
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 -- Plugin specific settings
@@ -1029,3 +1033,4 @@ end
 
 vim.keymap.set({ "o", "v" }, "i<Leader>w", "<Plug>WordMotion_iw")
 vim.keymap.set({ "o", "v" }, "a<Leader>w", "<Plug>WordMotion_aw")
+]=]
