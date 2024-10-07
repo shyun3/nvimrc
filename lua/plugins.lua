@@ -117,18 +117,5 @@ return {
     opts = {},
   },
 
-  {
-    "chaoren/vim-wordmotion",
-    init = function() vim.g.wordmotion_nomap = 1 end,
-
-    keys = {
-      { "<Leader>w", "<Plug>WordMotion_w", mode = "" },
-      { "<Leader>e", "<Plug>WordMotion_e", mode = "" },
-      { "<Leader>b", "<Plug>WordMotion_b", mode = "" },
-      { "<Leader>ge", "<Plug>WordMotion_ge", mode = "" },
-
-      { "i<Leader>w", "<Plug>WordMotion_iw", mode = { "o", "v" } },
-      { "a<Leader>w", "<Plug>WordMotion_aw", mode = { "o", "v" } },
-    },
-  },
+  "chaoren/vim-wordmotion",
 }
