@@ -272,7 +272,7 @@ let g:grepper.rg.grepprg = 'rg -H --no-heading --vimgrep --smart-case --follow $
 let g:grepper.dir = 'filecwd'
 
 let g:grepper.open = 0
-autocmd User Grepper botright copen
+autocmd User Grepper LeaderfQuickFix
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Gundo
