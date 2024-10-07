@@ -592,43 +592,61 @@ vim.keymap.set('n', '<C-h>', function()
     require'fzf-lua'.tags()
   end,
   {desc = 'fzf-lua: Tags', silent = true})
+vim.keymap.set('n', '<C-k>', function()
+    -- `FzfLua btags` by default uses an existing tags file
+    -- Generate the latest tags for the current file
+    local filePath = vim.fn.expand('%')
+    local tmp = vim.fn.tempname()
+    vim.cmd{cmd = '!', args = {'ctags -f', tmp, string.format('"%s"', filePath)},
+      mods = {silent = true}}
+
+    -- Don't specify cwd for tags call if current file is not under cwd
+    local cwd = filePath[0] ~= '/' and vim.fn.getcwd() or ''
+    require'fzf-lua'.btags{ctags_file = tmp, cwd = cwd}
+  end,
+  {desc = 'fzf-lua: Buffer tags', silent = true}
+)
+vim.keymap.set('n', '<C-j>', '<Cmd>FzfLua blines show_unlisted=true<CR>')
+vim.keymap.set('n', '<Leader>f', '<Cmd>FzfLua builtin<CR>')
+vim.keymap.set('n', '<Leader>;', '<Cmd>FzfLua command_history<CR>')
+vim.keymap.set('n', '<Leader>/', '<Cmd>FzfLua search_history<CR>')
+vim.keymap.set('n', '<Leader>h', '<Cmd>FzfLua help_tags<CR>')
+vim.keymap.set('n', '<Leader>x', '<Cmd>FzfLua commands<CR>')
+vim.keymap.set('n', '<Leader>cf', '<Cmd>FzfLua quickfix<CR>')
+
+-------------------------------------------------------------------------------
+-- grepper
+
+-- Initialize g:grepper with default values
+vim.cmd.runtime('plugin/grepper.vim')
+
+do
+  local grepper = vim.g.grepper
+
+  grepper.tools = {'rg', 'git'}
+  grepper.rg.grepprg = 'rg -H --no-heading --vimgrep --smart-case --follow $*'
+  grepper.dir = 'filecwd'
+
+  -- Prevent auto-resize of quickfix window
+  grepper.open = 0
+
+  vim.g.grepper = grepper
+end
+
+vim.keymap.set('n', '<Leader><Leader>', function()
+    go_to_editable_window()
+    vim.cmd.Grepper()
+  end,
+  {desc = 'Grepper: Prompt'}
+)
+
+local myGrepperGroup = vim.api.nvim_create_augroup('myGrepperGroup', {})
+vim.api.nvim_create_autocmd('User', {
+  group = myGrepperGroup,
+  pattern = 'Grepper',
+  command = 'botright copen'
+})
 EOF
-
-" FzfLua btags by default uses an existing tags file. This function generates
-" the latest tags for the current file.
-function! s:FzfLuaBTags()
-  let filePath = expand('%')
-  let tmp = tempname()
-  silent execute '!ctags -f ' . tmp . ' "' . filePath . '"'
-
-  " Don't specify cwd for tags call if current file is not under cwd
-  let cwd = filePath[0] != '/' ? getcwd() : ''
-  silent execute 'FzfLua btags ctags_file=' . tmp . ' cwd=' . cwd
-endfunction
-
-nnoremap <C-k> <Cmd>call <SID>FzfLuaBTags()<CR>
-nnoremap <C-j> <Cmd>FzfLua blines show_unlisted=true<CR>
-nnoremap <leader>f <Cmd>FzfLua builtin<CR>
-nnoremap <leader>; <Cmd>FzfLua command_history<CR>
-nnoremap <leader>/ <Cmd>FzfLua search_history<CR>
-nnoremap <leader>h <Cmd>FzfLua help_tags<CR>
-nnoremap <leader>x <Cmd>FzfLua commands<CR>
-nnoremap <leader>cf <Cmd>FzfLua quickfix<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" grepper
-runtime plugin/grepper.vim
-let g:grepper.tools = ['rg', 'git']
-let g:grepper.rg.grepprg = 'rg -H --no-heading --vimgrep --smart-case --follow $*'
-let g:grepper.dir = 'filecwd'
-
-nnoremap <leader><leader> <Cmd>call <SID>GoToEditWindow()<CR>:GrepperRg 
-
-" Prevent auto-resize of quickfix window
-let g:grepper.open = 0
-augroup myGrepperGroup
-  autocmd User Grepper botright copen
-augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Gundo
