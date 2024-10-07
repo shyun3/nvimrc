@@ -10,12 +10,12 @@ Plug 'tomasr/molokai'
 
 " Plugins
 Plug 'bkad/CamelCaseMotion'
+Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 Plug 'vim-scripts/CursorLineCurrentWindow'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'sjl/gundo.vim'
 Plug 'phaazon/hop.nvim'
-Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdtree'
 Plug 'yssl/QFEnter'
@@ -41,26 +41,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 
-" Auto-complete
-Plug 'Shougo/neco-vim'
-Plug 'neoclide/coc-neco'
-Plug 'Shougo/neoinclude.vim'
-Plug 'jsfaint/coc-neoinclude'
-Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
-
-" coc extensions
-Plug 'clangd/coc-clangd', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
-Plug 'fannheyward/coc-pyright', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-sources',
-  \ {'as': 'coc-syntax', 'rtp': 'packages/syntax',
-  \  'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-sources',
-  \ {'as': 'coc-tag', 'rtp': 'packages/tag',
-  \  'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-sources',
-  \ {'as': 'coc-ultisnips', 'rtp': 'packages/ultisnips',
-  \  'do': 'yarn install --frozen-lockfile'}
 
 " Text objects
 Plug 'fvictorio/vim-textobj-backticks'
