@@ -27,13 +27,13 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'haya14busa/vim-asterisk'
 Plug 'shyun3/vim-cmake-lists'
 Plug 'tpope/vim-commentary'
+Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-grepper'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'amiorin/vim-project'
 Plug 'tpope/vim-projectionist'
-Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
 Plug 'jeetsukumaran/vim-pythonsense'
 Plug 'tpope/vim-repeat'
 Plug 'inside/vim-search-pulse'
@@ -255,6 +255,11 @@ function! s:ShowDocumentation()
     call CocAction('doHover')
   endif
 endfunction
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" DoGe
+let g:doge_doc_standard_python = 'google'
+let g:doge_comment_jump_modes = ['n', 's']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EditorConfig
