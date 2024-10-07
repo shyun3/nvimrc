@@ -9,7 +9,6 @@ Plug 'junegunn/vim-plug'
 Plug 'tomasr/molokai'
 
 " Plugins
-Plug 'bkad/CamelCaseMotion'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'editorconfig/editorconfig-vim'
 Plug 'sjl/gundo.vim'
@@ -38,6 +37,7 @@ Plug 'inside/vim-search-pulse'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
+Plug 'chaoren/vim-wordmotion'
 
 " fzf
 Plug 'ibhagwan/fzf-lua'
@@ -217,10 +217,6 @@ let g:airline#extensions#tabline#show_tab_type = 0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Asterisk
 let g:asterisk#keeppos = 1
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" CamelCaseMotion
-let g:camelcasemotion_key = '<leader>'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " coc
@@ -486,3 +482,18 @@ nmap <silent> <A-t> :TagbarToggle<CR>
 " UltiSnips
 let g:UltiSnipsEditSplit = 'horizontal'
 let g:UltiSnipsExpandTrigger = "<NUL>"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" wordmotion
+let g:wordmotion_nomap = 1
+
+map <leader>w <Plug>WordMotion_w
+map <leader>e <Plug>WordMotion_e
+map <leader>b <Plug>WordMotion_b
+map <leader>ge <Plug>WordMotion_ge
+
+omap i<leader>w <Plug>WordMotion_iw
+vmap i<leader>w <Plug>WordMotion_iw
+
+omap a<leader>w <Plug>WordMotion_aw
+vmap a<leader>w <Plug>WordMotion_aw
