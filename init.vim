@@ -230,41 +230,41 @@ function! s:show_documentation()
 endfunction
 
 " First child declaration
-nn <silent> <leader><Down> :call CocLocations('ccls','$ccls/navigate',{'direction':'D'})<cr>
+nn <silent> <leader><Down> :call CocLocationsAsync('ccls','$ccls/navigate',{'direction':'D'})<cr>
 
 " Previous declaration
-nn <silent> <leader><Left> :call CocLocations('ccls','$ccls/navigate',{'direction':'L'})<cr>
+nn <silent> <leader><Left> :call CocLocationsAsync('ccls','$ccls/navigate',{'direction':'L'})<cr>
 
 " Next declaration
-nn <silent> <leader><Right> :call CocLocations('ccls','$ccls/navigate',{'direction':'R'})<cr>
+nn <silent> <leader><Right> :call CocLocationsAsync('ccls','$ccls/navigate',{'direction':'R'})<cr>
 
 " Parent declaration
-nn <silent> <leader><Up> :call CocLocations('ccls','$ccls/navigate',{'direction':'U'})<cr>
+nn <silent> <leader><Up> :call CocLocationsAsync('ccls','$ccls/navigate',{'direction':'U'})<cr>
 
 " bases
-nn <silent> <leader>b :call CocLocations('ccls','$ccls/inheritance')<cr>
+nn <silent> <leader>b :call CocLocationsAsync('ccls','$ccls/inheritance')<cr>
 
 " derived
-nn <silent> <leader>d :call CocLocations('ccls','$ccls/inheritance',{'derived':v:true})<cr>
+nn <silent> <leader>d :call CocLocationsAsync('ccls','$ccls/inheritance',{'derived':v:true})<cr>
 
 " caller
-nn <silent> <leader>c :call CocLocations('ccls','$ccls/call')<cr>
+nn <silent> <leader>c :call CocLocationsAsync('ccls','$ccls/call')<cr>
 
 " callee
-nn <silent> <leader>C :call CocLocations('ccls','$ccls/call',{'callee':v:true})<cr>
+nn <silent> <leader>C :call CocLocationsAsync('ccls','$ccls/call',{'callee':v:true})<cr>
 
 " member variables / variables in a namespace
-nn <silent> <leader>mv :call CocLocations('ccls','$ccls/member')<cr>
+nn <silent> <leader>mv :call CocLocationsAsync('ccls','$ccls/member')<cr>
 
 " member functions / functions in a namespace
-nn <silent> <leader>mf :call CocLocations('ccls','$ccls/member',{'kind':3})<cr>
+nn <silent> <leader>mf :call CocLocationsAsync('ccls','$ccls/member',{'kind':3})<cr>
 
 " nested classes / types in a namespace
-nn <silent> <leader>mt :call CocLocations('ccls','$ccls/member',{'kind':2})<cr>
+nn <silent> <leader>mt :call CocLocationsAsync('ccls','$ccls/member',{'kind':2})<cr>
 
 " Instances of a type
-nn <silent> <leader>v :call CocLocations('ccls','$ccls/vars')<cr>
-nn <silent> <leader>V :call CocLocations('ccls','$ccls/vars',{'kind':1})<cr>
+nn <silent> <leader>v :call CocLocationsAsync('ccls','$ccls/vars')<cr>
+nn <silent> <leader>V :call CocLocationsAsync('ccls','$ccls/vars',{'kind':1})<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CtrlP
