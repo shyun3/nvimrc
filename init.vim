@@ -225,16 +225,7 @@ let g:coc_global_extensions = ['coc-clangd', 'coc-json', 'coc-pyright',
   \ 'coc-syntax', 'coc-tag', 'coc-ultisnips', 'coc-vimlsp', 'coc-pairs',
   \ 'coc-sh']
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-
-" Insert <tab> when previous text is space, refresh completion if not.
-inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1):
-      \ <SID>check_back_space() ? "\<Tab>" :
-      \ coc#refresh()
+inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#next(1): "\<Tab>"
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -313,6 +304,7 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 nmap <leader>a  <Plug>(coc-codeaction)
+nmap <leader>rn <Plug>(coc-rename)
 
 xmap <leader>gf  <Plug>(coc-format-selected)
 nmap <leader>gf  <Plug>(coc-format-selected)
