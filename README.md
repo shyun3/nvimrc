@@ -40,7 +40,7 @@
     ```
 
 1. Install [vim-plug][] and [Nerd Fonts][]
-    * Currently, [JetBrains Mono, No Ligatures][jetbrains-mono] is preferred
+    * Currently, JetBrains Mono v2.304 with no ligatures is preferred
     * Remember to update the terminal font
 
 1. Start Neovim. Ignore any errors and run `:PlugInstall`.
@@ -121,7 +121,6 @@ plugins.
 [fd]: https://github.com/sharkdp/fd#on-ubuntu
 [bat-install]: https://github.com/sharkdp/bat#on-ubuntu-using-apt
 [LLVM]: https://apt.llvm.org/
-[jetbrains-mono]: https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/JetBrainsMono/NoLigatures
 [type-stubs]: https://github.com/microsoft/pyright/blob/main/docs/type-stubs.md#generating-type-stubs
 [coc-extensions]: https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#implemented-coc-extensions
 [coc-output-channel]: https://github.com/neoclide/coc.nvim/wiki/Debug-language-server#using-output-channel
