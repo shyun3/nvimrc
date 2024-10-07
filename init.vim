@@ -372,6 +372,10 @@ nnoremap <silent> <leader>x :LeaderfCommand<CR>
 nnoremap <silent> <leader>c :LeaderfQuickFix<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Neoformat
+let g:neoformat_run_all_formatters = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERD Tree
 nnoremap <silent> <C-n> :NERDTree<CR>
 nnoremap <silent> <A-n> :NERDTree %<CR>
