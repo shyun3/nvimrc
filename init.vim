@@ -350,8 +350,6 @@ function! s:FzfLuaBTags()
   " Don't specify cwd for tags call if current file is not under cwd
   let cwd = filePath[0] != '/' ? getcwd() : ''
   silent execute 'FzfLua btags ctags_file=' . tmp . ' cwd=' . cwd
-
-  silent execute '!rm ' . tmp
 endfunction
 
 nnoremap <C-p> <Cmd>call <SID>FzfLuaFiles()<CR>
