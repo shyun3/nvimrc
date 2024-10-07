@@ -70,6 +70,13 @@ return {
     keys = { { "<A-t>", "<Cmd>TagbarToggle<CR>" } },
   },
 
+  {
+    "SirVer/ultisnips",
+    init = function()
+      vim.g.UltiSnipsSnippetDirectories = { "UltiSnips", "UltiSnips/specific" }
+    end,
+  },
+
   { "shyun3/vim-cmake-lists", ft = "cmake" },
 
   {

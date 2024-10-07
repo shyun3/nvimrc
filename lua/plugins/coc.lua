@@ -11,7 +11,6 @@ return {
       "coc-pyright",
       "coc-vimlsp",
       "coc-sh",
-      "coc-snippets",
 
       -- From coc-sources
       "coc-syntax",

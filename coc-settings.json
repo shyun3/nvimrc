@@ -11,10 +11,6 @@
 
   "semanticTokens.enable": true,
 
-  "snippet.statusText": "",
-  "snippets.loadFromExtensions": false,
-  "snippets.ultisnips.directories": ["UltiSnips", "UltiSnips/specific"],
-
   "suggest.noselect": true,
   "suggest.reTriggerAfterIndent": false,
 
@@ -29,7 +25,6 @@
     "pyrightconfig.json",
     "pyproject.toml"
   ],
-  "snippets.ultisnips.pythonPrompt": false,
 
   "[lua]": {
     "semanticTokens.enable": false
