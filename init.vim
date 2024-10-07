@@ -316,6 +316,7 @@ let g:gundo_prefer_python3 = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Gutentags
 let g:gutentags_define_advanced_commands = 1
+let g:gutentags_cache_dir = g:vimDir . '/.gutentags-cache'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Indent guides
