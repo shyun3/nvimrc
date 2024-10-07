@@ -10,6 +10,7 @@ Plug 'tomasr/molokai'
 
 " Plugins
 Plug 'bkad/CamelCaseMotion'
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'vim-scripts/CursorLineCurrentWindow'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'editorconfig/editorconfig-vim'
@@ -37,10 +38,6 @@ Plug 'inside/vim-search-pulse'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
-
-" coc
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-Plug 'shyun3/coc-vimlsp', {'branch': 'fix-40', 'do': 'yarn install --frozen-lockfile'}
 
 " fzf
 Plug 'ibhagwan/fzf-lua'
@@ -209,7 +206,7 @@ let g:camelcasemotion_key = '<leader>'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " coc
 let g:coc_global_extensions = ['coc-clangd', 'coc-json', 'coc-pyright',
-  \ 'coc-syntax', 'coc-tag', 'coc-ultisnips']
+  \ 'coc-syntax', 'coc-tag', 'coc-ultisnips', 'coc-vimlsp']
 
 inoremap <silent><expr> <c-space> coc#refresh()
 
