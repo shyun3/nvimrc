@@ -29,8 +29,9 @@ return {
       jsonc = { "prettier" },
       lua = { "stylua" },
       python = { "isort", "black" },
-      shfmt = { "sh" },
+      sh = { "shfmt" },
       yaml = { "prettier" },
+      zsh = { "shfmt" },
     },
 
     -- Derived from recipe
