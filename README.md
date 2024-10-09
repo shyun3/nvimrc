@@ -10,7 +10,7 @@
 1. Install [Neovim][nvim-linux]
 
 1. Install dependencies and include them in the `PATH`:
-    * `sudo apt install ripgrep bat universal-ctags wl-clipboard`
+    * `sudo apt install ripgrep bat universal-ctags xclip`
         * Make sure to create a symlink for `bat` (see [link][bat-install])
     * [fd][], `fzf`, `lazygit`
         * `fd` >= 9.0.0 is recommended for improved performance
