@@ -35,6 +35,16 @@ return {
   },
 
   {
+    "chrishrb/gx.nvim",
+
+    init = function() vim.g.netrw_nogx = 1 end,
+    config = true,
+
+    keys = { { "gx", "<cmd>Browse<cr>", mode = { "n", "x" } } },
+    cmd = "Browse",
+  },
+
+  {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
 
