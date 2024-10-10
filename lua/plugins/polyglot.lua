@@ -2,10 +2,11 @@ return {
   "sheerun/vim-polyglot",
 
   init = function()
+    -- autoindent: Can lead to slow buffer enter
     -- ftdetect: Use filetype.lua
     -- lua: Covered by treesitter
     -- sensible: Do not update vim settings
-    vim.g.polyglot_disabled = { "ftdetect", "lua", "sensible" }
+    vim.g.polyglot_disabled = { "autoindent", "ftdetect", "lua", "sensible" }
   end,
 
   config = function()
