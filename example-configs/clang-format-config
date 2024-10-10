@@ -1,4 +1,4 @@
-# clang-format 18.1.4
+# clang-format 19.1.0
 # vim: ft=yaml
 
 BasedOnStyle: LLVM
@@ -11,7 +11,7 @@ AlignConsecutiveDeclarations: None
 AlignConsecutiveMacros: Consecutive
 AlignConsecutiveShortCaseStatements:
   Enabled: false
-AlignEscapedNewlines: Left
+AlignEscapedNewlines: LeftWithLastLine
 AlignOperands: Align
 AlignTrailingComments: Never
 AllowAllArgumentsOnNextLine: true
@@ -25,9 +25,7 @@ AllowShortFunctionsOnASingleLine: InlineOnly
 AllowShortIfStatementsOnASingleLine: AllIfsAndElse
 AllowShortLambdasOnASingleLine: All
 AllowShortLoopsOnASingleLine: true
-AlwaysBreakAfterReturnType: None
 AlwaysBreakBeforeMultilineStrings: false
-AlwaysBreakTemplateDeclarations: Yes
 AttributeMacros: []
 BinPackArguments: true
 BinPackParameters: true
@@ -52,6 +50,7 @@ BraceWrapping:
   SplitEmptyNamespace: false
 BreakAdjacentStringLiterals: true
 BreakAfterAttributes: Leave
+BreakAfterReturnType: None
 BreakBeforeBinaryOperators: None
 BreakBeforeBraces: Custom
 BreakBeforeConceptDeclarations: Always
@@ -60,6 +59,7 @@ BreakBeforeTernaryOperators: false
 BreakConstructorInitializers: AfterColon
 BreakInheritanceList: AfterComma
 BreakStringLiterals: true
+BreakTemplateDeclarations: Yes
 ColumnLimit: 80
 CommentPragmas: ""
 CompactNamespaces: true
@@ -95,8 +95,10 @@ IntegerLiteralSeparator:
   DecimalMinDigits: 0
   Hex: 0
   HexMinDigits: 0
-KeepEmptyLinesAtEOF: false
-KeepEmptyLinesAtTheStartOfBlocks: false
+KeepEmptyLines:
+  AtEndOfFile: false
+  AtStartOfBlock: false
+  AtStartOfFile: false
 LambdaBodyIndentation: Signature
 Language: Cpp
 LineEnding: LF
