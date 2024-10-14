@@ -31,7 +31,6 @@ return {
       python = { "isort", "black" },
       sh = { "shfmt" },
       yaml = { "prettier" },
-      zsh = { "shfmt" },
     },
 
     -- Derived from recipe
