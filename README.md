@@ -59,7 +59,8 @@ See the corresponding [README](example-configs/readme.md).
 ### UltiSnips
 
 * Add snippets under the `UltiSnips/specific` directory for snippets that are
-  meant to be machine-specific and not saved in the repo.
+  meant to be machine-specific and not saved in the repo, see the UltiSnips
+  plugin setup.
 
 [nvim-config-dir]: https://neovim.io/doc/user/starting.html#config
 [type-stubs]: https://github.com/microsoft/pyright/blob/main/docs/type-stubs.md#generating-type-stubs

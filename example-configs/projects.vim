@@ -1,1 +1,1 @@
-Project '~/.config/nvim'
+Project '~/.config/dotdrop', 'dotfiles'

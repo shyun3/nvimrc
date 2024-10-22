@@ -20,9 +20,6 @@ CompileFlags:
 
   Remove: [-munknown-arg]
 
-Diagnostics:
-  UnusedIncludes: Strict # Default since clangd 17
-
 ---
 If:
   PathMatch: /path/to/src
